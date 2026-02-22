@@ -13,19 +13,19 @@ concurrency:
 jobs:
   build-and-test:
     name: Build & Test
-    runs-on: macos-15
+    runs-on: macos-14
     timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+        run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
 
       - name: Show environment
         run: |
           xcodebuild -version
-          xcrun simctl list devices available | grep iPhone | head -5
+          xcrun simctl list devices available | grep iPhone
 
       - name: Build
         run: |
