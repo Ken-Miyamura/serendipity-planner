@@ -16,9 +16,14 @@ class SettingsViewModel: ObservableObject {
     @Published var selectionCounts: [String: Int] = [:]
 
     private var preferenceService: PreferenceServiceProtocol?
+    private var historyService: HistoryServiceProtocol
 
-    init(preferenceService: PreferenceServiceProtocol? = nil) {
+    init(
+        preferenceService: PreferenceServiceProtocol? = nil,
+        historyService: HistoryServiceProtocol = HistoryService()
+    ) {
         self.preferenceService = preferenceService
+        self.historyService = historyService
         if preferenceService != nil {
             loadSettings()
         }
@@ -27,6 +32,10 @@ class SettingsViewModel: ObservableObject {
     func configure(with preferenceService: PreferenceServiceProtocol) {
         self.preferenceService = preferenceService
         loadSettings()
+    }
+
+    func deleteAllHistories() {
+        historyService.deleteAllHistories()
     }
 
     private func loadSettings() {

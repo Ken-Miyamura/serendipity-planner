@@ -29,6 +29,11 @@ struct MainTabView: View {
                     Label("ホーム", systemImage: "house.fill")
                 }
 
+            HistoryView()
+                .tabItem {
+                    Label("履歴", systemImage: "clock.arrow.circlepath")
+                }
+
             SettingsView()
                 .tabItem {
                     Label("設定", systemImage: "gearshape.fill")

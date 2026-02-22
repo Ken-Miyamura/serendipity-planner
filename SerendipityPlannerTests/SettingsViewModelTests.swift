@@ -5,11 +5,13 @@ import XCTest
 final class SettingsViewModelTests: XCTestCase {
     private var sut: SettingsViewModel!
     private var mockPreference: MockPreferenceService!
+    private var mockHistory: MockHistoryService!
 
     override func setUp() {
         super.setUp()
         mockPreference = MockPreferenceService()
-        sut = SettingsViewModel()
+        mockHistory = MockHistoryService()
+        sut = SettingsViewModel(historyService: mockHistory)
         sut.configure(with: mockPreference)
     }
 
@@ -157,5 +159,22 @@ final class SettingsViewModelTests: XCTestCase {
         XCTAssertEqual(sut.freeTimeDisplayText(30), "30分")
         XCTAssertEqual(sut.freeTimeDisplayText(60), "1時間")
         XCTAssertEqual(sut.freeTimeDisplayText(90), "1時間30分")
+    }
+
+    // MARK: - History Data
+
+    func testDeleteAllHistories() {
+        // まず履歴を追加
+        mockHistory.histories = [
+            SuggestionHistory(
+                suggestion: Suggestion.mock(category: .cafe, title: "テスト"),
+                acceptedDate: Date()
+            )
+        ]
+
+        sut.deleteAllHistories()
+
+        XCTAssertEqual(mockHistory.deleteAllCallCount, 1)
+        XCTAssertTrue(mockHistory.histories.isEmpty)
     }
 }
