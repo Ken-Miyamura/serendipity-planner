@@ -293,11 +293,39 @@ struct SuggestionDetailView: View {
     }
 
     private var alternativesSection: some View {
+        AlternativesSectionView(
+            alternatives: viewModel.alternatives,
+            weather: weather,
+            preference: preference,
+            preferenceService: preferenceService,
+            locationService: locationService,
+            calendarService: calendarService,
+            favoriteService: favoriteService,
+            onAccept: onAccept,
+            onRegenerate: onRegenerate
+        )
+    }
+}
+
+// MARK: - 代替提案セクション
+
+private struct AlternativesSectionView: View {
+    let alternatives: [Suggestion]
+    let weather: WeatherData?
+    let preference: UserPreference
+    let preferenceService: PreferenceServiceProtocol?
+    let locationService: LocationServiceProtocol?
+    let calendarService: CalendarServiceProtocol?
+    let favoriteService: FavoriteServiceProtocol?
+    let onAccept: () -> Void
+    let onRegenerate: () -> Void
+
+    var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("他の候補")
                 .font(.headline)
 
-            ForEach(viewModel.alternatives) { alt in
+            ForEach(alternatives) { alt in
                 NavigationLink {
                     SuggestionDetailView(
                         suggestion: alt,
