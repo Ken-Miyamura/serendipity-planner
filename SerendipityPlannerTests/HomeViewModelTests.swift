@@ -1,10 +1,9 @@
-import XCTest
 import CoreLocation
 @testable import SerendipityPlanner
+import XCTest
 
 @MainActor
 final class HomeViewModelTests: XCTestCase {
-
     private var sut: HomeViewModel!
     private var mockCalendar: MockCalendarService!
     private var mockWeather: MockWeatherService!
@@ -124,23 +123,23 @@ final class HomeViewModelTests: XCTestCase {
 
     // MARK: - acceptSuggestion Tests
 
-    func testAcceptSuggestion() async {
+    func testAcceptSuggestion() async throws {
         let slot = FreeTimeSlot.mock()
         mockCalendar.freeTimeSlots = [slot]
 
         await sut.loadData()
 
-        let suggestion = sut.suggestions.first!
+        let suggestion = try XCTUnwrap(sut.suggestions.first)
         sut.acceptSuggestion(suggestion)
 
         XCTAssertTrue(sut.suggestions.isEmpty)
         XCTAssertEqual(sut.acceptedSuggestions.count, 1)
-        XCTAssertTrue(sut.acceptedSuggestions.first!.isAccepted)
+        XCTAssertTrue(try XCTUnwrap(sut.acceptedSuggestions.first?.isAccepted))
     }
 
     // MARK: - regenerateSuggestion Tests
 
-    func testRegenerateSuggestion() async {
+    func testRegenerateSuggestion() async throws {
         let slot = FreeTimeSlot.mock()
         mockCalendar.freeTimeSlots = [slot]
         let altSuggestion = Suggestion.mock(category: .walk, title: "散歩提案", slot: slot)
@@ -148,7 +147,7 @@ final class HomeViewModelTests: XCTestCase {
 
         await sut.loadData()
 
-        let originalCategory = sut.suggestions.first!.category
+        let originalCategory = try XCTUnwrap(sut.suggestions.first?.category)
         sut.regenerateSuggestion(for: slot, excluding: originalCategory)
 
         XCTAssertEqual(mockEngine.alternativesCallCount, 1)
@@ -181,17 +180,17 @@ final class HomeViewModelTests: XCTestCase {
 
     // MARK: - Warning Message Tests (Error Handling)
 
-    func testWarningMessageSetWhenNoLocation() async {
+    func testWarningMessageSetWhenNoLocation() async throws {
         mockLocation.currentLocation = nil
         mockCalendar.freeTimeSlots = []
 
         await sut.loadData()
 
         XCTAssertNotNil(sut.warningMessage)
-        XCTAssertTrue(sut.warningMessage!.contains("位置情報"))
+        XCTAssertTrue(try XCTUnwrap(sut.warningMessage?.contains("位置情報")))
     }
 
-    func testWarningMessageSetWhenWeatherFails() async {
+    func testWarningMessageSetWhenWeatherFails() async throws {
         mockLocation.currentLocation = CLLocation(latitude: 35.68, longitude: 139.76)
         mockWeather.weatherError = NSError(domain: "test", code: 1)
         mockCalendar.freeTimeSlots = []
@@ -199,7 +198,7 @@ final class HomeViewModelTests: XCTestCase {
         await sut.loadData()
 
         XCTAssertNotNil(sut.warningMessage)
-        XCTAssertTrue(sut.warningMessage!.contains("天気"))
+        XCTAssertTrue(try XCTUnwrap(sut.warningMessage?.contains("天気")))
     }
 
     func testWarningMessageClearedOnNewLoad() async {

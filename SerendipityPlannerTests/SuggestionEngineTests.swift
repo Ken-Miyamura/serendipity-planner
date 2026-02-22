@@ -1,5 +1,5 @@
-import XCTest
 @testable import SerendipityPlanner
+import XCTest
 
 final class SuggestionEngineTests: XCTestCase {
     var engine: SuggestionEngine!
@@ -16,11 +16,11 @@ final class SuggestionEngineTests: XCTestCase {
 
     // MARK: - Weather Adjustment Tests
 
-    func testWeatherAdjustment_rainyDay_reducesWalkWeight() {
+    func testWeatherAdjustment_rainyDay_reducesWalkWeight() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .walk, weight: 1.0),
             SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0)
         ]
 
         let rainyWeather = WeatherData(
@@ -34,17 +34,17 @@ final class SuggestionEngineTests: XCTestCase {
 
         let adjusted = engine.applyWeatherAdjustment(weights: weights, weather: rainyWeather)
 
-        let walkWeight = adjusted.first(where: { $0.category == .walk })!.weight
-        let cafeWeight = adjusted.first(where: { $0.category == .cafe })!.weight
+        let walkWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .walk })?.weight)
+        let cafeWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .cafe })?.weight)
 
         XCTAssertLessThan(walkWeight, 1.0, "Walk weight should decrease on rainy days")
         XCTAssertGreaterThan(cafeWeight, 1.0, "Cafe weight should increase on rainy days")
     }
 
-    func testWeatherAdjustment_clearDay_increasesWalkWeight() {
+    func testWeatherAdjustment_clearDay_increasesWalkWeight() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .walk, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0)
         ]
 
         let clearWeather = WeatherData(
@@ -58,15 +58,15 @@ final class SuggestionEngineTests: XCTestCase {
 
         let adjusted = engine.applyWeatherAdjustment(weights: weights, weather: clearWeather)
 
-        let walkWeight = adjusted.first(where: { $0.category == .walk })!.weight
+        let walkWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .walk })?.weight)
 
         // Clear + comfortable temperature: 1.0 * 1.5 * 1.3 = 1.95
         XCTAssertGreaterThan(walkWeight, 1.5, "Walk weight should increase significantly on clear, comfortable days")
     }
 
-    func testWeatherAdjustment_coldDay_increasesCafeWeight() {
+    func testWeatherAdjustment_coldDay_increasesCafeWeight() throws {
         let weights = [
-            SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0)
         ]
 
         let coldWeather = WeatherData(
@@ -80,14 +80,14 @@ final class SuggestionEngineTests: XCTestCase {
 
         let adjusted = engine.applyWeatherAdjustment(weights: weights, weather: coldWeather)
 
-        let cafeWeight = adjusted.first(where: { $0.category == .cafe })!.weight
+        let cafeWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .cafe })?.weight)
         XCTAssertGreaterThan(cafeWeight, 1.0, "Cafe weight should increase on cold days")
     }
 
-    func testWeatherAdjustment_newCategories_indoorBoostedOnRain() {
+    func testWeatherAdjustment_newCategories_indoorBoostedOnRain() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .movie, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .fitness, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .fitness, weight: 1.0)
         ]
 
         let rainyWeather = WeatherData(
@@ -101,8 +101,8 @@ final class SuggestionEngineTests: XCTestCase {
 
         let adjusted = engine.applyWeatherAdjustment(weights: weights, weather: rainyWeather)
 
-        let movieWeight = adjusted.first(where: { $0.category == .movie })!.weight
-        let fitnessWeight = adjusted.first(where: { $0.category == .fitness })!.weight
+        let movieWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .movie })?.weight)
+        let fitnessWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .fitness })?.weight)
 
         XCTAssertGreaterThan(movieWeight, 1.0, "Movie weight should increase on rainy days")
         XCTAssertLessThan(fitnessWeight, 1.0, "Fitness weight should decrease on cold rainy days")
@@ -110,73 +110,73 @@ final class SuggestionEngineTests: XCTestCase {
 
     // MARK: - Time Adjustment Tests
 
-    func testTimeAdjustment_morning_favorsCafe() {
+    func testTimeAdjustment_morning_favorsCafe() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0),
             SuggestionEngine.CategoryWeight(category: .walk, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0)
         ]
 
         let adjusted = engine.applyTimeAdjustment(weights: weights, hour: 10)
 
-        let cafeWeight = adjusted.first(where: { $0.category == .cafe })!.weight
+        let cafeWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .cafe })?.weight)
         XCTAssertGreaterThan(cafeWeight, 1.0, "Cafe weight should increase in morning hours")
     }
 
-    func testTimeAdjustment_evening_favorsReading() {
+    func testTimeAdjustment_evening_favorsReading() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0),
             SuggestionEngine.CategoryWeight(category: .walk, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0)
         ]
 
         let adjusted = engine.applyTimeAdjustment(weights: weights, hour: 20)
 
-        let readingWeight = adjusted.first(where: { $0.category == .reading })!.weight
-        let walkWeight = adjusted.first(where: { $0.category == .walk })!.weight
+        let readingWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .reading })?.weight)
+        let walkWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .walk })?.weight)
 
         XCTAssertGreaterThan(readingWeight, 1.0, "Reading weight should increase in evening")
         XCTAssertLessThan(walkWeight, 1.0, "Walk weight should decrease at night")
     }
 
-    func testTimeAdjustment_lunchTime_favorsGourmet() {
+    func testTimeAdjustment_lunchTime_favorsGourmet() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .gourmet, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0)
         ]
 
         let adjusted = engine.applyTimeAdjustment(weights: weights, hour: 12)
 
-        let gourmetWeight = adjusted.first(where: { $0.category == .gourmet })!.weight
+        let gourmetWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .gourmet })?.weight)
         XCTAssertGreaterThan(gourmetWeight, 1.0, "Gourmet weight should increase at lunch time")
     }
 
     // MARK: - Duration Adjustment Tests
 
-    func testDurationAdjustment_shortSlot_favorsReading() {
+    func testDurationAdjustment_shortSlot_favorsReading() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .walk, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .reading, weight: 1.0)
         ]
 
         let adjusted = engine.applyDurationAdjustment(weights: weights, minutes: 20)
 
-        let readingWeight = adjusted.first(where: { $0.category == .reading })!.weight
-        let walkWeight = adjusted.first(where: { $0.category == .walk })!.weight
+        let readingWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .reading })?.weight)
+        let walkWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .walk })?.weight)
 
         XCTAssertGreaterThan(readingWeight, walkWeight, "Reading should be preferred for short time slots")
     }
 
-    func testDurationAdjustment_shortSlot_penalizesMovie() {
+    func testDurationAdjustment_shortSlot_penalizesMovie() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .movie, weight: 1.0),
-            SuggestionEngine.CategoryWeight(category: .meditation, weight: 1.0),
+            SuggestionEngine.CategoryWeight(category: .meditation, weight: 1.0)
         ]
 
         let adjusted = engine.applyDurationAdjustment(weights: weights, minutes: 20)
 
-        let movieWeight = adjusted.first(where: { $0.category == .movie })!.weight
-        let meditationWeight = adjusted.first(where: { $0.category == .meditation })!.weight
+        let movieWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .movie })?.weight)
+        let meditationWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .meditation })?.weight)
 
         XCTAssertLessThan(movieWeight, meditationWeight, "Movie should be heavily penalized for short slots")
     }
@@ -242,7 +242,7 @@ final class SuggestionEngineTests: XCTestCase {
 
     // MARK: - Learning System Tests
 
-    func testLearnedWeights_noHistory_equalWeights() {
+    func testLearnedWeights_noHistory_equalWeights() throws {
         let preference = UserPreference.default
         let weights = preference.calculateLearnedWeights()
 
@@ -250,21 +250,21 @@ final class SuggestionEngineTests: XCTestCase {
         let expectedWeight = 1.0 / categoryCount
 
         for category in SuggestionCategory.allCases {
-            XCTAssertEqual(weights[category]!, expectedWeight, accuracy: 0.01)
+            XCTAssertEqual(try XCTUnwrap(weights[category]), expectedWeight, accuracy: 0.01)
         }
     }
 
-    func testLearnedWeights_withHistory_adjustsWeights() {
+    func testLearnedWeights_withHistory_adjustsWeights() throws {
         var preference = UserPreference.default
         preference.selectionCounts = ["cafe": 3, "walk": 1]
 
         let weights = preference.calculateLearnedWeights()
 
-        XCTAssertGreaterThan(weights[.cafe]!, weights[.walk]!, "Cafe should have higher weight after more selections")
-        XCTAssertGreaterThan(weights[.cafe]!, weights[.reading]!, "Cafe should have higher weight than reading")
+        XCTAssertGreaterThan(try XCTUnwrap(weights[.cafe]), try XCTUnwrap(weights[.walk]), "Cafe should have higher weight after more selections")
+        XCTAssertGreaterThan(try XCTUnwrap(weights[.cafe]), try XCTUnwrap(weights[.reading]), "Cafe should have higher weight than reading")
     }
 
-    func testLearnedWeights_minimumGuarantee() {
+    func testLearnedWeights_minimumGuarantee() throws {
         var preference = UserPreference.default
         preference.selectionCounts = ["cafe": 100]
 
@@ -275,7 +275,7 @@ final class SuggestionEngineTests: XCTestCase {
 
         for category in SuggestionCategory.allCases where category != .cafe {
             XCTAssertGreaterThanOrEqual(
-                weights[category]!, minimumWeight,
+                try XCTUnwrap(weights[category]), minimumWeight,
                 "\(category.displayName) should have at least minimum weight"
             )
         }
@@ -304,7 +304,7 @@ final class SuggestionEngineTests: XCTestCase {
         XCTAssertEqual(weights.count, 5, "Should have weights for 5 categories")
     }
 
-    func testLearnedWeights_dynamicMinimumWeight() {
+    func testLearnedWeights_dynamicMinimumWeight() throws {
         // 3 categories: minimum = max(0.05, 1/(3*3)) = 0.111
         var preference3 = UserPreference.default
         preference3.preferredCategories = [.cafe, .walk, .reading]
@@ -313,7 +313,7 @@ final class SuggestionEngineTests: XCTestCase {
         let weights3 = preference3.calculateLearnedWeights()
         let min3 = max(0.05, 1.0 / (3.0 * 3.0))
 
-        XCTAssertGreaterThanOrEqual(weights3[.walk]!, min3 - 0.001)
+        XCTAssertGreaterThanOrEqual(try XCTUnwrap(weights3[.walk]), min3 - 0.001)
 
         // 10 categories: minimum = max(0.05, 1/(10*3)) = 0.05
         var preference10 = UserPreference.default
@@ -322,7 +322,7 @@ final class SuggestionEngineTests: XCTestCase {
         let weights10 = preference10.calculateLearnedWeights()
 
         for category in SuggestionCategory.allCases where category != .cafe {
-            XCTAssertGreaterThanOrEqual(weights10[category]!, 0.05 - 0.001)
+            XCTAssertGreaterThanOrEqual(try XCTUnwrap(weights10[category]), 0.05 - 0.001)
         }
     }
 
@@ -364,7 +364,7 @@ final class SuggestionEngineTests: XCTestCase {
         XCTAssertEqual(preference.totalSelectionCount, 0)
     }
 
-    func testCalculateWeights_usesLearnedWeights() {
+    func testCalculateWeights_usesLearnedWeights() throws {
         var preference = UserPreference.default
         preference.selectionCounts = ["cafe": 10]
 
@@ -379,8 +379,8 @@ final class SuggestionEngineTests: XCTestCase {
             slot: slot
         )
 
-        let cafeWeight = weights.first(where: { $0.category == .cafe })!.weight
-        let walkWeight = weights.first(where: { $0.category == .walk })!.weight
+        let cafeWeight = try XCTUnwrap(weights.first(where: { $0.category == .cafe })?.weight)
+        let walkWeight = try XCTUnwrap(weights.first(where: { $0.category == .walk })?.weight)
 
         XCTAssertGreaterThan(cafeWeight, walkWeight, "Cafe should have higher base weight from learning")
     }

@@ -1,9 +1,8 @@
-import XCTest
 @testable import SerendipityPlanner
+import XCTest
 
 @MainActor
 final class SettingsViewModelTests: XCTestCase {
-
     private var sut: SettingsViewModel!
     private var mockPreference: MockPreferenceService!
 
@@ -100,20 +99,20 @@ final class SettingsViewModelTests: XCTestCase {
     }
 
     func testToggleCategoryAdd() {
-        sut.toggleCategory(.cafe)  // Remove
-        sut.toggleCategory(.cafe)  // Add back
+        sut.toggleCategory(.cafe) // Remove
+        sut.toggleCategory(.cafe) // Add back
 
         XCTAssertTrue(sut.preferredCategories.contains(.cafe))
     }
 
-    func testToggleCategoryCannotRemoveLast() {
+    func testToggleCategoryCannotRemoveLast() throws {
         // Remove all but one
         let allCategories = SuggestionCategory.allCases
         for category in allCategories.dropLast() {
             sut.toggleCategory(category)
         }
 
-        let remaining = sut.preferredCategories.first!
+        let remaining = try XCTUnwrap(sut.preferredCategories.first)
         sut.toggleCategory(remaining) // Try to remove last
 
         XCTAssertEqual(sut.preferredCategories.count, 1)

@@ -38,29 +38,29 @@ struct RGBColor {
 // MARK: - TimePeriod
 
 enum TimePeriod {
-    case dawn       // 5-7
-    case morning    // 7-10
-    case daytime    // 10-16
+    case dawn // 5-7
+    case morning // 7-10
+    case daytime // 10-16
     case goldenHour // 16-18
-    case evening    // 18-21
-    case night      // 21-5
+    case evening // 18-21
+    case night // 21-5
 
     static func current() -> TimePeriod {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
-        case 5..<7: return .dawn
-        case 7..<10: return .morning
-        case 10..<16: return .daytime
-        case 16..<18: return .goldenHour
-        case 18..<21: return .evening
+        case 5 ..< 7: return .dawn
+        case 7 ..< 10: return .morning
+        case 10 ..< 16: return .daytime
+        case 16 ..< 18: return .goldenHour
+        case 18 ..< 21: return .evening
         default: return .night
         }
     }
 
     var prefersLightText: Bool {
         switch self {
-        case .evening, .night: return true
-        default: return false
+        case .evening, .night: true
+        default: false
         }
     }
 }
@@ -77,37 +77,37 @@ struct SkyColorPalette {
     static func base(for period: TimePeriod) -> SkyColorPalette {
         switch period {
         case .dawn:
-            return SkyColorPalette(
+            SkyColorPalette(
                 top: RGBColor(r: 0.88, g: 0.70, b: 0.75),
                 middle: RGBColor(r: 0.95, g: 0.85, b: 0.80),
                 bottom: pageBackgroundRGB
             )
         case .morning:
-            return SkyColorPalette(
+            SkyColorPalette(
                 top: RGBColor(r: 0.68, g: 0.82, b: 0.92),
                 middle: RGBColor(r: 0.92, g: 0.90, b: 0.85),
                 bottom: pageBackgroundRGB
             )
         case .daytime:
-            return SkyColorPalette(
+            SkyColorPalette(
                 top: RGBColor(r: 0.58, g: 0.78, b: 0.94),
                 middle: RGBColor(r: 0.82, g: 0.90, b: 0.96),
                 bottom: pageBackgroundRGB
             )
         case .goldenHour:
-            return SkyColorPalette(
+            SkyColorPalette(
                 top: RGBColor(r: 0.92, g: 0.72, b: 0.52),
                 middle: RGBColor(r: 0.90, g: 0.75, b: 0.68),
                 bottom: pageBackgroundRGB
             )
         case .evening:
-            return SkyColorPalette(
+            SkyColorPalette(
                 top: RGBColor(r: 0.35, g: 0.28, b: 0.55),
                 middle: RGBColor(r: 0.65, g: 0.42, b: 0.52),
                 bottom: pageBackgroundRGB
             )
         case .night:
-            return SkyColorPalette(
+            SkyColorPalette(
                 top: RGBColor(r: 0.12, g: 0.12, b: 0.28),
                 middle: RGBColor(r: 0.22, g: 0.18, b: 0.35),
                 bottom: pageBackgroundRGB
@@ -116,8 +116,8 @@ struct SkyColorPalette {
     }
 
     static func adjusted(for condition: WeatherCondition?, period: TimePeriod) -> SkyColorPalette {
-        let base = self.base(for: period)
-        guard let condition = condition else { return base }
+        let base = base(for: period)
+        guard let condition else { return base }
 
         switch condition {
         case .clear, .unknown:
@@ -173,7 +173,9 @@ struct SkyGradientView: View {
 
     @State private var appeared = false
 
-    private var period: TimePeriod { TimePeriod.current() }
+    private var period: TimePeriod {
+        TimePeriod.current()
+    }
 
     private var palette: SkyColorPalette {
         SkyColorPalette.adjusted(for: weatherCondition, period: period)
@@ -181,26 +183,26 @@ struct SkyGradientView: View {
 
     private var showSun: Bool {
         switch period {
-        case .dawn, .morning, .daytime, .goldenHour: return true
-        case .evening, .night: return false
+        case .dawn, .morning, .daytime, .goldenHour: true
+        case .evening, .night: false
         }
     }
 
     private var celestialOpacity: Double {
         switch period {
-        case .dawn: return 0.10
-        case .morning, .daytime: return 0.12
-        case .goldenHour: return 0.15
-        case .evening: return 0.08
-        case .night: return 0.10
+        case .dawn: 0.10
+        case .morning, .daytime: 0.12
+        case .goldenHour: 0.15
+        case .evening: 0.08
+        case .night: 0.10
         }
     }
 
     private var celestialColor: Color {
         if showSun {
-            return Color(red: 1.0, green: 0.95, blue: 0.80)
+            Color(red: 1.0, green: 0.95, blue: 0.80)
         } else {
-            return Color(red: 0.85, green: 0.88, blue: 0.95)
+            Color(red: 0.85, green: 0.88, blue: 0.95)
         }
     }
 

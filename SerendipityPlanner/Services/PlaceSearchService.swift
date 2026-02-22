@@ -1,5 +1,5 @@
-import MapKit
 import CoreLocation
+import MapKit
 
 class PlaceSearchService: PlaceSearchServiceProtocol {
     private let searchRadius: CLLocationDistance = 1500 // 1.5km

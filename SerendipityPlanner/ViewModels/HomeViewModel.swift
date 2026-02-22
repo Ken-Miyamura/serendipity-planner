@@ -1,6 +1,6 @@
-import Foundation
-import CoreLocation
 import Combine
+import CoreLocation
+import Foundation
 
 @MainActor
 class HomeViewModel: ObservableObject {
@@ -59,7 +59,7 @@ class HomeViewModel: ObservableObject {
         generateSuggestions()
 
         // Enrich suggestions with nearby places
-        if let location = location {
+        if let location {
             await enrichSuggestionsWithPlaces(near: location)
         }
 
@@ -70,7 +70,7 @@ class HomeViewModel: ObservableObject {
         let preserved = acceptedSuggestions
         await loadData()
         // Merge: keep previously accepted suggestions that aren't already restored
-        let restoredIDs = Set(acceptedSuggestions.map { $0.id })
+        let restoredIDs = Set(acceptedSuggestions.map(\.id))
         for item in preserved where !restoredIDs.contains(item.id) {
             acceptedSuggestions.append(item)
         }
@@ -80,7 +80,7 @@ class HomeViewModel: ObservableObject {
 
     private func fetchWeather(location: CLLocation?) async {
         do {
-            if let location = location {
+            if let location {
                 weather = try await weatherService.fetchWeather(
                     latitude: location.coordinate.latitude,
                     longitude: location.coordinate.longitude
@@ -145,7 +145,8 @@ class HomeViewModel: ObservableObject {
 
     private func scheduleNotifications() {
         guard let settings = preferenceService?.settings,
-              settings.notificationsEnabled else {
+              settings.notificationsEnabled
+        else {
             notificationService.cancelAllNotifications()
             return
         }

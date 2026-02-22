@@ -28,7 +28,7 @@ struct UserPreference: Codable, Equatable {
     var minimumFreeTimeMinutes: Int
     var activeHours: ActiveHoursPreference
 
-    // Learning system: selection counts per category (keyed by rawValue)
+    /// Learning system: selection counts per category (keyed by rawValue)
     var selectionCounts: [String: Int]
 
     var totalSelectionCount: Int {
@@ -101,15 +101,15 @@ struct UserPreference: Codable, Equatable {
     /// Support decoding old format with preferredTimeRange
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        preferredCategories = try container.decode([SuggestionCategory].self, forKey: .preferredCategories)
-        minimumFreeTimeMinutes = try container.decode(Int.self, forKey: .minimumFreeTimeMinutes)
-        selectionCounts = try container.decode([String: Int].self, forKey: .selectionCounts)
+        self.preferredCategories = try container.decode([SuggestionCategory].self, forKey: .preferredCategories)
+        self.minimumFreeTimeMinutes = try container.decode(Int.self, forKey: .minimumFreeTimeMinutes)
+        self.selectionCounts = try container.decode([String: Int].self, forKey: .selectionCounts)
 
         if let hours = try? container.decode(ActiveHoursPreference.self, forKey: .activeHours) {
-            activeHours = hours
+            self.activeHours = hours
         } else {
             // Migration: old data had preferredTimeRange, use default activeHours
-            activeHours = .default
+            self.activeHours = .default
         }
     }
 

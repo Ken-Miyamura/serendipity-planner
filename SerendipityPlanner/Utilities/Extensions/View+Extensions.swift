@@ -4,7 +4,7 @@ extension View {
     @ViewBuilder
     func hideFormBackground() -> some View {
         if #available(iOS 16.0, *) {
-            self.scrollContentBackground(.hidden)
+            scrollContentBackground(.hidden)
         } else {
             self
         }

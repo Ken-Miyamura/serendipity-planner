@@ -1,0 +1,19 @@
+# SwiftFormat Configuration
+
+--swiftversion 6.2
+--indent 4
+--allman false
+--maxwidth 150
+--wraparguments before-first
+--wrapparameters before-first
+--wrapcollections before-first
+--self init-only
+--importgrouping alpha
+--semicolons never
+--commas inline
+--trimwhitespace always
+--stripunusedargs closure-only
+--header strip
+
+# SwiftLintのopening_braceルールと競合するため無効化
+--disable wrapMultilineStatementBraces

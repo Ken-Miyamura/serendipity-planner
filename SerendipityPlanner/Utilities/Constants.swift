@@ -21,7 +21,7 @@ enum Constants {
         static let categoryIdentifier = "SUGGESTION"
         static let morningNotificationIdentifier = "MORNING_SUMMARY"
         static let defaultMorningHour = 7
-        static let morningHourRange = 6...10
+        static let morningHourRange = 6 ... 10
     }
 
     enum Storage {

@@ -33,34 +33,34 @@ enum WeatherCondition: String, Codable {
 
     var displayName: String {
         switch self {
-        case .clear: return "晴れ"
-        case .clouds: return "曇り"
-        case .rain: return "雨"
-        case .drizzle: return "小雨"
-        case .thunderstorm: return "雷雨"
-        case .snow: return "雪"
-        case .mist: return "霧"
-        case .unknown: return "不明"
+        case .clear: "晴れ"
+        case .clouds: "曇り"
+        case .rain: "雨"
+        case .drizzle: "小雨"
+        case .thunderstorm: "雷雨"
+        case .snow: "雪"
+        case .mist: "霧"
+        case .unknown: "不明"
         }
     }
 
     var iconName: String {
         switch self {
-        case .clear: return "sun.max.fill"
-        case .clouds: return "cloud.fill"
-        case .rain: return "cloud.rain.fill"
-        case .drizzle: return "cloud.drizzle.fill"
-        case .thunderstorm: return "cloud.bolt.rain.fill"
-        case .snow: return "cloud.snow.fill"
-        case .mist: return "cloud.fog.fill"
-        case .unknown: return "questionmark.circle"
+        case .clear: "sun.max.fill"
+        case .clouds: "cloud.fill"
+        case .rain: "cloud.rain.fill"
+        case .drizzle: "cloud.drizzle.fill"
+        case .thunderstorm: "cloud.bolt.rain.fill"
+        case .snow: "cloud.snow.fill"
+        case .mist: "cloud.fog.fill"
+        case .unknown: "questionmark.circle"
         }
     }
 
     var isOutdoorFriendly: Bool {
         switch self {
-        case .clear, .clouds: return true
-        case .rain, .drizzle, .thunderstorm, .snow, .mist, .unknown: return false
+        case .clear, .clouds: true
+        case .rain, .drizzle, .thunderstorm, .snow, .mist, .unknown: false
         }
     }
 }
