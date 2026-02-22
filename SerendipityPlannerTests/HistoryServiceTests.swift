@@ -50,11 +50,11 @@ final class HistoryServiceTests: XCTestCase {
 
     // MARK: - 日付範囲フィルタリングテスト
 
-    func testFetchHistoriesByDateRange() {
+    func testFetchHistoriesByDateRange() throws {
         let calendar = Calendar.current
         let today = Date()
-        let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
-        let twoDaysAgo = calendar.date(byAdding: .day, value: -2, to: today)!
+        let yesterday = try XCTUnwrap(calendar.date(byAdding: .day, value: -1, to: today))
+        let twoDaysAgo = try XCTUnwrap(calendar.date(byAdding: .day, value: -2, to: today))
 
         let suggestion1 = Suggestion.mock(category: .cafe, title: "今日のカフェ")
         let suggestion2 = Suggestion.mock(category: .walk, title: "昨日の散歩")
@@ -70,7 +70,7 @@ final class HistoryServiceTests: XCTestCase {
 
     // MARK: - 月別取得テスト
 
-    func testFetchHistoriesForMonth() {
+    func testFetchHistoriesForMonth() throws {
         let calendar = Calendar.current
         let today = Date()
 
@@ -81,7 +81,7 @@ final class HistoryServiceTests: XCTestCase {
         XCTAssertEqual(fetched.count, 1)
 
         // 先月のデータは含まれない
-        let lastMonth = calendar.date(byAdding: .month, value: -1, to: today)!
+        let lastMonth = try XCTUnwrap(calendar.date(byAdding: .month, value: -1, to: today))
         let fetchedLastMonth = sut.fetchHistories(for: lastMonth)
         XCTAssertTrue(fetchedLastMonth.isEmpty)
     }
@@ -135,9 +135,9 @@ final class HistoryServiceTests: XCTestCase {
         XCTAssertNil(summary[.reading])
     }
 
-    func testCategorySummaryEmptyMonth() {
+    func testCategorySummaryEmptyMonth() throws {
         let calendar = Calendar.current
-        let lastMonth = calendar.date(byAdding: .month, value: -1, to: Date())!
+        let lastMonth = try XCTUnwrap(calendar.date(byAdding: .month, value: -1, to: Date()))
 
         let summary = sut.categorySummary(for: lastMonth)
         XCTAssertTrue(summary.isEmpty)

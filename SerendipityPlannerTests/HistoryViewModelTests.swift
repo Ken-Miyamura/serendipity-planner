@@ -51,13 +51,13 @@ final class HistoryViewModelTests: XCTestCase {
 
     // MARK: - 月切り替えテスト
 
-    func testGoToPreviousMonth() {
+    func testGoToPreviousMonth() throws {
         let calendar = Calendar.current
         let currentMonth = sut.currentMonth
 
         sut.goToPreviousMonth()
 
-        let expectedMonth = calendar.date(byAdding: .month, value: -1, to: currentMonth)!
+        let expectedMonth = try XCTUnwrap(calendar.date(byAdding: .month, value: -1, to: currentMonth))
         XCTAssertTrue(calendar.isDate(sut.currentMonth, equalTo: expectedMonth, toGranularity: .month))
     }
 
@@ -70,7 +70,7 @@ final class HistoryViewModelTests: XCTestCase {
         XCTAssertTrue(calendar.isDate(sut.currentMonth, equalTo: currentMonth, toGranularity: .month))
     }
 
-    func testGoToNextMonthFromPreviousMonth() {
+    func testGoToNextMonthFromPreviousMonth() throws {
         let calendar = Calendar.current
 
         // まず前月に移動
@@ -79,7 +79,7 @@ final class HistoryViewModelTests: XCTestCase {
 
         // 次月に移動（現在月に戻る）
         sut.goToNextMonth()
-        let expectedMonth = calendar.date(byAdding: .month, value: 1, to: previousMonth)!
+        let expectedMonth = try XCTUnwrap(calendar.date(byAdding: .month, value: 1, to: previousMonth))
         XCTAssertTrue(calendar.isDate(sut.currentMonth, equalTo: expectedMonth, toGranularity: .month))
     }
 
@@ -163,10 +163,10 @@ final class HistoryViewModelTests: XCTestCase {
 
     // MARK: - 日付グループ化テスト
 
-    func testGroupedHistoriesByDate() {
+    func testGroupedHistoriesByDate() throws {
         let calendar = Calendar.current
         let today = Date()
-        let yesterday = calendar.date(byAdding: .day, value: -1, to: today)!
+        let yesterday = try XCTUnwrap(calendar.date(byAdding: .day, value: -1, to: today))
 
         // 同月内で異なる日のデータ
         mockHistoryService.histories = [

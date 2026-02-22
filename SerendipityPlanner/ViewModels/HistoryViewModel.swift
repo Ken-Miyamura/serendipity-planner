@@ -2,7 +2,7 @@ import Foundation
 
 @MainActor
 class HistoryViewModel: ObservableObject {
-    @Published var currentMonth: Date = Date()
+    @Published var currentMonth: Date = .init()
     @Published var histories: [SuggestionHistory] = []
     @Published var categorySummary: [SuggestionCategory: Int] = [:]
     @Published var groupedHistories: [(date: Date, items: [SuggestionHistory])] = []
