@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-class PreferenceService: ObservableObject {
+class PreferenceService: ObservableObject, PreferenceServiceProtocol {
     @Published var settings: UserSettings
     @Published var preference: UserPreference
 

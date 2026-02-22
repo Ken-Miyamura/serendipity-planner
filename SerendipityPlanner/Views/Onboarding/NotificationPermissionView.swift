@@ -24,6 +24,7 @@ struct NotificationPermissionView: View {
                 Label("許可済み", systemImage: "checkmark.circle.fill")
                     .foregroundColor(.green)
                     .font(.headline)
+                    .accessibilityLabel("通知は許可済みです")
             } else {
                 Button {
                     Task {
@@ -37,6 +38,21 @@ struct NotificationPermissionView: View {
                         .padding()
                         .background(Color.orange)
                         .cornerRadius(12)
+                }
+
+                if let error = viewModel.permissionError, error.contains("通知") {
+                    Text(error)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+
+                    Button("設定を開く") {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                    .font(.caption)
                 }
             }
 

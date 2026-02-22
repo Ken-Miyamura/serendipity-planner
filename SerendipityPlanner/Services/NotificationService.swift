@@ -1,7 +1,7 @@
 import UserNotifications
 import Foundation
 
-class NotificationService {
+class NotificationService: NotificationServiceProtocol {
     private let center = UNUserNotificationCenter.current()
 
     func requestPermission() async throws -> Bool {

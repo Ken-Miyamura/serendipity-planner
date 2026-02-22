@@ -113,6 +113,8 @@ struct SettingsView: View {
                                 }
                             }
                         }
+                        .accessibilityLabel("\(category.displayName)、\(viewModel.preferredCategories.contains(category) ? "有効" : "無効")")
+                        .accessibilityHint("タップで切り替え")
                     }
                 }
 
@@ -128,6 +130,8 @@ struct SettingsView: View {
                             Text("\(viewModel.selectionCount(for: category))回")
                                 .foregroundColor(.secondary)
                         }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("\(category.displayName)、\(viewModel.selectionCount(for: category))回選択")
                     }
 
                     Button(role: .destructive) {

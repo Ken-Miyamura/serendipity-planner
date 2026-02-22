@@ -50,6 +50,12 @@
 		EEAC533A003DC8CC35EC2F92 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44FE781E50A4CCC7559AB5B /* Suggestion.swift */; };
 		F1163DE05F62F4CF6BED89E8 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F929290B9669DF29514C2 /* CalendarServiceTests.swift */; };
 		FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39710C4915FDE10F43A13F2F /* WelcomePageView.swift */; };
+		AA11BB22CC33DD44EE55FF66 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF660011 /* ServiceProtocols.swift */; };
+		CC11DD22EE33FF44AA55BB66 /* MockServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD22EE33FF44AA55BB660011 /* MockServices.swift */; };
+		EE11FF22AA33BB44CC55DD66 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22AA33BB44CC55DD660011 /* HomeViewModelTests.swift */; };
+		AA33BB44CC55DD66EE77FF88 /* SuggestionDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB44CC55DD66EE77FF880011 /* SuggestionDetailViewModelTests.swift */; };
+		CC55DD66EE77FF88AA99BB00 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66EE77FF88AA99BB000011 /* OnboardingViewModelTests.swift */; };
+		EE77FF88AA99BB00CC11DD22 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88AA99BB00CC11DD220011 /* SettingsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +117,12 @@
 		F0EB17ED8188ABBB71429090 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F70280DCC1DC31D5097204BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAB317953D7CCD010B4C57A1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BB22CC33DD44EE55FF660011 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
+		DD22EE33FF44AA55BB660011 /* MockServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServices.swift; sourceTree = "<group>"; };
+		FF22AA33BB44CC55DD660011 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		BB44CC55DD66EE77FF880011 /* SuggestionDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailViewModelTests.swift; sourceTree = "<group>"; };
+		DD66EE77FF88AA99BB000011 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
+		FF88AA99BB00CC11DD220011 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -122,6 +134,7 @@
 				DE4D9FB1B2C15AD6A721797E /* NotificationService.swift */,
 				285AB7FD1AC6FB4B183209BA /* PlaceSearchService.swift */,
 				697B49FCA2B8F1128844A837 /* PreferenceService.swift */,
+				BB22CC33DD44EE55FF660011 /* ServiceProtocols.swift */,
 				54F60BF9623985E088653907 /* SuggestionEngine.swift */,
 				02BA2260D155FAA09A165D31 /* WeatherService.swift */,
 			);
@@ -165,10 +178,23 @@
 		3FFDCF264EE2E39AA375EB92 /* SerendipityPlannerTests */ = {
 			isa = PBXGroup;
 			children = (
+				AA99BB00CC11DD22EE33FF44 /* Mocks */,
 				6C8F929290B9669DF29514C2 /* CalendarServiceTests.swift */,
+				FF22AA33BB44CC55DD660011 /* HomeViewModelTests.swift */,
+				DD66EE77FF88AA99BB000011 /* OnboardingViewModelTests.swift */,
+				FF88AA99BB00CC11DD220011 /* SettingsViewModelTests.swift */,
+				BB44CC55DD66EE77FF880011 /* SuggestionDetailViewModelTests.swift */,
 				C0FA3418CA303C5680FB2729 /* SuggestionEngineTests.swift */,
 			);
 			path = SerendipityPlannerTests;
+			sourceTree = "<group>";
+		};
+		AA99BB00CC11DD22EE33FF44 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				DD22EE33FF44AA55BB660011 /* MockServices.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		5AD71D4E7B80AA1ACA822503 /* SerendipityPlanner */ = {
@@ -433,6 +459,7 @@
 				8538665C5914F3AB61743E98 /* WeatherData.swift in Sources */,
 				10A013B3A9348EBAEBAA6FD6 /* WeatherService.swift in Sources */,
 				FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */,
+				AA11BB22CC33DD44EE55FF66 /* ServiceProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +469,11 @@
 			files = (
 				F1163DE05F62F4CF6BED89E8 /* CalendarServiceTests.swift in Sources */,
 				AFC76DFF0A3E710785F67DE9 /* SuggestionEngineTests.swift in Sources */,
+				CC11DD22EE33FF44AA55BB66 /* MockServices.swift in Sources */,
+				EE11FF22AA33BB44CC55DD66 /* HomeViewModelTests.swift in Sources */,
+				AA33BB44CC55DD66EE77FF88 /* SuggestionDetailViewModelTests.swift in Sources */,
+				CC55DD66EE77FF88AA99BB00 /* OnboardingViewModelTests.swift in Sources */,
+				EE77FF88AA99BB00CC11DD22 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

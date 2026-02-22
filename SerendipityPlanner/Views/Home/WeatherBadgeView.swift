@@ -15,6 +15,8 @@ struct WeatherBadgeView: View {
         .padding(.vertical, 4)
         .background(.ultraThinMaterial)
         .cornerRadius(12)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(weather.condition.displayName)、\(weather.temperatureText)")
     }
 
     private var iconColor: Color {

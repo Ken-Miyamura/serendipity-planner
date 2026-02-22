@@ -1,7 +1,7 @@
 import MapKit
 import CoreLocation
 
-class PlaceSearchService {
+class PlaceSearchService: PlaceSearchServiceProtocol {
     private let searchRadius: CLLocationDistance = 1500 // 1.5km
 
     /// Search for nearby places matching the suggestion category

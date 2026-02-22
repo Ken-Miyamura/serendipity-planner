@@ -54,5 +54,15 @@ struct AcceptedCardView: View {
         .background(Color.theme.cardBackground)
         .cornerRadius(12)
         .shadow(color: Color.theme.walk.opacity(0.06), radius: 4, x: 0, y: 1)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(accessibilityDescription)
+    }
+
+    private var accessibilityDescription: String {
+        var label = "受け入れ済み、\(suggestion.title)、\(suggestion.freeTimeSlot.timeRangeText)"
+        if let place = suggestion.nearbyPlace {
+            label += "、\(place.name)"
+        }
+        return label
     }
 }

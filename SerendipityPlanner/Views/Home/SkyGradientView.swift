@@ -235,6 +235,7 @@ struct SkyGradientView: View {
             }
         }
         .ignoresSafeArea()
+        .accessibilityHidden(true)
         .opacity(appeared ? 1 : 0)
         .onAppear {
             withAnimation(.easeIn(duration: 0.8)) {
