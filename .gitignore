@@ -1,0 +1,35 @@
+# Xcode
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.pbxproj.backup
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+Package.resolved
+
+# macOS
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Environment / Secrets
+.env
+.env.*
+
+# xcconfig (secrets)
+*.xcconfig
+!*.xcconfig.example
+
+# Claude Code
+.claude/
+
+# MCP
+.mcp.json

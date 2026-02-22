@@ -1,0 +1,46 @@
+name: SerendipityPlanner
+options:
+  bundleIdPrefix: com.serendipity
+  deploymentTarget:
+    iOS: "15.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+configFiles:
+  Debug: Config/Debug.xcconfig
+  Release: Config/Debug.xcconfig
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "1"
+    INFOPLIST_FILE: SerendipityPlanner/Info.plist
+
+targets:
+  SerendipityPlanner:
+    type: application
+    platform: iOS
+    sources:
+      - path: SerendipityPlanner
+        excludes:
+          - "**/.DS_Store"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner
+        INFOPLIST_FILE: SerendipityPlanner/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        DEVELOPMENT_TEAM: ""
+    entitlements:
+      path: SerendipityPlanner/SerendipityPlanner.entitlements
+      properties: {}
+
+  SerendipityPlannerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: SerendipityPlannerTests
+    dependencies:
+      - target: SerendipityPlanner
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner.tests
