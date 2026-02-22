@@ -11,6 +11,7 @@ struct SuggestionDetailView: View {
     private let preferenceService: PreferenceServiceProtocol?
     private let locationService: LocationServiceProtocol?
     private let calendarService: CalendarServiceProtocol?
+    private let favoriteService: FavoriteServiceProtocol?
 
     init(
         suggestion: Suggestion,
@@ -19,6 +20,7 @@ struct SuggestionDetailView: View {
         preferenceService: PreferenceServiceProtocol? = nil,
         locationService: LocationServiceProtocol? = nil,
         calendarService: CalendarServiceProtocol? = nil,
+        favoriteService: FavoriteServiceProtocol? = nil,
         onAccept: @escaping () -> Void,
         onRegenerate: @escaping () -> Void
     ) {
@@ -29,7 +31,8 @@ struct SuggestionDetailView: View {
                 preference: preference,
                 preferenceService: preferenceService,
                 locationService: locationService,
-                calendarService: calendarService
+                calendarService: calendarService,
+                favoriteService: favoriteService
             )
             return vm
         }())
@@ -38,6 +41,7 @@ struct SuggestionDetailView: View {
         self.preferenceService = preferenceService
         self.locationService = locationService
         self.calendarService = calendarService
+        self.favoriteService = favoriteService
         self.onAccept = onAccept
         self.onRegenerate = onRegenerate
     }
@@ -76,6 +80,20 @@ struct SuggestionDetailView: View {
         }
         .navigationTitle("提案の詳細")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if favoriteService != nil {
+                    Button {
+                        viewModel.toggleFavorite()
+                    } label: {
+                        Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+                            .foregroundColor(viewModel.isFavorite ? .red : .secondary)
+                    }
+                    .accessibilityLabel(viewModel.isFavorite ? "お気に入りから削除" : "お気に入りに追加")
+                    .accessibilityHint("この提案のお気に入り状態を切り替えます")
+                }
+            }
+        }
         .alert(
             viewModel.calendarAlertMessage ?? "",
             isPresented: Binding(
@@ -288,6 +306,7 @@ struct SuggestionDetailView: View {
                         preferenceService: preferenceService,
                         locationService: locationService,
                         calendarService: calendarService,
+                        favoriteService: favoriteService,
                         onAccept: onAccept,
                         onRegenerate: onRegenerate
                     )

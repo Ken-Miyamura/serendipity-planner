@@ -6,6 +6,16 @@ class SuggestionEngine: SuggestionEngineProtocol {
         var weight: Double
     }
 
+    /// お気に入りカテゴリに適用するボーナス倍率
+    static let favoriteBonus = 1.2
+
+    /// お気に入りサービス（設定時にお気に入りカテゴリにボーナスを付与する）
+    private var favoriteService: FavoriteServiceProtocol?
+
+    init(favoriteService: FavoriteServiceProtocol? = nil) {
+        self.favoriteService = favoriteService
+    }
+
     /// Generate a suggestion for a given free time slot based on weather and user preferences
     func generateSuggestion(
         for slot: FreeTimeSlot,
@@ -83,6 +93,9 @@ class SuggestionEngine: SuggestionEngineProtocol {
         // Apply duration adjustments
         weights = applyDurationAdjustment(weights: weights, minutes: slot.durationMinutes)
 
+        // Apply favorite category bonus
+        weights = applyFavoriteBonus(weights: weights)
+
         return weights
     }
 
@@ -131,6 +144,21 @@ class SuggestionEngine: SuggestionEngineProtocol {
             var adjusted = item
             if minutes < 30 {
                 adjusted.weight *= item.category.weightProfile.shortSlotMultiplier
+            }
+            return adjusted
+        }
+    }
+
+    /// お気に入りカテゴリに重みボーナスを適用する
+    func applyFavoriteBonus(weights: [CategoryWeight]) -> [CategoryWeight] {
+        guard let favoriteService else { return weights }
+        let favoritedCategories = favoriteService.favoritedCategories()
+        guard !favoritedCategories.isEmpty else { return weights }
+
+        return weights.map { item in
+            var adjusted = item
+            if favoritedCategories.contains(item.category) {
+                adjusted.weight *= SuggestionEngine.favoriteBonus
             }
             return adjusted
         }

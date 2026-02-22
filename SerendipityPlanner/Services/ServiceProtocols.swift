@@ -68,6 +68,25 @@ protocol SuggestionEngineProtocol {
     ) -> [Suggestion]
 }
 
+// MARK: - FavoriteServiceProtocol
+
+protocol FavoriteServiceProtocol: AnyObject {
+    /// すべてのお気に入りを取得する
+    func getFavorites() -> [FavoriteSuggestion]
+    /// お気に入りを追加する
+    func addFavorite(_ suggestion: Suggestion) -> FavoriteSuggestion
+    /// お気に入りを削除する
+    func removeFavorite(id: UUID)
+    /// 指定した提案がお気に入りに登録されているかを判定する（タイトルとカテゴリで照合）
+    func isFavorite(title: String, category: SuggestionCategory) -> Bool
+    /// カテゴリでフィルタリングしたお気に入りを取得する
+    func getFavorites(for category: SuggestionCategory) -> [FavoriteSuggestion]
+    /// お気に入りに登録されているカテゴリ一覧を取得する
+    func favoritedCategories() -> Set<SuggestionCategory>
+    /// すべてのお気に入りを削除する
+    func removeAll()
+}
+
 // MARK: - PreferenceServiceProtocol
 
 protocol PreferenceServiceProtocol: AnyObject {

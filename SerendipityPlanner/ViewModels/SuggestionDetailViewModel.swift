@@ -5,6 +5,7 @@ class SuggestionDetailViewModel: ObservableObject {
     @Published var suggestion: Suggestion
     @Published var alternatives: [Suggestion] = []
     @Published var isAccepted = false
+    @Published var isFavorite = false
     @Published var calendarAlertMessage: String?
 
     private let suggestionEngine: SuggestionEngineProtocol
@@ -14,6 +15,7 @@ class SuggestionDetailViewModel: ObservableObject {
     private var preferenceService: PreferenceServiceProtocol?
     private var locationService: LocationServiceProtocol?
     private var calendarService: CalendarServiceProtocol?
+    private var favoriteService: FavoriteServiceProtocol?
 
     init(
         suggestion: Suggestion,
@@ -31,13 +33,16 @@ class SuggestionDetailViewModel: ObservableObject {
         preference: UserPreference,
         preferenceService: PreferenceServiceProtocol? = nil,
         locationService: LocationServiceProtocol? = nil,
-        calendarService: CalendarServiceProtocol? = nil
+        calendarService: CalendarServiceProtocol? = nil,
+        favoriteService: FavoriteServiceProtocol? = nil
     ) {
         self.weather = weather
         self.preference = preference
         self.preferenceService = preferenceService
         self.locationService = locationService
         self.calendarService = calendarService
+        self.favoriteService = favoriteService
+        updateFavoriteState()
         loadAlternatives()
     }
 
@@ -63,6 +68,33 @@ class SuggestionDetailViewModel: ObservableObject {
         } catch {
             calendarAlertMessage = "カレンダーへの追加に失敗しました"
         }
+    }
+
+    /// お気に入りの追加・解除を切り替える
+    func toggleFavorite() {
+        guard let favoriteService else { return }
+
+        if isFavorite {
+            // タイトルとカテゴリが一致するお気に入りを探して削除
+            let favorites = favoriteService.getFavorites()
+            if let existing = favorites.first(where: {
+                $0.title == suggestion.title && $0.category == suggestion.category
+            }) {
+                favoriteService.removeFavorite(id: existing.id)
+            }
+        } else {
+            favoriteService.addFavorite(suggestion)
+        }
+        isFavorite.toggle()
+    }
+
+    /// 現在の提案がお気に入りかどうかを更新する
+    private func updateFavoriteState() {
+        guard let favoriteService else { return }
+        isFavorite = favoriteService.isFavorite(
+            title: suggestion.title,
+            category: suggestion.category
+        )
     }
 
     func enrichIfNeeded() async {
