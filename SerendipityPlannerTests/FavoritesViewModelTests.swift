@@ -115,13 +115,13 @@ final class FavoritesViewModelTests: XCTestCase {
 
     // MARK: - フォーマットテスト
 
-    func testFormattedDate() {
+    func testFormattedDate() throws {
         let calendar = Calendar.current
         var components = DateComponents()
         components.year = 2025
         components.month = 3
         components.day = 15
-        let date = calendar.date(from: components)!
+        let date = try XCTUnwrap(calendar.date(from: components))
 
         let formatted = sut.formattedDate(date)
 
