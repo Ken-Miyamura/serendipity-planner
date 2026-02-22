@@ -7,20 +7,26 @@ class SuggestionDetailViewModel: ObservableObject {
     @Published var isAccepted = false
     @Published var calendarAlertMessage: String?
 
-    private let suggestionEngine = SuggestionEngine()
-    private let placeSearchService = PlaceSearchService()
+    private let suggestionEngine: SuggestionEngineProtocol
+    private let placeSearchService: PlaceSearchServiceProtocol
     private var weather: WeatherData?
     private var preference: UserPreference?
-    private var preferenceService: PreferenceService?
-    private var locationService: LocationService?
-    private var calendarService: CalendarService?
+    private var preferenceService: PreferenceServiceProtocol?
+    private var locationService: LocationServiceProtocol?
+    private var calendarService: CalendarServiceProtocol?
 
-    init(suggestion: Suggestion) {
+    init(
+        suggestion: Suggestion,
+        suggestionEngine: SuggestionEngineProtocol = SuggestionEngine(),
+        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService()
+    ) {
         self.suggestion = suggestion
+        self.suggestionEngine = suggestionEngine
+        self.placeSearchService = placeSearchService
         self.isAccepted = suggestion.isAccepted
     }
 
-    func configure(weather: WeatherData?, preference: UserPreference, preferenceService: PreferenceService? = nil, locationService: LocationService? = nil, calendarService: CalendarService? = nil) {
+    func configure(weather: WeatherData?, preference: UserPreference, preferenceService: PreferenceServiceProtocol? = nil, locationService: LocationServiceProtocol? = nil, calendarService: CalendarServiceProtocol? = nil) {
         self.weather = weather
         self.preference = preference
         self.preferenceService = preferenceService

@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: macos-14
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup xcconfig for CI
+        run: cp Config/Debug.xcconfig.example Config/Debug.xcconfig
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
+
+      - name: Show environment
+        run: |
+          xcodebuild -version
+          xcrun simctl list devices available | grep iPhone
+
+      - name: Build
+        run: |
+          xcodebuild build \
+            -scheme SerendipityPlanner \
+            -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+            -skipPackagePluginValidation \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Test
+        run: |
+          xcodebuild test \
+            -scheme SerendipityPlanner \
+            -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+            -only-testing:SerendipityPlannerTests \
+            -resultBundlePath TestResults \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: TestResults
+          path: TestResults.xcresult

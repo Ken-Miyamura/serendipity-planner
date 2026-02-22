@@ -10,17 +10,32 @@ class HomeViewModel: ObservableObject {
     @Published var weather: WeatherData?
     @Published var isLoading = false
     @Published var errorMessage: String?
+    @Published var warningMessage: String?
 
-    let calendarService = CalendarService()
-    private let weatherService = WeatherService()
-    private let suggestionEngine = SuggestionEngine()
-    private let notificationService = NotificationService()
-    private let placeSearchService = PlaceSearchService()
+    let calendarService: CalendarServiceProtocol
+    private let weatherService: WeatherServiceProtocol
+    private let suggestionEngine: SuggestionEngineProtocol
+    private let notificationService: NotificationServiceProtocol
+    private let placeSearchService: PlaceSearchServiceProtocol
 
-    private var preferenceService: PreferenceService?
-    private var locationService: LocationService?
+    private var preferenceService: PreferenceServiceProtocol?
+    private var locationService: LocationServiceProtocol?
 
-    func configure(with preferenceService: PreferenceService, locationService: LocationService) {
+    init(
+        calendarService: CalendarServiceProtocol = CalendarService(),
+        weatherService: WeatherServiceProtocol = WeatherService(),
+        suggestionEngine: SuggestionEngineProtocol = SuggestionEngine(),
+        notificationService: NotificationServiceProtocol = NotificationService(),
+        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService()
+    ) {
+        self.calendarService = calendarService
+        self.weatherService = weatherService
+        self.suggestionEngine = suggestionEngine
+        self.notificationService = notificationService
+        self.placeSearchService = placeSearchService
+    }
+
+    func configure(with preferenceService: PreferenceServiceProtocol, locationService: LocationServiceProtocol) {
         self.preferenceService = preferenceService
         self.locationService = locationService
     }
@@ -28,6 +43,7 @@ class HomeViewModel: ObservableObject {
     func loadData() async {
         isLoading = true
         errorMessage = nil
+        warningMessage = nil
 
         // Restore persisted accepted suggestions for today
         loadAcceptedSuggestions()
@@ -70,11 +86,12 @@ class HomeViewModel: ObservableObject {
                     longitude: location.coordinate.longitude
                 )
             } else {
-                // Fallback to mock if no location
                 weather = WeatherService.mockWeather()
+                warningMessage = "位置情報が取得できないため、天気情報は概算です"
             }
         } catch {
             weather = WeatherService.mockWeather()
+            warningMessage = "天気情報の取得に失敗しました。概算の天気を表示しています"
         }
     }
 

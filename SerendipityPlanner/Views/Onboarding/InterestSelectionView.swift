@@ -79,5 +79,8 @@ struct InterestTagView: View {
             .cornerRadius(12)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(category.displayName)")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityHint(isSelected ? "タップで選択解除" : "タップで選択")
     }
 }

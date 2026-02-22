@@ -72,5 +72,18 @@ struct FreeTimeCardView: View {
         .background(Color.theme.cardBackground)
         .cornerRadius(20)
         .shadow(color: Color.theme.walk.opacity(0.08), radius: 8, x: 0, y: 2)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(accessibilityDescription)
+    }
+
+    private var accessibilityDescription: String {
+        var label = "\(suggestion.freeTimeSlot.timeRangeText)、\(suggestion.freeTimeSlot.durationMinutes)分、\(suggestion.category.displayName)、\(suggestion.title)"
+        if let place = suggestion.nearbyPlace {
+            label += "、\(place.name)、\(place.walkingTimeText)"
+        }
+        if suggestion.isAccepted {
+            label += "、受け入れ済み"
+        }
+        return label
     }
 }

@@ -15,9 +15,16 @@ class SettingsViewModel: ObservableObject {
     @Published var preferredCategories: Set<SuggestionCategory> = Set(SuggestionCategory.allCases)
     @Published var selectionCounts: [String: Int] = [:]
 
-    private var preferenceService: PreferenceService?
+    private var preferenceService: PreferenceServiceProtocol?
 
-    func configure(with preferenceService: PreferenceService) {
+    init(preferenceService: PreferenceServiceProtocol? = nil) {
+        self.preferenceService = preferenceService
+        if preferenceService != nil {
+            loadSettings()
+        }
+    }
+
+    func configure(with preferenceService: PreferenceServiceProtocol) {
         self.preferenceService = preferenceService
         loadSettings()
     }

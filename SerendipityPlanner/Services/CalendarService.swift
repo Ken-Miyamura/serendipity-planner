@@ -1,7 +1,7 @@
 import EventKit
 import Foundation
 
-class CalendarService {
+class CalendarService: CalendarServiceProtocol {
     private let eventStore = EKEventStore()
 
     enum CalendarError: LocalizedError {

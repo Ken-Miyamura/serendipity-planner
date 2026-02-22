@@ -1,6 +1,6 @@
 import Foundation
 
-class SuggestionEngine {
+class SuggestionEngine: SuggestionEngineProtocol {
 
     struct CategoryWeight {
         let category: SuggestionCategory

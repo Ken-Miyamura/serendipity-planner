@@ -1,6 +1,6 @@
 import Foundation
 
-class WeatherService {
+class WeatherService: WeatherServiceProtocol {
     private let session: URLSession
     private let apiKey: String
     private let defaults = UserDefaults.standard

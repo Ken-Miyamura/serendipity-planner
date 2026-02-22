@@ -8,17 +8,17 @@ struct SuggestionDetailView: View {
 
     private let weather: WeatherData?
     private let preference: UserPreference
-    private let preferenceService: PreferenceService?
-    private let locationService: LocationService?
-    private let calendarService: CalendarService?
+    private let preferenceService: PreferenceServiceProtocol?
+    private let locationService: LocationServiceProtocol?
+    private let calendarService: CalendarServiceProtocol?
 
     init(
         suggestion: Suggestion,
         weather: WeatherData?,
         preference: UserPreference,
-        preferenceService: PreferenceService? = nil,
-        locationService: LocationService? = nil,
-        calendarService: CalendarService? = nil,
+        preferenceService: PreferenceServiceProtocol? = nil,
+        locationService: LocationServiceProtocol? = nil,
+        calendarService: CalendarServiceProtocol? = nil,
         onAccept: @escaping () -> Void,
         onRegenerate: @escaping () -> Void
     ) {
@@ -96,6 +96,7 @@ struct SuggestionDetailView: View {
                     Color.theme.color(for: viewModel.suggestion.category).opacity(0.1)
                 )
                 .cornerRadius(20)
+                .accessibilityHidden(true)
 
             Text(viewModel.suggestion.title)
                 .font(.title2)
@@ -159,6 +160,8 @@ struct SuggestionDetailView: View {
                     .background(Color.theme.color(for: viewModel.suggestion.category))
                     .cornerRadius(12)
             }
+            .accessibilityLabel("この提案を受け入れる")
+            .accessibilityHint("提案をカレンダーに追加します")
 
             Button {
                 viewModel.regenerate()
@@ -172,6 +175,8 @@ struct SuggestionDetailView: View {
                     .background(Color.theme.secondaryBackground)
                     .cornerRadius(12)
             }
+            .accessibilityLabel("別の提案を見る")
+            .accessibilityHint("新しい提案を生成します")
         }
     }
 
@@ -200,6 +205,8 @@ struct SuggestionDetailView: View {
                             .background(Color.theme.color(for: viewModel.suggestion.category))
                             .cornerRadius(8)
                     }
+                    .accessibilityLabel("マップで開く")
+                    .accessibilityHint("\(place.name)をマップアプリで表示します")
                 }
             }
         }
@@ -244,6 +251,7 @@ struct SuggestionDetailView: View {
             .frame(height: 180)
             .cornerRadius(12)
             .allowsHitTesting(false)
+            .accessibilityHidden(true)
             .onTapGesture {
                 openInMaps(place: place)
             }

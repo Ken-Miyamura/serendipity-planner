@@ -24,6 +24,7 @@ struct CalendarPermissionView: View {
                 Label("許可済み", systemImage: "checkmark.circle.fill")
                     .foregroundColor(.green)
                     .font(.headline)
+                    .accessibilityLabel("カレンダーへのアクセスは許可済みです")
             } else {
                 Button {
                     Task {
@@ -37,6 +38,21 @@ struct CalendarPermissionView: View {
                         .padding()
                         .background(Color.blue)
                         .cornerRadius(12)
+                }
+
+                if let error = viewModel.permissionError, error.contains("カレンダー") {
+                    Text(error)
+                        .font(.caption)
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
+
+                    Button("設定を開く") {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                    .font(.caption)
                 }
             }
 

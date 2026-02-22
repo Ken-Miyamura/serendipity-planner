@@ -6,11 +6,20 @@ class OnboardingViewModel: ObservableObject {
     @Published var calendarPermissionGranted = false
     @Published var notificationPermissionGranted = false
     @Published var selectedInterests: Set<SuggestionCategory> = [.cafe, .walk, .reading]
+    @Published var permissionError: String?
 
     let totalPages = 5
 
-    private let calendarService = CalendarService()
-    private let notificationService = NotificationService()
+    private let calendarService: CalendarServiceProtocol
+    private let notificationService: NotificationServiceProtocol
+
+    init(
+        calendarService: CalendarServiceProtocol = CalendarService(),
+        notificationService: NotificationServiceProtocol = NotificationService()
+    ) {
+        self.calendarService = calendarService
+        self.notificationService = notificationService
+    }
 
     var canProceed: Bool {
         // Interest selection page requires at least 3 selections
@@ -42,23 +51,35 @@ class OnboardingViewModel: ObservableObject {
         }
     }
 
-    func saveInterests(to preferenceService: PreferenceService) {
+    func saveInterests(to preferenceService: PreferenceServiceProtocol) {
         preferenceService.updatePreferredCategories(Array(selectedInterests))
     }
 
     func requestCalendarPermission() async {
+        permissionError = nil
         do {
-            calendarPermissionGranted = try await calendarService.requestAccess()
+            let granted = try await calendarService.requestAccess()
+            calendarPermissionGranted = granted
+            if !granted {
+                permissionError = "カレンダーへのアクセスが拒否されました。設定アプリから許可してください。"
+            }
         } catch {
             calendarPermissionGranted = false
+            permissionError = "カレンダーの権限取得に失敗しました: \(error.localizedDescription)"
         }
     }
 
     func requestNotificationPermission() async {
+        permissionError = nil
         do {
-            notificationPermissionGranted = try await notificationService.requestPermission()
+            let granted = try await notificationService.requestPermission()
+            notificationPermissionGranted = granted
+            if !granted {
+                permissionError = "通知が拒否されました。設定アプリから許可してください。"
+            }
         } catch {
             notificationPermissionGranted = false
+            permissionError = "通知の権限取得に失敗しました: \(error.localizedDescription)"
         }
     }
 }

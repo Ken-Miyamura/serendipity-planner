@@ -17,7 +17,10 @@ struct HomeView: View {
                         .foregroundColor(useLightText ? .white : .primary)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let error = viewModel.errorMessage, viewModel.suggestions.isEmpty && viewModel.acceptedSuggestions.isEmpty {
-                    ErrorStateView(message: error) {
+                    ErrorStateView(
+                        message: error,
+                        showOpenSettings: error.contains("許可")
+                    ) {
                         Task { await viewModel.refresh() }
                     }
                 } else if viewModel.suggestions.isEmpty && viewModel.acceptedSuggestions.isEmpty {
@@ -104,6 +107,7 @@ struct HomeView: View {
             }
             .buttonStyle(.plain)
             .foregroundColor(useLightText ? .white.opacity(0.8) : Color.theme.walk)
+            .accessibilityHint("空き時間の再検索を行います")
         }
         .padding()
     }
@@ -114,6 +118,10 @@ struct HomeView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 greetingHeader
+
+                if let warning = viewModel.warningMessage {
+                    warningBanner(warning)
+                }
 
                 if !viewModel.acceptedSuggestions.isEmpty {
                     acceptedSection
@@ -144,6 +152,29 @@ struct HomeView: View {
             }
             .padding()
         }
+    }
+
+    // MARK: - Warning Banner
+
+    private func warningBanner(_ message: String) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundColor(.orange)
+            Text(message)
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Spacer()
+            Button {
+                viewModel.warningMessage = nil
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding(12)
+        .background(Color.orange.opacity(0.1))
+        .cornerRadius(8)
     }
 
     // MARK: - Accepted Section

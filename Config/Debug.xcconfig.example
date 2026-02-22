@@ -1,4 +1,1 @@
-// OpenWeatherMap API Key
-// https://openweathermap.org/api で取得してください
-// このファイルを Debug.xcconfig にコピーして、APIキーを設定してください
-OPENWEATHERMAP_API_KEY = YOUR_API_KEY_HERE
+OPENWEATHERMAP_API_KEY = dummy_key_for_ci

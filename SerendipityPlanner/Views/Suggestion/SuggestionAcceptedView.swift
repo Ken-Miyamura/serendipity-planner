@@ -24,6 +24,8 @@ struct SuggestionAcceptedView: View {
                 .animation(.easeIn(duration: 0.3).delay(0.4), value: animateCheck)
         }
         .padding(.vertical, 32)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("提案を受け入れました。素敵な体験をお楽しみください。")
         .onAppear {
             animateCheck = true
         }
