@@ -1,7 +1,7 @@
 import Foundation
 
 /// メインアプリとWidget間のデータ共有を管理する
-struct SharedDataManager {
+enum SharedDataManager {
     static let appGroupID = "group.com.serendipity.planner"
 
     static var sharedDefaults: UserDefaults? {
