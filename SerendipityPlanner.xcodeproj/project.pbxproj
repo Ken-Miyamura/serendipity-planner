@@ -12,6 +12,7 @@
 		0176BFF1E6DF884C74BB1FD7 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642105BA015B260A17506B9 /* UserPreference.swift */; };
 		02FAF19A962E1920D814B507 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FFC658A07AA2B723C0E939 /* ContentView.swift */; };
 		0595AD80FAEA50DD16C722C2 /* FreeTimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC697F7D1CC2A015688AFD /* FreeTimeSlot.swift */; };
+		0E322F33F6626801CC626D9C /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD7DE95BFB179B989D3312C /* SettingsViewModelTests.swift */; };
 		10A013B3A9348EBAEBAA6FD6 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA2260D155FAA09A165D31 /* WeatherService.swift */; };
 		15A60CF78E80A17381AB3422 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9FFE965938FB56781BAFDE /* AppDelegate.swift */; };
 		1F63131E9CE90C33D3CBDD3A /* SuggestionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E9DEAAC010AD807048A801B /* SuggestionDetailViewModel.swift */; };
@@ -19,10 +20,13 @@
 		35D48B406A9E8B61BEB2170F /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D9FB1B2C15AD6A721797E /* NotificationService.swift */; };
 		3F9FBA4FDF8C5357896FD28A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB317953D7CCD010B4C57A1 /* HomeView.swift */; };
 		41AC0084BDDEEE9B5763E3E4 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C883A3B744729AD56C4C68 /* ErrorStateView.swift */; };
+		42C6312C863055C41FF79065 /* SerendipityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D82D2BF8ADB63B12CCC948A /* SerendipityWidget.swift */; };
+		4D8CF885090BEA52A70A0B54 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACBEBF54FEC9855FC1880BA /* SmallWidgetView.swift */; };
 		4FCBFDC7A4BABF51CBBCCC97 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */; };
 		5D6CE2D8B3C102F6ACBF98C8 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFD86BDE4488A5C30FC374 /* LocationService.swift */; };
 		6AC78B5EF9FE204FE48519A7 /* SuggestionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F60BF9623985E088653907 /* SuggestionEngine.swift */; };
 		6ACC2057FC44EAFF7B90F109 /* CalendarPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CB2D9D21D61067327AECD2 /* CalendarPermissionView.swift */; };
+		6CF349284886A8498AFF28C9 /* MockServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CFE8735D902381986C35D0 /* MockServices.swift */; };
 		6EA7680B637F1A5E4FFCD5B5 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98174F1A893328A4B36644 /* LocationInputView.swift */; };
 		717734C65BBA85EADCB8AAAE /* SuggestionAcceptedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295FC0E250738A329A7DB868 /* SuggestionAcceptedView.swift */; };
 		77EE8361E8FB9D31E7E0237C /* SkyGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB988AE6DDB8D8B2B36E96B /* SkyGradientView.swift */; };
@@ -31,34 +35,48 @@
 		8052AD605F66A947D70EB24E /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C8E80C9CB549146B539C6 /* NotificationSettingsView.swift */; };
 		8538665C5914F3AB61743E98 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE305482EEDDC6FB248B2E2 /* WeatherData.swift */; };
 		86550C964FDA876E9250C962 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6F24BF7412DF8073ED063 /* Color+Theme.swift */; };
-		87A1B2C3D4E5F6A7B8C9D0E1 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* View+Extensions.swift */; };
 		880AB999E92178CB93F662C2 /* WeatherBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1204EB9429B9915293AB5809 /* WeatherBadgeView.swift */; };
 		88A24CEA77B280650E2E8640 /* FreeTimeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA53A9743DBCF5D89BB684E /* FreeTimeCardView.swift */; };
 		8B9580E52EB01DBF0DC4EF16 /* InterestSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D79D09632698588BEFD2EB /* InterestSelectionView.swift */; };
 		8EFDA700B0BA1C09EC5DE8CF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EB17ED8188ABBB71429090 /* SettingsViewModel.swift */; };
 		92C3509D77A669CCD17CC902 /* SerendipityPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8250300D5D448B02A23C40BA /* SerendipityPlannerApp.swift */; };
+		A4BB311CF6194961FB0560DE /* SuggestionDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A240FAFAFFC3C9BE0A3E7 /* SuggestionDetailViewModelTests.swift */; };
+		A70C537E15862882E440CF84 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C81D1FDE668A3786841348 /* HomeViewModelTests.swift */; };
 		A82A42B9EFEF32FC6D113077 /* PlaceSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AB7FD1AC6FB4B183209BA /* PlaceSearchService.swift */; };
 		AA492F82FED51737E99D4D46 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322E18E10F230A4E14E5EDB1 /* UserSettings.swift */; };
 		AC19D9497B80132E240500D4 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D8671EEAD5C5D4A2A2AF44 /* CalendarService.swift */; };
+		AEB8980DECA7BA03FA13C397 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE305482EEDDC6FB248B2E2 /* WeatherData.swift */; };
 		AEC728F45EBA7A1C44AC0977 /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC8A9720C728B668EEED02 /* OnboardingContainerView.swift */; };
 		AFC76DFF0A3E710785F67DE9 /* SuggestionEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA3418CA303C5680FB2729 /* SuggestionEngineTests.swift */; };
 		B932A1812E9A410DE1E3DA0E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227D6EC6C3336213DCEC764 /* HomeViewModel.swift */; };
+		B9FE2A84042A9D304FD69CE7 /* SerendipityWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B610B05F0E027009888904AA /* SerendipityWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BAC7588713C47C8D0461822F /* SkyGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB988AE6DDB8D8B2B36E96B /* SkyGradientView.swift */; };
 		C91B330A3C6804B677A27163 /* SuggestionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DE36CC96E5496700B5682C /* SuggestionDetailView.swift */; };
+		C9FEEAFCC5F0220C7837B643 /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FF3A15CF1ADA1552216930 /* MediumWidgetView.swift */; };
+		D419755C84372DF136EC4AF1 /* FreeTimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC697F7D1CC2A015688AFD /* FreeTimeSlot.swift */; };
 		D58896B93CFB15D1E9BA851D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16A0511F69FBDFC73C6737A /* SettingsView.swift */; };
 		DBCE629254062E904F1D8B8F /* NotificationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA6D3C2E9245C148F722344 /* NotificationPermissionView.swift */; };
+		DE13F1593BAD55652FDE1E62 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE11351A68EBF1F964AF811 /* View+Extensions.swift */; };
 		DE19BB03D86E06A902BCD44A /* PreferenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697B49FCA2B8F1128844A837 /* PreferenceService.swift */; };
+		E24F6A2C3C66C4BD48A37F64 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609307DB67F6379A350559D2 /* SharedDataManager.swift */; };
+		E8132097F8BB146E5FCCB239 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609307DB67F6379A350559D2 /* SharedDataManager.swift */; };
+		EBE1B1AB499F0EA2A16FAF7E /* SerendipityTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935CDCF113D727FB04444EC /* SerendipityTimelineProvider.swift */; };
 		EEAC533A003DC8CC35EC2F92 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44FE781E50A4CCC7559AB5B /* Suggestion.swift */; };
 		F1163DE05F62F4CF6BED89E8 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F929290B9669DF29514C2 /* CalendarServiceTests.swift */; };
+		F2D11E03188B375C12D24BA4 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9D89F472DB561577BBA988 /* ServiceProtocols.swift */; };
+		F4BAA9BE8BE20F4F369D1998 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44FE781E50A4CCC7559AB5B /* Suggestion.swift */; };
+		FEBE797FC4C683A721C3C8DC /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D1D3FF70EBA7F3BFED0C13 /* OnboardingViewModelTests.swift */; };
 		FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39710C4915FDE10F43A13F2F /* WelcomePageView.swift */; };
-		AA11BB22CC33DD44EE55FF66 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22CC33DD44EE55FF660011 /* ServiceProtocols.swift */; };
-		CC11DD22EE33FF44AA55BB66 /* MockServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD22EE33FF44AA55BB660011 /* MockServices.swift */; };
-		EE11FF22AA33BB44CC55DD66 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF22AA33BB44CC55DD660011 /* HomeViewModelTests.swift */; };
-		AA33BB44CC55DD66EE77FF88 /* SuggestionDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB44CC55DD66EE77FF880011 /* SuggestionDetailViewModelTests.swift */; };
-		CC55DD66EE77FF88AA99BB00 /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD66EE77FF88AA99BB000011 /* OnboardingViewModelTests.swift */; };
-		EE77FF88AA99BB00CC11DD22 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF88AA99BB00CC11DD220011 /* SettingsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9EEB1A6FF7F86982FC73A919 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14E948C0408BAB876F08C0FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9A2B5A734FE39A85C1D389C;
+			remoteInfo = SerendipityWidgetExtension;
+		};
 		DEF7E181F80057D0A09A7922 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14E948C0408BAB876F08C0FF /* Project object */;
@@ -68,18 +86,38 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D5FF95FC27A6E6110639BCC4 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B9FE2A84042A9D304FD69CE7 /* SerendipityWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		01034174B725078C89BFC607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02BA2260D155FAA09A165D31 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		03FFD86BDE4488A5C30FC374 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		0A98174F1A893328A4B36644 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
+		0D82D2BF8ADB63B12CCC948A /* SerendipityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityWidget.swift; sourceTree = "<group>"; };
 		1204EB9429B9915293AB5809 /* WeatherBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBadgeView.swift; sourceTree = "<group>"; };
+		13D1D3FF70EBA7F3BFED0C13 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
+		13FF3A15CF1ADA1552216930 /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
 		1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		214E1BF7FE63AF11FCB20634 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		22CFE8735D902381986C35D0 /* MockServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServices.swift; sourceTree = "<group>"; };
 		285AB7FD1AC6FB4B183209BA /* PlaceSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchService.swift; sourceTree = "<group>"; };
 		295FC0E250738A329A7DB868 /* SuggestionAcceptedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionAcceptedView.swift; sourceTree = "<group>"; };
+		2F9D89F472DB561577BBA988 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
 		3227D6EC6C3336213DCEC764 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		322E18E10F230A4E14E5EDB1 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		3935CDCF113D727FB04444EC /* SerendipityTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTimelineProvider.swift; sourceTree = "<group>"; };
 		39710C4915FDE10F43A13F2F /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
 		3E9DEAAC010AD807048A801B /* SuggestionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailViewModel.swift; sourceTree = "<group>"; };
 		3FDC697F7D1CC2A015688AFD /* FreeTimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTimeSlot.swift; sourceTree = "<group>"; };
@@ -90,9 +128,12 @@
 		54F60BF9623985E088653907 /* SuggestionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEngine.swift; sourceTree = "<group>"; };
 		5AA53A9743DBCF5D89BB684E /* FreeTimeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTimeCardView.swift; sourceTree = "<group>"; };
 		5F5754414C94CBFAD7F61AAC /* SerendipityPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SerendipityPlanner.entitlements; sourceTree = "<group>"; };
+		609307DB67F6379A350559D2 /* SharedDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManager.swift; sourceTree = "<group>"; };
 		697B49FCA2B8F1128844A837 /* PreferenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceService.swift; sourceTree = "<group>"; };
 		69D8671EEAD5C5D4A2A2AF44 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		6AA6D3C2E9245C148F722344 /* NotificationPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionView.swift; sourceTree = "<group>"; };
+		6ACBEBF54FEC9855FC1880BA /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
+		6BD7DE95BFB179B989D3312C /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		6C8F929290B9669DF29514C2 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
 		6D0885B965AAB25D50153287 /* SerendipityPlanner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SerendipityPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DE36CC96E5496700B5682C /* SuggestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailView.swift; sourceTree = "<group>"; };
@@ -100,29 +141,28 @@
 		8250300D5D448B02A23C40BA /* SerendipityPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityPlannerApp.swift; sourceTree = "<group>"; };
 		97FFC658A07AA2B723C0E939 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A9DC8A9720C728B668EEED02 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F6A7B8C9D0E1F2 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		AAE305482EEDDC6FB248B2E2 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		AC433B0BF0B7BE25FF71E2DC /* AcceptedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedCardView.swift; sourceTree = "<group>"; };
+		AFE11351A68EBF1F964AF811 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		B0CB2D9D21D61067327AECD2 /* CalendarPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPermissionView.swift; sourceTree = "<group>"; };
 		B16A0511F69FBDFC73C6737A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B610B05F0E027009888904AA /* SerendipityWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SerendipityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB7DFFF0CEE6CAFECDF41BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BB9FFE965938FB56781BAFDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FA3418CA303C5680FB2729 /* SuggestionEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEngineTests.swift; sourceTree = "<group>"; };
+		C269046CF438FECA1EA49D09 /* SerendipityWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SerendipityWidget.entitlements; sourceTree = "<group>"; };
 		C44FE781E50A4CCC7559AB5B /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
+		D1C81D1FDE668A3786841348 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		DD1E66834C7DC1E065BE24E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DE4D9FB1B2C15AD6A721797E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		E2D79D09632698588BEFD2EB /* InterestSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestSelectionView.swift; sourceTree = "<group>"; };
 		E34AAE88A4551A4AB83C3062 /* SuggestionTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionTemplates.swift; sourceTree = "<group>"; };
 		E642105BA015B260A17506B9 /* UserPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreference.swift; sourceTree = "<group>"; };
 		E7C883A3B744729AD56C4C68 /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
+		E97A240FAFAFFC3C9BE0A3E7 /* SuggestionDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailViewModelTests.swift; sourceTree = "<group>"; };
 		F0EB17ED8188ABBB71429090 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F70280DCC1DC31D5097204BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAB317953D7CCD010B4C57A1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		BB22CC33DD44EE55FF660011 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
-		DD22EE33FF44AA55BB660011 /* MockServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServices.swift; sourceTree = "<group>"; };
-		FF22AA33BB44CC55DD660011 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
-		BB44CC55DD66EE77FF880011 /* SuggestionDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailViewModelTests.swift; sourceTree = "<group>"; };
-		DD66EE77FF88AA99BB000011 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
-		FF88AA99BB00CC11DD220011 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -134,7 +174,7 @@
 				DE4D9FB1B2C15AD6A721797E /* NotificationService.swift */,
 				285AB7FD1AC6FB4B183209BA /* PlaceSearchService.swift */,
 				697B49FCA2B8F1128844A837 /* PreferenceService.swift */,
-				BB22CC33DD44EE55FF660011 /* ServiceProtocols.swift */,
+				2F9D89F472DB561577BBA988 /* ServiceProtocols.swift */,
 				54F60BF9623985E088653907 /* SuggestionEngine.swift */,
 				02BA2260D155FAA09A165D31 /* WeatherService.swift */,
 			);
@@ -178,23 +218,15 @@
 		3FFDCF264EE2E39AA375EB92 /* SerendipityPlannerTests */ = {
 			isa = PBXGroup;
 			children = (
-				AA99BB00CC11DD22EE33FF44 /* Mocks */,
 				6C8F929290B9669DF29514C2 /* CalendarServiceTests.swift */,
-				FF22AA33BB44CC55DD660011 /* HomeViewModelTests.swift */,
-				DD66EE77FF88AA99BB000011 /* OnboardingViewModelTests.swift */,
-				FF88AA99BB00CC11DD220011 /* SettingsViewModelTests.swift */,
-				BB44CC55DD66EE77FF880011 /* SuggestionDetailViewModelTests.swift */,
+				D1C81D1FDE668A3786841348 /* HomeViewModelTests.swift */,
+				13D1D3FF70EBA7F3BFED0C13 /* OnboardingViewModelTests.swift */,
+				6BD7DE95BFB179B989D3312C /* SettingsViewModelTests.swift */,
+				E97A240FAFAFFC3C9BE0A3E7 /* SuggestionDetailViewModelTests.swift */,
 				C0FA3418CA303C5680FB2729 /* SuggestionEngineTests.swift */,
+				FC8046DFAC1E71328416F570 /* Mocks */,
 			);
 			path = SerendipityPlannerTests;
-			sourceTree = "<group>";
-		};
-		AA99BB00CC11DD22EE33FF44 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				DD22EE33FF44AA55BB660011 /* MockServices.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		5AD71D4E7B80AA1ACA822503 /* SerendipityPlanner */ = {
@@ -211,6 +243,15 @@
 				76516C1579E7B701409632C8 /* Views */,
 			);
 			path = SerendipityPlanner;
+			sourceTree = "<group>";
+		};
+		67A4D43AEF55734735A667F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				13FF3A15CF1ADA1552216930 /* MediumWidgetView.swift */,
+				6ACBEBF54FEC9855FC1880BA /* SmallWidgetView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		76516C1579E7B701409632C8 /* Views */ = {
@@ -262,8 +303,22 @@
 			children = (
 				6D0885B965AAB25D50153287 /* SerendipityPlanner.app */,
 				7F590A1A44D4AADA2284F5EE /* SerendipityPlannerTests.xctest */,
+				B610B05F0E027009888904AA /* SerendipityWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8D83BD45883C309B32142F7F /* SerendipityWidget */ = {
+			isa = PBXGroup;
+			children = (
+				BB7DFFF0CEE6CAFECDF41BA3 /* Info.plist */,
+				3935CDCF113D727FB04444EC /* SerendipityTimelineProvider.swift */,
+				C269046CF438FECA1EA49D09 /* SerendipityWidget.entitlements */,
+				0D82D2BF8ADB63B12CCC948A /* SerendipityWidget.swift */,
+				609307DB67F6379A350559D2 /* SharedDataManager.swift */,
+				67A4D43AEF55734735A667F7 /* Views */,
+			);
+			path = SerendipityWidget;
 			sourceTree = "<group>";
 		};
 		985E2E6BB90E08DCE3BD9EF6 = {
@@ -272,6 +327,7 @@
 				164B5811C646B6C5E26CC474 /* Config */,
 				5AD71D4E7B80AA1ACA822503 /* SerendipityPlanner */,
 				3FFDCF264EE2E39AA375EB92 /* SerendipityPlannerTests */,
+				8D83BD45883C309B32142F7F /* SerendipityWidget */,
 				8CD5CF0839EC394B000EA8AD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -325,9 +381,17 @@
 			children = (
 				54E6F24BF7412DF8073ED063 /* Color+Theme.swift */,
 				1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */,
-				A1B2C3D4E5F6A7B8C9D0E1F2 /* View+Extensions.swift */,
+				AFE11351A68EBF1F964AF811 /* View+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FC8046DFAC1E71328416F570 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				22CFE8735D902381986C35D0 /* MockServices.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,10 +421,12 @@
 			buildPhases = (
 				94E4A58D6C04E3BC96B2EFF8 /* Sources */,
 				3168E738F080F99AE032EEC6 /* Resources */,
+				D5FF95FC27A6E6110639BCC4 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0FB7E1A51E2A66991D5C936C /* PBXTargetDependency */,
 			);
 			name = SerendipityPlanner;
 			packageProductDependencies = (
@@ -368,6 +434,23 @@
 			productName = SerendipityPlanner;
 			productReference = 6D0885B965AAB25D50153287 /* SerendipityPlanner.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D9A2B5A734FE39A85C1D389C /* SerendipityWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DCB84A58829F1FA738155CAA /* Build configuration list for PBXNativeTarget "SerendipityWidgetExtension" */;
+			buildPhases = (
+				082160D8C52525B2CB7B5025 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SerendipityWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = SerendipityWidgetExtension;
+			productReference = B610B05F0E027009888904AA /* SerendipityWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -379,6 +462,9 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					921F5473CFF2EEA6D1A5CB9C = {
+						DevelopmentTeam = "";
+					};
+					D9A2B5A734FE39A85C1D389C = {
 						DevelopmentTeam = "";
 					};
 				};
@@ -399,6 +485,7 @@
 			targets = (
 				921F5473CFF2EEA6D1A5CB9C /* SerendipityPlanner */,
 				8272CEAAEEE451DCE0BD6CA3 /* SerendipityPlannerTests */,
+				D9A2B5A734FE39A85C1D389C /* SerendipityWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -415,6 +502,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		082160D8C52525B2CB7B5025 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D419755C84372DF136EC4AF1 /* FreeTimeSlot.swift in Sources */,
+				C9FEEAFCC5F0220C7837B643 /* MediumWidgetView.swift in Sources */,
+				EBE1B1AB499F0EA2A16FAF7E /* SerendipityTimelineProvider.swift in Sources */,
+				42C6312C863055C41FF79065 /* SerendipityWidget.swift in Sources */,
+				E24F6A2C3C66C4BD48A37F64 /* SharedDataManager.swift in Sources */,
+				BAC7588713C47C8D0461822F /* SkyGradientView.swift in Sources */,
+				4D8CF885090BEA52A70A0B54 /* SmallWidgetView.swift in Sources */,
+				F4BAA9BE8BE20F4F369D1998 /* Suggestion.swift in Sources */,
+				AEB8980DECA7BA03FA13C397 /* WeatherData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94E4A58D6C04E3BC96B2EFF8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,7 +527,6 @@
 				6ACC2057FC44EAFF7B90F109 /* CalendarPermissionView.swift in Sources */,
 				AC19D9497B80132E240500D4 /* CalendarService.swift in Sources */,
 				86550C964FDA876E9250C962 /* Color+Theme.swift in Sources */,
-				87A1B2C3D4E5F6A7B8C9D0E1 /* View+Extensions.swift in Sources */,
 				0023238E40B48FEDED7F8CC6 /* Constants.swift in Sources */,
 				02FAF19A962E1920D814B507 /* ContentView.swift in Sources */,
 				4FCBFDC7A4BABF51CBBCCC97 /* Date+Extensions.swift in Sources */,
@@ -444,8 +546,10 @@
 				A82A42B9EFEF32FC6D113077 /* PlaceSearchService.swift in Sources */,
 				DE19BB03D86E06A902BCD44A /* PreferenceService.swift in Sources */,
 				92C3509D77A669CCD17CC902 /* SerendipityPlannerApp.swift in Sources */,
+				F2D11E03188B375C12D24BA4 /* ServiceProtocols.swift in Sources */,
 				D58896B93CFB15D1E9BA851D /* SettingsView.swift in Sources */,
 				8EFDA700B0BA1C09EC5DE8CF /* SettingsViewModel.swift in Sources */,
+				E8132097F8BB146E5FCCB239 /* SharedDataManager.swift in Sources */,
 				77EE8361E8FB9D31E7E0237C /* SkyGradientView.swift in Sources */,
 				EEAC533A003DC8CC35EC2F92 /* Suggestion.swift in Sources */,
 				717734C65BBA85EADCB8AAAE /* SuggestionAcceptedView.swift in Sources */,
@@ -455,11 +559,11 @@
 				00D08EFB52CD1E0150DFFDDA /* SuggestionTemplates.swift in Sources */,
 				0176BFF1E6DF884C74BB1FD7 /* UserPreference.swift in Sources */,
 				AA492F82FED51737E99D4D46 /* UserSettings.swift in Sources */,
+				DE13F1593BAD55652FDE1E62 /* View+Extensions.swift in Sources */,
 				880AB999E92178CB93F662C2 /* WeatherBadgeView.swift in Sources */,
 				8538665C5914F3AB61743E98 /* WeatherData.swift in Sources */,
 				10A013B3A9348EBAEBAA6FD6 /* WeatherService.swift in Sources */,
 				FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */,
-				AA11BB22CC33DD44EE55FF66 /* ServiceProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,18 +572,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1163DE05F62F4CF6BED89E8 /* CalendarServiceTests.swift in Sources */,
+				A70C537E15862882E440CF84 /* HomeViewModelTests.swift in Sources */,
+				6CF349284886A8498AFF28C9 /* MockServices.swift in Sources */,
+				FEBE797FC4C683A721C3C8DC /* OnboardingViewModelTests.swift in Sources */,
+				0E322F33F6626801CC626D9C /* SettingsViewModelTests.swift in Sources */,
+				A4BB311CF6194961FB0560DE /* SuggestionDetailViewModelTests.swift in Sources */,
 				AFC76DFF0A3E710785F67DE9 /* SuggestionEngineTests.swift in Sources */,
-				CC11DD22EE33FF44AA55BB66 /* MockServices.swift in Sources */,
-				EE11FF22AA33BB44CC55DD66 /* HomeViewModelTests.swift in Sources */,
-				AA33BB44CC55DD66EE77FF88 /* SuggestionDetailViewModelTests.swift in Sources */,
-				CC55DD66EE77FF88AA99BB00 /* OnboardingViewModelTests.swift in Sources */,
-				EE77FF88AA99BB00CC11DD22 /* SettingsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0FB7E1A51E2A66991D5C936C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9A2B5A734FE39A85C1D389C /* SerendipityWidgetExtension */;
+			targetProxy = 9EEB1A6FF7F86982FC73A919 /* PBXContainerItemProxy */;
+		};
 		AB9A19AC5B500A52EF74E319 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 921F5473CFF2EEA6D1A5CB9C /* SerendipityPlanner */;
@@ -562,6 +671,36 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8EF712B2BE4EBBE0ED496C44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SerendipityWidget/SerendipityWidget.entitlements;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = SerendipityWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.serendipity.planner.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C220A8D39D9D27DF0459B29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SerendipityWidget/SerendipityWidget.entitlements;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = SerendipityWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.serendipity.planner.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -707,6 +846,15 @@
 			buildConfigurations = (
 				C7AA23658B7FBFBA53DF48F4 /* Debug */,
 				662AA83310D5F78876763753 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DCB84A58829F1FA738155CAA /* Build configuration list for PBXNativeTarget "SerendipityWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8EF712B2BE4EBBE0ED496C44 /* Debug */,
+				9C220A8D39D9D27DF0459B29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
