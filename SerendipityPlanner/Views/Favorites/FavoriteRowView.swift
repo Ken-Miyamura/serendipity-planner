@@ -49,7 +49,11 @@ struct FavoriteRowView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
-        .padding(.vertical, 4)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(Color.theme.cardBackground)
+        .cornerRadius(12)
+        .shadow(color: Color.theme.walk.opacity(0.06), radius: 4, x: 0, y: 1)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(favorite.title)、\(favorite.category.displayName)、\(formattedDate)に追加")
     }

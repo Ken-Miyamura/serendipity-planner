@@ -5,23 +5,45 @@ struct FavoritesView: View {
     @EnvironmentObject private var favoriteService: FavoriteService
     @StateObject private var viewModel = FavoritesViewModel()
 
+    private var useLightText: Bool {
+        let period = TimePeriod.current()
+        return period.prefersLightText
+    }
+
     var body: some View {
         NavigationView {
             ZStack {
                 SkyGradientView(weatherCondition: nil)
 
                 if viewModel.isEmpty, viewModel.selectedCategory == nil {
-                    emptyStateView
+                    VStack {
+                        favoritesHeader
+                        Spacer()
+                        emptyStateView
+                        Spacer()
+                    }
                 } else {
                     favoritesListView
                 }
             }
-            .navigationTitle("お気に入り")
+            .navigationBarHidden(true)
             .onAppear {
                 viewModel.configure(with: favoriteService)
             }
         }
         .navigationViewStyle(.stack)
+    }
+
+    // MARK: - ヘッダー
+
+    private var favoritesHeader: some View {
+        Text("お気に入り")
+            .font(.title3)
+            .fontWeight(.medium)
+            .foregroundColor(useLightText ? .white : .primary)
+            .shadow(color: useLightText ? .black.opacity(0.3) : .clear, radius: 2, y: 1)
+            .padding(.top, 16)
+            .padding(.bottom, 8)
     }
 
     // MARK: - Empty State
@@ -30,15 +52,15 @@ struct FavoritesView: View {
         VStack(spacing: 16) {
             Image(systemName: "heart")
                 .font(.system(size: 60))
-                .foregroundColor(.secondary.opacity(0.5))
+                .foregroundColor(useLightText ? .white.opacity(0.5) : .secondary.opacity(0.5))
 
             Text("お気に入りはまだありません")
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(useLightText ? .white : .primary)
 
             Text("提案の詳細画面でハートアイコンをタップすると、\nここにお気に入りが表示されます。")
                 .font(.subheadline)
-                .foregroundColor(.secondary)
+                .foregroundColor(useLightText ? .white.opacity(0.7) : .secondary)
                 .multilineTextAlignment(.center)
         }
         .padding()
@@ -47,23 +69,24 @@ struct FavoritesView: View {
     // MARK: - Favorites List
 
     private var favoritesListView: some View {
-        VStack(spacing: 0) {
-            // カテゴリフィルタ
-            if !viewModel.availableCategories.isEmpty {
-                categoryFilterBar
-            }
+        ScrollView {
+            LazyVStack(spacing: 12) {
+                favoritesHeader
 
-            if viewModel.isEmpty {
-                // フィルタ適用時の空状態
-                VStack(spacing: 12) {
-                    Spacer()
-                    Text("このカテゴリのお気に入りはありません")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    Spacer()
+                // カテゴリフィルタ
+                if !viewModel.availableCategories.isEmpty {
+                    categoryFilterBar
                 }
-            } else {
-                List {
+
+                if viewModel.isEmpty {
+                    // フィルタ適用時の空状態
+                    VStack(spacing: 12) {
+                        Spacer().frame(height: 40)
+                        Text("このカテゴリのお気に入りはありません")
+                            .font(.subheadline)
+                            .foregroundColor(useLightText ? .white.opacity(0.7) : .secondary)
+                    }
+                } else {
                     ForEach(viewModel.favorites) { favorite in
                         NavigationLink {
                             FavoriteDetailView(
@@ -78,13 +101,11 @@ struct FavoritesView: View {
                                 formattedDate: viewModel.formattedDate(favorite.addedDate)
                             )
                         }
-                        .listRowBackground(Color.clear)
+                        .buttonStyle(.plain)
                     }
-                    .onDelete(perform: viewModel.removeFavorite)
                 }
-                .listStyle(.plain)
-                .hideFormBackground()
             }
+            .padding()
         }
     }
 
