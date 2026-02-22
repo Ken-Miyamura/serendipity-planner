@@ -1,5 +1,5 @@
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct SuggestionDetailView: View {
     @StateObject private var viewModel: SuggestionDetailViewModel
@@ -24,7 +24,13 @@ struct SuggestionDetailView: View {
     ) {
         _viewModel = StateObject(wrappedValue: {
             let vm = SuggestionDetailViewModel(suggestion: suggestion)
-            vm.configure(weather: weather, preference: preference, preferenceService: preferenceService, locationService: locationService, calendarService: calendarService)
+            vm.configure(
+                weather: weather,
+                preference: preference,
+                preferenceService: preferenceService,
+                locationService: locationService,
+                calendarService: calendarService
+            )
             return vm
         }())
         self.weather = weather
@@ -62,7 +68,7 @@ struct SuggestionDetailView: View {
                 }
 
                 // Alternatives
-                if !viewModel.isAccepted && !viewModel.alternatives.isEmpty {
+                if !viewModel.isAccepted, !viewModel.alternatives.isEmpty {
                     alternativesSection
                 }
             }
@@ -264,7 +270,7 @@ struct SuggestionDetailView: View {
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = place.name
         mapItem.openInMaps(launchOptions: [
-            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking,
+            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking
         ])
     }
 

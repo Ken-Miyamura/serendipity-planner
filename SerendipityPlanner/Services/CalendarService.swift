@@ -11,26 +11,26 @@ class CalendarService: CalendarServiceProtocol {
         var errorDescription: String? {
             switch self {
             case .accessDenied:
-                return "カレンダーへのアクセスが許可されていません。設定から許可してください。"
+                "カレンダーへのアクセスが許可されていません。設定から許可してください。"
             case .fetchFailed:
-                return "カレンダーイベントの取得に失敗しました。"
+                "カレンダーイベントの取得に失敗しました。"
             }
         }
     }
 
     func requestAccess() async throws -> Bool {
         if #available(iOS 17, *) {
-            return try await eventStore.requestFullAccessToEvents()
+            try await eventStore.requestFullAccessToEvents()
         } else {
-            return try await eventStore.requestAccess(to: .event)
+            try await eventStore.requestAccess(to: .event)
         }
     }
 
     var hasAccess: Bool {
         if #available(iOS 17, *) {
-            return EKEventStore.authorizationStatus(for: .event) == .fullAccess
+            EKEventStore.authorizationStatus(for: .event) == .fullAccess
         } else {
-            return EKEventStore.authorizationStatus(for: .event) == .authorized
+            EKEventStore.authorizationStatus(for: .event) == .authorized
         }
     }
 
@@ -94,7 +94,7 @@ class CalendarService: CalendarServiceProtocol {
         )
 
         let holidayEvents = eventStore.events(matching: predicate)
-            .filter { $0.isAllDay }
+            .filter(\.isAllDay)
 
         var dates = Set<Date>()
         for event in holidayEvents {

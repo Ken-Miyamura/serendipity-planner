@@ -1,9 +1,8 @@
-import XCTest
 @testable import SerendipityPlanner
+import XCTest
 
 @MainActor
 final class SuggestionDetailViewModelTests: XCTestCase {
-
     private var sut: SuggestionDetailViewModel!
     private var mockEngine: MockSuggestionEngine!
     private var mockPlaceSearch: MockPlaceSearchService!

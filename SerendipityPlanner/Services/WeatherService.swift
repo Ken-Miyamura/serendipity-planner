@@ -17,15 +17,15 @@ class WeatherService: WeatherServiceProtocol {
         var errorDescription: String? {
             switch self {
             case .invalidAPIKey:
-                return "天気APIキーが設定されていません。"
-            case .networkError(let error):
-                return "ネットワークエラー: \(error.localizedDescription)"
+                "天気APIキーが設定されていません。"
+            case let .networkError(error):
+                "ネットワークエラー: \(error.localizedDescription)"
             case .decodingError:
-                return "天気データの解析に失敗しました。"
+                "天気データの解析に失敗しました。"
             case .invalidURL:
-                return "無効なURLです。"
-            case .cityNotFound(let city):
-                return "「\(city)」の天気情報が見つかりません。都市名を確認してください。"
+                "無効なURLです。"
+            case let .cityNotFound(city):
+                "「\(city)」の天気情報が見つかりません。都市名を確認してください。"
             }
         }
     }
@@ -50,7 +50,7 @@ class WeatherService: WeatherServiceProtocol {
             URLQueryItem(name: "q", value: "\(city),JP"),
             URLQueryItem(name: "appid", value: apiKey),
             URLQueryItem(name: "units", value: Constants.Weather.units),
-            URLQueryItem(name: "lang", value: Constants.Weather.language),
+            URLQueryItem(name: "lang", value: Constants.Weather.language)
         ]
 
         guard let url = components?.url else {
@@ -98,7 +98,7 @@ class WeatherService: WeatherServiceProtocol {
             URLQueryItem(name: "lon", value: String(longitude)),
             URLQueryItem(name: "appid", value: apiKey),
             URLQueryItem(name: "units", value: Constants.Weather.units),
-            URLQueryItem(name: "lang", value: Constants.Weather.language),
+            URLQueryItem(name: "lang", value: Constants.Weather.language)
         ]
 
         guard let url = components?.url else {
@@ -141,7 +141,8 @@ class WeatherService: WeatherServiceProtocol {
 
     private func loadCachedWeather(for city: String) -> WeatherData? {
         guard let data = defaults.data(forKey: cacheKey(for: city)),
-              let weather = try? decoder.decode(WeatherData.self, from: data) else {
+              let weather = try? decoder.decode(WeatherData.self, from: data)
+        else {
             return nil
         }
         return weather

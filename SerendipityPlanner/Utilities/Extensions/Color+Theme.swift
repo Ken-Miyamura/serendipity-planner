@@ -26,16 +26,16 @@ struct ThemeColors {
 
     func color(for category: SuggestionCategory) -> Color {
         switch category {
-        case .cafe: return cafe
-        case .walk: return walk
-        case .reading: return reading
-        case .music: return music
-        case .art: return art
-        case .fitness: return fitness
-        case .shopping: return shopping
-        case .gourmet: return gourmet
-        case .movie: return movie
-        case .meditation: return meditation
+        case .cafe: cafe
+        case .walk: walk
+        case .reading: reading
+        case .music: music
+        case .art: art
+        case .fitness: fitness
+        case .shopping: shopping
+        case .gourmet: gourmet
+        case .movie: movie
+        case .meditation: meditation
         }
     }
 }

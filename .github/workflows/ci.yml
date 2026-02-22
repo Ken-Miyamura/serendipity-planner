@@ -25,6 +25,18 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
 
+      - name: Install SwiftFormat
+        run: brew install swiftformat
+
+      - name: Check format
+        run: swiftformat --lint .
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: Lint
+        run: swiftlint lint --strict
+
       - name: Show environment
         run: |
           xcodebuild -version

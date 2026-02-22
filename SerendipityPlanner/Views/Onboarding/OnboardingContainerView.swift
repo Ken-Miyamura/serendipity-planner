@@ -9,7 +9,7 @@ struct OnboardingContainerView: View {
         VStack {
             // Page indicator
             HStack(spacing: 8) {
-                ForEach(0..<viewModel.totalPages, id: \.self) { index in
+                ForEach(0 ..< viewModel.totalPages, id: \.self) { index in
                     Circle()
                         .fill(index == viewModel.currentPage ? Color.accentColor : Color.secondary.opacity(0.3))
                         .frame(width: 8, height: 8)

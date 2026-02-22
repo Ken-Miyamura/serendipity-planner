@@ -1,5 +1,5 @@
-import Foundation
 import Combine
+import Foundation
 
 class PreferenceService: ObservableObject, PreferenceServiceProtocol {
     @Published var settings: UserSettings

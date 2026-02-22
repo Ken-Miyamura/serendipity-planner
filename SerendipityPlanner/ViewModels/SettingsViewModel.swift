@@ -84,11 +84,11 @@ class SettingsViewModel: ObservableObject {
     }
 
     func endHourOptions(after startHour: Int) -> [Int] {
-        Array((startHour + 1)...23)
+        Array((startHour + 1) ... 23)
     }
 
     var startHourOptions: [Int] {
-        Array(0...22)
+        Array(0 ... 22)
     }
 
     func toggleCategory(_ category: SuggestionCategory) {

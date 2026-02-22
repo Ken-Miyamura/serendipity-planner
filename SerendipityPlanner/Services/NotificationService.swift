@@ -1,5 +1,5 @@
-import UserNotifications
 import Foundation
+import UserNotifications
 
 class NotificationService: NotificationServiceProtocol {
     private let center = UNUserNotificationCenter.current()

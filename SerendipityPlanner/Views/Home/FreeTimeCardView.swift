@@ -77,7 +77,9 @@ struct FreeTimeCardView: View {
     }
 
     private var accessibilityDescription: String {
-        var label = "\(suggestion.freeTimeSlot.timeRangeText)、\(suggestion.freeTimeSlot.durationMinutes)分、\(suggestion.category.displayName)、\(suggestion.title)"
+        var label = "\(suggestion.freeTimeSlot.timeRangeText)、" +
+            "\(suggestion.freeTimeSlot.durationMinutes)分、" +
+            "\(suggestion.category.displayName)、\(suggestion.title)"
         if let place = suggestion.nearbyPlace {
             label += "、\(place.name)、\(place.walkingTimeText)"
         }

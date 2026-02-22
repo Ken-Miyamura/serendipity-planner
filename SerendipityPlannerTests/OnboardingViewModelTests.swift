@@ -1,9 +1,8 @@
-import XCTest
 @testable import SerendipityPlanner
+import XCTest
 
 @MainActor
 final class OnboardingViewModelTests: XCTestCase {
-
     private var sut: OnboardingViewModel!
     private var mockCalendar: MockCalendarService!
     private var mockNotification: MockNotificationService!
@@ -36,7 +35,9 @@ final class OnboardingViewModelTests: XCTestCase {
     }
 
     func testNextPageDoesNotExceedMax() {
-        for _ in 0..<10 { sut.nextPage() }
+        for _ in 0 ..< 10 {
+            sut.nextPage()
+        }
         XCTAssertEqual(sut.currentPage, sut.totalPages - 1)
     }
 
@@ -53,7 +54,9 @@ final class OnboardingViewModelTests: XCTestCase {
     }
 
     func testIsLastPage() {
-        for _ in 0..<(sut.totalPages - 1) { sut.nextPage() }
+        for _ in 0 ..< (sut.totalPages - 1) {
+            sut.nextPage()
+        }
         XCTAssertTrue(sut.isLastPage)
     }
 
@@ -157,13 +160,13 @@ final class OnboardingViewModelTests: XCTestCase {
 
     // MARK: - Permission Error Tests (Error Handling)
 
-    func testCalendarPermissionDeniedSetsError() async {
+    func testCalendarPermissionDeniedSetsError() async throws {
         mockCalendar.requestAccessResult = false
 
         await sut.requestCalendarPermission()
 
         XCTAssertNotNil(sut.permissionError)
-        XCTAssertTrue(sut.permissionError!.contains("カレンダー"))
+        XCTAssertTrue(try XCTUnwrap(sut.permissionError?.contains("カレンダー")))
     }
 
     func testCalendarPermissionErrorSetsError() async {
@@ -174,13 +177,13 @@ final class OnboardingViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.permissionError)
     }
 
-    func testNotificationPermissionDeniedSetsError() async {
+    func testNotificationPermissionDeniedSetsError() async throws {
         mockNotification.requestPermissionResult = false
 
         await sut.requestNotificationPermission()
 
         XCTAssertNotNil(sut.permissionError)
-        XCTAssertTrue(sut.permissionError!.contains("通知"))
+        XCTAssertTrue(try XCTUnwrap(sut.permissionError?.contains("通知")))
     }
 
     func testPermissionErrorClearedOnRetry() async {

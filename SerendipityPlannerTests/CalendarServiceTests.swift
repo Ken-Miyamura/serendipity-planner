@@ -1,6 +1,6 @@
-import XCTest
 import EventKit
 @testable import SerendipityPlanner
+import XCTest
 
 final class CalendarServiceTests: XCTestCase {
     var service: CalendarService!

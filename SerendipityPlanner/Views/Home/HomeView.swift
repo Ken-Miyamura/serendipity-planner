@@ -11,19 +11,19 @@ struct HomeView: View {
                 SkyGradientView(weatherCondition: viewModel.weather?.condition)
                     .animation(.easeInOut(duration: 1.2), value: viewModel.weather?.condition)
 
-                if viewModel.isLoading && viewModel.suggestions.isEmpty && viewModel.acceptedSuggestions.isEmpty {
+                if viewModel.isLoading, viewModel.suggestions.isEmpty, viewModel.acceptedSuggestions.isEmpty {
                     ProgressView("今日の空き時間を探しています...")
                         .tint(useLightText ? .white : nil)
                         .foregroundColor(useLightText ? .white : .primary)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else if let error = viewModel.errorMessage, viewModel.suggestions.isEmpty && viewModel.acceptedSuggestions.isEmpty {
+                } else if let error = viewModel.errorMessage, viewModel.suggestions.isEmpty, viewModel.acceptedSuggestions.isEmpty {
                     ErrorStateView(
                         message: error,
                         showOpenSettings: error.contains("許可")
                     ) {
                         Task { await viewModel.refresh() }
                     }
-                } else if viewModel.suggestions.isEmpty && viewModel.acceptedSuggestions.isEmpty {
+                } else if viewModel.suggestions.isEmpty, viewModel.acceptedSuggestions.isEmpty {
                     emptyStateView
                 } else {
                     suggestionListView
@@ -77,11 +77,11 @@ struct HomeView: View {
     private var greetingText: String {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
-        case 5..<10:
+        case 5 ..< 10:
             return "おはようございます。\n今日、素敵な偶然が訪れますように"
-        case 10..<17:
+        case 10 ..< 17:
             return "今日、素敵な偶然が訪れますように"
-        case 17..<21:
+        case 17 ..< 21:
             return "今日の残り時間に、\n小さな幸運を見つけましょう"
         default:
             return "おつかれさまでした。\n明日も素敵な一日になりますように"

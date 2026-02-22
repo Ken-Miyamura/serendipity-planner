@@ -27,7 +27,7 @@ enum SuggestionTemplates {
                 title: "カフェでスイーツタイム",
                 description: "頑張った自分へのご褒美に、美味しいスイーツとコーヒーはいかがですか？",
                 minDuration: 30
-            ),
+            )
         ],
         .walk: [
             Template(
@@ -47,7 +47,7 @@ enum SuggestionTemplates {
                 title: "フォトウォーク",
                 description: "カメラやスマホを片手に街歩き。何気ない日常の中に、素敵な瞬間を見つけましょう。",
                 minDuration: 45
-            ),
+            )
         ],
         .reading: [
             Template(
@@ -67,7 +67,7 @@ enum SuggestionTemplates {
                 title: "図書館でゆっくり",
                 description: "図書館で静かな読書タイム。新しいジャンルの本との出会いを楽しんで。",
                 minDuration: 60
-            ),
+            )
         ],
         .music: [
             Template(
@@ -87,7 +87,7 @@ enum SuggestionTemplates {
                 title: "ライブを楽しむ",
                 description: "近くのライブハウスやイベントで、生の音楽を体感しましょう。",
                 minDuration: 60
-            ),
+            )
         ],
         .art: [
             Template(
@@ -107,7 +107,7 @@ enum SuggestionTemplates {
                 title: "アートスポット散策",
                 description: "街中のパブリックアートやストリートアートを探してみませんか。",
                 minDuration: 45
-            ),
+            )
         ],
         .fitness: [
             Template(
@@ -127,7 +127,7 @@ enum SuggestionTemplates {
                 title: "ヨガでリラックス",
                 description: "ヨガで心身のバランスを整えましょう。呼吸に集中して、心を落ち着けて。",
                 minDuration: 30
-            ),
+            )
         ],
         .shopping: [
             Template(
@@ -147,7 +147,7 @@ enum SuggestionTemplates {
                 title: "セレクトショップ探索",
                 description: "こだわりのセレクトショップで、新しいお気に入りを見つけましょう。",
                 minDuration: 30
-            ),
+            )
         ],
         .gourmet: [
             Template(
@@ -167,7 +167,7 @@ enum SuggestionTemplates {
                 title: "ランチで気分転換",
                 description: "いつもと違うお店でランチタイム。美味しいご飯で午後も頑張れます。",
                 minDuration: 45
-            ),
+            )
         ],
         .movie: [
             Template(
@@ -181,7 +181,7 @@ enum SuggestionTemplates {
                 title: "ミニシアターで名作を",
                 description: "ミニシアターで隠れた名作に出会いましょう。新しい映画体験が待っています。",
                 minDuration: 90
-            ),
+            )
         ],
         .meditation: [
             Template(
@@ -201,12 +201,12 @@ enum SuggestionTemplates {
                 title: "瞑想タイム",
                 description: "静かな場所で瞑想の時間を。呼吸に集中して、心をクリアにしましょう。",
                 minDuration: 20
-            ),
-        ],
+            )
+        ]
     ]
 
     static var allTemplates: [Template] {
-        templatesByCategory.values.flatMap { $0 }
+        templatesByCategory.values.flatMap(\.self)
     }
 
     static func templates(for category: SuggestionCategory) -> [Template] {

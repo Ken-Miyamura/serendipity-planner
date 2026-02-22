@@ -26,7 +26,13 @@ class SuggestionDetailViewModel: ObservableObject {
         self.isAccepted = suggestion.isAccepted
     }
 
-    func configure(weather: WeatherData?, preference: UserPreference, preferenceService: PreferenceServiceProtocol? = nil, locationService: LocationServiceProtocol? = nil, calendarService: CalendarServiceProtocol? = nil) {
+    func configure(
+        weather: WeatherData?,
+        preference: UserPreference,
+        preferenceService: PreferenceServiceProtocol? = nil,
+        locationService: LocationServiceProtocol? = nil,
+        calendarService: CalendarServiceProtocol? = nil
+    ) {
         self.weather = weather
         self.preference = preference
         self.preferenceService = preferenceService
@@ -42,7 +48,7 @@ class SuggestionDetailViewModel: ObservableObject {
         preferenceService?.recordSelection(for: suggestion.category)
 
         // カレンダーに登録
-        guard let calendarService = calendarService else {
+        guard let calendarService else {
             calendarAlertMessage = "提案を受け入れました"
             return
         }
@@ -64,7 +70,7 @@ class SuggestionDetailViewModel: ObservableObject {
     }
 
     func regenerate() {
-        guard let preference = preference else { return }
+        guard let preference else { return }
 
         let newSuggestion = suggestionEngine.generateSuggestion(
             for: suggestion.freeTimeSlot,
@@ -88,7 +94,7 @@ class SuggestionDetailViewModel: ObservableObject {
     }
 
     private func loadAlternatives() {
-        guard let preference = preference else { return }
+        guard let preference else { return }
 
         alternatives = suggestionEngine.generateAlternatives(
             for: suggestion.freeTimeSlot,

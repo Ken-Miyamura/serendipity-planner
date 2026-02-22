@@ -1,7 +1,6 @@
 import Foundation
 
 class SuggestionEngine: SuggestionEngineProtocol {
-
     struct CategoryWeight {
         let category: SuggestionCategory
         var weight: Double
@@ -44,7 +43,7 @@ class SuggestionEngine: SuggestionEngineProtocol {
         return categories.compactMap { category in
             let templates = SuggestionTemplates.templates(for: category)
             guard let template = templates.filter({ $0.minDuration <= slot.durationMinutes }).randomElement()
-                    ?? templates.first else { return nil }
+                ?? templates.first else { return nil }
 
             let weatherContext = weatherContextText(weather: weather, category: category)
 
@@ -74,7 +73,7 @@ class SuggestionEngine: SuggestionEngineProtocol {
         }
 
         // Apply weather adjustments
-        if let weather = weather {
+        if let weather {
             weights = applyWeatherAdjustment(weights: weights, weather: weather)
         }
 
@@ -145,7 +144,7 @@ class SuggestionEngine: SuggestionEngineProtocol {
         let totalWeight = weights.reduce(0) { $0 + $1.weight }
         guard totalWeight > 0 else { return weights[0].category }
 
-        let random = Double.random(in: 0..<totalWeight)
+        let random = Double.random(in: 0 ..< totalWeight)
         var cumulative = 0.0
 
         for item in weights {
@@ -168,7 +167,7 @@ class SuggestionEngine: SuggestionEngineProtocol {
     }
 
     private func weatherContextText(weather: WeatherData?, category: SuggestionCategory) -> String {
-        guard let weather = weather else {
+        guard let weather else {
             return "天気情報を取得できませんでした"
         }
 

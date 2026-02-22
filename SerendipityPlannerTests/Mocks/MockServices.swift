@@ -1,5 +1,5 @@
-import Foundation
 import CoreLocation
+import Foundation
 @testable import SerendipityPlanner
 
 // MARK: - MockCalendarService
@@ -118,7 +118,7 @@ class MockNotificationService: NotificationServiceProtocol {
     }
 
     func isAuthorized() async -> Bool {
-        return isAuthorizedResult
+        isAuthorizedResult
     }
 
     func scheduleSuggestionNotification(for suggestion: Suggestion, leadTimeMinutes: Int) {
@@ -205,8 +205,13 @@ class MockPreferenceService: PreferenceServiceProtocol {
     var resetLearningDataCallCount = 0
     var resetAllCallCount = 0
 
-    func saveSettings() { saveSettingsCallCount += 1 }
-    func savePreference() { savePreferenceCallCount += 1 }
+    func saveSettings() {
+        saveSettingsCallCount += 1
+    }
+
+    func savePreference() {
+        savePreferenceCallCount += 1
+    }
 
     func completeOnboarding() {
         completeOnboardingCallCount += 1

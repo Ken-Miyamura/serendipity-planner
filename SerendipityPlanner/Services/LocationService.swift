@@ -1,5 +1,5 @@
-import Foundation
 import CoreLocation
+import Foundation
 
 class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, LocationServiceProtocol {
     @Published var currentLocationName: String = "取得中..."
@@ -83,5 +83,4 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
         let status = locationManager.authorizationStatus
         locationAuthorized = (status == .authorizedWhenInUse || status == .authorizedAlways)
     }
-
 }
