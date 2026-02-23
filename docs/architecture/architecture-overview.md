@@ -10,6 +10,7 @@ graph TD
         CV[ContentView]
         HV[HomeView]
         SDV[SuggestionDetailView]
+        FV[FavoritesView]
         SV[SettingsView]
         OV[OnboardingContainerView]
     end
@@ -17,6 +18,7 @@ graph TD
     subgraph ViewModels
         HVM[HomeViewModel]
         SDVM[SuggestionDetailViewModel]
+        FVM[FavoritesViewModel]
         SVM[SettingsViewModel]
         OVM[OnboardingViewModel]
     end
@@ -29,6 +31,7 @@ graph TD
         LS[LocationService]
         NS[NotificationService]
         PFS[PreferenceService]
+        FS[FavoriteService]
     end
 
     subgraph Models
@@ -40,10 +43,12 @@ graph TD
     end
 
     CV --> HV
+    CV --> FV
     CV --> SV
     CV --> OV
     HV --> HVM
     SDV --> SDVM
+    FV --> FVM
     SV --> SVM
     OV --> OVM
 
@@ -58,6 +63,9 @@ graph TD
     SDVM --> PS
     SDVM --> CS
     SDVM --> LS
+    SDVM --> FS
+
+    FVM --> FS
 
     SVM --> PFS
     OVM --> CS
@@ -79,7 +87,8 @@ graph TD
 | ViewModel | 責務 |
 |-----------|------|
 | HomeViewModel | ホーム画面のデータフロー統括。カレンダー取得→天気取得→提案生成→スポット検索の一連のフローを管理 |
-| SuggestionDetailViewModel | 提案の受け入れ、代替案の生成、カレンダー登録、スポット検索 |
+| SuggestionDetailViewModel | 提案の受け入れ、代替案の生成、カレンダー登録、スポット検索、お気に入りトグル |
+| FavoritesViewModel | お気に入り一覧の状態管理。カテゴリフィルタ、削除、利用可能カテゴリの集計 |
 | SettingsViewModel | ユーザー設定の読み込み・保存。通知、時間帯、カテゴリ、学習データの管理 |
 | OnboardingViewModel | 5画面のページ遷移管理。カレンダー・通知・位置情報の権限リクエスト |
 
@@ -100,6 +109,7 @@ graph TD
 | LocationService | 現在地取得、逆ジオコーディング | CoreLocation |
 | NotificationService | 通知のスケジュール・キャンセル | UserNotifications |
 | PreferenceService | ユーザー設定・好みの永続化、状態公開 | UserDefaults |
+| FavoriteService | お気に入り提案の管理・永続化・状態公開 | UserDefaults |
 
 ---
 
@@ -112,6 +122,7 @@ graph TD
 ```swift
 struct ContentView: View {
     @StateObject private var preferenceService = PreferenceService()
+    @StateObject private var favoriteService = FavoriteService()
 
     var body: some View {
         let locationService = LocationService(preferenceService: preferenceService)
@@ -124,6 +135,7 @@ struct ContentView: View {
         }
         .environmentObject(preferenceService)
         .environmentObject(locationService)
+        .environmentObject(favoriteService)
     }
 }
 ```
@@ -145,7 +157,7 @@ graph LR
     HVM -->|内部生成| PS[PlaceSearchService]
 ```
 
-- **PreferenceService** と **LocationService** は EnvironmentObject として全画面で共有
+- **PreferenceService**、**LocationService**、**FavoriteService** は EnvironmentObject として全画面で共有
 - **HomeViewModel** は `configure(with:locationService:)` メソッドで外部サービスを受け取り、内部でその他のサービスを生成
 - **SuggestionDetailViewModel** は `configure(weather:preference:...)` で必要なデータとサービスを受け取る
 
