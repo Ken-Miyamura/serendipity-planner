@@ -10,6 +10,7 @@ final class HomeViewModelTests: XCTestCase {
     private var mockEngine: MockSuggestionEngine!
     private var mockNotification: MockNotificationService!
     private var mockPlaceSearch: MockPlaceSearchService!
+    private var mockHistory: MockHistoryService!
     private var mockPreference: MockPreferenceService!
     private var mockLocation: MockLocationService!
 
@@ -23,6 +24,7 @@ final class HomeViewModelTests: XCTestCase {
         mockEngine = MockSuggestionEngine()
         mockNotification = MockNotificationService()
         mockPlaceSearch = MockPlaceSearchService()
+        mockHistory = MockHistoryService()
         mockPreference = MockPreferenceService()
         mockLocation = MockLocationService()
 
@@ -31,7 +33,8 @@ final class HomeViewModelTests: XCTestCase {
             weatherService: mockWeather,
             suggestionEngine: mockEngine,
             notificationService: mockNotification,
-            placeSearchService: mockPlaceSearch
+            placeSearchService: mockPlaceSearch,
+            historyService: mockHistory
         )
         sut.configure(with: mockPreference, locationService: mockLocation)
     }
@@ -135,6 +138,10 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertTrue(sut.suggestions.isEmpty)
         XCTAssertEqual(sut.acceptedSuggestions.count, 1)
         XCTAssertTrue(try XCTUnwrap(sut.acceptedSuggestions.first?.isAccepted))
+
+        // 履歴にも保存されたことを確認
+        XCTAssertEqual(mockHistory.saveCallCount, 1)
+        XCTAssertEqual(mockHistory.histories.first?.suggestion.title, suggestion.title)
     }
 
     // MARK: - regenerateSuggestion Tests

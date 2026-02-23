@@ -51,6 +51,7 @@ targets:
       - path: SerendipityPlanner/Models/FreeTimeSlot.swift
       - path: SerendipityPlanner/Models/WeatherData.swift
       - path: SerendipityPlanner/Views/Home/SkyGradientView.swift
+      - path: SerendipityPlanner/Utilities/Extensions/Color+Theme.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner.widget

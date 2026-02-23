@@ -4,89 +4,96 @@ import WidgetKit
 struct MediumWidgetView: View {
     let entry: SerendipityEntry
 
-    private var gradientColors: [Color] {
-        let palette = SkyColorPalette.base(for: entry.timePeriod)
-        return [palette.top.color, palette.middle.color, palette.bottom.color]
+    private var useLightText: Bool {
+        entry.timePeriod.prefersLightText
+    }
+
+    private var primaryTextColor: Color {
+        useLightText ? .white : .primary
+    }
+
+    private var secondaryTextColor: Color {
+        useLightText ? .white.opacity(0.85) : .secondary
+    }
+
+    private var tertiaryTextColor: Color {
+        useLightText ? .white.opacity(0.7) : Color(red: 0.5, green: 0.5, blue: 0.55)
     }
 
     var body: some View {
-        ZStack {
-            LinearGradient(
-                colors: gradientColors,
-                startPoint: .top,
-                endPoint: .bottom
-            )
-
-            if let slot = entry.nextFreeTimeSlot, let suggestion = entry.suggestion {
-                HStack(spacing: 12) {
-                    // 左: アイコン
-                    VStack {
-                        Image(systemName: suggestion.category.iconName)
-                            .font(.largeTitle)
-                            .foregroundColor(.white.opacity(0.9))
-                    }
-                    .frame(width: 60)
-
-                    // 右: 詳細
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(suggestion.category.displayName)
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-
-                        Text(suggestion.title)
-                            .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.9))
-                            .lineLimit(1)
-
-                        Spacer().frame(height: 2)
-
-                        HStack(spacing: 8) {
-                            // 時間
-                            Label(slot.timeRangeText, systemImage: "clock")
-                                .font(.caption)
-                                .foregroundColor(.white.opacity(0.8))
-
-                            // 場所
-                            if let place = suggestion.nearbyPlace {
-                                Label(place.name, systemImage: "mappin")
-                                    .font(.caption)
-                                    .foregroundColor(.white.opacity(0.8))
-                                    .lineLimit(1)
-                            }
-                        }
-
-                        // 天気
-                        if let weather = entry.weather {
-                            Label(weather.summary, systemImage: weather.condition.iconName)
-                                .font(.caption2)
-                                .foregroundColor(.white.opacity(0.7))
-                        }
-                    }
-
-                    Spacer()
-                }
-                .padding()
-            } else {
-                HStack(spacing: 12) {
-                    Image(systemName: "calendar.badge.checkmark")
+        if let slot = entry.nextFreeTimeSlot, let suggestion = entry.suggestion {
+            HStack(spacing: 12) {
+                // 左: アイコン
+                VStack {
+                    Image(systemName: suggestion.category.iconName)
                         .font(.largeTitle)
-                        .foregroundColor(.white.opacity(0.7))
+                        .foregroundColor(Color.theme.color(for: suggestion.category))
+                }
+                .frame(width: 60)
 
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("今日の空き時間はありません")
-                            .font(.headline)
-                            .foregroundColor(.white.opacity(0.8))
+                // 右: 詳細
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(suggestion.category.displayName)
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundColor(primaryTextColor)
+                        .shadow(
+                            color: useLightText ? .black.opacity(0.3) : .clear,
+                            radius: 2, y: 1
+                        )
 
-                        Text("カレンダーに空きができたらお知らせします")
+                    Text(suggestion.title)
+                        .font(.subheadline)
+                        .foregroundColor(secondaryTextColor)
+                        .lineLimit(1)
+
+                    Spacer().frame(height: 2)
+
+                    HStack(spacing: 8) {
+                        // 時間
+                        Label(slot.timeRangeText, systemImage: "clock")
                             .font(.caption)
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(secondaryTextColor)
+
+                        // 場所
+                        if let place = suggestion.nearbyPlace {
+                            Label(place.name, systemImage: "mappin")
+                                .font(.caption)
+                                .foregroundColor(secondaryTextColor)
+                                .lineLimit(1)
+                        }
                     }
 
-                    Spacer()
+                    // 天気
+                    if let weather = entry.weather {
+                        Label(weather.summary, systemImage: weather.condition.iconName)
+                            .font(.caption2)
+                            .foregroundColor(tertiaryTextColor)
+                    }
                 }
-                .padding()
+
+                Spacer()
             }
+            .padding()
+        } else {
+            HStack(spacing: 12) {
+                Image(systemName: "calendar.badge.checkmark")
+                    .font(.largeTitle)
+                    .foregroundColor(secondaryTextColor)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("今日の空き時間はありません")
+                        .font(.headline)
+                        .foregroundColor(primaryTextColor)
+
+                    Text("カレンダーに空きができたらお知らせします")
+                        .font(.caption)
+                        .foregroundColor(secondaryTextColor)
+                }
+
+                Spacer()
+            }
+            .padding()
         }
     }
 }

@@ -161,6 +161,96 @@ class MockPlaceSearchService: PlaceSearchServiceProtocol {
     }
 }
 
+// MARK: - MockFavoriteService
+
+class MockFavoriteService: FavoriteServiceProtocol {
+    var favorites: [FavoriteSuggestion] = []
+
+    var addFavoriteCallCount = 0
+    var removeFavoriteCallCount = 0
+    var removeAllCallCount = 0
+
+    func getFavorites() -> [FavoriteSuggestion] {
+        favorites
+    }
+
+    @discardableResult
+    func addFavorite(_ suggestion: Suggestion) -> FavoriteSuggestion {
+        addFavoriteCallCount += 1
+        let favorite = FavoriteSuggestion(from: suggestion)
+        favorites.insert(favorite, at: 0)
+        return favorite
+    }
+
+    func removeFavorite(id: UUID) {
+        removeFavoriteCallCount += 1
+        favorites.removeAll { $0.id == id }
+    }
+
+    func isFavorite(title: String, category: SuggestionCategory) -> Bool {
+        favorites.contains { $0.title == title && $0.category == category }
+    }
+
+    func getFavorites(for category: SuggestionCategory) -> [FavoriteSuggestion] {
+        favorites.filter { $0.category == category }
+    }
+
+    func favoritedCategories() -> Set<SuggestionCategory> {
+        Set(favorites.map(\.category))
+    }
+
+    func removeAll() {
+        removeAllCallCount += 1
+        favorites.removeAll()
+    }
+}
+
+// MARK: - MockHistoryService
+
+class MockHistoryService: HistoryServiceProtocol {
+    var histories: [SuggestionHistory] = []
+    var saveCallCount = 0
+    var deleteCallCount = 0
+    var deleteAllCallCount = 0
+
+    func saveHistory(_ history: SuggestionHistory) {
+        saveCallCount += 1
+        histories.append(history)
+    }
+
+    func fetchAllHistories() -> [SuggestionHistory] {
+        histories
+    }
+
+    func fetchHistories(from startDate: Date, to endDate: Date) -> [SuggestionHistory] {
+        histories.filter { $0.acceptedDate >= startDate && $0.acceptedDate <= endDate }
+    }
+
+    func fetchHistories(for month: Date) -> [SuggestionHistory] {
+        let calendar = Calendar.current
+        return histories.filter { calendar.isDate($0.acceptedDate, equalTo: month, toGranularity: .month) }
+    }
+
+    func deleteHistory(_ id: UUID) {
+        deleteCallCount += 1
+        histories.removeAll { $0.id == id }
+    }
+
+    func deleteAllHistories() {
+        deleteAllCallCount += 1
+        histories.removeAll()
+    }
+
+    func categorySummary(for month: Date) -> [SuggestionCategory: Int] {
+        let monthHistories = fetchHistories(for: month)
+        var summary: [SuggestionCategory: Int] = [:]
+        for history in monthHistories {
+            summary[history.suggestion.category, default: 0] += 1
+        }
+        return summary
+    }
+}
+
 // MARK: - MockSuggestionEngine
 
 class MockSuggestionEngine: SuggestionEngineProtocol {
