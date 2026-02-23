@@ -25,6 +25,7 @@ Serendipity Planner は、カレンダーの隙間時間を自動検出し、天
 | 地図・スポット検索 | MapKit (MKLocalSearch) |
 | 位置情報 | CoreLocation |
 | 通知 | UserNotifications |
+| ウィジェット | WidgetKit |
 | データ永続化 | UserDefaults + JSONEncoder/JSONDecoder |
 | 最小対応 OS | iOS 17+ |
 | 言語 | Japanese (ja) |
@@ -99,6 +100,16 @@ SerendipityPlanner/
     └── Extensions/
         ├── Date+Extensions.swift          # Date 拡張
         └── Color+Theme.swift              # カラーテーマ拡張
+
+SerendipityWidget/
+├── SerendipityWidget.swift                # ウィジェットエントリポイント・バンドル定義
+├── SerendipityTimelineProvider.swift      # タイムラインプロバイダー（15分更新）
+├── SharedDataManager.swift               # App Group 経由のデータ共有マネージャー
+├── Info.plist                             # ウィジェットターゲット設定
+├── SerendipityWidget.entitlements         # App Group エンタイトルメント
+└── Views/
+    ├── SmallWidgetView.swift              # Small ウィジェット表示
+    └── MediumWidgetView.swift             # Medium ウィジェット表示
 ```
 
 ## テスト構成
