@@ -24,6 +24,7 @@ targets:
       - path: SerendipityPlanner
         excludes:
           - "**/.DS_Store"
+      - path: SerendipityWidget/SharedDataManager.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner
@@ -32,7 +33,38 @@ targets:
         DEVELOPMENT_TEAM: ""
     entitlements:
       path: SerendipityPlanner/SerendipityPlanner.entitlements
-      properties: {}
+      properties:
+        com.apple.security.application-groups:
+          - group.com.serendipity.planner
+    dependencies:
+      - target: SerendipityWidgetExtension
+        embed: true
+
+  SerendipityWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: SerendipityWidget
+        excludes:
+          - "**/.DS_Store"
+      - path: SerendipityPlanner/Models/Suggestion.swift
+      - path: SerendipityPlanner/Models/FreeTimeSlot.swift
+      - path: SerendipityPlanner/Models/WeatherData.swift
+      - path: SerendipityPlanner/Views/Home/SkyGradientView.swift
+      - path: SerendipityPlanner/Utilities/Extensions/Color+Theme.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner.widget
+        INFOPLIST_FILE: SerendipityWidget/Info.plist
+        DEVELOPMENT_TEAM: ""
+        ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"
+    entitlements:
+      path: SerendipityWidget/SerendipityWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.serendipity.planner
 
   SerendipityPlannerTests:
     type: bundle.unit-test

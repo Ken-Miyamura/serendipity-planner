@@ -131,6 +131,17 @@ sequenceDiagram
 
 天気キャッシュは座標ごとに別キーで保存されます（例: `weather_cache_coord_35.68_139.77`）。
 
+### App Group 共有キー（ウィジェット用）
+
+`SharedDataManager` が App Group（`group.com.serendipity.planner`）の共有 UserDefaults を使用してメインアプリからウィジェットにデータを渡します。
+
+| キー | 格納データ | 型 |
+|------|---------|---|
+| `widget_free_time_slots` | 隙間時間スロット | [FreeTimeSlot] (JSON) |
+| `widget_suggestions` | 提案 | [Suggestion] (JSON) |
+| `widget_weather` | 天気情報 | WeatherData (JSON) |
+| `widget_last_updated` | 最終更新日時 | Date |
+
 ---
 
 ## 状態管理パターン

@@ -120,6 +120,52 @@ graph TD
 | PreferenceService | ユーザー設定・好みの永続化、状態公開 | UserDefaults |
 | FavoriteService | お気に入り提案の管理・永続化・状態公開 | UserDefaults |
 | HistoryService | 提案履歴の永続化・月別フィルタ・カテゴリ別集計 | UserDefaults |
+| SharedDataManager | アプリ⇔ウィジェット間のデータ共有 | App Group UserDefaults |
+
+---
+
+## ウィジェットアーキテクチャ
+
+WidgetKit を使用したホーム画面ウィジェットは、メインアプリとは別ターゲット（`SerendipityWidgetExtension`）で動作します。
+
+```mermaid
+graph TD
+    subgraph メインアプリ
+        HVM[HomeViewModel]
+        SDM_W[SharedDataManager<br/>書き込み]
+    end
+
+    subgraph App Group
+        AGU[共有 UserDefaults<br/>group.com.serendipity.planner]
+    end
+
+    subgraph ウィジェット Extension
+        STP[SerendipityTimelineProvider]
+        SDM_R[SharedDataManager<br/>読み込み]
+        SWV[SmallWidgetView]
+        MWV[MediumWidgetView]
+    end
+
+    HVM -->|提案・天気・スロット保存| SDM_W
+    SDM_W -->|JSON書き込み| AGU
+    AGU -->|JSON読み込み| SDM_R
+    SDM_R --> STP
+    STP --> SWV
+    STP --> MWV
+```
+
+### 共有データ
+
+| データ | 型 | 用途 |
+|--------|---|------|
+| FreeTimeSlot | [FreeTimeSlot] | 次の空き時間表示 |
+| Suggestion | [Suggestion] | 提案内容の表示 |
+| WeatherData | WeatherData? | 天気情報の表示 |
+
+### タイムライン更新
+
+- 15 分間隔で `SerendipityTimelineProvider` がタイムラインを再生成
+- 現在時刻以降の次の空きスロットと対応する提案を選択
 
 ---
 

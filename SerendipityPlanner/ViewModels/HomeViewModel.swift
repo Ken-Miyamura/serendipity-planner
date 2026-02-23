@@ -1,6 +1,7 @@
 import Combine
 import CoreLocation
 import Foundation
+import WidgetKit
 
 @MainActor
 class HomeViewModel: ObservableObject {
@@ -65,6 +66,9 @@ class HomeViewModel: ObservableObject {
         if let location {
             await enrichSuggestionsWithPlaces(near: location)
         }
+
+        // Widgetにデータを共有
+        updateWidgetData()
 
         isLoading = false
     }
@@ -229,6 +233,17 @@ class HomeViewModel: ObservableObject {
             )
             historyService.saveHistory(history)
         }
+    }
+
+    // MARK: - Widget Data Sharing
+
+    private func updateWidgetData() {
+        SharedDataManager.saveAll(
+            slots: freeTimeSlots,
+            suggestions: suggestions,
+            weather: weather
+        )
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     // MARK: - Accepted Suggestions Persistence
