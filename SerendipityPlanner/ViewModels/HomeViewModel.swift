@@ -20,19 +20,22 @@ class HomeViewModel: ObservableObject {
 
     private var preferenceService: PreferenceServiceProtocol?
     private var locationService: LocationServiceProtocol?
+    private let historyService: HistoryServiceProtocol
 
     init(
         calendarService: CalendarServiceProtocol = CalendarService(),
         weatherService: WeatherServiceProtocol = WeatherService(),
         suggestionEngine: SuggestionEngineProtocol = SuggestionEngine(),
         notificationService: NotificationServiceProtocol = NotificationService(),
-        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService()
+        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService(),
+        historyService: HistoryServiceProtocol = HistoryService()
     ) {
         self.calendarService = calendarService
         self.weatherService = weatherService
         self.suggestionEngine = suggestionEngine
         self.notificationService = notificationService
         self.placeSearchService = placeSearchService
+        self.historyService = historyService
     }
 
     func configure(with preferenceService: PreferenceServiceProtocol, locationService: LocationServiceProtocol) {
@@ -216,6 +219,15 @@ class HomeViewModel: ObservableObject {
             acceptedSuggestions.append(accepted)
             suggestions.remove(at: index)
             saveAcceptedSuggestions()
+
+            // 履歴に保存
+            let history = SuggestionHistory(
+                suggestion: accepted,
+                acceptedDate: Date(),
+                placeName: accepted.nearbyPlace?.name,
+                placeAddress: nil
+            )
+            historyService.saveHistory(history)
         }
     }
 

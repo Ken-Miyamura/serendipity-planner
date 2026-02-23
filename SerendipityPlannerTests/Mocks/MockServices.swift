@@ -161,6 +161,52 @@ class MockPlaceSearchService: PlaceSearchServiceProtocol {
     }
 }
 
+// MARK: - MockHistoryService
+
+class MockHistoryService: HistoryServiceProtocol {
+    var histories: [SuggestionHistory] = []
+    var saveCallCount = 0
+    var deleteCallCount = 0
+    var deleteAllCallCount = 0
+
+    func saveHistory(_ history: SuggestionHistory) {
+        saveCallCount += 1
+        histories.append(history)
+    }
+
+    func fetchAllHistories() -> [SuggestionHistory] {
+        histories
+    }
+
+    func fetchHistories(from startDate: Date, to endDate: Date) -> [SuggestionHistory] {
+        histories.filter { $0.acceptedDate >= startDate && $0.acceptedDate <= endDate }
+    }
+
+    func fetchHistories(for month: Date) -> [SuggestionHistory] {
+        let calendar = Calendar.current
+        return histories.filter { calendar.isDate($0.acceptedDate, equalTo: month, toGranularity: .month) }
+    }
+
+    func deleteHistory(_ id: UUID) {
+        deleteCallCount += 1
+        histories.removeAll { $0.id == id }
+    }
+
+    func deleteAllHistories() {
+        deleteAllCallCount += 1
+        histories.removeAll()
+    }
+
+    func categorySummary(for month: Date) -> [SuggestionCategory: Int] {
+        let monthHistories = fetchHistories(for: month)
+        var summary: [SuggestionCategory: Int] = [:]
+        for history in monthHistories {
+            summary[history.suggestion.category, default: 0] += 1
+        }
+        return summary
+    }
+}
+
 // MARK: - MockSuggestionEngine
 
 class MockSuggestionEngine: SuggestionEngineProtocol {
