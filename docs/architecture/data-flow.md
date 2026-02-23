@@ -103,6 +103,7 @@ sequenceDiagram
 | UserPreference | struct | Yes | preferredCategories, minimumFreeTimeMinutes, activeHours, selectionCounts |
 | UserSettings | struct | Yes | hasCompletedOnboarding, notificationsEnabled, morningNotificationEnabled/Hour, beforeFreeTimeNotificationEnabled, notificationLeadTimeMinutes |
 | NearbyPlace | struct | Yes | id, name, category, latitude, longitude, distance |
+| FavoriteSuggestion | struct | Yes | id, title, category, description, placeName, latitude, longitude, placeAddress, addedDate |
 | SuggestionHistory | struct | Yes | id, suggestion, acceptedDate, placeName, placeAddress |
 
 ### 補助型
@@ -125,6 +126,7 @@ sequenceDiagram
 | `userPreference` | Constants.Storage.userPreferenceKey | ユーザー好み | UserPreference (JSON) |
 | `weatherCache` | Constants.Storage.weatherCacheKey | 天気キャッシュ | WeatherData (JSON) |
 | `acceptedSuggestions` | Constants.Storage.acceptedSuggestionsKey | 受け入れ済み提案 | [Suggestion] (JSON) |
+| `favoriteSuggestions` | Constants.Storage.favoriteSuggestionsKey | お気に入り提案 | [FavoriteSuggestion] (JSON) |
 | `suggestionHistory` | Constants.Storage.suggestionHistoryKey | 提案履歴 | [SuggestionHistory] (JSON) |
 
 天気キャッシュは座標ごとに別キーで保存されます（例: `weather_cache_coord_35.68_139.77`）。
@@ -155,6 +157,7 @@ HomeViewModel
 graph TD
     CV[ContentView] -->|environmentObject| PFS[PreferenceService]
     CV -->|environmentObject| LS[LocationService]
+    CV -->|environmentObject| FS[FavoriteService]
 
     PFS --> HV[HomeView]
     PFS --> SV[SettingsView]

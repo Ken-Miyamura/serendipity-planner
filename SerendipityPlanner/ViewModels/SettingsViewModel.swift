@@ -16,21 +16,28 @@ class SettingsViewModel: ObservableObject {
     @Published var selectionCounts: [String: Int] = [:]
 
     private var preferenceService: PreferenceServiceProtocol?
+    private var favoriteService: FavoriteServiceProtocol?
     private var historyService: HistoryServiceProtocol
 
     init(
         preferenceService: PreferenceServiceProtocol? = nil,
+        favoriteService: FavoriteServiceProtocol? = nil,
         historyService: HistoryServiceProtocol = HistoryService()
     ) {
         self.preferenceService = preferenceService
+        self.favoriteService = favoriteService
         self.historyService = historyService
         if preferenceService != nil {
             loadSettings()
         }
     }
 
-    func configure(with preferenceService: PreferenceServiceProtocol) {
+    func configure(
+        with preferenceService: PreferenceServiceProtocol,
+        favoriteService: FavoriteServiceProtocol? = nil
+    ) {
         self.preferenceService = preferenceService
+        self.favoriteService = favoriteService
         loadSettings()
     }
 
@@ -118,6 +125,11 @@ class SettingsViewModel: ObservableObject {
     func resetLearningData() {
         preferenceService?.resetLearningData()
         selectionCounts = [:]
+    }
+
+    /// お気に入りデータをすべて削除する
+    func clearFavorites() {
+        favoriteService?.removeAll()
     }
 
     func selectionCount(for category: SuggestionCategory) -> Int {

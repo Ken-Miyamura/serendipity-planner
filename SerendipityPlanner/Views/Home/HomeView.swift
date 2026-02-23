@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var preferenceService: PreferenceService
+    @EnvironmentObject private var favoriteService: FavoriteService
     @StateObject private var viewModel = HomeViewModel()
     let locationService: LocationService
 
@@ -136,6 +137,7 @@ struct HomeView: View {
                             preferenceService: preferenceService,
                             locationService: locationService,
                             calendarService: viewModel.calendarService,
+                            favoriteService: favoriteService,
                             onAccept: { viewModel.acceptSuggestion(suggestion) },
                             onRegenerate: {
                                 viewModel.regenerateSuggestion(

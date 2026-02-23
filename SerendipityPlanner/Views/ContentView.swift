@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var preferenceService = PreferenceService()
+    @StateObject private var favoriteService = FavoriteService()
 
     var body: some View {
         let locationService = LocationService(preferenceService: preferenceService)
@@ -16,6 +17,7 @@ struct ContentView: View {
         }
         .environmentObject(preferenceService)
         .environmentObject(locationService)
+        .environmentObject(favoriteService)
     }
 }
 
@@ -32,6 +34,11 @@ struct MainTabView: View {
             HistoryView()
                 .tabItem {
                     Label("履歴", systemImage: "clock.arrow.circlepath")
+                }
+
+            FavoritesView()
+                .tabItem {
+                    Label("お気に入り", systemImage: "heart.fill")
                 }
 
             SettingsView()
