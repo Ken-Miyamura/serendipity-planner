@@ -10,6 +10,7 @@ graph TD
         CV[ContentView]
         HV[HomeView]
         SDV[SuggestionDetailView]
+        HISV[HistoryView]
         FV[FavoritesView]
         SV[SettingsView]
         OV[OnboardingContainerView]
@@ -18,6 +19,7 @@ graph TD
     subgraph ViewModels
         HVM[HomeViewModel]
         SDVM[SuggestionDetailViewModel]
+        HISVM[HistoryViewModel]
         FVM[FavoritesViewModel]
         SVM[SettingsViewModel]
         OVM[OnboardingViewModel]
@@ -32,6 +34,7 @@ graph TD
         NS[NotificationService]
         PFS[PreferenceService]
         FS[FavoriteService]
+        HIS[HistoryService]
     end
 
     subgraph Models
@@ -43,11 +46,13 @@ graph TD
     end
 
     CV --> HV
+    CV --> HISV
     CV --> FV
     CV --> SV
     CV --> OV
     HV --> HVM
     SDV --> SDVM
+    HISV --> HISVM
     FV --> FVM
     SV --> SVM
     OV --> OVM
@@ -58,6 +63,9 @@ graph TD
     HVM --> PS
     HVM --> LS
     HVM --> NS
+    HVM --> HIS
+
+    HISVM --> HIS
 
     SDVM --> SE
     SDVM --> PS
@@ -86,8 +94,9 @@ graph TD
 
 | ViewModel | 責務 |
 |-----------|------|
-| HomeViewModel | ホーム画面のデータフロー統括。カレンダー取得→天気取得→提案生成→スポット検索の一連のフローを管理 |
+| HomeViewModel | ホーム画面のデータフロー統括。カレンダー取得→天気取得→提案生成→スポット検索の一連のフローを管理。提案受け入れ時に履歴保存 |
 | SuggestionDetailViewModel | 提案の受け入れ、代替案の生成、カレンダー登録、スポット検索、お気に入りトグル |
+| HistoryViewModel | 履歴一覧の状態管理。月ナビゲーション、日付グルーピング、カテゴリ別集計 |
 | FavoritesViewModel | お気に入り一覧の状態管理。カテゴリフィルタ、削除、利用可能カテゴリの集計 |
 | SettingsViewModel | ユーザー設定の読み込み・保存。通知、時間帯、カテゴリ、学習データの管理 |
 | OnboardingViewModel | 5画面のページ遷移管理。カレンダー・通知・位置情報の権限リクエスト |
@@ -110,6 +119,7 @@ graph TD
 | NotificationService | 通知のスケジュール・キャンセル | UserNotifications |
 | PreferenceService | ユーザー設定・好みの永続化、状態公開 | UserDefaults |
 | FavoriteService | お気に入り提案の管理・永続化・状態公開 | UserDefaults |
+| HistoryService | 提案履歴の永続化・月別フィルタ・カテゴリ別集計 | UserDefaults |
 
 ---
 

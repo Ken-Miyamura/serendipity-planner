@@ -31,6 +31,11 @@ struct MainTabView: View {
                     Label("ホーム", systemImage: "house.fill")
                 }
 
+            HistoryView()
+                .tabItem {
+                    Label("履歴", systemImage: "clock.arrow.circlepath")
+                }
+
             FavoritesView()
                 .tabItem {
                     Label("お気に入り", systemImage: "heart.fill")

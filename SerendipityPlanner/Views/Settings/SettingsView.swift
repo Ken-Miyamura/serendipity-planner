@@ -7,6 +7,7 @@ struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     @State private var showResetConfirmation = false
     @State private var showFavoriteClearConfirmation = false
+    @State private var showDeleteHistoryConfirmation = false
 
     var body: some View {
         NavigationView {
@@ -147,6 +148,18 @@ struct SettingsView: View {
                         }
                     }
 
+                    // History data
+                    Section(
+                        header: Text("履歴データ"),
+                        footer: Text("受け入れた提案の履歴をすべて削除します。この操作は取り消せません。")
+                    ) {
+                        Button(role: .destructive) {
+                            showDeleteHistoryConfirmation = true
+                        } label: {
+                            Text("履歴データを削除")
+                        }
+                    }
+
                     // Favorites
                     Section(
                         header: Text("お気に入り"),
@@ -181,6 +194,14 @@ struct SettingsView: View {
                     Button("キャンセル", role: .cancel) {}
                 } message: {
                     Text("学習データをリセットすると、提案の重み付けが初期状態に戻ります。")
+                }
+                .alert("履歴データを削除", isPresented: $showDeleteHistoryConfirmation) {
+                    Button("削除", role: .destructive) {
+                        viewModel.deleteAllHistories()
+                    }
+                    Button("キャンセル", role: .cancel) {}
+                } message: {
+                    Text("すべての履歴データが削除されます。この操作は取り消せません。")
                 }
                 .alert("お気に入りデータを削除", isPresented: $showFavoriteClearConfirmation) {
                     Button("削除", role: .destructive) {

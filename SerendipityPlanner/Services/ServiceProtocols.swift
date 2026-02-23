@@ -87,6 +87,18 @@ protocol FavoriteServiceProtocol: AnyObject {
     func removeAll()
 }
 
+// MARK: - HistoryServiceProtocol
+
+protocol HistoryServiceProtocol {
+    func saveHistory(_ history: SuggestionHistory)
+    func fetchAllHistories() -> [SuggestionHistory]
+    func fetchHistories(from startDate: Date, to endDate: Date) -> [SuggestionHistory]
+    func fetchHistories(for month: Date) -> [SuggestionHistory]
+    func deleteHistory(_ id: UUID)
+    func deleteAllHistories()
+    func categorySummary(for month: Date) -> [SuggestionCategory: Int]
+}
+
 // MARK: - PreferenceServiceProtocol
 
 protocol PreferenceServiceProtocol: AnyObject {

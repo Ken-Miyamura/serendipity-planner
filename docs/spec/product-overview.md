@@ -43,7 +43,8 @@ SerendipityPlanner/
 │   ├── WeatherData.swift                # 天気データ・天気条件・API レスポンス
 │   ├── UserPreference.swift             # ユーザー設定・学習重み計算
 │   ├── UserSettings.swift               # アプリ設定（通知・オンボーディング）
-│   └── FavoriteSuggestion.swift         # お気に入り提案データ
+│   ├── FavoriteSuggestion.swift         # お気に入り提案データ
+│   └── SuggestionHistory.swift          # 提案履歴データ
 ├── Services/
 │   ├── CalendarService.swift            # EventKit 連携・隙間時間検出
 │   ├── WeatherService.swift             # OpenWeatherMap API 通信
@@ -52,13 +53,15 @@ SerendipityPlanner/
 │   ├── LocationService.swift            # CoreLocation 位置情報管理
 │   ├── NotificationService.swift        # 通知スケジューリング
 │   ├── PreferenceService.swift          # 設定永続化・状態管理
-│   └── FavoriteService.swift            # お気に入り管理（永続化・状態公開）
+│   ├── FavoriteService.swift            # お気に入り管理（永続化・状態公開）
+│   └── HistoryService.swift             # 履歴管理（永続化・集計）
 ├── ViewModels/
 │   ├── HomeViewModel.swift              # ホーム画面のデータフロー統括
 │   ├── SuggestionDetailViewModel.swift  # 提案詳細の操作ロジック
 │   ├── SettingsViewModel.swift          # 設定画面の状態管理
 │   ├── OnboardingViewModel.swift        # オンボーディングフロー管理
-│   └── FavoritesViewModel.swift         # お気に入り一覧の状態管理
+│   ├── FavoritesViewModel.swift         # お気に入り一覧の状態管理
+│   └── HistoryViewModel.swift           # 履歴画面の状態管理
 ├── Views/
 │   ├── ContentView.swift                # ルートビュー・依存注入起点
 │   ├── Home/
@@ -70,6 +73,10 @@ SerendipityPlanner/
 │   ├── Suggestion/
 │   │   ├── SuggestionDetailView.swift   # 提案詳細（地図・代替案・お気に入りトグル）
 │   │   └── SuggestionAcceptedView.swift # 受け入れアニメーション
+│   ├── History/
+│   │   ├── HistoryView.swift            # 履歴一覧（月ナビゲーション付き）
+│   │   ├── HistorySummaryView.swift     # 月別カテゴリサマリー
+│   │   └── HistoryRowView.swift         # 履歴行（カード形式）
 │   ├── Favorites/
 │   │   ├── FavoritesView.swift          # お気に入り一覧（フィルタ付き）
 │   │   ├── FavoriteRowView.swift        # お気に入り行（カード形式）
@@ -98,10 +105,12 @@ SerendipityPlanner/
 
 ```
 SerendipityPlannerTests/
-├── CalendarServiceTests.swift      # 9 テスト（隙間時間検出・曜日別設定）
-├── SuggestionEngineTests.swift     # 20 テスト（重み計算・学習システム・提案生成）
-├── FavoriteServiceTests.swift      # 13 テスト（お気に入りCRUD・永続化）
-└── FavoritesViewModelTests.swift   # 9 テスト（フィルタ・削除・カテゴリ一覧）
+├── CalendarServiceTests.swift       # 9 テスト（隙間時間検出・曜日別設定）
+├── SuggestionEngineTests.swift      # 20 テスト（重み計算・学習システム・提案生成）
+├── FavoriteServiceTests.swift       # 13 テスト（お気に入りCRUD・永続化）
+├── FavoritesViewModelTests.swift    # 9 テスト（フィルタ・削除・カテゴリ一覧）
+├── HistoryServiceTests.swift        # 9 テスト（履歴CRUD・月別フィルタ・集計）
+└── HistoryViewModelTests.swift      # 12 テスト（月ナビゲーション・グルーピング・集計表示）
 ```
 
 | テストスイート | テスト数 | カバー範囲 |
@@ -110,3 +119,5 @@ SerendipityPlannerTests/
 | SuggestionEngineTests | 20 | 天気補正、時間帯補正、時間長補正、重み付き選択、学習重み計算 |
 | FavoriteServiceTests | 13 | お気に入り追加・削除・重複チェック・永続化・isFavorite判定 |
 | FavoritesViewModelTests | 9 | カテゴリフィルタ・削除・利用可能カテゴリ一覧・空状態判定 |
+| HistoryServiceTests | 9 | 履歴保存・取得・削除・月別フィルタ・カテゴリ別集計 |
+| HistoryViewModelTests | 12 | 月ナビゲーション・日付グルーピング・サマリー表示・空状態判定 |
