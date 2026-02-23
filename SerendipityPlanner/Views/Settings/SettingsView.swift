@@ -21,7 +21,7 @@ struct SettingsView: View {
                     ) {
                         HStack {
                             Image(systemName: "location.fill")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(Color(red: 0.35, green: 0.35, blue: 0.38))
                             Text(locationService.currentLocationName)
                             Spacer()
                         }
@@ -114,7 +114,7 @@ struct SettingsView: View {
                                     Spacer()
                                     if viewModel.preferredCategories.contains(category) {
                                         Image(systemName: "checkmark")
-                                            .foregroundColor(.accentColor)
+                                            .foregroundColor(Color(red: 0.35, green: 0.35, blue: 0.38))
                                     }
                                 }
                             }
