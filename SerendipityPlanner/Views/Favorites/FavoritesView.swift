@@ -52,7 +52,7 @@ struct FavoritesView: View {
         VStack(spacing: 16) {
             Image(systemName: "heart")
                 .font(.system(size: 60))
-                .foregroundColor(useLightText ? .white.opacity(0.5) : .secondary.opacity(0.5))
+                .foregroundColor(useLightText ? .white.opacity(0.5) : Color(red: 0.82, green: 0.52, blue: 0.62).opacity(0.5))
 
             Text("お気に入りはまだありません")
                 .font(.headline)
@@ -87,7 +87,7 @@ struct FavoritesView: View {
                             .foregroundColor(useLightText ? .white.opacity(0.7) : .secondary)
                     }
                 } else {
-                    ForEach(viewModel.favorites) { favorite in
+                    ForEach(Array(viewModel.favorites.enumerated()), id: \.element.id) { index, favorite in
                         NavigationLink {
                             FavoriteDetailView(
                                 favorite: favorite,
@@ -102,6 +102,7 @@ struct FavoritesView: View {
                             )
                         }
                         .buttonStyle(.plain)
+                        .staggeredAppear(index: index)
                     }
                 }
             }

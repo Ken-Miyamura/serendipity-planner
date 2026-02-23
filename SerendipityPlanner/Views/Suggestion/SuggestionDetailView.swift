@@ -87,7 +87,7 @@ struct SuggestionDetailView: View {
                         viewModel.toggleFavorite()
                     } label: {
                         Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
-                            .foregroundColor(viewModel.isFavorite ? .red : .secondary)
+                            .foregroundColor(viewModel.isFavorite ? Color(red: 0.82, green: 0.52, blue: 0.62) : .secondary)
                     }
                     .accessibilityLabel(viewModel.isFavorite ? "お気に入りから削除" : "お気に入りに追加")
                     .accessibilityHint("この提案のお気に入り状態を切り替えます")
