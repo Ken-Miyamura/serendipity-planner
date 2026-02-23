@@ -42,7 +42,8 @@ SerendipityPlanner/
 │   ├── FreeTimeSlot.swift               # 隙間時間スロット
 │   ├── WeatherData.swift                # 天気データ・天気条件・API レスポンス
 │   ├── UserPreference.swift             # ユーザー設定・学習重み計算
-│   └── UserSettings.swift               # アプリ設定（通知・オンボーディング）
+│   ├── UserSettings.swift               # アプリ設定（通知・オンボーディング）
+│   └── SuggestionHistory.swift          # 提案履歴データ
 ├── Services/
 │   ├── CalendarService.swift            # EventKit 連携・隙間時間検出
 │   ├── WeatherService.swift             # OpenWeatherMap API 通信
@@ -50,12 +51,14 @@ SerendipityPlanner/
 │   ├── PlaceSearchService.swift         # MapKit スポット検索
 │   ├── LocationService.swift            # CoreLocation 位置情報管理
 │   ├── NotificationService.swift        # 通知スケジューリング
-│   └── PreferenceService.swift          # 設定永続化・状態管理
+│   ├── PreferenceService.swift          # 設定永続化・状態管理
+│   └── HistoryService.swift             # 履歴管理（永続化・集計）
 ├── ViewModels/
 │   ├── HomeViewModel.swift              # ホーム画面のデータフロー統括
 │   ├── SuggestionDetailViewModel.swift  # 提案詳細の操作ロジック
 │   ├── SettingsViewModel.swift          # 設定画面の状態管理
-│   └── OnboardingViewModel.swift        # オンボーディングフロー管理
+│   ├── OnboardingViewModel.swift        # オンボーディングフロー管理
+│   └── HistoryViewModel.swift           # 履歴画面の状態管理
 ├── Views/
 │   ├── ContentView.swift                # ルートビュー・依存注入起点
 │   ├── Home/
@@ -67,6 +70,10 @@ SerendipityPlanner/
 │   ├── Suggestion/
 │   │   ├── SuggestionDetailView.swift   # 提案詳細（地図・代替案）
 │   │   └── SuggestionAcceptedView.swift # 受け入れアニメーション
+│   ├── History/
+│   │   ├── HistoryView.swift            # 履歴一覧（月ナビゲーション付き）
+│   │   ├── HistorySummaryView.swift     # 月別カテゴリサマリー
+│   │   └── HistoryRowView.swift         # 履歴行（カード形式）
 │   ├── Settings/
 │   │   ├── SettingsView.swift           # 設定画面
 │   │   └── NotificationSettingsView.swift # 通知設定
@@ -91,11 +98,15 @@ SerendipityPlanner/
 
 ```
 SerendipityPlannerTests/
-├── CalendarServiceTests.swift    # 9 テスト（隙間時間検出・曜日別設定）
-└── SuggestionEngineTests.swift   # 20 テスト（重み計算・学習システム・提案生成）
+├── CalendarServiceTests.swift       # 9 テスト（隙間時間検出・曜日別設定）
+├── SuggestionEngineTests.swift      # 20 テスト（重み計算・学習システム・提案生成）
+├── HistoryServiceTests.swift        # 9 テスト（履歴CRUD・月別フィルタ・集計）
+└── HistoryViewModelTests.swift      # 12 テスト（月ナビゲーション・グルーピング・集計表示）
 ```
 
 | テストスイート | テスト数 | カバー範囲 |
 |--------------|---------|-----------|
 | CalendarServiceTests | 9 | 隙間時間検出アルゴリズム、最小時間フィルタ、平日/休日の時間帯設定 |
 | SuggestionEngineTests | 20 | 天気補正、時間帯補正、時間長補正、重み付き選択、学習重み計算 |
+| HistoryServiceTests | 9 | 履歴保存・取得・削除・月別フィルタ・カテゴリ別集計 |
+| HistoryViewModelTests | 12 | 月ナビゲーション・日付グルーピング・サマリー表示・空状態判定 |
