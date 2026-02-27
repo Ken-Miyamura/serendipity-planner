@@ -71,6 +71,7 @@
 		D58896B93CFB15D1E9BA851D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16A0511F69FBDFC73C6737A /* SettingsView.swift */; };
 		DBCE629254062E904F1D8B8F /* NotificationPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA6D3C2E9245C148F722344 /* NotificationPermissionView.swift */; };
 		DE13F1593BAD55652FDE1E62 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE11351A68EBF1F964AF811 /* View+Extensions.swift */; };
+		DE13F15A3BAD55652FDE1E63 /* View+StaggeredAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE11351A68EBF1F964AF812 /* View+StaggeredAppear.swift */; };
 		DE19BB03D86E06A902BCD44A /* PreferenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697B49FCA2B8F1128844A837 /* PreferenceService.swift */; };
 		E24F6A2C3C66C4BD48A37F64 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609307DB67F6379A350559D2 /* SharedDataManager.swift */; };
 		E6B35118562C6591E2D90199 /* FavoriteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB2C08093DAAF745B51B55 /* FavoriteRowView.swift */; };
@@ -170,6 +171,7 @@
 		AAE305482EEDDC6FB248B2E2 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		AC433B0BF0B7BE25FF71E2DC /* AcceptedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedCardView.swift; sourceTree = "<group>"; };
 		AFE11351A68EBF1F964AF811 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		AFE11351A68EBF1F964AF812 /* View+StaggeredAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+StaggeredAppear.swift"; sourceTree = "<group>"; };
 		B0CB2D9D21D61067327AECD2 /* CalendarPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPermissionView.swift; sourceTree = "<group>"; };
 		B16A0511F69FBDFC73C6737A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B610B05F0E027009888904AA /* SerendipityWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SerendipityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -447,6 +449,7 @@
 				54E6F24BF7412DF8073ED063 /* Color+Theme.swift */,
 				1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */,
 				AFE11351A68EBF1F964AF811 /* View+Extensions.swift */,
+				AFE11351A68EBF1F964AF812 /* View+StaggeredAppear.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				0176BFF1E6DF884C74BB1FD7 /* UserPreference.swift in Sources */,
 				AA492F82FED51737E99D4D46 /* UserSettings.swift in Sources */,
 				DE13F1593BAD55652FDE1E62 /* View+Extensions.swift in Sources */,
+				DE13F15A3BAD55652FDE1E63 /* View+StaggeredAppear.swift in Sources */,
 				880AB999E92178CB93F662C2 /* WeatherBadgeView.swift in Sources */,
 				8538665C5914F3AB61743E98 /* WeatherData.swift in Sources */,
 				10A013B3A9348EBAEBAA6FD6 /* WeatherService.swift in Sources */,

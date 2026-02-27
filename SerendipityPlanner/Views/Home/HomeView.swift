@@ -128,7 +128,7 @@ struct HomeView: View {
                     acceptedSection
                 }
 
-                ForEach(viewModel.suggestions) { suggestion in
+                ForEach(Array(viewModel.suggestions.enumerated()), id: \.element.id) { index, suggestion in
                     NavigationLink {
                         SuggestionDetailView(
                             suggestion: suggestion,
@@ -150,6 +150,7 @@ struct HomeView: View {
                         FreeTimeCardView(suggestion: suggestion)
                     }
                     .buttonStyle(.plain)
+                    .staggeredAppear(index: index)
                 }
             }
             .padding()
@@ -188,8 +189,9 @@ struct HomeView: View {
                 .fontWeight(.medium)
                 .foregroundColor(useLightText ? .white.opacity(0.8) : .secondary)
 
-            ForEach(viewModel.acceptedSuggestions) { suggestion in
+            ForEach(Array(viewModel.acceptedSuggestions.enumerated()), id: \.element.id) { index, suggestion in
                 AcceptedCardView(suggestion: suggestion)
+                    .staggeredAppear(index: index)
             }
         }
     }

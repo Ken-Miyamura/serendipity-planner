@@ -115,7 +115,7 @@ struct HistoryView: View {
                 )
 
                 // 日付ごとのグループ化リスト
-                ForEach(viewModel.groupedHistories, id: \.date) { group in
+                ForEach(Array(viewModel.groupedHistories.enumerated()), id: \.element.date) { groupIndex, group in
                     VStack(alignment: .leading, spacing: 8) {
                         // 日付ヘッダー
                         Text(viewModel.dateHeaderText(for: group.date))
@@ -126,11 +126,12 @@ struct HistoryView: View {
                             .padding(.leading, 4)
 
                         // 履歴行
-                        ForEach(group.items) { history in
+                        ForEach(Array(group.items.enumerated()), id: \.element.id) { itemIndex, history in
                             HistoryRowView(
                                 history: history,
                                 timeText: viewModel.timeText(for: history.acceptedDate)
                             )
+                            .staggeredAppear(index: groupIndex * 3 + itemIndex)
                         }
                     }
                 }

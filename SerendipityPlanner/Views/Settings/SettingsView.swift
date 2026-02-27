@@ -9,26 +9,53 @@ struct SettingsView: View {
     @State private var showFavoriteClearConfirmation = false
     @State private var showDeleteHistoryConfirmation = false
 
+    private var useLightText: Bool {
+        let period = TimePeriod.current()
+        return period.prefersLightText
+    }
+
+    private var sectionHeaderColor: Color {
+        useLightText ? .white.opacity(0.8) : .secondary
+    }
+
+    private var sectionFooterColor: Color {
+        useLightText ? .white.opacity(0.6) : .secondary
+    }
+
     var body: some View {
         NavigationView {
             ZStack {
                 SkyGradientView(weatherCondition: nil)
                 Form {
+                    // ヘッダー（他画面と統一）
+                    Section(header:
+                        Text("設定")
+                            .font(.title3)
+                            .fontWeight(.medium)
+                            .foregroundColor(useLightText ? .white : .primary)
+                            .shadow(color: useLightText ? .black.opacity(0.3) : .clear, radius: 2, y: 1)
+                            .textCase(nil)
+                            .frame(maxWidth: .infinity)
+                            .padding(.top, 8)
+                            .padding(.bottom, 4)
+                    ) { EmptyView() }
+
                     // Location
                     Section(
-                        header: Text("現在地"),
+                        header: Text("現在地").foregroundColor(sectionHeaderColor),
                         footer: Text("GPSから自動的に取得されます。天気と場所の提案に使用されます。")
+                            .foregroundColor(sectionFooterColor)
                     ) {
                         HStack {
                             Image(systemName: "location.fill")
-                                .foregroundColor(.accentColor)
+                                .foregroundColor(Color(red: 0.35, green: 0.35, blue: 0.38))
                             Text(locationService.currentLocationName)
                             Spacer()
                         }
                     }
 
                     // Notifications
-                    Section(header: Text("通知設定")) {
+                    Section(header: Text("通知設定").foregroundColor(sectionHeaderColor)) {
                         NavigationLink {
                             NotificationSettingsView(viewModel: viewModel)
                         } label: {
@@ -42,7 +69,7 @@ struct SettingsView: View {
                     }
 
                     // Preferences
-                    Section(header: Text("提案の設定")) {
+                    Section(header: Text("提案の設定").foregroundColor(sectionHeaderColor)) {
                         // Minimum free time
                         Picker("最小空き時間", selection: $viewModel.minimumFreeTime) {
                             ForEach(viewModel.minimumFreeTimeOptions, id: \.self) { minutes in
@@ -55,7 +82,7 @@ struct SettingsView: View {
                     }
 
                     // Weekday active hours
-                    Section(header: Text("平日のアクティブ時間")) {
+                    Section(header: Text("平日のアクティブ時間").foregroundColor(sectionHeaderColor)) {
                         Picker("開始", selection: $viewModel.weekdayStartHour) {
                             ForEach(viewModel.startHourOptions, id: \.self) { hour in
                                 Text(viewModel.hourDisplayText(hour)).tag(hour)
@@ -78,7 +105,7 @@ struct SettingsView: View {
                     }
 
                     // Weekend active hours
-                    Section(header: Text("休日のアクティブ時間")) {
+                    Section(header: Text("休日のアクティブ時間").foregroundColor(sectionHeaderColor)) {
                         Picker("開始", selection: $viewModel.weekendStartHour) {
                             ForEach(viewModel.startHourOptions, id: \.self) { hour in
                                 Text(viewModel.hourDisplayText(hour)).tag(hour)
@@ -101,7 +128,7 @@ struct SettingsView: View {
                     }
 
                     // Categories
-                    Section(header: Text("提案カテゴリ")) {
+                    Section(header: Text("提案カテゴリ").foregroundColor(sectionHeaderColor)) {
                         ForEach(SuggestionCategory.allCases, id: \.self) { category in
                             Button {
                                 viewModel.toggleCategory(category)
@@ -114,7 +141,7 @@ struct SettingsView: View {
                                     Spacer()
                                     if viewModel.preferredCategories.contains(category) {
                                         Image(systemName: "checkmark")
-                                            .foregroundColor(.accentColor)
+                                            .foregroundColor(Color(red: 0.35, green: 0.35, blue: 0.38))
                                     }
                                 }
                             }
@@ -125,8 +152,9 @@ struct SettingsView: View {
 
                     // Learning data
                     Section(
-                        header: Text("学習データ"),
+                        header: Text("学習データ").foregroundColor(sectionHeaderColor),
                         footer: Text("提案を受け入れるとカテゴリの出現率が調整されます。")
+                            .foregroundColor(sectionFooterColor)
                     ) {
                         ForEach(SuggestionCategory.allCases, id: \.self) { category in
                             HStack {
@@ -150,8 +178,9 @@ struct SettingsView: View {
 
                     // History data
                     Section(
-                        header: Text("履歴データ"),
+                        header: Text("履歴データ").foregroundColor(sectionHeaderColor),
                         footer: Text("受け入れた提案の履歴をすべて削除します。この操作は取り消せません。")
+                            .foregroundColor(sectionFooterColor)
                     ) {
                         Button(role: .destructive) {
                             showDeleteHistoryConfirmation = true
@@ -162,8 +191,9 @@ struct SettingsView: View {
 
                     // Favorites
                     Section(
-                        header: Text("お気に入り"),
+                        header: Text("お気に入り").foregroundColor(sectionHeaderColor),
                         footer: Text("お気に入りに保存したすべての提案を削除します。")
+                            .foregroundColor(sectionFooterColor)
                     ) {
                         Button(role: .destructive) {
                             showFavoriteClearConfirmation = true
@@ -173,7 +203,7 @@ struct SettingsView: View {
                     }
 
                     // App info
-                    Section(header: Text("アプリ情報")) {
+                    Section(header: Text("アプリ情報").foregroundColor(sectionHeaderColor)) {
                         HStack {
                             Text("バージョン")
                             Spacer()
@@ -183,7 +213,7 @@ struct SettingsView: View {
                     }
                 }
                 .hideFormBackground()
-                .navigationTitle("設定")
+                .navigationBarHidden(true)
                 .onAppear {
                     viewModel.configure(with: preferenceService, favoriteService: favoriteService)
                 }
