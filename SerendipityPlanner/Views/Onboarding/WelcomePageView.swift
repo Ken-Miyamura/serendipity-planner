@@ -14,46 +14,52 @@ struct WelcomePageView: View {
     }
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 14) {
             Spacer()
 
             // App Icon
             Image(uiImage: appIcon)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 96, height: 96)
-                .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+                .frame(width: 80, height: 80)
+                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                 .shadow(color: Color.gray.opacity(0.15), radius: 12, x: 0, y: 6)
 
             Text("セレンディピティ\nプランナー")
-                .font(.largeTitle)
+                .font(.title)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
                 .foregroundColor(.primary)
+                .fixedSize(horizontal: false, vertical: true)
 
-            Text("カレンダーの空き時間を見つけて\n天気に合った素敵な体験を提案します")
-                .font(.body)
+            Text("いつもの何気ない空き時間を、\n偶然出会う楽しみのきっかけに。")
+                .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 16)
+                .fixedSize(horizontal: false, vertical: true)
 
             Spacer()
 
-            VStack(spacing: 12) {
+            VStack(spacing: 8) {
                 FeatureRow(
                     icon: "calendar",
                     color: .blue,
-                    text: "空き時間を自動検出"
+                    text: "カレンダーから空き時間を自動検出"
                 )
                 FeatureRow(
                     icon: "cloud.sun",
                     color: .orange,
-                    text: "天気に応じた提案"
+                    text: "天気と時間帯に応じた体験を提案"
+                )
+                FeatureRow(
+                    icon: "location",
+                    color: .teal,
+                    text: "あなたのいる場所に応じた体験を提案"
                 )
                 FeatureRow(
                     icon: "sparkle",
                     color: accentGreen,
-                    text: "あなた好みの体験を提案"
+                    text: "あなた好みの体験を学習"
                 )
             }
             .padding(.horizontal, 24)
@@ -72,23 +78,24 @@ struct FeatureRow: View {
     private let cardBackground = Color.theme.cardBackground
 
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 12) {
             ZStack {
                 Circle()
                     .fill(color.opacity(0.12))
-                    .frame(width: 40, height: 40)
+                    .frame(width: 36, height: 36)
                 Image(systemName: icon)
-                    .font(.system(size: 18, weight: .medium))
+                    .font(.system(size: 16, weight: .medium))
                     .foregroundColor(color)
             }
             Text(text)
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundColor(.primary)
+                .fixedSize(horizontal: false, vertical: true)
             Spacer()
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
         .background(
             RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(cardBackground)
