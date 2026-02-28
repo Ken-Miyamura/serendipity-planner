@@ -6,7 +6,9 @@ struct OnboardingContainerView: View {
     let onComplete: () -> Void
 
     private let pageBackground = Color.theme.pageBackground
-    private var isWelcomePage: Bool { viewModel.currentPage == 0 }
+    private var isWelcomePage: Bool {
+        viewModel.currentPage == 0
+    }
 
     var body: some View {
         ZStack {
@@ -55,9 +57,18 @@ struct OnboardingContainerView: View {
                     } label: {
                         ZStack {
                             Circle()
-                                .fill(isWelcomePage || viewModel.canProceed ? OnboardingColors.coralMuted : Color.gray.opacity(0.4))
+                                .fill(
+                                    isWelcomePage || viewModel.canProceed
+                                        ? OnboardingColors.coralMuted
+                                        : Color.gray.opacity(0.4)
+                                )
                                 .frame(width: 56, height: 56)
-                                .shadow(color: isWelcomePage || viewModel.canProceed ? OnboardingColors.coralMuted.opacity(0.3) : Color.clear, radius: 8, x: 0, y: 4)
+                                .shadow(
+                                    color: isWelcomePage || viewModel.canProceed
+                                        ? OnboardingColors.coralMuted.opacity(0.3)
+                                        : Color.clear,
+                                    radius: 8, x: 0, y: 4
+                                )
                             Image(systemName: viewModel.isLastPage ? "checkmark" : "arrow.right")
                                 .font(.system(size: 20, weight: .semibold))
                                 .foregroundColor(.white)

@@ -82,8 +82,14 @@ private struct LocationBlobMask: Shape {
         let w = rect.width
         let h = rect.height
         var path = Path()
-
         path.move(to: CGPoint(x: w * 0.72, y: h * 0.12))
+        addUpperCurves(to: &path, w: w, h: h)
+        addLowerCurves(to: &path, w: w, h: h)
+        path.closeSubpath()
+        return path
+    }
+
+    private func addUpperCurves(to path: inout Path, w: CGFloat, h: CGFloat) {
         path.addCurve(
             to: CGPoint(x: w * 0.91, y: h * 0.27),
             control1: CGPoint(x: w * 0.79, y: h * 0.15),
@@ -114,6 +120,9 @@ private struct LocationBlobMask: Shape {
             control1: CGPoint(x: w * 0.38, y: h * 0.89),
             control2: CGPoint(x: w * 0.30, y: h * 0.85)
         )
+    }
+
+    private func addLowerCurves(to path: inout Path, w: CGFloat, h: CGFloat) {
         path.addCurve(
             to: CGPoint(x: w * 0.09, y: h * 0.65),
             control1: CGPoint(x: w * 0.18, y: h * 0.76),
@@ -144,7 +153,5 @@ private struct LocationBlobMask: Shape {
             control1: CGPoint(x: w * 0.65, y: h * 0.09),
             control2: CGPoint(x: w * 0.69, y: h * 0.10)
         )
-        path.closeSubpath()
-        return path
     }
 }
