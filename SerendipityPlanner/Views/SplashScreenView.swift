@@ -3,8 +3,6 @@ import SwiftUI
 struct SplashScreenView: View {
     @State private var isActive = false
     @State private var opacity: Double = 1.0
-    @State private var iconScale: CGFloat = 1.0
-    @State private var iconOpacity: Double = 1.0
 
     private let accentColor = Color(red: 0.275, green: 0.608, blue: 0.459)
     private let pageBackground = Color(red: 0.97, green: 0.96, blue: 0.94)
@@ -21,7 +19,6 @@ struct SplashScreenView: View {
     var body: some View {
         if isActive {
             ContentView()
-                .transition(.opacity)
         } else {
             ZStack {
                 pageBackground
@@ -40,8 +37,6 @@ struct SplashScreenView: View {
                         .fontWeight(.medium)
                         .foregroundColor(accentColor)
                 }
-                .scaleEffect(iconScale)
-                .opacity(iconOpacity)
             }
             .opacity(opacity)
             .onAppear {
@@ -51,9 +46,7 @@ struct SplashScreenView: View {
                         opacity = 0.0
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        withAnimation {
-                            isActive = true
-                        }
+                        isActive = true
                     }
                 }
             }
