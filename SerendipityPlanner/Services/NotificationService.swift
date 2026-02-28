@@ -22,6 +22,7 @@ class NotificationService: NotificationServiceProtocol {
         content.body = "\(suggestion.freeTimeSlot.timeRangeText)に空き時間があります。\(suggestion.title)はいかがですか？"
         content.sound = .default
         content.categoryIdentifier = Constants.Notification.categoryIdentifier
+        addIconAttachment(to: content)
 
         let triggerDate = suggestion.freeTimeSlot.startDate.adding(minutes: -leadTimeMinutes)
         guard triggerDate > Date() else { return }
@@ -52,6 +53,7 @@ class NotificationService: NotificationServiceProtocol {
         content.body = "今日の隙間時間：\(freeSlotCount)つ見つかりました。タップして提案を確認しましょう。"
         content.sound = .default
         content.categoryIdentifier = Constants.Notification.morningNotificationIdentifier
+        addIconAttachment(to: content)
 
         var dateComponents = DateComponents()
         dateComponents.hour = hour
@@ -80,5 +82,29 @@ class NotificationService: NotificationServiceProtocol {
 
     func cancelAllNotifications() {
         center.removeAllPendingNotificationRequests()
+    }
+
+    // MARK: - Private
+
+    private func addIconAttachment(to content: UNMutableNotificationContent) {
+        guard let iconURL = Bundle.main.url(forResource: "AppIcon", withExtension: "png"),
+              let tempDir = try? FileManager.default.url(
+                  for: .cachesDirectory,
+                  in: .userDomainMask,
+                  appropriateFor: nil,
+                  create: true
+              ) else { return }
+
+        let tempFile = tempDir.appendingPathComponent("notification_icon.png")
+        try? FileManager.default.removeItem(at: tempFile)
+        try? FileManager.default.copyItem(at: iconURL, to: tempFile)
+
+        if let attachment = try? UNNotificationAttachment(
+            identifier: "icon",
+            url: tempFile,
+            options: nil
+        ) {
+            content.attachments = [attachment]
+        }
     }
 }
