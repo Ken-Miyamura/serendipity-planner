@@ -6,25 +6,14 @@ struct OnboardingContainerView: View {
     let onComplete: () -> Void
 
     private let pageBackground = Color.theme.pageBackground
-    private let accentGreen = Color(red: 0.275, green: 0.608, blue: 0.459)
+    private var isWelcomePage: Bool { viewModel.currentPage == 0 }
 
     var body: some View {
         ZStack {
-            pageBackground
+            (isWelcomePage ? Color(red: 0.98, green: 0.97, blue: 0.94) : pageBackground)
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
-                // Page indicator
-                HStack(spacing: 8) {
-                    ForEach(0 ..< viewModel.totalPages, id: \.self) { index in
-                        Capsule()
-                            .fill(index == viewModel.currentPage ? accentGreen : Color.secondary.opacity(0.2))
-                            .frame(width: index == viewModel.currentPage ? 24 : 8, height: 8)
-                            .animation(.easeInOut(duration: 0.3), value: viewModel.currentPage)
-                    }
-                }
-                .padding(.top, 24)
-
                 // Content
                 TabView(selection: $viewModel.currentPage) {
                     WelcomePageView()
@@ -41,30 +30,43 @@ struct OnboardingContainerView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeInOut, value: viewModel.currentPage)
 
-                // Bottom button
-                Button {
-                    if viewModel.isLastPage {
-                        viewModel.saveInterests(to: preferenceService)
-                        onComplete()
-                    } else {
-                        viewModel.nextPage()
+                // Footer: page dots + button
+                HStack {
+                    // Page indicator (left)
+                    HStack(spacing: 6) {
+                        ForEach(0 ..< viewModel.totalPages, id: \.self) { index in
+                            Capsule()
+                                .fill(index == viewModel.currentPage ? OnboardingColors.coralMuted : Color.secondary.opacity(0.2))
+                                .frame(width: index == viewModel.currentPage ? 20 : 8, height: 8)
+                                .animation(.easeInOut(duration: 0.3), value: viewModel.currentPage)
+                        }
                     }
-                } label: {
-                    Text(viewModel.isLastPage ? "はじめる" : "次へ")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(viewModel.canProceed ? accentGreen : Color.gray.opacity(0.4))
-                        )
-                        .shadow(color: viewModel.canProceed ? accentGreen.opacity(0.3) : Color.clear, radius: 8, x: 0, y: 4)
+
+                    Spacer()
+
+                    // Button (right)
+                    Button {
+                        if viewModel.isLastPage {
+                            viewModel.saveInterests(to: preferenceService)
+                            onComplete()
+                        } else {
+                            viewModel.nextPage()
+                        }
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .fill(isWelcomePage || viewModel.canProceed ? OnboardingColors.coralMuted : Color.gray.opacity(0.4))
+                                .frame(width: 56, height: 56)
+                                .shadow(color: isWelcomePage || viewModel.canProceed ? OnboardingColors.coralMuted.opacity(0.3) : Color.clear, radius: 8, x: 0, y: 4)
+                            Image(systemName: viewModel.isLastPage ? "checkmark" : "arrow.right")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(.white)
+                        }
+                    }
+                    .disabled(!isWelcomePage && !viewModel.canProceed)
                 }
-                .disabled(!viewModel.canProceed)
-                .padding(.horizontal, 24)
-                .padding(.bottom, 40)
+                .padding(.horizontal, 28)
+                .padding(.bottom, 36)
             }
         }
     }
