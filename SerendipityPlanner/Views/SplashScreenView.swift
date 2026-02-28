@@ -3,8 +3,8 @@ import SwiftUI
 struct SplashScreenView: View {
     @State private var isActive = false
     @State private var opacity: Double = 1.0
-    @State private var iconScale: CGFloat = 0.8
-    @State private var iconOpacity: Double = 0.0
+    @State private var iconScale: CGFloat = 1.0
+    @State private var iconOpacity: Double = 1.0
 
     private let accentColor = Color(red: 0.275, green: 0.608, blue: 0.459)
     private let pageBackground = Color(red: 0.97, green: 0.96, blue: 0.94)
@@ -45,14 +45,8 @@ struct SplashScreenView: View {
             }
             .opacity(opacity)
             .onAppear {
-                // アイコンとテキストの表示アニメーション
-                withAnimation(.easeOut(duration: 0.6)) {
-                    iconScale = 1.0
-                    iconOpacity = 1.0
-                }
-
-                // 2秒後にフェードアウトしてメイン画面に遷移
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                // 1秒後にフェードアウトしてメイン画面に遷移
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     withAnimation(.easeInOut(duration: 0.4)) {
                         opacity = 0.0
                     }
