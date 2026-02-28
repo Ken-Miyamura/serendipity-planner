@@ -4,12 +4,21 @@ struct WelcomePageView: View {
     private let cardBackground = Color.theme.cardBackground
     private let accentGreen = Color(red: 0.275, green: 0.608, blue: 0.459)
 
+    private var appIcon: UIImage {
+        if let url = Bundle.main.url(forResource: "AppIcon60x60@2x", withExtension: "png"),
+           let data = try? Data(contentsOf: url),
+           let image = UIImage(data: data) {
+            return image
+        }
+        return UIImage()
+    }
+
     var body: some View {
         VStack(spacing: 20) {
             Spacer()
 
             // App Icon
-            Image("AppIconImage")
+            Image(uiImage: appIcon)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 96, height: 96)
