@@ -1,0 +1,63 @@
+import SwiftUI
+
+struct SplashScreenView: View {
+    @State private var isActive = false
+    @State private var opacity: Double = 1.0
+    @State private var iconScale: CGFloat = 0.8
+    @State private var iconOpacity: Double = 0.0
+
+    private let accentColor = Color(red: 0.275, green: 0.608, blue: 0.459)
+    private let pageBackground = Color(red: 0.97, green: 0.96, blue: 0.94)
+
+    var body: some View {
+        if isActive {
+            ContentView()
+                .transition(.opacity)
+        } else {
+            ZStack {
+                pageBackground
+                    .ignoresSafeArea()
+
+                VStack(spacing: 20) {
+                    Image("AppIconImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120, height: 120)
+                        .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+                        .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 4)
+
+                    Text("Serendipity Planner")
+                        .font(.title)
+                        .fontWeight(.medium)
+                        .foregroundColor(accentColor)
+                }
+                .scaleEffect(iconScale)
+                .opacity(iconOpacity)
+            }
+            .opacity(opacity)
+            .onAppear {
+                // アイコンとテキストの表示アニメーション
+                withAnimation(.easeOut(duration: 0.6)) {
+                    iconScale = 1.0
+                    iconOpacity = 1.0
+                }
+
+                // 2秒後にフェードアウトしてメイン画面に遷移
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation(.easeInOut(duration: 0.4)) {
+                        opacity = 0.0
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        withAnimation {
+                            isActive = true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#Preview {
+    SplashScreenView()
+}

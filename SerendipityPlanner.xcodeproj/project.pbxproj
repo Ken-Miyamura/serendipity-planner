@@ -85,6 +85,7 @@
 		F4BAA9BE8BE20F4F369D1998 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44FE781E50A4CCC7559AB5B /* Suggestion.swift */; };
 		FEBE797FC4C683A721C3C8DC /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D1D3FF70EBA7F3BFED0C13 /* OnboardingViewModelTests.swift */; };
 		FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39710C4915FDE10F43A13F2F /* WelcomePageView.swift */; };
+		A1B2C3D4E5F60718A9B0C1D2 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4F5A6B7C80921D2E3F4A5 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,6 +199,7 @@
 		F0EB17ED8188ABBB71429090 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F70280DCC1DC31D5097204BF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAB317953D7CCD010B4C57A1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D3E4F5A6B7C80921D2E3F4A5 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -299,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				97FFC658A07AA2B723C0E939 /* ContentView.swift */,
+				D3E4F5A6B7C80921D2E3F4A5 /* SplashScreenView.swift */,
 				368E2AFD26A8ADE2DB9FB86F /* Common */,
 				9E7267E1F49862875311D4A8 /* Favorites */,
 				B42480B0573197A89071469C /* History */,
@@ -646,6 +649,7 @@
 				8538665C5914F3AB61743E98 /* WeatherData.swift in Sources */,
 				10A013B3A9348EBAEBAA6FD6 /* WeatherService.swift in Sources */,
 				FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */,
+				A1B2C3D4E5F60718A9B0C1D2 /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
