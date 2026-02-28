@@ -48,6 +48,11 @@ struct InterestSelectionView: View {
                 .foregroundColor(OnboardingColors.textSub)
                 .padding(.top, 2)
 
+            Text("後からアプリの設定画面で変更できます")
+                .font(.caption)
+                .foregroundColor(OnboardingColors.textSub.opacity(0.7))
+                .padding(.top, 4)
+
             Spacer().frame(maxHeight: 20)
 
             // Interest Grid

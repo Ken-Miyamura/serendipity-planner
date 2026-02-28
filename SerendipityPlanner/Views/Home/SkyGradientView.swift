@@ -171,7 +171,6 @@ struct SkyColorPalette {
 struct SkyGradientView: View {
     let weatherCondition: WeatherCondition?
 
-    @State private var appeared = false
 
     private var period: TimePeriod {
         TimePeriod.current()
@@ -238,11 +237,5 @@ struct SkyGradientView: View {
         }
         .ignoresSafeArea()
         .accessibilityHidden(true)
-        .opacity(appeared ? 1 : 0)
-        .onAppear {
-            withAnimation(.easeIn(duration: 0.8)) {
-                appeared = true
-            }
-        }
     }
 }
