@@ -9,6 +9,15 @@ struct SplashScreenView: View {
     private let accentColor = Color(red: 0.275, green: 0.608, blue: 0.459)
     private let pageBackground = Color(red: 0.97, green: 0.96, blue: 0.94)
 
+    private var appIcon: UIImage {
+        if let url = Bundle.main.url(forResource: "AppIcon60x60@2x", withExtension: "png"),
+           let data = try? Data(contentsOf: url),
+           let image = UIImage(data: data) {
+            return image
+        }
+        return UIImage()
+    }
+
     var body: some View {
         if isActive {
             ContentView()
@@ -19,7 +28,7 @@ struct SplashScreenView: View {
                     .ignoresSafeArea()
 
                 VStack(spacing: 20) {
-                    Image("AppIconImage")
+                    Image(uiImage: appIcon)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 120, height: 120)
