@@ -171,7 +171,6 @@ struct SkyColorPalette {
 struct SkyGradientView: View {
     let weatherCondition: WeatherCondition?
 
-
     private var period: TimePeriod {
         TimePeriod.current()
     }
