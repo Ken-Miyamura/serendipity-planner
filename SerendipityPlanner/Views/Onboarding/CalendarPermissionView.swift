@@ -4,66 +4,94 @@ struct CalendarPermissionView: View {
     @ObservedObject var viewModel: OnboardingViewModel
 
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 0) {
             Spacer()
 
-            Image(systemName: "calendar.badge.plus")
-                .font(.system(size: 64))
-                .foregroundColor(.blue)
+            // Hero: Illustration with orange blob behind
+            ZStack {
+                CalendarBlob()
+                    .fill(OnboardingColors.orange.opacity(0.35))
+                    .frame(width: 280, height: 260)
 
-            Text("カレンダーへのアクセス")
-                .font(.title2)
-                .fontWeight(.bold)
+                Image("CalendarIllustration")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 240, height: 240)
+            }
+            .frame(height: 280)
 
-            Text("カレンダーの予定を確認して\n空き時間を検出するために必要です")
-                .font(.body)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
+            Spacer().frame(maxHeight: 20)
 
+            // Permission button or granted state
             if viewModel.calendarPermissionGranted {
-                Label("許可済み", systemImage: "checkmark.circle.fill")
-                    .foregroundColor(.green)
-                    .font(.headline)
-                    .accessibilityLabel("カレンダーへのアクセスは許可済みです")
+                PermissionGrantedBadge(
+                    accessibilityText: "カレンダーへのアクセスは許可済みです"
+                )
             } else {
-                Button {
+                PermissionActionButton(
+                    icon: "checkmark.circle.fill",
+                    label: "カレンダーを許可する"
+                ) {
                     Task {
                         await viewModel.requestCalendarPermission()
                     }
-                } label: {
-                    Text("カレンダーを許可する")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: 240)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(12)
                 }
 
                 if let error = viewModel.permissionError, error.contains("カレンダー") {
-                    Text(error)
-                        .font(.caption)
-                        .foregroundColor(.red)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-
-                    Button("設定を開く") {
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            UIApplication.shared.open(url)
-                        }
-                    }
-                    .font(.caption)
+                    PermissionErrorView(error: error)
                 }
             }
 
-            Spacer()
-
-            Text("後から設定アプリで変更できます")
-                .font(.caption)
-                .foregroundColor(.secondary)
+            PermissionDescription(
+                text: "カレンダーの予定を確認して\n空き時間を自動で検出し、\nあなたに合った体験を提案します"
+            )
 
             Spacer()
         }
-        .padding()
+        .padding(.horizontal, 4)
+    }
+}
+
+// MARK: - Calendar Blob Shape
+
+private struct CalendarBlob: Shape {
+    func path(in rect: CGRect) -> Path {
+        let w = rect.width
+        let h = rect.height
+        var path = Path()
+
+        path.move(to: CGPoint(x: w * 0.50, y: h * 0.02))
+        path.addCurve(
+            to: CGPoint(x: w * 0.92, y: h * 0.25),
+            control1: CGPoint(x: w * 0.72, y: h * 0.0),
+            control2: CGPoint(x: w * 0.88, y: h * 0.10)
+        )
+        path.addCurve(
+            to: CGPoint(x: w * 0.95, y: h * 0.65),
+            control1: CGPoint(x: w * 0.98, y: h * 0.38),
+            control2: CGPoint(x: w * 1.0, y: h * 0.55)
+        )
+        path.addCurve(
+            to: CGPoint(x: w * 0.55, y: h * 0.95),
+            control1: CGPoint(x: w * 0.90, y: h * 0.80),
+            control2: CGPoint(x: w * 0.75, y: h * 0.95)
+        )
+        path.addCurve(
+            to: CGPoint(x: w * 0.10, y: h * 0.70),
+            control1: CGPoint(x: w * 0.35, y: h * 0.95),
+            control2: CGPoint(x: w * 0.12, y: h * 0.88)
+        )
+        path.addCurve(
+            to: CGPoint(x: w * 0.08, y: h * 0.30),
+            control1: CGPoint(x: w * 0.08, y: h * 0.55),
+            control2: CGPoint(x: w * 0.02, y: h * 0.42)
+        )
+        path.addCurve(
+            to: CGPoint(x: w * 0.50, y: h * 0.02),
+            control1: CGPoint(x: w * 0.15, y: h * 0.15),
+            control2: CGPoint(x: w * 0.30, y: h * 0.04)
+        )
+        path.closeSubpath()
+        return path
     }
 }
