@@ -6,7 +6,7 @@ struct SerendipityPlannerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SplashScreenView()
+            ContentView()
         }
     }
 }
