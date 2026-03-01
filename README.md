@@ -3,7 +3,7 @@
 Appleカレンダーの隙間時間を自動検出し、天気・時間帯・好みに応じた体験を提案するiOSアプリ。
 
 <p align="center">
-  <img src="docs/screenshots/home.png" alt="ホーム画面" width="280">
+  <img src="docs/screenshots/onboarding_welcome.png" alt="ホーム画面" width="280">
 </p>
 
 ## 機能
