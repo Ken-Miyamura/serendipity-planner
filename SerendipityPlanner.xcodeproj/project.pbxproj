@@ -31,7 +31,9 @@
 		4D8CF885090BEA52A70A0B54 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACBEBF54FEC9855FC1880BA /* SmallWidgetView.swift */; };
 		4FCBFDC7A4BABF51CBBCCC97 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */; };
 		591D2AB3F620991D9778F767 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6F24BF7412DF8073ED063 /* Color+Theme.swift */; };
+		5B79E8A203AB130B64DAD07B /* OnboardingComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FB8019E121A1DDEE271F9 /* OnboardingComponents.swift */; };
 		5D6CE2D8B3C102F6ACBF98C8 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFD86BDE4488A5C30FC374 /* LocationService.swift */; };
+		66711BDDC925706555E79CC0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 99AC8361221A1FE7C4E71EF7 /* PrivacyInfo.xcprivacy */; };
 		68ABAE36D93ADEFE7F45E839 /* HistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E926B278D85AAC2145E77B63 /* HistoryViewModelTests.swift */; };
 		6AC78B5EF9FE204FE48519A7 /* SuggestionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F60BF9623985E088653907 /* SuggestionEngine.swift */; };
 		6ACC2057FC44EAFF7B90F109 /* CalendarPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CB2D9D21D61067327AECD2 /* CalendarPermissionView.swift */; };
@@ -85,7 +87,6 @@
 		F4BAA9BE8BE20F4F369D1998 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44FE781E50A4CCC7559AB5B /* Suggestion.swift */; };
 		FEBE797FC4C683A721C3C8DC /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D1D3FF70EBA7F3BFED0C13 /* OnboardingViewModelTests.swift */; };
 		FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39710C4915FDE10F43A13F2F /* WelcomePageView.swift */; };
-		ONBC000002000000000001 /* OnboardingComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = ONBC000001000000000001 /* OnboardingComponents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		0A98174F1A893328A4B36644 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		0B79688A55B4021C9FC6C880 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		0D82D2BF8ADB63B12CCC948A /* SerendipityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityWidget.swift; sourceTree = "<group>"; };
+		100FB8019E121A1DDEE271F9 /* OnboardingComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingComponents.swift; sourceTree = "<group>"; };
 		1204EB9429B9915293AB5809 /* WeatherBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherBadgeView.swift; sourceTree = "<group>"; };
 		13D1D3FF70EBA7F3BFED0C13 /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		13FF3A15CF1ADA1552216930 /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
@@ -145,7 +147,6 @@
 		322E18E10F230A4E14E5EDB1 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		3935CDCF113D727FB04444EC /* SerendipityTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTimelineProvider.swift; sourceTree = "<group>"; };
 		39710C4915FDE10F43A13F2F /* WelcomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageView.swift; sourceTree = "<group>"; };
-		ONBC000001000000000001 /* OnboardingComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingComponents.swift; sourceTree = "<group>"; };
 		3E9DEAAC010AD807048A801B /* SuggestionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailViewModel.swift; sourceTree = "<group>"; };
 		3FDC697F7D1CC2A015688AFD /* FreeTimeSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTimeSlot.swift; sourceTree = "<group>"; };
 		432C8E80C9CB549146B539C6 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
@@ -168,7 +169,9 @@
 		7F590A1A44D4AADA2284F5EE /* SerendipityPlannerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SerendipityPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8250300D5D448B02A23C40BA /* SerendipityPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityPlannerApp.swift; sourceTree = "<group>"; };
 		8596A4778BF1DFFAF21B47FD /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
+		90F676FF5132C73780089608 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		97FFC658A07AA2B723C0E939 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		99AC8361221A1FE7C4E71EF7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A9DC8A9720C728B668EEED02 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
 		AAE305482EEDDC6FB248B2E2 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		AC433B0BF0B7BE25FF71E2DC /* AcceptedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedCardView.swift; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				214E1BF7FE63AF11FCB20634 /* Debug.xcconfig */,
+				90F676FF5132C73780089608 /* Release.xcconfig */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -316,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				01034174B725078C89BFC607 /* Assets.xcassets */,
+				99AC8361221A1FE7C4E71EF7 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -337,9 +342,9 @@
 				E2D79D09632698588BEFD2EB /* InterestSelectionView.swift */,
 				0A98174F1A893328A4B36644 /* LocationInputView.swift */,
 				6AA6D3C2E9245C148F722344 /* NotificationPermissionView.swift */,
+				100FB8019E121A1DDEE271F9 /* OnboardingComponents.swift */,
 				A9DC8A9720C728B668EEED02 /* OnboardingContainerView.swift */,
 				39710C4915FDE10F43A13F2F /* WelcomePageView.swift */,
-				ONBC000001000000000001 /* OnboardingComponents.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -533,10 +538,10 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					921F5473CFF2EEA6D1A5CB9C = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = BVQRL978G2;
 					};
 					D9A2B5A734FE39A85C1D389C = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = BVQRL978G2;
 					};
 				};
 			};
@@ -567,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A7360D4F7AA91B52B30312B /* Assets.xcassets in Resources */,
+				66711BDDC925706555E79CC0 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,6 +630,7 @@
 				DBCE629254062E904F1D8B8F /* NotificationPermissionView.swift in Sources */,
 				35D48B406A9E8B61BEB2170F /* NotificationService.swift in Sources */,
 				8052AD605F66A947D70EB24E /* NotificationSettingsView.swift in Sources */,
+				5B79E8A203AB130B64DAD07B /* OnboardingComponents.swift in Sources */,
 				AEC728F45EBA7A1C44AC0977 /* OnboardingContainerView.swift in Sources */,
 				7EBB35CB82A6A17C65B505BC /* OnboardingViewModel.swift in Sources */,
 				A82A42B9EFEF32FC6D113077 /* PlaceSearchService.swift in Sources */,
@@ -649,7 +656,6 @@
 				8538665C5914F3AB61743E98 /* WeatherData.swift in Sources */,
 				10A013B3A9348EBAEBAA6FD6 /* WeatherService.swift in Sources */,
 				FF3DCDF577772255B3669432 /* WelcomePageView.swift in Sources */,
-				ONBC000002000000000001 /* OnboardingComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,7 +699,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SerendipityPlanner/SerendipityPlanner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityPlanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -707,7 +713,7 @@
 		};
 		7A2D9039486B663499D25AEA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 214E1BF7FE63AF11FCB20634 /* Debug.xcconfig */;
+			baseConfigurationReference = 90F676FF5132C73780089608 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -770,7 +776,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SerendipityWidget/SerendipityWidget.entitlements;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.serendipity.planner.widget;
@@ -785,7 +791,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = SerendipityWidget/SerendipityWidget.entitlements;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.serendipity.planner.widget;
@@ -816,7 +822,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SerendipityPlanner/SerendipityPlanner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityPlanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
