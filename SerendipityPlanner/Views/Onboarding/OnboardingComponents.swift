@@ -103,7 +103,7 @@ struct PermissionErrorView: View {
 // MARK: - Permission Description
 
 struct PermissionDescription: View {
-    var headline: String? = nil
+    var headline: String?
     let text: String
     var showSettingsHint: Bool = true
 
