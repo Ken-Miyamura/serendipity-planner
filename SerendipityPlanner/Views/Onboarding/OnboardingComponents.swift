@@ -103,22 +103,32 @@ struct PermissionErrorView: View {
 // MARK: - Permission Description
 
 struct PermissionDescription: View {
+    var headline: String? = nil
     let text: String
     var showSettingsHint: Bool = true
 
     var body: some View {
         VStack(spacing: 0) {
+            if let headline {
+                Text(headline)
+                    .font(.system(size: 21, weight: .semibold, design: .rounded))
+                    .foregroundColor(OnboardingColors.coralMuted)
+                    .padding(.top, 16)
+                    .padding(.bottom, 6)
+            }
+
             Text(text)
-                .font(.subheadline)
+                .font(.system(size: 15, weight: .regular, design: .rounded))
                 .foregroundColor(OnboardingColors.textSub)
                 .multilineTextAlignment(.center)
-                .padding(.top, 12)
+                .lineSpacing(4)
+                .padding(.top, headline == nil ? 12 : 0)
 
             if showSettingsHint {
                 Text("後から設定アプリで変更できます")
-                    .font(.caption)
+                    .font(.system(size: 12, weight: .regular, design: .rounded))
                     .foregroundColor(OnboardingColors.textHint)
-                    .padding(.top, 6)
+                    .padding(.top, 10)
             }
         }
     }
