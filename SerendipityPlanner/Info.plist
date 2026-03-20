@@ -36,6 +36,13 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
 	<key>NSCalendarsUsageDescription</key>
 	<string>カレンダーから空き時間を検出して、体験を提案するために使用します。</string>
 	<key>NSCalendarsFullAccessUsageDescription</key>
