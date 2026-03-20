@@ -61,12 +61,6 @@ struct LocationInputView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     appeared = true
                 }
-                if !locationService.locationAuthorized {
-                    Task {
-                        try? await Task.sleep(nanoseconds: 600_000_000)
-                        locationService.requestPermission()
-                    }
-                }
             } else {
                 appeared = false
             }

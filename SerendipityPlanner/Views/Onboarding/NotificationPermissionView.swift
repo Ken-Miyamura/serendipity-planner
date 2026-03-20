@@ -41,12 +41,6 @@ struct NotificationPermissionView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     appeared = true
                 }
-                if !viewModel.notificationPermissionGranted {
-                    Task {
-                        try? await Task.sleep(nanoseconds: 600_000_000)
-                        await viewModel.requestNotificationPermission()
-                    }
-                }
             } else {
                 appeared = false
             }

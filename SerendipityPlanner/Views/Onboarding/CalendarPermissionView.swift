@@ -47,12 +47,6 @@ struct CalendarPermissionView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     appeared = true
                 }
-                if !viewModel.calendarPermissionGranted {
-                    Task {
-                        try? await Task.sleep(nanoseconds: 600_000_000)
-                        await viewModel.requestCalendarPermission()
-                    }
-                }
             } else {
                 appeared = false
             }

@@ -2,12 +2,16 @@ import SwiftUI
 
 struct OnboardingContainerView: View {
     @EnvironmentObject private var preferenceService: PreferenceService
+    @EnvironmentObject private var locationService: LocationService
     @StateObject private var viewModel = OnboardingViewModel()
     let onComplete: () -> Void
 
     private let pageBackground = Color.theme.pageBackground
     private var isWelcomePage: Bool {
         viewModel.currentPage == 0
+    }
+    private var isPermissionPage: Bool {
+        (2 ... 4).contains(viewModel.currentPage)
     }
 
     var body: some View {
@@ -49,32 +53,63 @@ struct OnboardingContainerView: View {
                     // Button (right)
                     Button {
                         if viewModel.isLastPage {
+                            // Location permission page (last)
+                            locationService.requestPermission()
                             viewModel.saveInterests(to: preferenceService)
                             onComplete()
+                        } else if viewModel.currentPage == 2 {
+                            // Calendar permission page
+                            Task {
+                                await viewModel.requestCalendarPermission()
+                                viewModel.nextPage()
+                            }
+                        } else if viewModel.currentPage == 3 {
+                            // Notification permission page
+                            Task {
+                                await viewModel.requestNotificationPermission()
+                                viewModel.nextPage()
+                            }
                         } else {
                             viewModel.nextPage()
                         }
                     } label: {
-                        ZStack {
-                            Circle()
-                                .fill(
-                                    isWelcomePage || viewModel.canProceed
-                                        ? OnboardingColors.coralMuted
-                                        : Color.gray.opacity(0.4)
-                                )
-                                .frame(width: 56, height: 56)
-                                .shadow(
-                                    color: isWelcomePage || viewModel.canProceed
-                                        ? OnboardingColors.coralMuted.opacity(0.3)
-                                        : Color.clear,
-                                    radius: 8, x: 0, y: 4
-                                )
-                            Image(systemName: viewModel.isLastPage ? "checkmark" : "arrow.right")
-                                .font(.system(size: 20, weight: .semibold))
+                        if isPermissionPage {
+                            // Text button for permission pages
+                            Text("次へ")
+                                .font(.system(size: 17, weight: .semibold, design: .rounded))
                                 .foregroundColor(.white)
+                                .padding(.horizontal, 28)
+                                .padding(.vertical, 14)
+                                .background(
+                                    Capsule()
+                                        .fill(OnboardingColors.coralMuted)
+                                        .shadow(
+                                            color: OnboardingColors.coralMuted.opacity(0.3),
+                                            radius: 8, x: 0, y: 4
+                                        )
+                                )
+                        } else {
+                            ZStack {
+                                Circle()
+                                    .fill(
+                                        isWelcomePage || viewModel.canProceed
+                                            ? OnboardingColors.coralMuted
+                                            : Color.gray.opacity(0.4)
+                                    )
+                                    .frame(width: 56, height: 56)
+                                    .shadow(
+                                        color: isWelcomePage || viewModel.canProceed
+                                            ? OnboardingColors.coralMuted.opacity(0.3)
+                                            : Color.clear,
+                                        radius: 8, x: 0, y: 4
+                                    )
+                                Image(systemName: viewModel.isLastPage ? "checkmark" : "arrow.right")
+                                    .font(.system(size: 20, weight: .semibold))
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
-                    .disabled(!isWelcomePage && !viewModel.canProceed)
+                    .disabled(!isWelcomePage && !isPermissionPage && !viewModel.canProceed)
                 }
                 .padding(.horizontal, 28)
                 .padding(.bottom, 36)
