@@ -11,6 +11,7 @@ struct OnboardingContainerView: View {
     private var isWelcomePage: Bool {
         viewModel.currentPage == 0
     }
+
     private var isPermissionPage: Bool {
         (2 ... 4).contains(viewModel.currentPage)
     }
