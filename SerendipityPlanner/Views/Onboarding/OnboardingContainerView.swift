@@ -4,6 +4,7 @@ struct OnboardingContainerView: View {
     @EnvironmentObject private var preferenceService: PreferenceService
     @EnvironmentObject private var locationService: LocationService
     @StateObject private var viewModel = OnboardingViewModel()
+    @State private var waitingForLocationPermission = false
     let onComplete: () -> Void
 
     private let pageBackground = Color.theme.pageBackground
@@ -54,9 +55,8 @@ struct OnboardingContainerView: View {
                     Button {
                         if viewModel.isLastPage {
                             // Location permission page (last)
+                            waitingForLocationPermission = true
                             locationService.requestPermission()
-                            viewModel.saveInterests(to: preferenceService)
-                            onComplete()
                         } else if viewModel.currentPage == 2 {
                             // Calendar permission page
                             Task {
@@ -96,6 +96,13 @@ struct OnboardingContainerView: View {
                 }
                 .padding(.horizontal, 28)
                 .padding(.bottom, 36)
+            }
+        }
+        .onChange(of: locationService.locationAuthorizationResolved) { resolved in
+            if resolved, waitingForLocationPermission {
+                waitingForLocationPermission = false
+                viewModel.saveInterests(to: preferenceService)
+                onComplete()
             }
         }
     }
