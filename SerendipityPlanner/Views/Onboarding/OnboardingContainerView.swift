@@ -73,40 +73,23 @@ struct OnboardingContainerView: View {
                             viewModel.nextPage()
                         }
                     } label: {
-                        if isPermissionPage {
-                            // Text button for permission pages
-                            Text("次へ")
-                                .font(.system(size: 17, weight: .semibold, design: .rounded))
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 28)
-                                .padding(.vertical, 14)
-                                .background(
-                                    Capsule()
-                                        .fill(OnboardingColors.coralMuted)
-                                        .shadow(
-                                            color: OnboardingColors.coralMuted.opacity(0.3),
-                                            radius: 8, x: 0, y: 4
-                                        )
+                        ZStack {
+                            Circle()
+                                .fill(
+                                    isWelcomePage || isPermissionPage || viewModel.canProceed
+                                        ? OnboardingColors.coralMuted
+                                        : Color.gray.opacity(0.4)
                                 )
-                        } else {
-                            ZStack {
-                                Circle()
-                                    .fill(
-                                        isWelcomePage || viewModel.canProceed
-                                            ? OnboardingColors.coralMuted
-                                            : Color.gray.opacity(0.4)
-                                    )
-                                    .frame(width: 56, height: 56)
-                                    .shadow(
-                                        color: isWelcomePage || viewModel.canProceed
-                                            ? OnboardingColors.coralMuted.opacity(0.3)
-                                            : Color.clear,
-                                        radius: 8, x: 0, y: 4
-                                    )
-                                Image(systemName: viewModel.isLastPage ? "checkmark" : "arrow.right")
-                                    .font(.system(size: 20, weight: .semibold))
-                                    .foregroundColor(.white)
-                            }
+                                .frame(width: 56, height: 56)
+                                .shadow(
+                                    color: isWelcomePage || isPermissionPage || viewModel.canProceed
+                                        ? OnboardingColors.coralMuted.opacity(0.3)
+                                        : Color.clear,
+                                    radius: 8, x: 0, y: 4
+                                )
+                            Image(systemName: viewModel.isLastPage ? "checkmark" : "arrow.right")
+                                .font(.system(size: 20, weight: .semibold))
+                                .foregroundColor(.white)
                         }
                     }
                     .disabled(!isWelcomePage && !isPermissionPage && !viewModel.canProceed)
