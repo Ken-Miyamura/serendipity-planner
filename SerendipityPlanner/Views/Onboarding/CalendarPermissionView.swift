@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CalendarPermissionView: View {
     @ObservedObject var viewModel: OnboardingViewModel
+    @State private var appeared = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -11,44 +12,45 @@ struct CalendarPermissionView: View {
             ZStack {
                 CalendarBlob()
                     .fill(OnboardingColors.orange.opacity(0.35))
-                    .frame(width: 280, height: 260)
+                    .frame(width: 320, height: 300)
 
                 Image("CalendarIllustration")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 240, height: 240)
+                    .frame(width: 280, height: 280)
             }
-            .frame(height: 280)
+            .frame(height: 320)
+            .offset(y: appeared ? 0 : -30)
+            .opacity(appeared ? 1 : 0)
+            .animation(.easeOut(duration: 0.8), value: appeared)
 
-            Spacer().frame(maxHeight: 20)
+            Spacer().frame(maxHeight: 16)
 
-            // Permission button or granted state
-            if viewModel.calendarPermissionGranted {
-                PermissionGrantedBadge(
-                    accessibilityText: "カレンダーへのアクセスは許可済みです"
-                )
-            } else {
-                PermissionActionButton(
-                    icon: "checkmark.circle.fill",
-                    label: "カレンダーを許可する"
-                ) {
-                    Task {
-                        await viewModel.requestCalendarPermission()
-                    }
-                }
-
-                if let error = viewModel.permissionError, error.contains("カレンダー") {
-                    PermissionErrorView(error: error)
-                }
+            if let error = viewModel.permissionError, error.contains("カレンダー") {
+                PermissionErrorView(error: error)
             }
 
             PermissionDescription(
-                text: "カレンダーの予定を確認して\n空き時間を自動で検出し、\nあなたに合った体験を提案します"
+                headline: "カレンダーと連携",
+                text: "予定を確認して空き時間を自動で検出し、\nあなたに合った体験を提案します"
             )
+            .offset(y: appeared ? 0 : -20)
+            .opacity(appeared ? 1 : 0)
+            .animation(.easeOut(duration: 0.8).delay(0.3), value: appeared)
 
             Spacer()
         }
         .padding(.horizontal, 4)
+        .onChange(of: viewModel.currentPage) { page in
+            if page == 2 {
+                appeared = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                    appeared = true
+                }
+            } else {
+                appeared = false
+            }
+        }
     }
 }
 

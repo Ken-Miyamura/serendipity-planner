@@ -3,6 +3,7 @@ import SwiftUI
 struct LocationInputView: View {
     @EnvironmentObject private var locationService: LocationService
     @ObservedObject var viewModel: OnboardingViewModel
+    @State private var appeared = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -13,14 +14,14 @@ struct LocationInputView: View {
                 // Soft blurred orange glow
                 Circle()
                     .fill(OnboardingColors.orange.opacity(0.12))
-                    .frame(width: 300, height: 300)
+                    .frame(width: 340, height: 340)
                     .blur(radius: 30)
 
                 // Blob-masked illustration
                 Image("LocationIllustration")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 250, height: 250)
+                    .frame(width: 290, height: 290)
                     .clipShape(LocationBlobMask())
 
                 // Floating location pin badge
@@ -34,44 +35,36 @@ struct LocationInputView: View {
                         .foregroundColor(.red)
                 }
                 .rotationEffect(.degrees(-12))
-                .offset(x: 90, y: -80)
+                .offset(x: 105, y: -95)
             }
-            .frame(height: 280)
+            .frame(height: 320)
+            .offset(y: appeared ? 0 : -30)
+            .opacity(appeared ? 1 : 0)
+            .animation(.easeOut(duration: 0.8), value: appeared)
 
-            Spacer().frame(maxHeight: 20)
-
-            // Permission button or granted state
-            if locationService.locationAuthorized {
-                PermissionGrantedBadge(
-                    accessibilityText: "位置情報は許可済みです"
-                )
-
-                if locationService.currentLocationName != "取得中..." {
-                    HStack(spacing: 6) {
-                        Image(systemName: "mappin.circle.fill")
-                            .foregroundColor(OnboardingColors.accentGreen)
-                        Text(locationService.currentLocationName)
-                            .font(.subheadline)
-                            .foregroundColor(OnboardingColors.textSub)
-                    }
-                    .padding(.top, 6)
-                }
-            } else {
-                PermissionActionButton(
-                    icon: "location.fill",
-                    label: "位置情報を許可する"
-                ) {
-                    locationService.requestPermission()
-                }
-            }
+            Spacer().frame(maxHeight: 16)
 
             PermissionDescription(
+                headline: "現在地を活用",
                 text: "あなたの現在地に合わせて\n最適なプランを提案します"
             )
+            .offset(y: appeared ? 0 : -20)
+            .opacity(appeared ? 1 : 0)
+            .animation(.easeOut(duration: 0.8).delay(0.3), value: appeared)
 
             Spacer()
         }
         .padding(.horizontal, 4)
+        .onChange(of: viewModel.currentPage) { page in
+            if page == 4 {
+                appeared = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                    appeared = true
+                }
+            } else {
+                appeared = false
+            }
+        }
     }
 }
 

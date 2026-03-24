@@ -5,6 +5,7 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
     @Published var currentLocationName: String = "取得中..."
     @Published var currentLocation: CLLocation?
     @Published var locationAuthorized = false
+    @Published var locationAuthorizationResolved = false
     @Published var locationError: String?
 
     private let preferenceService: PreferenceService
@@ -82,5 +83,8 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
     private func updateAuthorizationStatus() {
         let status = locationManager.authorizationStatus
         locationAuthorized = (status == .authorizedWhenInUse || status == .authorizedAlways)
+        if status != .notDetermined {
+            locationAuthorizationResolved = true
+        }
     }
 }

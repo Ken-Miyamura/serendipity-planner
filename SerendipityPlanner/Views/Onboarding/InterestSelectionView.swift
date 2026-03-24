@@ -2,6 +2,10 @@ import SwiftUI
 
 struct InterestSelectionView: View {
     @ObservedObject var viewModel: OnboardingViewModel
+    @State private var showHero = false
+    @State private var showTitle = false
+    @State private var showSubtitle = false
+    @State private var showGrid = false
 
     private let columns = [
         GridItem(.flexible(), spacing: 10),
@@ -34,6 +38,8 @@ struct InterestSelectionView: View {
                     .offset(x: 60, y: 90)
             }
             .padding(.top, 2)
+            .offset(y: showHero ? 0 : -30)
+            .opacity(showHero ? 1 : 0)
 
             // Title
             Text("興味のあるジャンル")
@@ -41,17 +47,22 @@ struct InterestSelectionView: View {
                 .fontWeight(.bold)
                 .foregroundColor(OnboardingColors.textMain)
                 .padding(.top, 8)
+                .offset(y: showTitle ? 0 : -20)
+                .opacity(showTitle ? 1 : 0)
 
             // Subtitle
-            Text("3つ以上選択してください")
-                .font(.subheadline)
-                .foregroundColor(OnboardingColors.textSub)
-                .padding(.top, 2)
+            VStack(spacing: 4) {
+                Text("3つ以上選択してください")
+                    .font(.subheadline)
+                    .foregroundColor(OnboardingColors.textSub)
+                    .padding(.top, 2)
 
-            Text("後からアプリの設定画面で変更できます")
-                .font(.caption)
-                .foregroundColor(OnboardingColors.textSub.opacity(0.7))
-                .padding(.top, 4)
+                Text("後からアプリの設定画面で変更できます")
+                    .font(.caption)
+                    .foregroundColor(OnboardingColors.textSub.opacity(0.7))
+            }
+            .offset(y: showSubtitle ? 0 : -20)
+            .opacity(showSubtitle ? 1 : 0)
 
             Spacer().frame(maxHeight: 20)
 
@@ -71,8 +82,53 @@ struct InterestSelectionView: View {
             .padding(.horizontal, 20)
             .padding(.top, 12)
             .padding(.bottom, 8)
+            .offset(y: showGrid ? 0 : -15)
+            .opacity(showGrid ? 1 : 0)
         }
         .padding(.horizontal, 4)
+        .onChange(of: viewModel.currentPage) { page in
+            if page == 1 {
+                playAnimation()
+            } else {
+                resetAnimation()
+            }
+        }
+        .onAppear {
+            if viewModel.currentPage == 1 {
+                playAnimation()
+            }
+        }
+    }
+
+    private func resetAnimation() {
+        showHero = false
+        showTitle = false
+        showSubtitle = false
+        showGrid = false
+    }
+
+    private func playAnimation() {
+        resetAnimation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            withAnimation(.easeOut(duration: 0.8)) {
+                showHero = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                withAnimation(.easeOut(duration: 0.8)) {
+                    showTitle = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.55) {
+                withAnimation(.easeOut(duration: 0.8)) {
+                    showSubtitle = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                withAnimation(.easeOut(duration: 0.8)) {
+                    showGrid = true
+                }
+            }
+        }
     }
 }
 

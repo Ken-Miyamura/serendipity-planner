@@ -2,12 +2,18 @@ import SwiftUI
 
 struct OnboardingContainerView: View {
     @EnvironmentObject private var preferenceService: PreferenceService
+    @EnvironmentObject private var locationService: LocationService
     @StateObject private var viewModel = OnboardingViewModel()
+    @State private var waitingForLocationPermission = false
     let onComplete: () -> Void
 
     private let pageBackground = Color.theme.pageBackground
     private var isWelcomePage: Bool {
         viewModel.currentPage == 0
+    }
+
+    private var isPermissionPage: Bool {
+        (2 ... 4).contains(viewModel.currentPage)
     }
 
     var body: some View {
@@ -49,8 +55,21 @@ struct OnboardingContainerView: View {
                     // Button (right)
                     Button {
                         if viewModel.isLastPage {
-                            viewModel.saveInterests(to: preferenceService)
-                            onComplete()
+                            // Location permission page (last)
+                            waitingForLocationPermission = true
+                            locationService.requestPermission()
+                        } else if viewModel.currentPage == 2 {
+                            // Calendar permission page
+                            Task {
+                                await viewModel.requestCalendarPermission()
+                                viewModel.nextPage()
+                            }
+                        } else if viewModel.currentPage == 3 {
+                            // Notification permission page
+                            Task {
+                                await viewModel.requestNotificationPermission()
+                                viewModel.nextPage()
+                            }
                         } else {
                             viewModel.nextPage()
                         }
@@ -58,13 +77,13 @@ struct OnboardingContainerView: View {
                         ZStack {
                             Circle()
                                 .fill(
-                                    isWelcomePage || viewModel.canProceed
+                                    isWelcomePage || isPermissionPage || viewModel.canProceed
                                         ? OnboardingColors.coralMuted
                                         : Color.gray.opacity(0.4)
                                 )
                                 .frame(width: 56, height: 56)
                                 .shadow(
-                                    color: isWelcomePage || viewModel.canProceed
+                                    color: isWelcomePage || isPermissionPage || viewModel.canProceed
                                         ? OnboardingColors.coralMuted.opacity(0.3)
                                         : Color.clear,
                                     radius: 8, x: 0, y: 4
@@ -74,10 +93,17 @@ struct OnboardingContainerView: View {
                                 .foregroundColor(.white)
                         }
                     }
-                    .disabled(!isWelcomePage && !viewModel.canProceed)
+                    .disabled(!isWelcomePage && !isPermissionPage && !viewModel.canProceed)
                 }
                 .padding(.horizontal, 28)
                 .padding(.bottom, 36)
+            }
+        }
+        .onChange(of: locationService.locationAuthorizationResolved) { resolved in
+            if resolved, waitingForLocationPermission {
+                waitingForLocationPermission = false
+                viewModel.saveInterests(to: preferenceService)
+                onComplete()
             }
         }
     }
