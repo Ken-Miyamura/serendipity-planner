@@ -207,8 +207,20 @@ struct SettingsView: View {
                         HStack {
                             Text("バージョン")
                             Spacer()
-                            Text("1.0.0")
+                            Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "-")
                                 .foregroundColor(.secondary)
+                        }
+
+                        if let url = URL(string: "https://ken-miyamura.github.io/serendipity-planner/privacy-policy.html") {
+                            Link(destination: url) {
+                                HStack {
+                                    Text("プライバシーポリシー")
+                                    Spacer()
+                                    Image(systemName: "arrow.up.right.square")
+                                        .font(.footnote)
+                                        .foregroundColor(.secondary)
+                                }
+                            }
                         }
                     }
                 }
