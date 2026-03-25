@@ -27,10 +27,14 @@
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
 		<string>AppIconImage</string>
+		<key>UIColorName</key>
+		<string>LaunchScreenBackground</string>
 	</dict>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
