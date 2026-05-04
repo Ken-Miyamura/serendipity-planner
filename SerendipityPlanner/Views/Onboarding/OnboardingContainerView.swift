@@ -5,6 +5,7 @@ struct OnboardingContainerView: View {
     @EnvironmentObject private var locationService: LocationService
     @StateObject private var viewModel = OnboardingViewModel()
     @State private var waitingForLocationPermission = false
+    @State private var previousPage = 0
     let onComplete: () -> Void
 
     private let pageBackground = Color.theme.pageBackground
@@ -104,6 +105,17 @@ struct OnboardingContainerView: View {
                 waitingForLocationPermission = false
                 viewModel.saveInterests(to: preferenceService)
                 onComplete()
+            }
+        }
+        .onChange(of: viewModel.currentPage) { newValue in
+            defer { previousPage = newValue }
+            guard newValue > previousPage else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                if newValue == 2 {
+                    Task { await viewModel.requestCalendarPermission() }
+                } else if newValue == 3 {
+                    Task { await viewModel.requestNotificationPermission() }
+                }
             }
         }
     }
