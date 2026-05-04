@@ -5,7 +5,7 @@ class OnboardingViewModel: ObservableObject {
     @Published var currentPage = 0
     @Published var calendarPermissionGranted = false
     @Published var notificationPermissionGranted = false
-    @Published var selectedInterests: Set<SuggestionCategory> = [.cafe, .walk, .reading]
+    @Published var selectedInterests: Set<SuggestionCategory> = Set(SuggestionCategory.allCases)
     @Published var permissionError: String?
 
     let totalPages = 5

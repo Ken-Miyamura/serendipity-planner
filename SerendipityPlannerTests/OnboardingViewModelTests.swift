@@ -63,14 +63,16 @@ final class OnboardingViewModelTests: XCTestCase {
     // MARK: - Interest Selection
 
     func testDefaultInterests() {
-        XCTAssertTrue(sut.selectedInterests.contains(.cafe))
-        XCTAssertTrue(sut.selectedInterests.contains(.walk))
-        XCTAssertTrue(sut.selectedInterests.contains(.reading))
-        XCTAssertEqual(sut.selectedInterests.count, 3)
+        XCTAssertEqual(sut.selectedInterests.count, SuggestionCategory.allCases.count)
+        for category in SuggestionCategory.allCases {
+            XCTAssertTrue(sut.selectedInterests.contains(category))
+        }
     }
 
     func testToggleInterestAdd() {
-        sut.toggleInterest(.music)
+        sut.toggleInterest(.music) // 全選択済みなので一度外す
+        XCTAssertFalse(sut.selectedInterests.contains(.music))
+        sut.toggleInterest(.music) // 再度追加
         XCTAssertTrue(sut.selectedInterests.contains(.music))
     }
 
@@ -81,11 +83,13 @@ final class OnboardingViewModelTests: XCTestCase {
 
     func testCanProceedOnInterestPage() {
         sut.nextPage() // Go to interest selection (page 1)
-        XCTAssertTrue(sut.canProceed) // 3 defaults selected
+        XCTAssertTrue(sut.canProceed) // 全カテゴリ選択済み
 
-        sut.toggleInterest(.cafe)
-        sut.toggleInterest(.walk)
-        XCTAssertFalse(sut.canProceed) // Only 1 selected
+        // 8個外して2個だけ残す（最低3個未満にする）
+        for category in Array(SuggestionCategory.allCases.prefix(8)) {
+            sut.toggleInterest(category)
+        }
+        XCTAssertFalse(sut.canProceed) // 2個のみ選択
     }
 
     func testCanProceedOnOtherPages() {

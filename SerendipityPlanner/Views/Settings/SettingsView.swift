@@ -211,7 +211,7 @@ struct SettingsView: View {
                                 .foregroundColor(.secondary)
                         }
 
-                        if let url = URL(string: "https://ken-miyamura.github.io/serendipity-planner/privacy-policy.html") {
+                        if let url = URL(string: "https://feliz-lab.com/privacy") {
                             Link(destination: url) {
                                 HStack {
                                     Text("プライバシーポリシー")
