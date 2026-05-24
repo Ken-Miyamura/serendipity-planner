@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -163,22 +163,22 @@
 		6ACBEBF54FEC9855FC1880BA /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		6BD7DE95BFB179B989D3312C /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		6C8F929290B9669DF29514C2 /* CalendarServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarServiceTests.swift; sourceTree = "<group>"; };
-		6D0885B965AAB25D50153287 /* SerendipityPlanner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SerendipityPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D0885B965AAB25D50153287 /* SerendipityPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SerendipityPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DE36CC96E5496700B5682C /* SuggestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionDetailView.swift; sourceTree = "<group>"; };
 		73B7E797C0E05B67FFFBD25A /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
-		7F590A1A44D4AADA2284F5EE /* SerendipityPlannerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SerendipityPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F590A1A44D4AADA2284F5EE /* SerendipityPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerendipityPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8250300D5D448B02A23C40BA /* SerendipityPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityPlannerApp.swift; sourceTree = "<group>"; };
 		8596A4778BF1DFFAF21B47FD /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
 		90F676FF5132C73780089608 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		97FFC658A07AA2B723C0E939 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		99AC8361221A1FE7C4E71EF7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		99AC8361221A1FE7C4E71EF7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A9DC8A9720C728B668EEED02 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
 		AAE305482EEDDC6FB248B2E2 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		AC433B0BF0B7BE25FF71E2DC /* AcceptedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedCardView.swift; sourceTree = "<group>"; };
 		AFE11351A68EBF1F964AF811 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		B0CB2D9D21D61067327AECD2 /* CalendarPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPermissionView.swift; sourceTree = "<group>"; };
 		B16A0511F69FBDFC73C6737A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		B610B05F0E027009888904AA /* SerendipityWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SerendipityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B610B05F0E027009888904AA /* SerendipityWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SerendipityWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7DFFF0CEE6CAFECDF41BA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BB9FFE965938FB56781BAFDE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FA3418CA303C5680FB2729 /* SuggestionEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEngineTests.swift; sourceTree = "<group>"; };
@@ -555,7 +555,6 @@
 			);
 			mainGroup = 985E2E6BB90E08DCE3BD9EF6;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -701,6 +700,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityPlanner/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -778,7 +778,11 @@
 				CODE_SIGN_ENTITLEMENTS = SerendipityWidget/SerendipityWidget.entitlements;
 				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.serendipity.planner.widget;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -793,7 +797,11 @@
 				CODE_SIGN_ENTITLEMENTS = SerendipityWidget/SerendipityWidget.entitlements;
 				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.serendipity.planner.widget;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -824,6 +832,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = BVQRL978G2;
 				INFOPLIST_FILE = SerendipityPlanner/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
