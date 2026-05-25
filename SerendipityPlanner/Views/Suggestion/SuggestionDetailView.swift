@@ -6,6 +6,9 @@ struct SuggestionDetailView: View {
     let onAccept: () -> Void
     let onRegenerate: () -> Void
 
+    @State private var showMapAppPicker = false
+    @State private var pendingPlace: NearbyPlace?
+
     private let weather: WeatherData?
     private let preference: UserPreference
     private let preferenceService: PreferenceServiceProtocol?
@@ -103,6 +106,25 @@ struct SuggestionDetailView: View {
         ) {
             Button("OK", role: .cancel) {
                 onAccept()
+            }
+        }
+        .confirmationDialog(
+            "マップアプリで開く",
+            isPresented: $showMapAppPicker,
+            titleVisibility: .visible
+        ) {
+            if let place = pendingPlace {
+                ForEach(MapLauncher.availableApps()) { app in
+                    Button(app.displayName) {
+                        MapLauncher.open(
+                            app,
+                            name: place.name,
+                            latitude: place.latitude,
+                            longitude: place.longitude
+                        )
+                    }
+                }
+                Button("キャンセル", role: .cancel) {}
             }
         }
         .task {
@@ -220,7 +242,7 @@ struct SuggestionDetailView: View {
                     }
                     Spacer()
                     Button {
-                        openInMaps(place: place)
+                        presentMapPicker(for: place)
                     } label: {
                         Image(systemName: "map.fill")
                             .font(.body)
@@ -243,53 +265,30 @@ struct SuggestionDetailView: View {
     @ViewBuilder
     private var placeMapSection: some View {
         if let place = viewModel.suggestion.nearbyPlace {
-            let coordinate = CLLocationCoordinate2D(
-                latitude: place.latitude,
-                longitude: place.longitude
-            )
-            let region = MKCoordinateRegion(
-                center: coordinate,
-                latitudinalMeters: 500,
-                longitudinalMeters: 500
-            )
-
-            Map(coordinateRegion: .constant(region), annotationItems: [place]) { p in
-                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: p.latitude, longitude: p.longitude)) {
-                    VStack(spacing: 2) {
-                        Image(systemName: viewModel.suggestion.category.iconName)
-                            .font(.caption)
-                            .foregroundColor(.white)
-                            .frame(width: 28, height: 28)
-                            .background(Color.theme.color(for: viewModel.suggestion.category))
-                            .clipShape(Circle())
-                            .shadow(radius: 2)
-
-                        Image(systemName: "triangle.fill")
-                            .font(.system(size: 6))
-                            .foregroundColor(Color.theme.color(for: viewModel.suggestion.category))
-                            .rotationEffect(.degrees(180))
-                            .offset(y: -4)
+            Button {
+                presentMapPicker(for: place)
+            } label: {
+                mapPreview(for: place)
+                    .overlay(alignment: .topTrailing) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.up.right.square.fill")
+                            Text("マップで開く")
+                        }
+                        .font(.caption2)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.black.opacity(0.55))
+                        .clipShape(Capsule())
+                        .padding(8)
                     }
-                }
+                    .contentShape(Rectangle())
             }
-            .frame(height: 180)
-            .cornerRadius(12)
-            .allowsHitTesting(false)
-            .accessibilityHidden(true)
-            .onTapGesture {
-                openInMaps(place: place)
-            }
+            .buttonStyle(.plain)
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel("\(place.name)をマップで開く")
+            .accessibilityAddTraits(.isButton)
         }
-    }
-
-    private func openInMaps(place: NearbyPlace) {
-        let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
-        let placemark = MKPlacemark(coordinate: coordinate)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = place.name
-        mapItem.openInMaps(launchOptions: [
-            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking
-        ])
     }
 
     private var alternativesSection: some View {
@@ -304,6 +303,50 @@ struct SuggestionDetailView: View {
             onAccept: onAccept,
             onRegenerate: onRegenerate
         )
+    }
+}
+
+// MARK: - マップ関連ヘルパー
+
+private extension SuggestionDetailView {
+    func mapPreview(for place: NearbyPlace) -> some View {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: place.latitude,
+            longitude: place.longitude
+        )
+        let region = MKCoordinateRegion(
+            center: coordinate,
+            latitudinalMeters: 500,
+            longitudinalMeters: 500
+        )
+
+        return Map(coordinateRegion: .constant(region), annotationItems: [place]) { p in
+            MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: p.latitude, longitude: p.longitude)) {
+                VStack(spacing: 2) {
+                    Image(systemName: viewModel.suggestion.category.iconName)
+                        .font(.caption)
+                        .foregroundColor(.white)
+                        .frame(width: 28, height: 28)
+                        .background(Color.theme.color(for: viewModel.suggestion.category))
+                        .clipShape(Circle())
+                        .shadow(radius: 2)
+
+                    Image(systemName: "triangle.fill")
+                        .font(.system(size: 6))
+                        .foregroundColor(Color.theme.color(for: viewModel.suggestion.category))
+                        .rotationEffect(.degrees(180))
+                        .offset(y: -4)
+                }
+            }
+        }
+        .frame(height: 180)
+        .cornerRadius(12)
+        .allowsHitTesting(false)
+    }
+
+    func presentMapPicker(for place: NearbyPlace) {
+        pendingPlace = place
+        showMapAppPicker = true
     }
 }
 
