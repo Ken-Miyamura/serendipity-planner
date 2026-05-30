@@ -137,8 +137,8 @@ class HomeViewModel: ObservableObject {
     private func generateSuggestions() {
         guard let preference = preferenceService?.preference else { return }
 
-        suggestions = freeTimeSlots.map { slot in
-            suggestionEngine.generateSuggestion(
+        suggestions = freeTimeSlots.flatMap { slot in
+            suggestionEngine.generateSuggestions(
                 for: slot,
                 weather: weather,
                 preference: preference

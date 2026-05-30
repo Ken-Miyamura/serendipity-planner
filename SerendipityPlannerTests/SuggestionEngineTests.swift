@@ -227,6 +227,82 @@ final class SuggestionEngineTests: XCTestCase {
         XCTAssertFalse(hasCafe, "Alternatives should not include the excluded category")
     }
 
+    // MARK: - Slot Splitting Tests
+
+    func testSplitSlot_atThreshold_notSplit() {
+        // ちょうど120分（閾値）は分割しない
+        let slot = FreeTimeSlot(
+            startDate: Date().setting(hour: 10),
+            endDate: Date().setting(hour: 12)
+        )
+
+        let result = engine.splitSlot(slot)
+
+        XCTAssertEqual(result.count, 1)
+        XCTAssertEqual(result.first, slot)
+    }
+
+    func testSplitSlot_justOverThreshold_splits() {
+        // 閾値（120分）を超えると分割される
+        let start = Date().setting(hour: 9)
+        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 150))
+
+        let result = engine.splitSlot(slot)
+
+        XCTAssertGreaterThan(result.count, 1)
+    }
+
+    func testSplitSlot_longSlot_splitsIntoMultiple() {
+        // 240分（4時間）は2分割される
+        let start = Date().setting(hour: 9)
+        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 240))
+
+        let result = engine.splitSlot(slot)
+
+        XCTAssertEqual(result.count, 2)
+        // 合計時間が元のスロットと一致し、隙間がないこと
+        XCTAssertEqual(result.first?.startDate, slot.startDate)
+        XCTAssertEqual(result.last?.endDate, slot.endDate)
+        XCTAssertEqual(result[0].endDate, result[1].startDate)
+    }
+
+    func testSplitSlot_veryLongSlot_cappedAtMax() {
+        // 600分（10時間）でも最大3分割まで
+        let start = Date().setting(hour: 8)
+        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 600))
+
+        let result = engine.splitSlot(slot)
+
+        XCTAssertEqual(result.count, Constants.Suggestion.maxSplitCount)
+        XCTAssertEqual(result.first?.startDate, slot.startDate)
+        XCTAssertEqual(result.last?.endDate, slot.endDate)
+    }
+
+    func testGenerateSuggestions_shortSlot_returnsSingle() {
+        let slot = FreeTimeSlot(
+            startDate: Date().setting(hour: 10),
+            endDate: Date().setting(hour: 12)
+        )
+
+        let result = engine.generateSuggestions(for: slot, weather: nil, preference: .default)
+
+        XCTAssertEqual(result.count, 1)
+    }
+
+    func testGenerateSuggestions_longSlot_returnsMultiple() {
+        let start = Date().setting(hour: 9)
+        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 300))
+
+        let result = engine.generateSuggestions(for: slot, weather: nil, preference: .default)
+
+        XCTAssertGreaterThan(result.count, 1)
+        // 各提案が分割後のサブスロットを参照していること
+        for suggestion in result {
+            XCTAssertGreaterThan(suggestion.duration, 0)
+            XCTAssertFalse(suggestion.title.isEmpty)
+        }
+    }
+
     // MARK: - Weighted Random Selection
 
     func testWeightedRandomSelect_emptyWeights_returnsCafe() {
