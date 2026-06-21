@@ -7,6 +7,14 @@ struct FavoriteDetailView: View {
     let onDelete: () -> Void
 
     @State private var showDeleteConfirmation = false
+    @State private var showMapAppPicker = false
+    @State private var pendingMapTarget: PendingMapTarget?
+
+    private struct PendingMapTarget: Equatable {
+        let name: String
+        let latitude: Double
+        let longitude: Double
+    }
 
     var body: some View {
         ScrollView {
@@ -44,6 +52,25 @@ struct FavoriteDetailView: View {
             Button("キャンセル", role: .cancel) {}
         } message: {
             Text("このお気に入りを削除しますか？")
+        }
+        .confirmationDialog(
+            "マップアプリで開く",
+            isPresented: $showMapAppPicker,
+            titleVisibility: .visible
+        ) {
+            if let target = pendingMapTarget {
+                ForEach(MapLauncher.availableApps()) { app in
+                    Button(app.displayName) {
+                        MapLauncher.open(
+                            app,
+                            name: target.name,
+                            latitude: target.latitude,
+                            longitude: target.longitude
+                        )
+                    }
+                }
+                Button("キャンセル", role: .cancel) {}
+            }
         }
     }
 
@@ -108,7 +135,7 @@ struct FavoriteDetailView: View {
                     Spacer()
                     if let lat = favorite.latitude, let lon = favorite.longitude {
                         Button {
-                            openInMaps(name: placeName, latitude: lat, longitude: lon)
+                            presentMapPicker(name: placeName, latitude: lat, longitude: lon)
                         } label: {
                             Image(systemName: "map.fill")
                                 .font(.body)
@@ -129,13 +156,42 @@ struct FavoriteDetailView: View {
     }
 
     private func mapSection(latitude: Double, longitude: Double) -> some View {
+        Button {
+            presentMapPicker(
+                name: favorite.placeName ?? favorite.title,
+                latitude: latitude,
+                longitude: longitude
+            )
+        } label: {
+            mapPreview(latitude: latitude, longitude: longitude)
+                .overlay(alignment: .topTrailing) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "arrow.up.right.square.fill")
+                        Text("マップで開く")
+                    }
+                    .font(.caption2)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Color.black.opacity(0.55))
+                    .clipShape(Capsule())
+                    .padding(8)
+                }
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(favorite.placeName ?? favorite.title)をマップで開く")
+        .accessibilityAddTraits(.isButton)
+    }
+
+    private func mapPreview(latitude: Double, longitude: Double) -> some View {
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let region = MKCoordinateRegion(
             center: coordinate,
             latitudinalMeters: 500,
             longitudinalMeters: 500
         )
-        // MapAnnotation 用のダミーデータ
         let annotations = [MapAnnotationItem(id: favorite.id, coordinate: coordinate)]
 
         return Map(coordinateRegion: .constant(region), annotationItems: annotations) { item in
@@ -160,7 +216,6 @@ struct FavoriteDetailView: View {
         .frame(height: 180)
         .cornerRadius(12)
         .allowsHitTesting(false)
-        .accessibilityHidden(true)
     }
 
     private var addedDateSection: some View {
@@ -203,14 +258,9 @@ struct FavoriteDetailView: View {
         return formatter.string(from: favorite.addedDate)
     }
 
-    private func openInMaps(name: String, latitude: Double, longitude: Double) {
-        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        let placemark = MKPlacemark(coordinate: coordinate)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = name
-        mapItem.openInMaps(launchOptions: [
-            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking
-        ])
+    private func presentMapPicker(name: String, latitude: Double, longitude: Double) {
+        pendingMapTarget = PendingMapTarget(name: name, latitude: latitude, longitude: longitude)
+        showMapAppPicker = true
     }
 }
 

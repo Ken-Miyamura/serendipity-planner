@@ -55,5 +55,9 @@
 	<string>現在地の近くにあるカフェや公園などを提案するために使用します。</string>
 	<key>OpenWeatherMapAPIKey</key>
 	<string>$(OPENWEATHERMAP_API_KEY)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+	</array>
 </dict>
 </plist>
