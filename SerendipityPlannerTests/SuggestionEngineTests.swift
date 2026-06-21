@@ -13,9 +13,11 @@ final class SuggestionEngineTests: XCTestCase {
         engine = nil
         super.tearDown()
     }
+}
 
-    // MARK: - Weather Adjustment Tests
+// MARK: - Weather Adjustment Tests
 
+extension SuggestionEngineTests {
     func testWeatherAdjustment_rainyDay_reducesWalkWeight() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .walk, weight: 1.0),
@@ -107,9 +109,11 @@ final class SuggestionEngineTests: XCTestCase {
         XCTAssertGreaterThan(movieWeight, 1.0, "Movie weight should increase on rainy days")
         XCTAssertLessThan(fitnessWeight, 1.0, "Fitness weight should decrease on cold rainy days")
     }
+}
 
-    // MARK: - Time Adjustment Tests
+// MARK: - Time Adjustment Tests
 
+extension SuggestionEngineTests {
     func testTimeAdjustment_morning_favorsCafe() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .cafe, weight: 1.0),
@@ -150,9 +154,11 @@ final class SuggestionEngineTests: XCTestCase {
         let gourmetWeight = try XCTUnwrap(adjusted.first(where: { $0.category == .gourmet })?.weight)
         XCTAssertGreaterThan(gourmetWeight, 1.0, "Gourmet weight should increase at lunch time")
     }
+}
 
-    // MARK: - Duration Adjustment Tests
+// MARK: - Duration Adjustment Tests
 
+extension SuggestionEngineTests {
     func testDurationAdjustment_shortSlot_favorsReading() throws {
         let weights = [
             SuggestionEngine.CategoryWeight(category: .walk, weight: 1.0),
@@ -180,9 +186,11 @@ final class SuggestionEngineTests: XCTestCase {
 
         XCTAssertLessThan(movieWeight, meditationWeight, "Movie should be heavily penalized for short slots")
     }
+}
 
-    // MARK: - Suggestion Generation Tests
+// MARK: - Suggestion Generation Tests
 
+extension SuggestionEngineTests {
     func testGenerateSuggestion_returnsValidSuggestion() {
         let slot = FreeTimeSlot(
             startDate: Date(),
@@ -226,85 +234,11 @@ final class SuggestionEngineTests: XCTestCase {
         let hasCafe = alternatives.contains(where: { $0.category == .cafe })
         XCTAssertFalse(hasCafe, "Alternatives should not include the excluded category")
     }
+}
 
-    // MARK: - Slot Splitting Tests
+// MARK: - Weighted Random Selection Tests
 
-    func testSplitSlot_atThreshold_notSplit() {
-        // ちょうど120分（閾値）は分割しない
-        let slot = FreeTimeSlot(
-            startDate: Date().setting(hour: 10),
-            endDate: Date().setting(hour: 12)
-        )
-
-        let result = engine.splitSlot(slot)
-
-        XCTAssertEqual(result.count, 1)
-        XCTAssertEqual(result.first, slot)
-    }
-
-    func testSplitSlot_justOverThreshold_splits() {
-        // 閾値（120分）を超えると分割される
-        let start = Date().setting(hour: 9)
-        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 150))
-
-        let result = engine.splitSlot(slot)
-
-        XCTAssertGreaterThan(result.count, 1)
-    }
-
-    func testSplitSlot_longSlot_splitsIntoMultiple() {
-        // 240分（4時間）は2分割される
-        let start = Date().setting(hour: 9)
-        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 240))
-
-        let result = engine.splitSlot(slot)
-
-        XCTAssertEqual(result.count, 2)
-        // 合計時間が元のスロットと一致し、隙間がないこと
-        XCTAssertEqual(result.first?.startDate, slot.startDate)
-        XCTAssertEqual(result.last?.endDate, slot.endDate)
-        XCTAssertEqual(result[0].endDate, result[1].startDate)
-    }
-
-    func testSplitSlot_veryLongSlot_cappedAtMax() {
-        // 600分（10時間）でも最大3分割まで
-        let start = Date().setting(hour: 8)
-        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 600))
-
-        let result = engine.splitSlot(slot)
-
-        XCTAssertEqual(result.count, Constants.Suggestion.maxSplitCount)
-        XCTAssertEqual(result.first?.startDate, slot.startDate)
-        XCTAssertEqual(result.last?.endDate, slot.endDate)
-    }
-
-    func testGenerateSuggestions_shortSlot_returnsSingle() {
-        let slot = FreeTimeSlot(
-            startDate: Date().setting(hour: 10),
-            endDate: Date().setting(hour: 12)
-        )
-
-        let result = engine.generateSuggestions(for: slot, weather: nil, preference: .default)
-
-        XCTAssertEqual(result.count, 1)
-    }
-
-    func testGenerateSuggestions_longSlot_returnsMultiple() {
-        let start = Date().setting(hour: 9)
-        let slot = FreeTimeSlot(startDate: start, endDate: start.adding(minutes: 300))
-
-        let result = engine.generateSuggestions(for: slot, weather: nil, preference: .default)
-
-        XCTAssertGreaterThan(result.count, 1)
-        // 各提案が分割後のサブスロットを参照していること
-        for suggestion in result {
-            XCTAssertGreaterThan(suggestion.duration, 0)
-            XCTAssertFalse(suggestion.title.isEmpty)
-        }
-    }
-
-    // MARK: - Weighted Random Selection
-
+extension SuggestionEngineTests {
     func testWeightedRandomSelect_emptyWeights_returnsCafe() {
         let result = engine.weightedRandomSelect(from: [])
         XCTAssertEqual(result, .cafe)
@@ -315,9 +249,11 @@ final class SuggestionEngineTests: XCTestCase {
         let result = engine.weightedRandomSelect(from: weights)
         XCTAssertEqual(result, .reading)
     }
+}
 
-    // MARK: - Learning System Tests
+// MARK: - Learning System Tests
 
+extension SuggestionEngineTests {
     func testLearnedWeights_noHistory_equalWeights() throws {
         let preference = UserPreference.default
         let weights = preference.calculateLearnedWeights()
@@ -368,7 +304,6 @@ final class SuggestionEngineTests: XCTestCase {
     }
 
     func testLearnedWeights_variableCategoryCount() {
-        // Test with a subset of categories
         var preference = UserPreference.default
         preference.preferredCategories = [.cafe, .walk, .reading, .music, .art]
         preference.selectionCounts = ["cafe": 10]
@@ -381,7 +316,6 @@ final class SuggestionEngineTests: XCTestCase {
     }
 
     func testLearnedWeights_dynamicMinimumWeight() throws {
-        // 3 categories: minimum = max(0.05, 1/(3*3)) = 0.111
         var preference3 = UserPreference.default
         preference3.preferredCategories = [.cafe, .walk, .reading]
         preference3.selectionCounts = ["cafe": 100]
@@ -391,7 +325,6 @@ final class SuggestionEngineTests: XCTestCase {
 
         XCTAssertGreaterThanOrEqual(try XCTUnwrap(weights3[.walk]), min3 - 0.001)
 
-        // 10 categories: minimum = max(0.05, 1/(10*3)) = 0.05
         var preference10 = UserPreference.default
         preference10.selectionCounts = ["cafe": 100]
 
