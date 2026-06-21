@@ -41,8 +41,7 @@ enum MapLauncher {
                 MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking
             ])
         case .googleMaps:
-            let encoded = name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-            if let url = URL(string: "comgooglemaps://?q=\(encoded)&center=\(latitude),\(longitude)&zoom=16&directionsmode=walking") {
+            if let url = URL(string: "comgooglemaps://?q=\(latitude),\(longitude)&zoom=16") {
                 UIApplication.shared.open(url)
             }
         case .browser:
