@@ -60,6 +60,7 @@ protocol PlaceSearchServiceProtocol {
 
 protocol SuggestionEngineProtocol {
     func generateSuggestion(for slot: FreeTimeSlot, weather: WeatherData?, preference: UserPreference) -> Suggestion
+    func generateSuggestions(for slot: FreeTimeSlot, weather: WeatherData?, preference: UserPreference) -> [Suggestion]
     func generateAlternatives(
         for slot: FreeTimeSlot,
         weather: WeatherData?,

@@ -137,8 +137,8 @@ class HomeViewModel: ObservableObject {
     private func generateSuggestions() {
         guard let preference = preferenceService?.preference else { return }
 
-        suggestions = freeTimeSlots.map { slot in
-            suggestionEngine.generateSuggestion(
+        suggestions = freeTimeSlots.flatMap { slot in
+            suggestionEngine.generateSuggestions(
                 for: slot,
                 weather: weather,
                 preference: preference
@@ -238,8 +238,13 @@ class HomeViewModel: ObservableObject {
     // MARK: - Widget Data Sharing
 
     private func updateWidgetData() {
+        // 提案の freeTimeSlot（分割後サブスロット含む）を保存することで
+        // ウィジェット側の id マッチングが正しく機能する
+        let effectiveSlots = suggestions
+            .map(\.freeTimeSlot)
+            .sorted { $0.startDate < $1.startDate }
         SharedDataManager.saveAll(
-            slots: freeTimeSlots,
+            slots: effectiveSlots.isEmpty ? freeTimeSlots : effectiveSlots,
             suggestions: suggestions,
             weather: weather
         )

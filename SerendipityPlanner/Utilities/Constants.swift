@@ -9,6 +9,15 @@ enum Constants {
         static let activeHoursEnd = 23
     }
 
+    enum Suggestion {
+        /// この分数を超える空き時間は複数の提案に分割する
+        static let splitThresholdMinutes = 120
+        /// 分割時の1提案あたりの目安分数（この単位で分割数を決める）
+        static let splitBlockMinutes = 120
+        /// 1つの空き時間から生成する提案の最大数
+        static let maxSplitCount = 3
+    }
+
     enum Weather {
         static let cacheExpirationSeconds: TimeInterval = 3600
         static let baseURL = "https://api.openweathermap.org/data/2.5"

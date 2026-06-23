@@ -255,6 +255,7 @@ class MockHistoryService: HistoryServiceProtocol {
 
 class MockSuggestionEngine: SuggestionEngineProtocol {
     var generateResult: Suggestion?
+    var suggestionsResult: [Suggestion] = []
     var alternativesResult: [Suggestion] = []
     var generateCallCount = 0
     var alternativesCallCount = 0
@@ -269,6 +270,15 @@ class MockSuggestionEngine: SuggestionEngineProtocol {
             freeTimeSlot: slot,
             weatherContext: "テスト天気"
         )
+    }
+
+    func generateSuggestions(for slot: FreeTimeSlot, weather: WeatherData?, preference: UserPreference) -> [Suggestion] {
+        // 分割結果を指定できる場合はそれを返し、なければ単一提案にフォールバックする
+        if !suggestionsResult.isEmpty {
+            generateCallCount += 1
+            return suggestionsResult
+        }
+        return [generateSuggestion(for: slot, weather: weather, preference: preference)]
     }
 
     func generateAlternatives(

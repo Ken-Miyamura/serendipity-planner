@@ -42,6 +42,66 @@ class SuggestionEngine: SuggestionEngineProtocol {
         )
     }
 
+    /// 空き時間が長い場合は複数のサブスロットに分割し、それぞれに異なる提案を生成する。
+    /// 閾値以下の空き時間では従来どおり1件のみ返す。
+    func generateSuggestions(
+        for slot: FreeTimeSlot,
+        weather: WeatherData?,
+        preference: UserPreference
+    ) -> [Suggestion] {
+        let subSlots = splitSlot(slot)
+        guard subSlots.count > 1 else {
+            return [generateSuggestion(for: slot, weather: weather, preference: preference)]
+        }
+
+        // 分割した各スロットでなるべく異なるカテゴリを選び、変化のある提案にする
+        var usedCategories: Set<SuggestionCategory> = []
+        return subSlots.map { subSlot in
+            let allWeights = calculateWeights(weather: weather, preference: preference, slot: subSlot)
+            let remaining = allWeights.filter { !usedCategories.contains($0.category) }
+            let candidateWeights = remaining.isEmpty ? allWeights : remaining
+
+            let selectedCategory = weightedRandomSelect(from: candidateWeights)
+            usedCategories.insert(selectedCategory)
+
+            let template = selectTemplate(for: selectedCategory, duration: subSlot.durationMinutes)
+            let weatherContext = weatherContextText(weather: weather, category: selectedCategory)
+
+            return Suggestion(
+                category: selectedCategory,
+                title: template.title,
+                description: template.description,
+                duration: min(template.minDuration, subSlot.durationMinutes),
+                freeTimeSlot: subSlot,
+                weatherContext: weatherContext
+            )
+        }
+    }
+
+    /// 空き時間を分割数に応じて等間隔のサブスロットに分ける。
+    /// 閾値以下なら分割せず元のスロットをそのまま返す。
+    func splitSlot(_ slot: FreeTimeSlot) -> [FreeTimeSlot] {
+        let minutes = slot.durationMinutes
+        guard minutes > Constants.Suggestion.splitThresholdMinutes else {
+            return [slot]
+        }
+
+        let count = min(
+            Constants.Suggestion.maxSplitCount,
+            max(2, minutes / Constants.Suggestion.splitBlockMinutes)
+        )
+        let blockSeconds = slot.duration / Double(count)
+
+        return (0 ..< count).map { index in
+            let start = slot.startDate.addingTimeInterval(blockSeconds * Double(index))
+            // 端数による隙間を作らないよう、最後のスロットは元の終了時刻に合わせる
+            let end = index == count - 1
+                ? slot.endDate
+                : slot.startDate.addingTimeInterval(blockSeconds * Double(index + 1))
+            return FreeTimeSlot(startDate: start, endDate: end)
+        }
+    }
+
     /// Generate multiple suggestions for a time slot (for re-suggestion)
     func generateAlternatives(
         for slot: FreeTimeSlot,
