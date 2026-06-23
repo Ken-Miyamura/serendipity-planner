@@ -4,7 +4,10 @@
 
 ```mermaid
 graph TD
-    A[FreeTimeSlot + WeatherData + UserPreference] --> B[学習重み計算]
+    A[FreeTimeSlot + WeatherData + UserPreference] --> SP{120分超?}
+    SP -->|Yes| SL[スロット分割]
+    SP -->|No| B
+    SL --> B[学習重み計算]
     B --> C[天気補正]
     C --> D[時間帯補正]
     D --> E[空き時間長補正]
@@ -14,6 +17,32 @@ graph TD
     H --> I[天気コンテキスト文生成]
     I --> J[Suggestion 生成]
 ```
+
+---
+
+## スロット分割（Step 0）
+
+120 分を超えるスロットは `splitSlot()` で複数のサブスロットに分割されてから、各サブスロットごとに Step 1〜5 が実行されます。
+
+### 分割パラメータ（`Constants.Suggestion`）
+
+| 定数 | 値 |
+|------|---|
+| `splitThresholdMinutes` | 120 |
+| `splitBlockMinutes` | 60 |
+| `maxSplitCount` | 3 |
+
+### 分割数の計算
+
+```
+count = min(maxSplitCount, max(2, 総分数 / splitBlockMinutes))
+```
+
+例: 150 分 → `min(3, max(2, 150/60))` = `min(3, 2)` = 2 スロット
+
+### カテゴリの多様性
+
+`generateSuggestions()` は分割後の各サブスロットで「すでに選択されたカテゴリ」を除外して選択することで、連続する提案のカテゴリが重複しないようにします。
 
 ---
 
