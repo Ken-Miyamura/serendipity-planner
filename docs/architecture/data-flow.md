@@ -137,10 +137,12 @@ sequenceDiagram
 
 | キー | 格納データ | 型 |
 |------|---------|---|
-| `widget_free_time_slots` | 隙間時間スロット | [FreeTimeSlot] (JSON) |
+| `widget_free_time_slots` | 隙間時間スロット（分割後サブスロット） | [FreeTimeSlot] (JSON) |
 | `widget_suggestions` | 提案 | [Suggestion] (JSON) |
 | `widget_weather` | 天気情報 | WeatherData (JSON) |
 | `widget_last_updated` | 最終更新日時 | Date |
+
+> **注**: `widget_free_time_slots` には元の `freeTimeSlots`（分割前）ではなく、提案が参照する `freeTimeSlot`（分割後サブスロット含む）が保存されます。ウィジェット側の `freeTimeSlot.id == slot.id` 照合が正しく機能するために必要です。提案が空の場合のみ元スロットにフォールバックします。
 
 ---
 
