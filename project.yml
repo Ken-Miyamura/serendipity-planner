@@ -76,3 +76,21 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner.tests
+
+schemes:
+  SerendipityPlanner:
+    build:
+      targets:
+        SerendipityPlanner: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - SerendipityPlannerTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
