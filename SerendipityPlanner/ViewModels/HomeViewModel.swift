@@ -21,6 +21,7 @@ class HomeViewModel: ObservableObject {
 
     private var preferenceService: PreferenceServiceProtocol?
     private var locationService: LocationServiceProtocol?
+    private var destinationService: DestinationServiceProtocol?
     private let historyService: HistoryServiceProtocol
 
     init(
@@ -39,9 +40,44 @@ class HomeViewModel: ObservableObject {
         self.historyService = historyService
     }
 
-    func configure(with preferenceService: PreferenceServiceProtocol, locationService: LocationServiceProtocol) {
+    func configure(
+        with preferenceService: PreferenceServiceProtocol,
+        locationService: LocationServiceProtocol,
+        destinationService: DestinationServiceProtocol? = nil
+    ) {
         self.preferenceService = preferenceService
         self.locationService = locationService
+        self.destinationService = destinationService
+    }
+
+    /// 現在設定中の今日の目的地（未設定なら nil）
+    var destination: TodayDestination? {
+        destinationService?.currentDestination
+    }
+
+    /// 目的地周辺で実際にスポットが見つかった提案の件数（バナー表示用）
+    var resolvedSpotCount: Int {
+        suggestions.filter { $0.nearbyPlace != nil }.count
+    }
+
+    /// 提案の検索基点となる位置。目的地が設定されていればそれを優先し、なければ現在地（GPS）。
+    private func effectiveLocation() async -> CLLocation? {
+        if let destination = destinationService?.currentDestination {
+            return destination.location
+        }
+        return await locationService?.requestCurrentLocation()
+    }
+
+    /// 目的地を設定し、その周辺で提案を再生成する
+    func setDestination(_ destination: TodayDestination) async {
+        destinationService?.setDestination(destination)
+        await refresh()
+    }
+
+    /// 目的地を解除し、現在地ベースで提案を再生成する
+    func clearDestination() async {
+        destinationService?.clearDestination()
+        await refresh()
     }
 
     func loadData() async {
@@ -52,8 +88,9 @@ class HomeViewModel: ObservableObject {
         // Restore persisted accepted suggestions for today
         loadAcceptedSuggestions()
 
-        // Get GPS location first (used for both weather and place search)
-        let location = await locationService?.requestCurrentLocation()
+        // 検索基点を決定（目的地が設定されていればその座標、なければ現在地）。
+        // 天気・周辺スポット検索の両方でこの位置を使う。
+        let location = await effectiveLocation()
 
         async let weatherTask: () = fetchWeather(location: location)
         async let slotsTask: () = fetchFreeTimeSlots()
@@ -206,7 +243,7 @@ class HomeViewModel: ObservableObject {
 
             // Search for nearby place for the new suggestion
             Task {
-                guard let location = await locationService?.requestCurrentLocation() else { return }
+                guard let location = await effectiveLocation() else { return }
                 if let place = await placeSearchService.findNearbyPlace(
                     for: newSuggestion.category, near: location
                 ) {

@@ -69,6 +69,21 @@ protocol SuggestionEngineProtocol {
     ) -> [Suggestion]
 }
 
+// MARK: - DestinationServiceProtocol
+
+protocol DestinationServiceProtocol: AnyObject {
+    /// 現在設定中の今日の目的地（当日限定。未設定または期限切れなら nil）
+    var currentDestination: TodayDestination? { get }
+    /// 最近選んだ目的地（新しい順）
+    var recentDestinations: [TodayDestination] { get }
+    /// 目的地を設定する（最近の検索にも追加される）
+    func setDestination(_ destination: TodayDestination)
+    /// 目的地を解除し、現在地ベースに戻す
+    func clearDestination()
+    /// おすすめエリア一覧
+    func recommendedAreas() -> [RecommendedArea]
+}
+
 // MARK: - FavoriteServiceProtocol
 
 protocol FavoriteServiceProtocol: AnyObject {

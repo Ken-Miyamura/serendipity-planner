@@ -40,5 +40,7 @@ enum Constants {
         static let acceptedSuggestionsKey = "acceptedSuggestions"
         static let favoriteSuggestionsKey = "favoriteSuggestions"
         static let suggestionHistoryKey = "suggestionHistory"
+        static let todayDestinationKey = "todayDestination"
+        static let recentDestinationsKey = "recentDestinations"
     }
 }

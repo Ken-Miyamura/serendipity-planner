@@ -205,6 +205,33 @@ class MockFavoriteService: FavoriteServiceProtocol {
     }
 }
 
+// MARK: - MockDestinationService
+
+class MockDestinationService: DestinationServiceProtocol {
+    var currentDestination: TodayDestination?
+    var recentDestinations: [TodayDestination] = []
+    var areas: [RecommendedArea] = RecommendedArea.curated
+
+    var setDestinationCallCount = 0
+    var clearDestinationCallCount = 0
+
+    func setDestination(_ destination: TodayDestination) {
+        setDestinationCallCount += 1
+        currentDestination = destination
+        recentDestinations.removeAll { $0.name == destination.name }
+        recentDestinations.insert(destination, at: 0)
+    }
+
+    func clearDestination() {
+        clearDestinationCallCount += 1
+        currentDestination = nil
+    }
+
+    func recommendedAreas() -> [RecommendedArea] {
+        areas
+    }
+}
+
 // MARK: - MockHistoryService
 
 class MockHistoryService: HistoryServiceProtocol {
@@ -408,6 +435,24 @@ extension Suggestion {
             freeTimeSlot: freeSlot,
             weatherContext: "テスト天気",
             isAccepted: isAccepted
+        )
+    }
+}
+
+extension TodayDestination {
+    static func mock(
+        name: String = "鎌倉",
+        subtitle: String = "神奈川県 鎌倉市",
+        latitude: Double = 35.3192,
+        longitude: Double = 139.5466,
+        setDate: Date = Date()
+    ) -> TodayDestination {
+        TodayDestination(
+            name: name,
+            subtitle: subtitle,
+            latitude: latitude,
+            longitude: longitude,
+            setDate: setDate
         )
     }
 }

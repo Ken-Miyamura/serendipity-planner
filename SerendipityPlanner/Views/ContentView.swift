@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var preferenceService = PreferenceService()
     @StateObject private var favoriteService = FavoriteService()
+    @StateObject private var destinationService = DestinationService()
 
     var body: some View {
         let locationService = LocationService(preferenceService: preferenceService)
@@ -18,6 +19,7 @@ struct ContentView: View {
         .environmentObject(preferenceService)
         .environmentObject(locationService)
         .environmentObject(favoriteService)
+        .environmentObject(destinationService)
     }
 }
 
