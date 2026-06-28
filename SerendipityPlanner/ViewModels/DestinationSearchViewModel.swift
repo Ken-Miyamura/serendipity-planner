@@ -13,16 +13,20 @@ final class DestinationSearchViewModel: ObservableObject {
     @Published private(set) var recommendedAreas: [TodayDestination] = []
     @Published private(set) var isLoadingRecommendations = false
 
-    /// 日本全域をカバーする検索リージョン（全国どこでも検索できるよう広めに設定）
+    /// 現在地が取れないときのフォールバック検索リージョン。
+    /// 沖縄〜北海道まで含むよう広めに設定（中心は本州あたり）。
     private let japanRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 36.2, longitude: 138.2),
-        span: MKCoordinateSpan(latitudeDelta: 12, longitudeDelta: 12)
+        center: CLLocationCoordinate2D(latitude: 36.0, longitude: 137.5),
+        span: MKCoordinateSpan(latitudeDelta: 22, longitudeDelta: 22)
     )
 
     /// おすすめエリア抽出に使う「行き先になりやすい」検索クエリ
     private let recommendationQueries = ["観光スポット", "名所", "公園"]
     /// おすすめエリアの最大表示件数
     private let maxRecommendations = 6
+
+    /// 検索バイアスの基点となる現在地（シート表示時に取得）
+    private var userLocation: CLLocation?
 
     private var searchTask: Task<Void, Never>?
 
@@ -54,7 +58,7 @@ final class DestinationSearchViewModel: ObservableObject {
 
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = query
-        request.region = japanRegion
+        request.region = searchRegion()
 
         do {
             let response = try await MKLocalSearch(request: request).start()
@@ -66,10 +70,22 @@ final class DestinationSearchViewModel: ObservableObject {
         }
     }
 
+    /// 検索リージョン。現在地が取れていれば現在地を中心に広めにバイアスし、
+    /// 近場を優先しつつ全国の地名検索も可能にする。取れなければ全国フォールバック。
+    private func searchRegion() -> MKCoordinateRegion {
+        guard let userLocation else { return japanRegion }
+        return MKCoordinateRegion(
+            center: userLocation.coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 16, longitudeDelta: 16)
+        )
+    }
+
     // MARK: - おすすめエリア（現在地ベース）
 
     /// 現在地周辺の行き先候補を取得する。位置が無ければ空にする（固定データは持たない）。
     func loadRecommendedAreas(near location: CLLocation?) async {
+        // 検索バイアスにも使うため現在地を保持する
+        userLocation = location
         guard let location else {
             recommendedAreas = []
             return
