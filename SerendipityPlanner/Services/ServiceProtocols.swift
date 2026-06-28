@@ -80,8 +80,6 @@ protocol DestinationServiceProtocol: AnyObject {
     func setDestination(_ destination: TodayDestination)
     /// 目的地を解除し、現在地ベースに戻す
     func clearDestination()
-    /// おすすめエリア一覧
-    func recommendedAreas() -> [RecommendedArea]
 }
 
 // MARK: - FavoriteServiceProtocol

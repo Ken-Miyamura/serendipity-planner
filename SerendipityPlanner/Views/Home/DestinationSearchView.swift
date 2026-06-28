@@ -1,11 +1,13 @@
+import CoreLocation
 import SwiftUI
 
 /// 目的地を選ぶシート。
-/// エリア・駅・スポットを検索、または最近の検索・おすすめエリアから選択できる。
+/// エリア・駅・スポットを検索、または最近の検索・現在地周辺のおすすめエリアから選択できる。
 /// 「現在地を使う」で目的地を解除し現在地ベースに戻す。
 struct DestinationSearchView: View {
     let recentDestinations: [TodayDestination]
-    let recommendedAreas: [RecommendedArea]
+    /// おすすめエリア取得の基点となる現在地を返す（シート表示時に能動的に取得する）
+    let locationProvider: () async -> CLLocation?
     let onSelect: (TodayDestination) -> Void
     let onUseCurrentLocation: () -> Void
 
@@ -43,6 +45,10 @@ struct DestinationSearchView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("閉じる") { dismiss() }
                 }
+            }
+            .task {
+                let location = await locationProvider()
+                await viewModel.loadRecommendedAreas(near: location)
             }
         }
         .navigationViewStyle(.stack)
@@ -140,19 +146,33 @@ struct DestinationSearchView: View {
         }
     }
 
-    // MARK: - おすすめエリア
+    // MARK: - おすすめエリア（現在地ベース）
 
+    @ViewBuilder
     private var recommendedSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("おすすめエリア")
-            VStack(spacing: 8) {
-                ForEach(recommendedAreas) { area in
-                    Button {
-                        select(area.toDestination())
-                    } label: {
-                        areaRow(name: area.name, detail: "\(area.region)・\(area.tagline)")
+        if viewModel.isLoadingRecommendations {
+            VStack(alignment: .leading, spacing: 10) {
+                sectionHeader("この近くのおすすめ")
+                HStack(spacing: 8) {
+                    ProgressView()
+                    Text("近くの行き先を探しています...")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.vertical, 8)
+            }
+        } else if !viewModel.recommendedAreas.isEmpty {
+            VStack(alignment: .leading, spacing: 10) {
+                sectionHeader("この近くのおすすめ")
+                VStack(spacing: 8) {
+                    ForEach(viewModel.recommendedAreas) { area in
+                        Button {
+                            select(area)
+                        } label: {
+                            areaRow(name: area.name, detail: area.subtitle)
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .buttonStyle(.plain)
                 }
             }
         }

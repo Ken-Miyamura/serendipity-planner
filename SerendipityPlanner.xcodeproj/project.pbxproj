@@ -28,7 +28,6 @@
 		43C970EC2B42C4AB623BE3E2 /* View+StaggeredAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4BEB10D8BF4B22BC2F381 /* View+StaggeredAppear.swift */; };
 		45E6C6D787AEA088A19C995B /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596A4778BF1DFFAF21B47FD /* HistoryRowView.swift */; };
 		462D2F04A32D235D7B380099 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B79688A55B4021C9FC6C880 /* HistoryView.swift */; };
-		4B94A9290EE7A23493E8BEAB /* RecommendedArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9193B57FADBDEDA4BD39D1 /* RecommendedArea.swift */; };
 		4D8CF885090BEA52A70A0B54 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACBEBF54FEC9855FC1880BA /* SmallWidgetView.swift */; };
 		4FCBFDC7A4BABF51CBBCCC97 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */; };
 		591D2AB3F620991D9778F767 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6F24BF7412DF8073ED063 /* Color+Theme.swift */; };
@@ -165,7 +164,6 @@
 		4FD4C9AA350AF20D4C6E1837 /* DestinationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchViewModel.swift; sourceTree = "<group>"; };
 		54E6F24BF7412DF8073ED063 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		54F60BF9623985E088653907 /* SuggestionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEngine.swift; sourceTree = "<group>"; };
-		5A9193B57FADBDEDA4BD39D1 /* RecommendedArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedArea.swift; sourceTree = "<group>"; };
 		5AA53A9743DBCF5D89BB684E /* FreeTimeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeTimeCardView.swift; sourceTree = "<group>"; };
 		5F5754414C94CBFAD7F61AAC /* SerendipityPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SerendipityPlanner.entitlements; sourceTree = "<group>"; };
 		609307DB67F6379A350559D2 /* SharedDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManager.swift; sourceTree = "<group>"; };
@@ -464,7 +462,6 @@
 			children = (
 				C56D1DE7C3B2964F73CC67EC /* FavoriteSuggestion.swift */,
 				3FDC697F7D1CC2A015688AFD /* FreeTimeSlot.swift */,
-				5A9193B57FADBDEDA4BD39D1 /* RecommendedArea.swift */,
 				C44FE781E50A4CCC7559AB5B /* Suggestion.swift */,
 				DFEDAF1E295C227DA562CC8A /* SuggestionHistory.swift */,
 				2736F2BC7087ADA20D4F3D24 /* TodayDestination.swift */,
@@ -664,7 +661,6 @@
 				7EBB35CB82A6A17C65B505BC /* OnboardingViewModel.swift in Sources */,
 				A82A42B9EFEF32FC6D113077 /* PlaceSearchService.swift in Sources */,
 				DE19BB03D86E06A902BCD44A /* PreferenceService.swift in Sources */,
-				4B94A9290EE7A23493E8BEAB /* RecommendedArea.swift in Sources */,
 				92C3509D77A669CCD17CC902 /* SerendipityPlannerApp.swift in Sources */,
 				F2D11E03188B375C12D24BA4 /* ServiceProtocols.swift in Sources */,
 				D58896B93CFB15D1E9BA851D /* SettingsView.swift in Sources */,

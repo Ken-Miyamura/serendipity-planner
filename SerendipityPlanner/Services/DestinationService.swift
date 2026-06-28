@@ -32,10 +32,6 @@ class DestinationService: ObservableObject, DestinationServiceProtocol {
         defaults.removeObject(forKey: Constants.Storage.todayDestinationKey)
     }
 
-    func recommendedAreas() -> [RecommendedArea] {
-        RecommendedArea.curated
-    }
-
     // MARK: - Current Destination Persistence
 
     /// 保存済みの目的地を読み込む。当日でなければ破棄し、永続化からも削除する（翌日自動リセット）。

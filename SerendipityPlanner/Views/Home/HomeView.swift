@@ -48,7 +48,7 @@ struct HomeView: View {
             .sheet(isPresented: $showDestinationSearch) {
                 DestinationSearchView(
                     recentDestinations: destinationService.recentDestinations,
-                    recommendedAreas: destinationService.recommendedAreas(),
+                    locationProvider: { await locationService.requestCurrentLocation() },
                     onSelect: { destination in
                         Task { await viewModel.setDestination(destination) }
                     },

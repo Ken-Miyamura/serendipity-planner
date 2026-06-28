@@ -210,7 +210,6 @@ class MockFavoriteService: FavoriteServiceProtocol {
 class MockDestinationService: DestinationServiceProtocol {
     var currentDestination: TodayDestination?
     var recentDestinations: [TodayDestination] = []
-    var areas: [RecommendedArea] = RecommendedArea.curated
 
     var setDestinationCallCount = 0
     var clearDestinationCallCount = 0
@@ -225,10 +224,6 @@ class MockDestinationService: DestinationServiceProtocol {
     func clearDestination() {
         clearDestinationCallCount += 1
         currentDestination = nil
-    }
-
-    func recommendedAreas() -> [RecommendedArea] {
-        areas
     }
 }
 

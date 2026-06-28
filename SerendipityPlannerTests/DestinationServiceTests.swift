@@ -100,21 +100,4 @@ final class DestinationServiceTests: XCTestCase {
         // 最新が先頭
         XCTAssertEqual(service.recentDestinations.first?.name, "エリア9")
     }
-
-    // MARK: - おすすめエリア
-
-    func testRecommendedAreasNotEmpty() {
-        let service = DestinationService(defaults: defaults)
-        XCTAssertFalse(service.recommendedAreas().isEmpty)
-    }
-
-    func testRecommendedAreaConvertsToDestination() {
-        let area = RecommendedArea.curated[0]
-        let destination = area.toDestination()
-
-        XCTAssertEqual(destination.name, area.name)
-        XCTAssertEqual(destination.latitude, area.latitude)
-        XCTAssertEqual(destination.longitude, area.longitude)
-        XCTAssertTrue(destination.isValidForToday)
-    }
 }
