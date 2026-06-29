@@ -100,6 +100,23 @@ struct HomeView: View {
         return "今いる場所から、すきま時間に"
     }
 
+    /// 現在地ベース時に表示する「現在地・○○」チップ（design ①準拠）
+    private var currentLocationChip: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "scope")
+                .font(.system(size: 10))
+            Text("現在地・\(locationService.currentLocationName)")
+                .font(.caption2)
+                .fontWeight(.semibold)
+                .lineLimit(1)
+        }
+        .foregroundColor(Color.theme.walk)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(Color.theme.walk.opacity(0.13))
+        .cornerRadius(9)
+    }
+
     private var greetingText: String {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
@@ -166,7 +183,11 @@ struct HomeView: View {
                             .font(.subheadline)
                             .fontWeight(.medium)
                             .foregroundColor(useLightText ? .white.opacity(0.8) : .secondary)
+                            .lineLimit(1)
                         Spacer()
+                        if viewModel.destination == nil {
+                            currentLocationChip
+                        }
                     }
                 }
 

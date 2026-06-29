@@ -16,6 +16,10 @@ struct DestinationSearchView: View {
     @FocusState private var searchFocused: Bool
 
     private let accent = Color.theme.walk
+    /// design: 現在地アクションに使う珊瑚色(#F27A73)
+    private let coral = Color(red: 0.949, green: 0.478, blue: 0.451)
+    /// design: 検索フィールドの背景(#E9E6DF)
+    private let searchFieldBackground = Color(red: 0.914, green: 0.902, blue: 0.875)
 
     var body: some View {
         NavigationView {
@@ -81,8 +85,8 @@ struct DestinationSearchView: View {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 10)
-        .background(Color.theme.cardBackground)
-        .cornerRadius(12)
+        .background(searchFieldBackground)
+        .cornerRadius(13)
     }
 
     // MARK: - 現在地を使う
@@ -95,9 +99,9 @@ struct DestinationSearchView: View {
             HStack(spacing: 12) {
                 Image(systemName: "location.fill")
                     .font(.body)
-                    .foregroundColor(accent)
+                    .foregroundColor(coral)
                     .frame(width: 40, height: 40)
-                    .background(accent.opacity(0.15))
+                    .background(coral.opacity(0.13))
                     .clipShape(Circle())
 
                 VStack(alignment: .leading, spacing: 2) {
@@ -130,14 +134,19 @@ struct DestinationSearchView: View {
                         Button {
                             select(destination)
                         } label: {
-                            Text(destination.name)
-                                .font(.caption)
-                                .fontWeight(.medium)
-                                .foregroundColor(.primary)
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 8)
-                                .background(Color.theme.cardBackground)
-                                .cornerRadius(16)
+                            HStack(spacing: 5) {
+                                Image(systemName: "clock.arrow.circlepath")
+                                    .font(.caption2)
+                                    .foregroundColor(Color(red: 0.659, green: 0.643, blue: 0.608))
+                                Text(destination.name)
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.primary)
+                            }
+                            .padding(.horizontal, 14)
+                            .padding(.vertical, 8)
+                            .background(Color.theme.cardBackground)
+                            .cornerRadius(20)
                         }
                         .buttonStyle(.plain)
                     }
@@ -219,9 +228,12 @@ struct DestinationSearchView: View {
 
     private func areaRow(name: String, detail: String) -> some View {
         HStack(spacing: 12) {
-            Image(systemName: "mappin.circle.fill")
-                .font(.title3)
+            Image(systemName: "mappin")
+                .font(.system(size: 17))
                 .foregroundColor(accent)
+                .frame(width: 38, height: 38)
+                .background(accent.opacity(0.18))
+                .cornerRadius(11)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(name)
@@ -239,11 +251,11 @@ struct DestinationSearchView: View {
             Spacer()
             Image(systemName: "chevron.right")
                 .font(.footnote)
-                .foregroundColor(.secondary)
+                .foregroundColor(Color(red: 0.765, green: 0.753, blue: 0.722))
         }
         .padding(14)
         .background(Color.theme.cardBackground)
-        .cornerRadius(12)
+        .cornerRadius(14)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(name)、\(detail)")
     }
