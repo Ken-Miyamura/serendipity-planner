@@ -1,3 +1,4 @@
+import CoreLocation
 @testable import SerendipityPlanner
 import XCTest
 
@@ -106,5 +107,59 @@ final class SuggestionDetailViewModelTests: XCTestCase {
 
         XCTAssertEqual(mockEngine.alternativesCallCount, countBefore + 1)
         XCTAssertEqual(sut.alternatives.count, 1)
+    }
+
+    // MARK: - Destination-based Enrichment Tests
+
+    func testEnrichUsesDestinationLocationWhenSet() async {
+        // GPS は取れないが目的地が設定されている状況
+        mockLocation.currentLocation = nil
+        let destination = TodayDestination.mock(name: "鎌倉", latitude: 35.3192, longitude: 139.5466)
+        let vm = SuggestionDetailViewModel(
+            suggestion: .mock(),
+            suggestionEngine: mockEngine,
+            placeSearchService: mockPlaceSearch
+        )
+        vm.configure(
+            weather: .mock(),
+            preference: .default,
+            locationService: mockLocation,
+            destination: destination
+        )
+        mockPlaceSearch.findResult = NearbyPlace(
+            name: "報国寺", category: .cafe,
+            latitude: 35.32, longitude: 139.55, distance: 300
+        )
+
+        await vm.enrichIfNeeded()
+
+        // 目的地座標を基点に検索される（GPS が nil でも enrich される）
+        XCTAssertEqual(mockPlaceSearch.findCallCount, 1)
+        XCTAssertEqual(mockPlaceSearch.lastFindLocation?.coordinate.latitude ?? 0, 35.3192, accuracy: 0.0001)
+        XCTAssertEqual(mockPlaceSearch.lastFindLocation?.coordinate.longitude ?? 0, 139.5466, accuracy: 0.0001)
+        XCTAssertEqual(vm.suggestion.nearbyPlace?.name, "報国寺")
+    }
+
+    func testEnrichUsesCurrentLocationWhenNoDestination() async {
+        mockLocation.currentLocation = CLLocation(latitude: 35.68, longitude: 139.76)
+        mockPlaceSearch.findResult = NearbyPlace(
+            name: "テストカフェ", category: .cafe,
+            latitude: 35.68, longitude: 139.76, distance: 200
+        )
+
+        // sut は setUp で目的地なし
+        await sut.enrichIfNeeded()
+
+        XCTAssertEqual(mockPlaceSearch.lastFindLocation?.coordinate.latitude ?? 0, 35.68, accuracy: 0.0001)
+    }
+
+    func testDestinationExposed() {
+        XCTAssertNil(sut.destination)
+
+        let destination = TodayDestination.mock(name: "横浜")
+        let vm = SuggestionDetailViewModel(suggestion: .mock(), suggestionEngine: mockEngine, placeSearchService: mockPlaceSearch)
+        vm.configure(weather: .mock(), preference: .default, destination: destination)
+
+        XCTAssertEqual(vm.destination?.name, "横浜")
     }
 }

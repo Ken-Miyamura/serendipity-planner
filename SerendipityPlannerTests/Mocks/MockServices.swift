@@ -149,14 +149,18 @@ class MockPlaceSearchService: PlaceSearchServiceProtocol {
     var findResult: NearbyPlace?
     var searchCallCount = 0
     var findCallCount = 0
+    /// 直近に検索基点として渡された位置（目的地ベース検索の検証用）
+    var lastFindLocation: CLLocation?
 
     func searchNearbyPlaces(for category: SuggestionCategory, near location: CLLocation) async -> [NearbyPlace] {
         searchCallCount += 1
+        lastFindLocation = location
         return nearbyPlaces
     }
 
     func findNearbyPlace(for category: SuggestionCategory, near location: CLLocation) async -> NearbyPlace? {
         findCallCount += 1
+        lastFindLocation = location
         return findResult
     }
 }
@@ -202,6 +206,28 @@ class MockFavoriteService: FavoriteServiceProtocol {
     func removeAll() {
         removeAllCallCount += 1
         favorites.removeAll()
+    }
+}
+
+// MARK: - MockDestinationService
+
+class MockDestinationService: DestinationServiceProtocol {
+    var currentDestination: TodayDestination?
+    var recentDestinations: [TodayDestination] = []
+
+    var setDestinationCallCount = 0
+    var clearDestinationCallCount = 0
+
+    func setDestination(_ destination: TodayDestination) {
+        setDestinationCallCount += 1
+        currentDestination = destination
+        recentDestinations.removeAll { $0.name == destination.name }
+        recentDestinations.insert(destination, at: 0)
+    }
+
+    func clearDestination() {
+        clearDestinationCallCount += 1
+        currentDestination = nil
     }
 }
 
@@ -408,6 +434,24 @@ extension Suggestion {
             freeTimeSlot: freeSlot,
             weatherContext: "テスト天気",
             isAccepted: isAccepted
+        )
+    }
+}
+
+extension TodayDestination {
+    static func mock(
+        name: String = "鎌倉",
+        subtitle: String = "神奈川県 鎌倉市",
+        latitude: Double = 35.3192,
+        longitude: Double = 139.5466,
+        setDate: Date = Date()
+    ) -> TodayDestination {
+        TodayDestination(
+            name: name,
+            subtitle: subtitle,
+            latitude: latitude,
+            longitude: longitude,
+            setDate: setDate
         )
     }
 }

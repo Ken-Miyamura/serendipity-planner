@@ -15,6 +15,7 @@ struct SuggestionDetailView: View {
     private let locationService: LocationServiceProtocol?
     private let calendarService: CalendarServiceProtocol?
     private let favoriteService: FavoriteServiceProtocol?
+    private let destination: TodayDestination?
 
     init(
         suggestion: Suggestion,
@@ -24,6 +25,7 @@ struct SuggestionDetailView: View {
         locationService: LocationServiceProtocol? = nil,
         calendarService: CalendarServiceProtocol? = nil,
         favoriteService: FavoriteServiceProtocol? = nil,
+        destination: TodayDestination? = nil,
         onAccept: @escaping () -> Void,
         onRegenerate: @escaping () -> Void
     ) {
@@ -35,7 +37,8 @@ struct SuggestionDetailView: View {
                 preferenceService: preferenceService,
                 locationService: locationService,
                 calendarService: calendarService,
-                favoriteService: favoriteService
+                favoriteService: favoriteService,
+                destination: destination
             )
             return vm
         }())
@@ -45,6 +48,7 @@ struct SuggestionDetailView: View {
         self.locationService = locationService
         self.calendarService = calendarService
         self.favoriteService = favoriteService
+        self.destination = destination
         self.onAccept = onAccept
         self.onRegenerate = onRegenerate
     }
@@ -52,6 +56,9 @@ struct SuggestionDetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
+                // 提案の出所（現在地 / 目的地）— ナビ直下に配置
+                sourceBadge
+
                 // Header
                 headerSection
 
@@ -204,7 +211,7 @@ struct SuggestionDetailView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.theme.color(for: viewModel.suggestion.category))
-                    .cornerRadius(12)
+                    .cornerRadius(14)
             }
             .accessibilityLabel("この提案を受け入れる")
             .accessibilityHint("提案をカレンダーに追加します")
@@ -236,7 +243,7 @@ struct SuggestionDetailView: View {
                         Text(place.name)
                             .font(.subheadline)
                             .fontWeight(.medium)
-                        Text("\(place.distanceText) ・ \(place.walkingTimeText)")
+                        Text("\(placeReferenceName)から\(place.walkingTimeText) ・ \(place.distanceText)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -258,8 +265,8 @@ struct SuggestionDetailView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.theme.secondaryBackground)
-        .cornerRadius(12)
+        .background(Color.theme.cardBackground)
+        .cornerRadius(16)
     }
 
     @ViewBuilder
@@ -300,6 +307,7 @@ struct SuggestionDetailView: View {
             locationService: locationService,
             calendarService: calendarService,
             favoriteService: favoriteService,
+            destination: destination,
             onAccept: onAccept,
             onRegenerate: onRegenerate
         )
@@ -309,6 +317,55 @@ struct SuggestionDetailView: View {
 // MARK: - マップ関連ヘルパー
 
 private extension SuggestionDetailView {
+    /// 「いまどこ基点の提案か」を示すバッジ（目的地名 or 現在地）
+    var sourceBadge: some View {
+        let accent = Color.theme.walk
+        // design: 緑の塗り円(#469B75)に白いピン
+        let pinCircle = Color(red: 0.275, green: 0.608, blue: 0.459)
+        return HStack(spacing: 8) {
+            Image(systemName: "mappin")
+                .font(.system(size: 11, weight: .bold))
+                .foregroundColor(.white)
+                .frame(width: 22, height: 22)
+                .background(pinCircle)
+                .clipShape(Circle())
+
+            Group {
+                if let destination {
+                    Text(destination.name)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+                        + Text(" 周辺から提案中")
+                        .foregroundColor(accent)
+                } else {
+                    Text("現在地周辺から提案中")
+                        .foregroundColor(accent)
+                }
+            }
+            .font(.footnote)
+
+            Spacer()
+        }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            LinearGradient(
+                colors: [accent.opacity(0.16), accent.opacity(0.06)],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+        )
+        .cornerRadius(14)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(destination.map { "\($0.name)周辺から提案中" } ?? "現在地周辺から提案中")
+    }
+
+    /// 距離表記の基点ラベル（目的地名 or 現在地）
+    var placeReferenceName: String {
+        destination?.name ?? "現在地"
+    }
+
     func mapPreview(for place: NearbyPlace) -> some View {
         let coordinate = CLLocationCoordinate2D(
             latitude: place.latitude,
@@ -360,13 +417,13 @@ private struct AlternativesSectionView: View {
     let locationService: LocationServiceProtocol?
     let calendarService: CalendarServiceProtocol?
     let favoriteService: FavoriteServiceProtocol?
+    let destination: TodayDestination?
     let onAccept: () -> Void
     let onRegenerate: () -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("他の候補")
-                .font(.headline)
+            sectionHeader
 
             ForEach(alternatives) { alt in
                 NavigationLink {
@@ -378,6 +435,7 @@ private struct AlternativesSectionView: View {
                         locationService: locationService,
                         calendarService: calendarService,
                         favoriteService: favoriteService,
+                        destination: destination,
                         onAccept: onAccept,
                         onRegenerate: onRegenerate
                     )
@@ -412,6 +470,27 @@ private struct AlternativesSectionView: View {
                 }
                 .buttonStyle(.plain)
             }
+        }
+    }
+
+    @ViewBuilder
+    private var sectionHeader: some View {
+        if let destination {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("\(destination.name)の ほかの候補")
+                    .font(.headline)
+                HStack(spacing: 4) {
+                    Image(systemName: "mappin.circle.fill")
+                        .font(.caption2)
+                        .foregroundColor(Color.theme.walk)
+                    Text("すべて\(destination.name)エリアから選んでいます")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+        } else {
+            Text("他の候補")
+                .font(.headline)
         }
     }
 }

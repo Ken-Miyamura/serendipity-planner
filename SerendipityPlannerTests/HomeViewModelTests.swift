@@ -13,6 +13,7 @@ final class HomeViewModelTests: XCTestCase {
     private var mockHistory: MockHistoryService!
     private var mockPreference: MockPreferenceService!
     private var mockLocation: MockLocationService!
+    private var mockDestination: MockDestinationService!
 
     override func setUp() {
         super.setUp()
@@ -27,6 +28,7 @@ final class HomeViewModelTests: XCTestCase {
         mockHistory = MockHistoryService()
         mockPreference = MockPreferenceService()
         mockLocation = MockLocationService()
+        mockDestination = MockDestinationService()
 
         sut = HomeViewModel(
             calendarService: mockCalendar,
@@ -36,7 +38,11 @@ final class HomeViewModelTests: XCTestCase {
             placeSearchService: mockPlaceSearch,
             historyService: mockHistory
         )
-        sut.configure(with: mockPreference, locationService: mockLocation)
+        sut.configure(
+            with: mockPreference,
+            locationService: mockLocation,
+            destinationService: mockDestination
+        )
     }
 
     override func tearDown() {
@@ -183,6 +189,66 @@ final class HomeViewModelTests: XCTestCase {
         await sut.loadData()
 
         XCTAssertEqual(mockNotification.cancelAllCallCount, 1)
+    }
+
+    // MARK: - Destination Tests
+
+    func testDestinationUsedForPlaceSearchEvenWithoutGPS() async {
+        // GPS は取得できないが、目的地が設定されている状況
+        mockLocation.currentLocation = nil
+        mockDestination.currentDestination = .mock(name: "鎌倉", latitude: 35.3192, longitude: 139.5466)
+        mockCalendar.freeTimeSlots = [.mock()]
+        mockPlaceSearch.findResult = NearbyPlace(
+            name: "報国寺", category: .cafe,
+            latitude: 35.32, longitude: 139.55, distance: 300
+        )
+
+        await sut.loadData()
+
+        // 目的地座標を基点に周辺検索が走る（GPS が無くても enrich される）
+        XCTAssertEqual(mockPlaceSearch.findCallCount, 1)
+        // 目的地座標で天気も取得される（モック天気フォールバックではない）
+        XCTAssertEqual(mockWeather.fetchWeatherCallCount, 1)
+        XCTAssertNil(sut.warningMessage)
+    }
+
+    func testDestinationExposedViaViewModel() {
+        XCTAssertNil(sut.destination)
+        mockDestination.currentDestination = .mock(name: "横浜")
+        XCTAssertEqual(sut.destination?.name, "横浜")
+    }
+
+    func testSetDestinationUpdatesServiceAndRegenerates() async {
+        mockCalendar.freeTimeSlots = [.mock()]
+
+        await sut.setDestination(.mock(name: "鎌倉"))
+
+        XCTAssertEqual(mockDestination.setDestinationCallCount, 1)
+        XCTAssertEqual(sut.destination?.name, "鎌倉")
+    }
+
+    func testClearDestinationResetsToCurrentLocation() async {
+        mockDestination.currentDestination = .mock(name: "鎌倉")
+        mockCalendar.freeTimeSlots = [.mock()]
+
+        await sut.clearDestination()
+
+        XCTAssertEqual(mockDestination.clearDestinationCallCount, 1)
+        XCTAssertNil(sut.destination)
+    }
+
+    func testResolvedSpotCountReflectsEnrichedSuggestions() async {
+        mockLocation.currentLocation = CLLocation(latitude: 35.68, longitude: 139.76)
+        mockCalendar.freeTimeSlots = [.mock()]
+        mockPlaceSearch.findResult = NearbyPlace(
+            name: "テストカフェ", category: .cafe,
+            latitude: 35.68, longitude: 139.76, distance: 200
+        )
+
+        await sut.loadData()
+
+        XCTAssertEqual(sut.resolvedSpotCount, sut.suggestions.filter { $0.nearbyPlace != nil }.count)
+        XCTAssertGreaterThan(sut.resolvedSpotCount, 0)
     }
 
     // MARK: - Warning Message Tests (Error Handling)

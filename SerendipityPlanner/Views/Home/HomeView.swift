@@ -3,7 +3,9 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var preferenceService: PreferenceService
     @EnvironmentObject private var favoriteService: FavoriteService
+    @EnvironmentObject private var destinationService: DestinationService
     @StateObject private var viewModel = HomeViewModel()
+    @State private var showDestinationSearch = false
     let locationService: LocationService
 
     var body: some View {
@@ -32,12 +34,28 @@ struct HomeView: View {
             }
             .navigationBarHidden(true)
             .task {
-                viewModel.configure(with: preferenceService, locationService: locationService)
+                viewModel.configure(
+                    with: preferenceService,
+                    locationService: locationService,
+                    destinationService: destinationService
+                )
                 locationService.requestPermission()
                 await viewModel.loadData()
             }
             .refreshable {
                 await viewModel.refresh()
+            }
+            .sheet(isPresented: $showDestinationSearch) {
+                DestinationSearchView(
+                    recentDestinations: destinationService.recentDestinations,
+                    locationProvider: { await locationService.requestCurrentLocation() },
+                    onSelect: { destination in
+                        Task { await viewModel.setDestination(destination) }
+                    },
+                    onUseCurrentLocation: {
+                        Task { await viewModel.clearDestination() }
+                    }
+                )
             }
         }
         .navigationViewStyle(.stack)
@@ -73,6 +91,30 @@ struct HomeView: View {
         .padding(.horizontal)
         .padding(.top, 16)
         .padding(.bottom, 8)
+    }
+
+    private var suggestionSectionTitle: String {
+        if let destination = viewModel.destination {
+            return "\(destination.name)で過ごす、すきま時間"
+        }
+        return "今いる場所から、すきま時間に"
+    }
+
+    /// 現在地ベース時に表示する「現在地・○○」チップ（design ①準拠）
+    private var currentLocationChip: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "scope")
+                .font(.system(size: 10))
+            Text("現在地・\(locationService.currentLocationName)")
+                .font(.caption2)
+                .fontWeight(.semibold)
+                .lineLimit(1)
+        }
+        .foregroundColor(Color.theme.walk)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(Color.theme.walk.opacity(0.13))
+        .cornerRadius(9)
     }
 
     private var greetingText: String {
@@ -120,12 +162,33 @@ struct HomeView: View {
             LazyVStack(spacing: 16) {
                 greetingHeader
 
+                DestinationBannerView(
+                    destination: viewModel.destination,
+                    spotCount: viewModel.resolvedSpotCount,
+                    isCompact: !viewModel.acceptedSuggestions.isEmpty,
+                    onTap: { showDestinationSearch = true }
+                )
+
                 if let warning = viewModel.warningMessage {
                     warningBanner(warning)
                 }
 
                 if !viewModel.acceptedSuggestions.isEmpty {
                     acceptedSection
+                }
+
+                if !viewModel.suggestions.isEmpty {
+                    HStack {
+                        Text(suggestionSectionTitle)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(useLightText ? .white.opacity(0.8) : .secondary)
+                            .lineLimit(1)
+                        Spacer()
+                        if viewModel.destination == nil {
+                            currentLocationChip
+                        }
+                    }
                 }
 
                 ForEach(Array(viewModel.suggestions.enumerated()), id: \.element.id) { index, suggestion in
@@ -138,6 +201,7 @@ struct HomeView: View {
                             locationService: locationService,
                             calendarService: viewModel.calendarService,
                             favoriteService: favoriteService,
+                            destination: viewModel.destination,
                             onAccept: { viewModel.acceptSuggestion(suggestion) },
                             onRegenerate: {
                                 viewModel.regenerateSuggestion(
