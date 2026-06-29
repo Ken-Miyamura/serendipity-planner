@@ -180,6 +180,7 @@ struct HomeView: View {
                             locationService: locationService,
                             calendarService: viewModel.calendarService,
                             favoriteService: favoriteService,
+                            destination: viewModel.destination,
                             onAccept: { viewModel.acceptSuggestion(suggestion) },
                             onRegenerate: {
                                 viewModel.regenerateSuggestion(

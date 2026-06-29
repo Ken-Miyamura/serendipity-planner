@@ -149,14 +149,18 @@ class MockPlaceSearchService: PlaceSearchServiceProtocol {
     var findResult: NearbyPlace?
     var searchCallCount = 0
     var findCallCount = 0
+    /// 直近に検索基点として渡された位置（目的地ベース検索の検証用）
+    var lastFindLocation: CLLocation?
 
     func searchNearbyPlaces(for category: SuggestionCategory, near location: CLLocation) async -> [NearbyPlace] {
         searchCallCount += 1
+        lastFindLocation = location
         return nearbyPlaces
     }
 
     func findNearbyPlace(for category: SuggestionCategory, near location: CLLocation) async -> NearbyPlace? {
         findCallCount += 1
+        lastFindLocation = location
         return findResult
     }
 }
