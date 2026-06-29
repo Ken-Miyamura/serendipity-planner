@@ -56,11 +56,11 @@ struct SuggestionDetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
+                // 提案の出所（現在地 / 目的地）— ナビ直下に配置
+                sourceBadge
+
                 // Header
                 headerSection
-
-                // 提案の出所（現在地 / 目的地）
-                sourceBadge
 
                 // Description
                 descriptionSection
@@ -211,7 +211,7 @@ struct SuggestionDetailView: View {
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color.theme.color(for: viewModel.suggestion.category))
-                    .cornerRadius(12)
+                    .cornerRadius(14)
             }
             .accessibilityLabel("この提案を受け入れる")
             .accessibilityHint("提案をカレンダーに追加します")
@@ -265,8 +265,8 @@ struct SuggestionDetailView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.theme.secondaryBackground)
-        .cornerRadius(12)
+        .background(Color.theme.cardBackground)
+        .cornerRadius(16)
     }
 
     @ViewBuilder
@@ -320,28 +320,43 @@ private extension SuggestionDetailView {
     /// 「いまどこ基点の提案か」を示すバッジ（目的地名 or 現在地）
     var sourceBadge: some View {
         let accent = Color.theme.walk
-        return HStack(spacing: 6) {
-            Image(systemName: "mappin.circle.fill")
-                .font(.footnote)
-                .foregroundColor(accent)
-            if let destination {
-                Text(destination.name)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.primary)
-                    + Text(" 周辺から提案中")
-                    .foregroundColor(accent)
-            } else {
-                Text("現在地周辺から提案中")
-                    .foregroundColor(accent)
+        // design: 緑の塗り円(#469B75)に白いピン
+        let pinCircle = Color(red: 0.275, green: 0.608, blue: 0.459)
+        return HStack(spacing: 8) {
+            Image(systemName: "mappin")
+                .font(.system(size: 11, weight: .bold))
+                .foregroundColor(.white)
+                .frame(width: 22, height: 22)
+                .background(pinCircle)
+                .clipShape(Circle())
+
+            Group {
+                if let destination {
+                    Text(destination.name)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.primary)
+                        + Text(" 周辺から提案中")
+                        .foregroundColor(accent)
+                } else {
+                    Text("現在地周辺から提案中")
+                        .foregroundColor(accent)
+                }
             }
+            .font(.footnote)
+
             Spacer()
         }
-        .font(.footnote)
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 10)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(accent.opacity(0.1))
-        .cornerRadius(10)
+        .background(
+            LinearGradient(
+                colors: [accent.opacity(0.16), accent.opacity(0.06)],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+        )
+        .cornerRadius(14)
         .accessibilityElement(children: .combine)
         .accessibilityLabel(destination.map { "\($0.name)周辺から提案中" } ?? "現在地周辺から提案中")
     }

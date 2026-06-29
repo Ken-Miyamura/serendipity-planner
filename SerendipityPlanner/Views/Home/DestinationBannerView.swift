@@ -75,9 +75,11 @@ struct DestinationBannerView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text("目的地")
                     .font(.caption2)
-                    .foregroundColor(.secondary)
+                    .fontWeight(.semibold)
+                    .foregroundColor(accent)
                 Text(destination.name)
-                    .font(.headline)
+                    .font(.title3)
+                    .fontWeight(.bold)
                     .foregroundColor(.primary)
                     .lineLimit(1)
                 Text(subtitleText(for: destination))
