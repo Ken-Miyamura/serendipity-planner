@@ -105,6 +105,7 @@ sequenceDiagram
 | NearbyPlace | struct | Yes | id, name, category, latitude, longitude, distance |
 | FavoriteSuggestion | struct | Yes | id, title, category, description, placeName, latitude, longitude, placeAddress, addedDate |
 | SuggestionHistory | struct | Yes | id, suggestion, acceptedDate, placeName, placeAddress |
+| TodayDestination | struct | Yes | id, name, subtitle, latitude, longitude, setDate（当日限定・`isValidForToday` で判定） |
 
 ### 補助型
 
@@ -128,6 +129,8 @@ sequenceDiagram
 | `acceptedSuggestions` | Constants.Storage.acceptedSuggestionsKey | 受け入れ済み提案 | [Suggestion] (JSON) |
 | `favoriteSuggestions` | Constants.Storage.favoriteSuggestionsKey | お気に入り提案 | [FavoriteSuggestion] (JSON) |
 | `suggestionHistory` | Constants.Storage.suggestionHistoryKey | 提案履歴 | [SuggestionHistory] (JSON) |
+| `todayDestination` | Constants.Storage.todayDestinationKey | 今日の目的地（当日限定） | TodayDestination (JSON) |
+| `recentDestinations` | Constants.Storage.recentDestinationsKey | 最近選んだ目的地（最大 6 件） | [TodayDestination] (JSON) |
 
 天気キャッシュは座標ごとに別キーで保存されます（例: `weather_cache_coord_35.68_139.77`）。
 
@@ -171,6 +174,7 @@ graph TD
     CV[ContentView] -->|environmentObject| PFS[PreferenceService]
     CV -->|environmentObject| LS[LocationService]
     CV -->|environmentObject| FS[FavoriteService]
+    CV -->|environmentObject| DS[DestinationService]
 
     PFS --> HV[HomeView]
     PFS --> SV[SettingsView]
@@ -181,7 +185,11 @@ graph TD
     LS --> SV
     LS --> SDV
     LS --> LIV[LocationInputView]
+
+    DS --> HV
 ```
+
+`DestinationService` はホーム画面で目的地バナー・検索シートの表示に使われ、`HomeViewModel` にも `configure(...)` で注入されて検索基点（`effectiveLocation`）の判定に利用されます。
 
 ### @StateObject と @ObservedObject
 

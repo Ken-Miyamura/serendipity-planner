@@ -35,6 +35,7 @@ graph TD
         PFS[PreferenceService]
         FS[FavoriteService]
         HIS[HistoryService]
+        DS[DestinationService]
     end
 
     subgraph Models
@@ -64,6 +65,7 @@ graph TD
     HVM --> LS
     HVM --> NS
     HVM --> HIS
+    HVM --> DS
 
     HISVM --> HIS
 
@@ -107,7 +109,7 @@ graph TD
 
 ## Service 層
 
-7つのサービスがドメインロジックと外部システム連携を担当します。
+各サービスがドメインロジックと外部システム連携を担当します。
 
 | Service | 責務 | 外部依存 |
 |---------|------|---------|
@@ -120,6 +122,7 @@ graph TD
 | PreferenceService | ユーザー設定・好みの永続化、状態公開 | UserDefaults |
 | FavoriteService | お気に入り提案の管理・永続化・状態公開 | UserDefaults |
 | HistoryService | 提案履歴の永続化・月別フィルタ・カテゴリ別集計 | UserDefaults |
+| DestinationService | 今日の目的地・最近の検索の管理・永続化・状態公開（当日限定） | UserDefaults |
 | SharedDataManager | アプリ⇔ウィジェット間のデータ共有 | App Group UserDefaults |
 
 ---
@@ -179,6 +182,7 @@ graph TD
 struct ContentView: View {
     @StateObject private var preferenceService = PreferenceService()
     @StateObject private var favoriteService = FavoriteService()
+    @StateObject private var destinationService = DestinationService()
 
     var body: some View {
         let locationService = LocationService(preferenceService: preferenceService)
@@ -192,6 +196,7 @@ struct ContentView: View {
         .environmentObject(preferenceService)
         .environmentObject(locationService)
         .environmentObject(favoriteService)
+        .environmentObject(destinationService)
     }
 }
 ```
@@ -213,9 +218,9 @@ graph LR
     HVM -->|内部生成| PS[PlaceSearchService]
 ```
 
-- **PreferenceService**、**LocationService**、**FavoriteService** は EnvironmentObject として全画面で共有
-- **HomeViewModel** は `configure(with:locationService:)` メソッドで外部サービスを受け取り、内部でその他のサービスを生成
-- **SuggestionDetailViewModel** は `configure(weather:preference:...)` で必要なデータとサービスを受け取る
+- **PreferenceService**、**LocationService**、**FavoriteService**、**DestinationService** は EnvironmentObject として全画面で共有
+- **HomeViewModel** は `configure(with:locationService:destinationService:)` メソッドで外部サービスを受け取り、内部でその他のサービスを生成
+- **SuggestionDetailViewModel** は `configure(weather:preference:...:destination:)` で必要なデータとサービス（目的地を含む）を受け取る
 
 ---
 
