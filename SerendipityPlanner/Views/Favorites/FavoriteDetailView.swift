@@ -43,6 +43,7 @@ struct FavoriteDetailView: View {
             }
             .padding()
         }
+        .background(DetailSkyBackground().ignoresSafeArea())
         .navigationTitle("お気に入りの詳細")
         .navigationBarTitleDisplayMode(.inline)
         .alert("お気に入りから削除", isPresented: $showDeleteConfirmation) {
@@ -151,8 +152,8 @@ struct FavoriteDetailView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.theme.secondaryBackground)
-        .cornerRadius(12)
+        .background(Color.theme.cardBackground)
+        .cornerRadius(16)
     }
 
     private func mapSection(latitude: Double, longitude: Double) -> some View {

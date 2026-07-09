@@ -88,7 +88,7 @@ struct SuggestionDetailView: View {
             }
             .padding()
         }
-        .background(detailBackground.ignoresSafeArea())
+        .background(DetailSkyBackground().ignoresSafeArea())
         .navigationTitle("提案の詳細")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -318,19 +318,6 @@ struct SuggestionDetailView: View {
 // MARK: - マップ関連ヘルパー
 
 private extension SuggestionDetailView {
-    /// design 準拠の背景（淡い青→暖色クリームの固定グラデ #AED1EB→#EBE6D9→#F7F5F0）
-    var detailBackground: some View {
-        LinearGradient(
-            stops: [
-                .init(color: Color(red: 0.682, green: 0.820, blue: 0.922), location: 0),
-                .init(color: Color(red: 0.922, green: 0.902, blue: 0.851), location: 0.34),
-                .init(color: Color(red: 0.969, green: 0.961, blue: 0.941), location: 0.70)
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
-    }
-
     /// 「いまどこ基点の提案か」を示すバッジ（目的地名 or 現在地）
     var sourceBadge: some View {
         let accent = Color.theme.walk
