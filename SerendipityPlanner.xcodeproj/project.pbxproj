@@ -12,6 +12,7 @@
 		0176BFF1E6DF884C74BB1FD7 /* UserPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E642105BA015B260A17506B9 /* UserPreference.swift */; };
 		02FAF19A962E1920D814B507 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97FFC658A07AA2B723C0E939 /* ContentView.swift */; };
 		0595AD80FAEA50DD16C722C2 /* FreeTimeSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDC697F7D1CC2A015688AFD /* FreeTimeSlot.swift */; };
+		0A30B5569EEFA15B4059DDF6 /* MapAppPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C8ACF869F485F58C771DBE /* MapAppPickerSheet.swift */; };
 		0B1431B30008FB938F29838C /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B7E797C0E05B67FFFBD25A /* HistoryService.swift */; };
 		0E322F33F6626801CC626D9C /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD7DE95BFB179B989D3312C /* SettingsViewModelTests.swift */; };
 		10A013B3A9348EBAEBAA6FD6 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BA2260D155FAA09A165D31 /* WeatherService.swift */; };
@@ -144,6 +145,7 @@
 		13FF3A15CF1ADA1552216930 /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
 		14D4DFB5EE11BD778E53B124 /* FavoriteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteServiceTests.swift; sourceTree = "<group>"; };
 		16B7740E3407971DAEE4D69F /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		18C8ACF869F485F58C771DBE /* MapAppPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppPickerSheet.swift; sourceTree = "<group>"; };
 		1B1CC7C23E7A6EEB48E55AA0 /* FavoriteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailView.swift; sourceTree = "<group>"; };
 		1E849C24B12FCAFE890E3D1C /* AlternativesSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativesSectionView.swift; sourceTree = "<group>"; };
 		1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			children = (
 				C7CEEB343E25AD58C20806A6 /* DetailSkyBackground.swift */,
 				E7C883A3B744729AD56C4C68 /* ErrorStateView.swift */,
+				18C8ACF869F485F58C771DBE /* MapAppPickerSheet.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				8B9580E52EB01DBF0DC4EF16 /* InterestSelectionView.swift in Sources */,
 				6EA7680B637F1A5E4FFCD5B5 /* LocationInputView.swift in Sources */,
 				5D6CE2D8B3C102F6ACBF98C8 /* LocationService.swift in Sources */,
+				0A30B5569EEFA15B4059DDF6 /* MapAppPickerSheet.swift in Sources */,
 				DC94849253D332D97D9984F9 /* MapLauncher.swift in Sources */,
 				DBCE629254062E904F1D8B8F /* NotificationPermissionView.swift in Sources */,
 				35D48B406A9E8B61BEB2170F /* NotificationService.swift in Sources */,

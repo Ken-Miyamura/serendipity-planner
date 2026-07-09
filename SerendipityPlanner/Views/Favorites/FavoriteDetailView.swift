@@ -54,23 +54,13 @@ struct FavoriteDetailView: View {
         } message: {
             Text("このお気に入りを削除しますか？")
         }
-        .confirmationDialog(
-            "マップアプリで開く",
-            isPresented: $showMapAppPicker,
-            titleVisibility: .visible
-        ) {
+        .sheet(isPresented: $showMapAppPicker) {
             if let target = pendingMapTarget {
-                ForEach(MapLauncher.availableApps()) { app in
-                    Button(app.displayName) {
-                        MapLauncher.open(
-                            app,
-                            name: target.name,
-                            latitude: target.latitude,
-                            longitude: target.longitude
-                        )
-                    }
-                }
-                Button("キャンセル", role: .cancel) {}
+                MapAppPickerSheet(
+                    placeName: target.name,
+                    latitude: target.latitude,
+                    longitude: target.longitude
+                )
             }
         }
     }

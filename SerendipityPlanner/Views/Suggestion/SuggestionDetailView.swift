@@ -54,41 +54,44 @@ struct SuggestionDetailView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                // 提案の出所（現在地 / 目的地）— ナビ直下に配置
-                sourceBadge
+        ZStack {
+            DetailSkyBackground().ignoresSafeArea()
 
-                // Header
-                headerSection
+            ScrollView {
+                VStack(spacing: 24) {
+                    // 提案の出所（現在地 / 目的地）— ナビ直下に配置
+                    sourceBadge
 
-                // Description
-                descriptionSection
+                    // Header
+                    headerSection
 
-                // Nearby place
-                if viewModel.suggestion.nearbyPlace != nil {
-                    placeSection
-                    placeMapSection
+                    // Description
+                    descriptionSection
+
+                    // Nearby place
+                    if viewModel.suggestion.nearbyPlace != nil {
+                        placeSection
+                        placeMapSection
+                    }
+
+                    // Weather context
+                    weatherSection
+
+                    // Action buttons
+                    if viewModel.isAccepted {
+                        SuggestionAcceptedView()
+                    } else {
+                        actionButtons
+                    }
+
+                    // Alternatives
+                    if !viewModel.isAccepted, !viewModel.alternatives.isEmpty {
+                        alternativesSection
+                    }
                 }
-
-                // Weather context
-                weatherSection
-
-                // Action buttons
-                if viewModel.isAccepted {
-                    SuggestionAcceptedView()
-                } else {
-                    actionButtons
-                }
-
-                // Alternatives
-                if !viewModel.isAccepted, !viewModel.alternatives.isEmpty {
-                    alternativesSection
-                }
+                .padding()
             }
-            .padding()
         }
-        .background(DetailSkyBackground().ignoresSafeArea())
         .navigationTitle("提案の詳細")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -116,23 +119,13 @@ struct SuggestionDetailView: View {
                 onAccept()
             }
         }
-        .confirmationDialog(
-            "マップアプリで開く",
-            isPresented: $showMapAppPicker,
-            titleVisibility: .visible
-        ) {
+        .sheet(isPresented: $showMapAppPicker) {
             if let place = pendingPlace {
-                ForEach(MapLauncher.availableApps()) { app in
-                    Button(app.displayName) {
-                        MapLauncher.open(
-                            app,
-                            name: place.name,
-                            latitude: place.latitude,
-                            longitude: place.longitude
-                        )
-                    }
-                }
-                Button("キャンセル", role: .cancel) {}
+                MapAppPickerSheet(
+                    placeName: place.name,
+                    latitude: place.latitude,
+                    longitude: place.longitude
+                )
             }
         }
         .task {
@@ -157,16 +150,10 @@ struct SuggestionDetailView: View {
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
 
-            HStack(spacing: 16) {
-                Label(
-                    viewModel.suggestion.freeTimeSlot.timeRangeText,
-                    systemImage: "clock"
-                )
-                Label(
-                    "\(viewModel.suggestion.duration)分",
-                    systemImage: "timer"
-                )
-            }
+            Label(
+                viewModel.suggestion.freeTimeSlot.timeRangeText,
+                systemImage: "clock"
+            )
             .font(.subheadline)
             .foregroundColor(.secondary)
         }
