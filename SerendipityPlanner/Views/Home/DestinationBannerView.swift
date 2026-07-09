@@ -12,6 +12,8 @@ struct DestinationBannerView: View {
     let onTap: () -> Void
 
     private let accent = Color.theme.walk
+    /// design: 未設定バナーに使う珊瑚色(#F27A73)
+    private let coral = Color(red: 0.949, green: 0.478, blue: 0.451)
 
     var body: some View {
         if let destination {
@@ -32,9 +34,9 @@ struct DestinationBannerView: View {
             HStack(spacing: 12) {
                 Image(systemName: "mappin.and.ellipse")
                     .font(.title2)
-                    .foregroundColor(accent)
+                    .foregroundColor(coral)
                     .frame(width: 44, height: 44)
-                    .background(accent.opacity(0.15))
+                    .background(coral.opacity(0.13))
                     .clipShape(Circle())
 
                 VStack(alignment: .leading, spacing: 3) {
@@ -50,14 +52,21 @@ struct DestinationBannerView: View {
 
                 Spacer()
 
-                Image(systemName: "chevron.right")
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+                Image(systemName: "plus.circle.fill")
+                    .font(.title2)
+                    .foregroundColor(coral)
             }
             .padding()
             .background(Color.theme.cardBackground)
             .cornerRadius(20)
-            .shadow(color: accent.opacity(0.08), radius: 8, x: 0, y: 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .strokeBorder(
+                        coral.opacity(0.55),
+                        style: StrokeStyle(lineWidth: 1.5, dash: [6, 4])
+                    )
+            )
+            .shadow(color: coral.opacity(0.08), radius: 8, x: 0, y: 2)
         }
         .buttonStyle(.plain)
         .accessibilityLabel("目的地を決める。行き先を選ぶと、その街での提案が表示されます")

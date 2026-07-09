@@ -46,8 +46,18 @@ struct DestinationSearchView: View {
             .navigationTitle("目的地を選ぶ")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("閉じる") { dismiss() }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundColor(Color(red: 0.486, green: 0.471, blue: 0.439))
+                            .frame(width: 30, height: 30)
+                            .background(Color(red: 0.906, green: 0.894, blue: 0.867))
+                            .clipShape(Circle())
+                    }
+                    .accessibilityLabel("閉じる")
                 }
             }
             .task {
