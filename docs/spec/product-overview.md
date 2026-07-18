@@ -101,7 +101,8 @@ SerendipityPlanner/
 │   │   └── LocationInputView.swift        # 位置情報権限画面
 │   └── Common/
 │       ├── ErrorStateView.swift           # エラー表示
-│       └── DetailSkyBackground.swift       # 詳細画面共通の背景グラデ
+│       ├── SkyTextStyling.swift            # 空グラデ背景向けの明色テキスト判定（protocol）
+│       └── MapAppPickerSheet.swift         # マップアプリ選択ボトムシート
 └── Utilities/
     ├── Constants.swift                    # 定数定義
     ├── SuggestionTemplates.swift          # 提案テンプレート
