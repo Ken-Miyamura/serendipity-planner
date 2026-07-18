@@ -34,6 +34,7 @@
 		591D2AB3F620991D9778F767 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6F24BF7412DF8073ED063 /* Color+Theme.swift */; };
 		5B79E8A203AB130B64DAD07B /* OnboardingComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100FB8019E121A1DDEE271F9 /* OnboardingComponents.swift */; };
 		5D6CE2D8B3C102F6ACBF98C8 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFD86BDE4488A5C30FC374 /* LocationService.swift */; };
+		63E40628B4AAB1E27FE6BCB3 /* SkyTextStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A08DF6AE0C9C70B496C4FFA /* SkyTextStyling.swift */; };
 		646DFBEB6544FEB26D0BFA6B /* DestinationBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DBE7BAE975F13A124FB4DB /* DestinationBannerView.swift */; };
 		654BA11456B13D201EFE4DBB /* TodayDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2736F2BC7087ADA20D4F3D24 /* TodayDestination.swift */; };
 		66711BDDC925706555E79CC0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 99AC8361221A1FE7C4E71EF7 /* PrivacyInfo.xcprivacy */; };
@@ -89,7 +90,6 @@
 		E8132097F8BB146E5FCCB239 /* SharedDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609307DB67F6379A350559D2 /* SharedDataManager.swift */; };
 		E8CB4A7D7736430A472F6D90 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D4849C5AAF3A87FA8A95E2 /* FavoritesView.swift */; };
 		EBE1B1AB499F0EA2A16FAF7E /* SerendipityTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3935CDCF113D727FB04444EC /* SerendipityTimelineProvider.swift */; };
-		EE1017495801563FC99971BF /* DetailSkyBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CEEB343E25AD58C20806A6 /* DetailSkyBackground.swift */; };
 		EEAC533A003DC8CC35EC2F92 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44FE781E50A4CCC7559AB5B /* Suggestion.swift */; };
 		F1163DE05F62F4CF6BED89E8 /* CalendarServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F929290B9669DF29514C2 /* CalendarServiceTests.swift */; };
 		F11DEB110C6B4F2F1B8A1E99 /* FavoriteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1CC7C23E7A6EEB48E55AA0 /* FavoriteDetailView.swift */; };
@@ -146,6 +146,7 @@
 		14D4DFB5EE11BD778E53B124 /* FavoriteServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteServiceTests.swift; sourceTree = "<group>"; };
 		16B7740E3407971DAEE4D69F /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		18C8ACF869F485F58C771DBE /* MapAppPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppPickerSheet.swift; sourceTree = "<group>"; };
+		1A08DF6AE0C9C70B496C4FFA /* SkyTextStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyTextStyling.swift; sourceTree = "<group>"; };
 		1B1CC7C23E7A6EEB48E55AA0 /* FavoriteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailView.swift; sourceTree = "<group>"; };
 		1E849C24B12FCAFE890E3D1C /* AlternativesSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativesSectionView.swift; sourceTree = "<group>"; };
 		1F23FCDE789425FC2B11F9FE /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -202,7 +203,6 @@
 		C269046CF438FECA1EA49D09 /* SerendipityWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SerendipityWidget.entitlements; sourceTree = "<group>"; };
 		C44FE781E50A4CCC7559AB5B /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		C56D1DE7C3B2964F73CC67EC /* FavoriteSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSuggestion.swift; sourceTree = "<group>"; };
-		C7CEEB343E25AD58C20806A6 /* DetailSkyBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSkyBackground.swift; sourceTree = "<group>"; };
 		CBEB2C08093DAAF745B51B55 /* FavoriteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRowView.swift; sourceTree = "<group>"; };
 		D1C81D1FDE668A3786841348 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		D31D4B3B6C4F6EB9A929EAE9 /* DestinationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchView.swift; sourceTree = "<group>"; };
@@ -256,9 +256,9 @@
 		368E2AFD26A8ADE2DB9FB86F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C7CEEB343E25AD58C20806A6 /* DetailSkyBackground.swift */,
 				E7C883A3B744729AD56C4C68 /* ErrorStateView.swift */,
 				18C8ACF869F485F58C771DBE /* MapAppPickerSheet.swift */,
+				1A08DF6AE0C9C70B496C4FFA /* SkyTextStyling.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -643,7 +643,6 @@
 				67609CF19A3FA7AA9C0F4A91 /* DestinationSearchView.swift in Sources */,
 				ADAE99091E0536D58DDE579D /* DestinationSearchViewModel.swift in Sources */,
 				A78820A33611070EB8BEB6E6 /* DestinationService.swift in Sources */,
-				EE1017495801563FC99971BF /* DetailSkyBackground.swift in Sources */,
 				41AC0084BDDEEE9B5763E3E4 /* ErrorStateView.swift in Sources */,
 				F11DEB110C6B4F2F1B8A1E99 /* FavoriteDetailView.swift in Sources */,
 				E6B35118562C6591E2D90199 /* FavoriteRowView.swift in Sources */,
@@ -679,6 +678,7 @@
 				8EFDA700B0BA1C09EC5DE8CF /* SettingsViewModel.swift in Sources */,
 				E8132097F8BB146E5FCCB239 /* SharedDataManager.swift in Sources */,
 				77EE8361E8FB9D31E7E0237C /* SkyGradientView.swift in Sources */,
+				63E40628B4AAB1E27FE6BCB3 /* SkyTextStyling.swift in Sources */,
 				EEAC533A003DC8CC35EC2F92 /* Suggestion.swift in Sources */,
 				717734C65BBA85EADCB8AAAE /* SuggestionAcceptedView.swift in Sources */,
 				C91B330A3C6804B677A27163 /* SuggestionDetailView.swift in Sources */,

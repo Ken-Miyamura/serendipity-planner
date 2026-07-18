@@ -1,7 +1,7 @@
 import MapKit
 import SwiftUI
 
-struct SuggestionDetailView: View {
+struct SuggestionDetailView: View, SkyTextStyling {
     @StateObject private var viewModel: SuggestionDetailViewModel
     let onAccept: () -> Void
     let onRegenerate: () -> Void
@@ -55,7 +55,8 @@ struct SuggestionDetailView: View {
 
     var body: some View {
         ZStack {
-            DetailSkyBackground().ignoresSafeArea()
+            SkyGradientView(weatherCondition: weather?.condition)
+                .ignoresSafeArea()
 
             ScrollView {
                 VStack(spacing: 24) {
@@ -140,7 +141,8 @@ struct SuggestionDetailView: View {
                 .foregroundColor(Color.theme.color(for: viewModel.suggestion.category))
                 .frame(width: 80, height: 80)
                 .background(
-                    Color.theme.color(for: viewModel.suggestion.category).opacity(0.1)
+                    Color.theme.color(for: viewModel.suggestion.category)
+                        .opacity(useLightText ? 0.25 : 0.1)
                 )
                 .cornerRadius(20)
                 .accessibilityHidden(true)
@@ -149,13 +151,14 @@ struct SuggestionDetailView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
+                .foregroundColor(useLightText ? .white : .primary)
 
             Label(
                 viewModel.suggestion.freeTimeSlot.timeRangeText,
                 systemImage: "clock"
             )
             .font(.subheadline)
-            .foregroundColor(.secondary)
+            .foregroundColor(useLightText ? .white.opacity(0.9) : .secondary)
         }
     }
 
@@ -322,12 +325,12 @@ private extension SuggestionDetailView {
                 if let destination {
                     Text(destination.name)
                         .fontWeight(.semibold)
-                        .foregroundColor(.primary)
+                        .foregroundColor(useLightText ? .white : .primary)
                         + Text(" 周辺から提案中")
-                        .foregroundColor(accent)
+                        .foregroundColor(useLightText ? .white.opacity(0.9) : accent)
                 } else {
                     Text("現在地周辺から提案中")
-                        .foregroundColor(accent)
+                        .foregroundColor(useLightText ? .white.opacity(0.9) : accent)
                 }
             }
             .font(.footnote)

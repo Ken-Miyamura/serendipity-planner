@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SettingsView: View {
+struct SettingsView: View, SkyTextStyling {
     @EnvironmentObject private var preferenceService: PreferenceService
     @EnvironmentObject private var locationService: LocationService
     @EnvironmentObject private var favoriteService: FavoriteService
@@ -8,11 +8,6 @@ struct SettingsView: View {
     @State private var showResetConfirmation = false
     @State private var showFavoriteClearConfirmation = false
     @State private var showDeleteHistoryConfirmation = false
-
-    private var useLightText: Bool {
-        let period = TimePeriod.current()
-        return period.prefersLightText
-    }
 
     private var sectionHeaderColor: Color {
         useLightText ? .white.opacity(0.8) : .secondary
