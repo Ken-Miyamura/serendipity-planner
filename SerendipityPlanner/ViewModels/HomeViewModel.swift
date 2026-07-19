@@ -227,26 +227,21 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    func regenerateSuggestion(for slot: FreeTimeSlot, excluding category: SuggestionCategory) {
-        guard let preference = preferenceService?.preference else { return }
+    /// 詳細画面で再生成された提案で、同一スロットのリスト項目を置き換える。
+    /// 詳細とホームが独立に再生成して別の提案になるのを防ぐ。
+    func replaceSuggestion(with newSuggestion: Suggestion) {
+        guard let index = suggestions.firstIndex(where: { $0.freeTimeSlot == newSuggestion.freeTimeSlot })
+        else { return }
+        suggestions[index] = newSuggestion
 
-        let alternatives = suggestionEngine.generateAlternatives(
-            for: slot,
-            weather: weather,
-            preference: preference,
-            excluding: category
-        )
-
-        if let newSuggestion = alternatives.first,
-           let index = suggestions.firstIndex(where: { $0.freeTimeSlot == slot }) {
-            suggestions[index] = newSuggestion
-
-            // Search for nearby place for the new suggestion
-            Task {
-                guard let location = await effectiveLocation() else { return }
-                if let place = await placeSearchService.findNearbyPlace(
-                    for: newSuggestion.category, near: location
-                ) {
+        // Search for nearby place for the new suggestion
+        Task {
+            guard let location = await effectiveLocation() else { return }
+            if let place = await placeSearchService.findNearbyPlace(
+                for: newSuggestion.category, near: location
+            ) {
+                // 置き換え後にさらに変わっていないか確認してから反映する
+                if suggestions.indices.contains(index), suggestions[index].id == newSuggestion.id {
                     suggestions[index].nearbyPlace = place
                 }
             }
@@ -254,22 +249,26 @@ class HomeViewModel: ObservableObject {
     }
 
     func acceptSuggestion(_ suggestion: Suggestion) {
-        if let index = suggestions.firstIndex(where: { $0.id == suggestion.id }) {
-            var accepted = suggestions[index]
-            accepted.isAccepted = true
-            acceptedSuggestions.append(accepted)
-            suggestions.remove(at: index)
-            saveAcceptedSuggestions()
+        // 詳細画面で再生成・代替候補を受け入れた場合、リスト上の提案とは ID が異なるため
+        // 同一スロットでフォールバック照合し、実際に受け入れた提案（引数）の方を保存する
+        let index = suggestions.firstIndex { $0.id == suggestion.id }
+            ?? suggestions.firstIndex { $0.freeTimeSlot == suggestion.freeTimeSlot }
+        guard let index else { return }
 
-            // 履歴に保存
-            let history = SuggestionHistory(
-                suggestion: accepted,
-                acceptedDate: Date(),
-                placeName: accepted.nearbyPlace?.name,
-                placeAddress: nil
-            )
-            historyService.saveHistory(history)
-        }
+        var accepted = suggestion
+        accepted.isAccepted = true
+        acceptedSuggestions.append(accepted)
+        suggestions.remove(at: index)
+        saveAcceptedSuggestions()
+
+        // 履歴に保存
+        let history = SuggestionHistory(
+            suggestion: accepted,
+            acceptedDate: Date(),
+            placeName: accepted.nearbyPlace?.name,
+            placeAddress: nil
+        )
+        historyService.saveHistory(history)
     }
 
     // MARK: - Widget Data Sharing

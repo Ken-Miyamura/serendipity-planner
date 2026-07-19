@@ -11,8 +11,8 @@ struct AlternativesSectionView: View {
     let calendarService: CalendarServiceProtocol?
     let favoriteService: FavoriteServiceProtocol?
     let destination: TodayDestination?
-    let onAccept: () -> Void
-    let onRegenerate: () -> Void
+    let onAccept: (Suggestion) -> Void
+    let onRegenerate: (Suggestion) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {

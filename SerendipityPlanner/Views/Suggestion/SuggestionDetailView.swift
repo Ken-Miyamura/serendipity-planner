@@ -3,8 +3,11 @@ import SwiftUI
 
 struct SuggestionDetailView: View, SkyTextStyling {
     @StateObject private var viewModel: SuggestionDetailViewModel
-    let onAccept: () -> Void
-    let onRegenerate: () -> Void
+    /// 実際に受け入れた提案を親へ渡す。
+    /// 再生成・代替候補への遷移後は表示中の提案が遷移時と異なるため、引数で運ぶ必要がある。
+    let onAccept: (Suggestion) -> Void
+    /// 再生成後の新しい提案を親へ渡す（ホーム側のリストを同じ提案で置き換えるため）。
+    let onRegenerate: (Suggestion) -> Void
 
     @State private var showMapAppPicker = false
     @State private var pendingPlace: NearbyPlace?
@@ -26,8 +29,8 @@ struct SuggestionDetailView: View, SkyTextStyling {
         calendarService: CalendarServiceProtocol? = nil,
         favoriteService: FavoriteServiceProtocol? = nil,
         destination: TodayDestination? = nil,
-        onAccept: @escaping () -> Void,
-        onRegenerate: @escaping () -> Void
+        onAccept: @escaping (Suggestion) -> Void,
+        onRegenerate: @escaping (Suggestion) -> Void
     ) {
         _viewModel = StateObject(wrappedValue: {
             let vm = SuggestionDetailViewModel(suggestion: suggestion)
@@ -117,7 +120,8 @@ struct SuggestionDetailView: View, SkyTextStyling {
             )
         ) {
             Button("OK", role: .cancel) {
-                onAccept()
+                // 表示中の提案（再生成・代替候補で変わっている可能性がある）を渡す
+                onAccept(viewModel.suggestion)
             }
         }
         .sheet(isPresented: $showMapAppPicker) {
@@ -209,7 +213,8 @@ struct SuggestionDetailView: View, SkyTextStyling {
 
             Button {
                 viewModel.regenerate()
-                onRegenerate()
+                // ホーム側のリストも同じ提案に置き換える（独立再生成によるズレを防ぐ）
+                onRegenerate(viewModel.suggestion)
             } label: {
                 Text("別の提案を見る")
                     .font(.subheadline)

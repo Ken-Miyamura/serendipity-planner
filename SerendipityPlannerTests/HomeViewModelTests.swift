@@ -150,21 +150,57 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(mockHistory.histories.first?.suggestion.title, suggestion.title)
     }
 
-    // MARK: - regenerateSuggestion Tests
-
-    func testRegenerateSuggestion() async throws {
+    /// 詳細画面で再生成・代替候補に遷移してから受け入れた場合、
+    /// リスト上の提案（旧）ではなく実際に受け入れた提案（新）が保存されること
+    func testAcceptDifferentSuggestionForSameSlotRecordsAcceptedOne() async throws {
         let slot = FreeTimeSlot.mock()
         mockCalendar.freeTimeSlots = [slot]
-        let altSuggestion = Suggestion.mock(category: .walk, title: "散歩提案", slot: slot)
-        mockEngine.alternativesResult = [altSuggestion]
 
         await sut.loadData()
+        let original = try XCTUnwrap(sut.suggestions.first)
 
-        let originalCategory = try XCTUnwrap(sut.suggestions.first?.category)
-        sut.regenerateSuggestion(for: slot, excluding: originalCategory)
+        // 同じスロットに対する別の提案（詳細画面で再生成 or 代替候補を受け入れた想定）
+        let actuallyAccepted = Suggestion.mock(category: .walk, title: "実際に受け入れた散歩", slot: slot)
+        XCTAssertNotEqual(actuallyAccepted.id, original.id)
 
-        XCTAssertEqual(mockEngine.alternativesCallCount, 1)
-        XCTAssertEqual(sut.suggestions.first?.title, "散歩提案")
+        sut.acceptSuggestion(actuallyAccepted)
+
+        // 旧提案はリストから消え、受け入れ済み・履歴は新提案で記録される
+        XCTAssertTrue(sut.suggestions.isEmpty)
+        XCTAssertEqual(sut.acceptedSuggestions.first?.title, "実際に受け入れた散歩")
+        XCTAssertEqual(sut.acceptedSuggestions.first?.category, .walk)
+        XCTAssertEqual(mockHistory.histories.first?.suggestion.title, "実際に受け入れた散歩")
+    }
+
+    // MARK: - replaceSuggestion Tests
+
+    func testReplaceSuggestionSwapsSameSlot() async {
+        let slot = FreeTimeSlot.mock()
+        mockCalendar.freeTimeSlots = [slot]
+
+        await sut.loadData()
+        XCTAssertNotNil(sut.suggestions.first)
+
+        // 詳細画面で再生成された提案で同一スロットを置き換える
+        let regenerated = Suggestion.mock(category: .walk, title: "再生成された散歩", slot: slot)
+        sut.replaceSuggestion(with: regenerated)
+
+        XCTAssertEqual(sut.suggestions.count, 1)
+        XCTAssertEqual(sut.suggestions.first?.id, regenerated.id)
+        XCTAssertEqual(sut.suggestions.first?.title, "再生成された散歩")
+    }
+
+    func testReplaceSuggestionIgnoresUnknownSlot() async {
+        mockCalendar.freeTimeSlots = [FreeTimeSlot.mock(startHour: 10, endHour: 12)]
+
+        await sut.loadData()
+        let before = sut.suggestions
+
+        // リストに存在しないスロットの提案は無視される
+        let unknown = Suggestion.mock(slot: .mock(startHour: 20, endHour: 22))
+        sut.replaceSuggestion(with: unknown)
+
+        XCTAssertEqual(sut.suggestions.map(\.id), before.map(\.id))
     }
 
     // MARK: - Notification Tests

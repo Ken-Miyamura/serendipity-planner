@@ -81,9 +81,9 @@ sequenceDiagram
     SDV->>SDV: SuggestionAcceptedView 表示
     Note over SDV: チェックマーク<br/>アニメーション
 
-    SDV-->>HVM: onAccept コールバック
-    HVM->>HVM: acceptSuggestion()
-    Note over HVM: suggestions → acceptedSuggestions に移動
+    SDV-->>HVM: onAccept(実際に受け入れた提案)
+    HVM->>HVM: acceptSuggestion(accepted)
+    Note over HVM: ID→同一スロットで照合し<br/>受け入れた提案の方を保存<br/>（再生成・代替候補の受け入れに対応）
     HVM->>HVM: saveAcceptedSuggestions()
     Note over HVM: UserDefaults に永続化
 

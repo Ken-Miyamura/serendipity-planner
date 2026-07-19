@@ -202,13 +202,8 @@ struct HomeView: View {
                             calendarService: viewModel.calendarService,
                             favoriteService: favoriteService,
                             destination: viewModel.destination,
-                            onAccept: { viewModel.acceptSuggestion(suggestion) },
-                            onRegenerate: {
-                                viewModel.regenerateSuggestion(
-                                    for: suggestion.freeTimeSlot,
-                                    excluding: suggestion.category
-                                )
-                            }
+                            onAccept: { accepted in viewModel.acceptSuggestion(accepted) },
+                            onRegenerate: { regenerated in viewModel.replaceSuggestion(with: regenerated) }
                         )
                     } label: {
                         FreeTimeCardView(suggestion: suggestion)
