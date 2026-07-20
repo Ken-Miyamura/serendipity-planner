@@ -212,9 +212,12 @@ struct SuggestionDetailView: View, SkyTextStyling {
             .accessibilityHint("提案をカレンダーに追加します")
 
             Button {
-                viewModel.regenerate()
-                // ホーム側のリストも同じ提案に置き換える（独立再生成によるズレを防ぐ）
-                onRegenerate(viewModel.suggestion)
+                Task {
+                    // 提案の差し替えは即時反映され、スポット取得の完了を待ってから
+                    // ホームへ渡す（詳細とホームで同じ提案・同じスポットになる）
+                    await viewModel.regenerate()
+                    onRegenerate(viewModel.suggestion)
+                }
             } label: {
                 Text("別の提案を見る")
                     .font(.subheadline)

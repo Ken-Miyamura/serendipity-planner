@@ -115,7 +115,10 @@ class SuggestionDetailViewModel: ObservableObject {
         await enrichWithPlace()
     }
 
-    func regenerate() {
+    /// 提案を再生成し、周辺スポットの取得まで完了させる。
+    /// 呼び出し側はこの完了後の `suggestion` を親（ホーム）へ渡すことで、
+    /// 詳細とホームで同じスポットが表示される（検索も1回で済む）。
+    func regenerate() async {
         guard let preference else { return }
 
         let newSuggestion = suggestionEngine.generateSuggestion(
@@ -126,7 +129,7 @@ class SuggestionDetailViewModel: ObservableObject {
         suggestion = newSuggestion
         isAccepted = false
         loadAlternatives()
-        Task { await enrichWithPlace() }
+        await enrichWithPlace()
     }
 
     private func enrichWithPlace() async {

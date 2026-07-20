@@ -227,25 +227,13 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    /// 詳細画面で再生成された提案で、同一スロットのリスト項目を置き換える。
-    /// 詳細とホームが独立に再生成して別の提案になるのを防ぐ。
+    /// 詳細画面で再生成された提案（スポット取得済み）で、同一スロットのリスト項目を置き換える。
+    /// 詳細側の結果をそのままミラーするだけで、こちらでは再検索しない
+    /// （詳細とホームが別のスポットを表示するズレを防ぎ、検索も1回で済む）。
     func replaceSuggestion(with newSuggestion: Suggestion) {
         guard let index = suggestions.firstIndex(where: { $0.freeTimeSlot == newSuggestion.freeTimeSlot })
         else { return }
         suggestions[index] = newSuggestion
-
-        // Search for nearby place for the new suggestion
-        Task {
-            guard let location = await effectiveLocation() else { return }
-            if let place = await placeSearchService.findNearbyPlace(
-                for: newSuggestion.category, near: location
-            ) {
-                // 置き換え後にさらに変わっていないか確認してから反映する
-                if suggestions.indices.contains(index), suggestions[index].id == newSuggestion.id {
-                    suggestions[index].nearbyPlace = place
-                }
-            }
-        }
     }
 
     func acceptSuggestion(_ suggestion: Suggestion) {
