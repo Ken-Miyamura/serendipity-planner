@@ -22,9 +22,12 @@ class DestinationService: ObservableObject, DestinationServiceProtocol {
     // MARK: - DestinationServiceProtocol
 
     func setDestination(_ destination: TodayDestination) {
-        currentDestination = destination
+        // 最近の検索など過去日の setDate を持つものを選んでも当日扱いになるよう再スタンプする。
+        // これをしないと再起動時に loadValidCurrentDestination() で即破棄されてしまう。
+        let stamped = destination.refreshedForToday()
+        currentDestination = stamped
         saveCurrent()
-        addToRecents(destination)
+        addToRecents(stamped)
     }
 
     func clearDestination() {

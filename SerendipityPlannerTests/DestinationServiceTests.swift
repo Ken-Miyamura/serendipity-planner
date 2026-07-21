@@ -51,10 +51,13 @@ final class DestinationServiceTests: XCTestCase {
 
     // MARK: - 当日限定（翌日自動リセット）
 
-    func testDestinationFromPreviousDayIsDiscardedOnLoad() {
+    func testDestinationFromPreviousDayIsDiscardedOnLoad() throws {
+        // 昨日の日付で永続化された状態を直接作る
+        // （setDestination は当日に再スタンプするため、UserDefaults に直接書き込む）
         let yesterday = Date().adding(days: -1)
-        let staleService = DestinationService(defaults: defaults)
-        staleService.setDestination(.mock(name: "江ノ島", setDate: yesterday))
+        let stale = TodayDestination.mock(name: "江ノ島", setDate: yesterday)
+        let data = try JSONEncoder().encode(stale)
+        defaults.set(data, forKey: Constants.Storage.todayDestinationKey)
 
         // 別インスタンスで読み込むと、当日でないため破棄される
         let reloaded = DestinationService(defaults: defaults)
@@ -69,6 +72,21 @@ final class DestinationServiceTests: XCTestCase {
         let reloaded = DestinationService(defaults: defaults)
 
         XCTAssertEqual(reloaded.currentDestination?.name, "表参道")
+    }
+
+    /// 最近の検索など過去日 setDate の目的地を選んでも当日扱いになり、再起動後も残ること
+    /// （Codex レビュー P2 の回帰テスト）
+    func testSelectingStaleDestinationReStampsToToday() {
+        let service = DestinationService(defaults: defaults)
+        let stale = TodayDestination.mock(name: "鎌倉", setDate: Date().adding(days: -3))
+
+        service.setDestination(stale)
+
+        // 当日扱いになっている
+        XCTAssertEqual(service.currentDestination?.isValidForToday, true)
+        // 再起動しても破棄されずに残る
+        let reloaded = DestinationService(defaults: defaults)
+        XCTAssertEqual(reloaded.currentDestination?.name, "鎌倉")
     }
 
     // MARK: - 最近の検索

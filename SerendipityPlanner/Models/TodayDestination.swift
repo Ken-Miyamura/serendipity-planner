@@ -23,6 +23,19 @@ struct TodayDestination: Codable, Equatable, Identifiable {
         Calendar.current.isDateInToday(setDate)
     }
 
+    /// setDate を現在時刻に更新したコピーを返す。
+    /// 最近の検索など過去日の setDate を持つ目的地を「今日の目的地」に設定し直すときに使う。
+    func refreshedForToday() -> TodayDestination {
+        TodayDestination(
+            id: id,
+            name: name,
+            subtitle: subtitle,
+            latitude: latitude,
+            longitude: longitude,
+            setDate: Date()
+        )
+    }
+
     init(
         id: UUID = UUID(),
         name: String,
