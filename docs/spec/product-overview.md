@@ -11,6 +11,7 @@ Serendipity Planner は、カレンダーの隙間時間を自動検出し、天
 - カレンダー連携による隙間時間の自動検出
 - 天気・気温に応じた屋内/屋外アクティビティの提案
 - 近隣スポットの検索と地図表示
+- 今日の目的地を設定して、その街の周辺から提案を受けられる目的地レコメンド
 - ユーザーの選択履歴に基づく学習・パーソナライズ
 - 通知による隙間時間のリマインド
 
@@ -45,7 +46,8 @@ SerendipityPlanner/
 │   ├── UserPreference.swift             # ユーザー設定・学習重み計算
 │   ├── UserSettings.swift               # アプリ設定（通知・オンボーディング）
 │   ├── FavoriteSuggestion.swift         # お気に入り提案データ
-│   └── SuggestionHistory.swift          # 提案履歴データ
+│   ├── SuggestionHistory.swift          # 提案履歴データ
+│   └── TodayDestination.swift           # 今日の目的地（当日限定）
 ├── Services/
 │   ├── CalendarService.swift            # EventKit 連携・隙間時間検出
 │   ├── WeatherService.swift             # OpenWeatherMap API 通信
@@ -55,14 +57,16 @@ SerendipityPlanner/
 │   ├── NotificationService.swift        # 通知スケジューリング
 │   ├── PreferenceService.swift          # 設定永続化・状態管理
 │   ├── FavoriteService.swift            # お気に入り管理（永続化・状態公開）
-│   └── HistoryService.swift             # 履歴管理（永続化・集計）
+│   ├── HistoryService.swift             # 履歴管理（永続化・集計）
+│   └── DestinationService.swift         # 今日の目的地・最近の検索の管理（永続化・当日限定）
 ├── ViewModels/
 │   ├── HomeViewModel.swift              # ホーム画面のデータフロー統括
 │   ├── SuggestionDetailViewModel.swift  # 提案詳細の操作ロジック
 │   ├── SettingsViewModel.swift          # 設定画面の状態管理
 │   ├── OnboardingViewModel.swift        # オンボーディングフロー管理
 │   ├── FavoritesViewModel.swift         # お気に入り一覧の状態管理
-│   └── HistoryViewModel.swift           # 履歴画面の状態管理
+│   ├── HistoryViewModel.swift           # 履歴画面の状態管理
+│   └── DestinationSearchViewModel.swift # 目的地検索・現在地ベースおすすめの取得
 ├── Views/
 │   ├── ContentView.swift                # ルートビュー・依存注入起点
 │   ├── Home/
@@ -70,9 +74,12 @@ SerendipityPlanner/
 │   │   ├── SkyGradientView.swift        # 空のグラデーション背景
 │   │   ├── FreeTimeCardView.swift       # 隙間時間カード
 │   │   ├── AcceptedCardView.swift       # 受け入れ済みカード
-│   │   └── WeatherBadgeView.swift       # 天気バッジ
+│   │   ├── WeatherBadgeView.swift       # 天気バッジ
+│   │   ├── DestinationBannerView.swift  # 目的地バナー（3状態）
+│   │   └── DestinationSearchView.swift  # 目的地検索シート
 │   ├── Suggestion/
-│   │   ├── SuggestionDetailView.swift   # 提案詳細（地図・代替案・お気に入りトグル）
+│   │   ├── SuggestionDetailView.swift   # 提案詳細（出所バッジ・地図・代替案・お気に入りトグル）
+│   │   ├── AlternativesSectionView.swift # 代替候補セクション
 │   │   └── SuggestionAcceptedView.swift # 受け入れアニメーション
 │   ├── History/
 │   │   ├── HistoryView.swift            # 履歴一覧（月ナビゲーション付き）
@@ -93,7 +100,9 @@ SerendipityPlanner/
 │   │   ├── NotificationPermissionView.swift # 通知権限画面
 │   │   └── LocationInputView.swift        # 位置情報権限画面
 │   └── Common/
-│       └── ErrorStateView.swift           # エラー表示
+│       ├── ErrorStateView.swift           # エラー表示
+│       ├── SkyTextStyling.swift            # 空グラデ背景向けの明色テキスト判定（protocol）
+│       └── MapAppPickerSheet.swift         # マップアプリ選択ボトムシート
 └── Utilities/
     ├── Constants.swift                    # 定数定義
     ├── SuggestionTemplates.swift          # 提案テンプレート

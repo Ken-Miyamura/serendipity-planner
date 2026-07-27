@@ -17,3 +17,6 @@
 
 # SwiftLintのopening_braceルールと競合するため無効化
 --disable wrapMultilineStatementBraces
+
+# count(where:) は iOS 18+ 限定 API（デプロイ先 iOS 15）のため filter{}.count を維持
+--disable preferCountWhere

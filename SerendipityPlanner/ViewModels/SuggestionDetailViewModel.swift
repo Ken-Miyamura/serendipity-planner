@@ -1,3 +1,4 @@
+import CoreLocation
 import Foundation
 
 @MainActor
@@ -17,6 +18,9 @@ class SuggestionDetailViewModel: ObservableObject {
     private var calendarService: CalendarServiceProtocol?
     private var favoriteService: FavoriteServiceProtocol?
 
+    /// 設定中の今日の目的地（あれば周辺スポット検索の基点になる）
+    private(set) var destination: TodayDestination?
+
     init(
         suggestion: Suggestion,
         suggestionEngine: SuggestionEngineProtocol = SuggestionEngine(),
@@ -34,7 +38,8 @@ class SuggestionDetailViewModel: ObservableObject {
         preferenceService: PreferenceServiceProtocol? = nil,
         locationService: LocationServiceProtocol? = nil,
         calendarService: CalendarServiceProtocol? = nil,
-        favoriteService: FavoriteServiceProtocol? = nil
+        favoriteService: FavoriteServiceProtocol? = nil,
+        destination: TodayDestination? = nil
     ) {
         self.weather = weather
         self.preference = preference
@@ -42,8 +47,17 @@ class SuggestionDetailViewModel: ObservableObject {
         self.locationService = locationService
         self.calendarService = calendarService
         self.favoriteService = favoriteService
+        self.destination = destination
         updateFavoriteState()
         loadAlternatives()
+    }
+
+    /// 周辺スポット検索の基点。目的地が設定されていればそれを優先し、なければ現在地（GPS）。
+    private func effectiveLocation() async -> CLLocation? {
+        if let destination {
+            return destination.location
+        }
+        return await locationService?.requestCurrentLocation()
     }
 
     func accept() {
@@ -101,7 +115,10 @@ class SuggestionDetailViewModel: ObservableObject {
         await enrichWithPlace()
     }
 
-    func regenerate() {
+    /// 提案を再生成し、周辺スポットの取得まで完了させる。
+    /// 呼び出し側はこの完了後の `suggestion` を親（ホーム）へ渡すことで、
+    /// 詳細とホームで同じスポットが表示される（検索も1回で済む）。
+    func regenerate() async {
         guard let preference else { return }
 
         let newSuggestion = suggestionEngine.generateSuggestion(
@@ -112,12 +129,12 @@ class SuggestionDetailViewModel: ObservableObject {
         suggestion = newSuggestion
         isAccepted = false
         loadAlternatives()
-        Task { await enrichWithPlace() }
+        await enrichWithPlace()
     }
 
     private func enrichWithPlace() async {
         guard suggestion.nearbyPlace == nil,
-              let location = await locationService?.requestCurrentLocation() else { return }
+              let location = await effectiveLocation() else { return }
         if let place = await placeSearchService.findNearbyPlace(
             for: suggestion.category, near: location
         ) {

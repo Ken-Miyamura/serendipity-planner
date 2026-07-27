@@ -1,14 +1,9 @@
 import SwiftUI
 
 /// お気に入り一覧画面
-struct FavoritesView: View {
+struct FavoritesView: View, SkyTextStyling {
     @EnvironmentObject private var favoriteService: FavoriteService
     @StateObject private var viewModel = FavoritesViewModel()
-
-    private var useLightText: Bool {
-        let period = TimePeriod.current()
-        return period.prefersLightText
-    }
 
     var body: some View {
         NavigationView {

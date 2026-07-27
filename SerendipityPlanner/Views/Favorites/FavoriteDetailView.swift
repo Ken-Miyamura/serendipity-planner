@@ -2,7 +2,7 @@ import MapKit
 import SwiftUI
 
 /// お気に入り詳細画面
-struct FavoriteDetailView: View {
+struct FavoriteDetailView: View, SkyTextStyling {
     let favorite: FavoriteSuggestion
     let onDelete: () -> Void
 
@@ -43,6 +43,7 @@ struct FavoriteDetailView: View {
             }
             .padding()
         }
+        .background(SkyGradientView(weatherCondition: nil).ignoresSafeArea())
         .navigationTitle("お気に入りの詳細")
         .navigationBarTitleDisplayMode(.inline)
         .alert("お気に入りから削除", isPresented: $showDeleteConfirmation) {
@@ -53,23 +54,13 @@ struct FavoriteDetailView: View {
         } message: {
             Text("このお気に入りを削除しますか？")
         }
-        .confirmationDialog(
-            "マップアプリで開く",
-            isPresented: $showMapAppPicker,
-            titleVisibility: .visible
-        ) {
+        .sheet(isPresented: $showMapAppPicker) {
             if let target = pendingMapTarget {
-                ForEach(MapLauncher.availableApps()) { app in
-                    Button(app.displayName) {
-                        MapLauncher.open(
-                            app,
-                            name: target.name,
-                            latitude: target.latitude,
-                            longitude: target.longitude
-                        )
-                    }
-                }
-                Button("キャンセル", role: .cancel) {}
+                MapAppPickerSheet(
+                    placeName: target.name,
+                    latitude: target.latitude,
+                    longitude: target.longitude
+                )
             }
         }
     }
@@ -81,7 +72,8 @@ struct FavoriteDetailView: View {
                 .foregroundColor(Color.theme.color(for: favorite.category))
                 .frame(width: 80, height: 80)
                 .background(
-                    Color.theme.color(for: favorite.category).opacity(0.1)
+                    Color.theme.color(for: favorite.category)
+                        .opacity(useLightText ? 0.25 : 0.1)
                 )
                 .cornerRadius(20)
                 .accessibilityHidden(true)
@@ -90,13 +82,14 @@ struct FavoriteDetailView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
+                .foregroundColor(useLightText ? .white : .primary)
 
             Text(favorite.category.displayName)
                 .font(.subheadline)
-                .foregroundColor(Color.theme.color(for: favorite.category))
+                .foregroundColor(useLightText ? .white : Color.theme.color(for: favorite.category))
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)
-                .background(Color.theme.color(for: favorite.category).opacity(0.1))
+                .background(Color.theme.color(for: favorite.category).opacity(useLightText ? 0.35 : 0.1))
                 .cornerRadius(8)
         }
     }
@@ -151,8 +144,8 @@ struct FavoriteDetailView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.theme.secondaryBackground)
-        .cornerRadius(12)
+        .background(Color.theme.cardBackground)
+        .cornerRadius(16)
     }
 
     private func mapSection(latitude: Double, longitude: Double) -> some View {

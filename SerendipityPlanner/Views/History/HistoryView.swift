@@ -1,13 +1,8 @@
 import SwiftUI
 
 /// 履歴画面のメインビュー
-struct HistoryView: View {
+struct HistoryView: View, SkyTextStyling {
     @StateObject private var viewModel = HistoryViewModel()
-
-    private var useLightText: Bool {
-        let period = TimePeriod.current()
-        return period.prefersLightText
-    }
 
     var body: some View {
         NavigationView {
