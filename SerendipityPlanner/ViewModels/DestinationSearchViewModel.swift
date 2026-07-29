@@ -65,8 +65,16 @@ final class DestinationSearchViewModel: ObservableObject {
             return
         }
 
-        // 変換中は表示だけ更新し、確定してから候補を取りに行く
-        guard !isComposing else { return }
+        // 変換中は表示だけ更新し、確定してから候補を取りに行く。
+        // このとき直前の確定入力の候補を残すと、「渋谷」で検索したあとに
+        // 「出雲大社」を打ち始めた場合など、別のクエリの候補が新しい入力の下に
+        // 見えたまま選択できてしまう。進行中の取得ごと破棄する。
+        guard !isComposing else {
+            completer.cancel()
+            candidates = []
+            isSearching = false
+            return
+        }
 
         isSearching = true
         // MKLocalSearchCompleter は逐次入力向けに設計されており、内部で更新を間引く。
@@ -77,6 +85,9 @@ final class DestinationSearchViewModel: ObservableObject {
     private func handleCompleterResults(_ results: [MKLocalSearchCompletion]) {
         // 結果が届くまでに入力がクリアされていたら捨てる
         guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        // 直前のフラグメントに対する結果が変換開始後に届くことがある。
+        // そのまま反映すると変換中に古い候補が復活するため捨てる。
+        guard !isComposing else { return }
         isSearching = false
         candidates = results.map(DestinationCandidate.init(completion:))
     }

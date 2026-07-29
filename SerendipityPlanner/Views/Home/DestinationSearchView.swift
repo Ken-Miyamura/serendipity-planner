@@ -13,6 +13,9 @@ struct DestinationSearchView: View {
 
     @StateObject private var viewModel = DestinationSearchViewModel()
     @Environment(\.dismiss) private var dismiss
+    /// 候補の座標解決タスク。シートが閉じられたら破棄する（解決完了後に
+    /// 目的地が勝手に確定してしまうのを防ぐ）。
+    @State private var resolveTask: Task<Void, Never>?
 
     private let accent = Color.theme.walk
     /// design: 現在地アクションに使う珊瑚色(#F27A73)
@@ -77,6 +80,11 @@ struct DestinationSearchView: View {
             .task {
                 let location = await locationProvider()
                 await viewModel.loadRecommendedAreas(near: location)
+            }
+            .onDisappear {
+                // 解決の完了を待たずに閉じられた場合、目的地を確定させない
+                resolveTask?.cancel()
+                resolveTask = nil
             }
         }
         .navigationViewStyle(.stack)
@@ -240,7 +248,8 @@ struct DestinationSearchView: View {
             } else {
                 ForEach(viewModel.candidates) { candidate in
                     Button {
-                        Task { await selectCandidate(candidate) }
+                        resolveTask?.cancel()
+                        resolveTask = Task { await selectCandidate(candidate) }
                     } label: {
                         areaRow(name: candidate.title, detail: candidate.subtitle)
                     }
@@ -319,6 +328,8 @@ struct DestinationSearchView: View {
     /// 候補は座標を持たないため、選択時に解決してから確定する
     private func selectCandidate(_ candidate: DestinationCandidate) async {
         guard let destination = await viewModel.resolve(candidate) else { return }
+        // 解決を待っている間にシートが閉じられていたら確定しない
+        guard !Task.isCancelled else { return }
         select(destination)
     }
 }

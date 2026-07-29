@@ -38,6 +38,18 @@ final class DestinationSearchViewModelTests: XCTestCase {
         XCTAssertTrue(sut.isComposing)
     }
 
+    /// 「渋谷」で検索したあとに別語を打ち始めたとき、渋谷の候補が
+    /// 新しい入力の下に残って選択できてしまわないこと。
+    func testComposingDiscardsInFlightFetch() {
+        sut.updateQuery("渋谷", isComposing: false)
+        XCTAssertTrue(sut.isSearching, "確定入力では取得が始まっている")
+
+        sut.updateQuery("渋谷い", isComposing: true)
+
+        XCTAssertFalse(sut.isSearching, "変換を始めたら進行中の取得を打ち切る")
+        XCTAssertTrue(sut.candidates.isEmpty, "別クエリの候補を残さない")
+    }
+
     func testCommittedInputStartsFetch() {
         sut.updateQuery("出雲大社", isComposing: false)
 
