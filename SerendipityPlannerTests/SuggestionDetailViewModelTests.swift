@@ -85,45 +85,6 @@ final class SuggestionDetailViewModelTests: XCTestCase {
         XCTAssertEqual(vm.calendarAlertMessage, "提案を受け入れました")
     }
 
-    // MARK: - Regenerate Tests
-
-    func testRegenerate() async {
-        let newSuggestion = Suggestion.mock(category: .walk, title: "新しい散歩")
-        mockEngine.generateResult = newSuggestion
-
-        await sut.regenerate()
-
-        XCTAssertEqual(mockEngine.generateCallCount, 1)
-        XCTAssertEqual(sut.suggestion.title, "新しい散歩")
-        XCTAssertFalse(sut.isAccepted)
-    }
-
-    func testRegenerateLoadsAlternatives() async {
-        let alt = Suggestion.mock(category: .reading, title: "読書の時間")
-        mockEngine.alternativesResult = [alt]
-
-        let countBefore = mockEngine.alternativesCallCount
-        await sut.regenerate()
-
-        XCTAssertEqual(mockEngine.alternativesCallCount, countBefore + 1)
-        XCTAssertEqual(sut.alternatives.count, 1)
-    }
-
-    /// 再生成は完了時点でスポット取得まで済んでいること
-    /// （この suggestion をそのままホームへ渡すため、enrich 完了が保証される必要がある）
-    func testRegenerateEnrichesBeforeReturning() async {
-        mockEngine.generateResult = Suggestion.mock(category: .walk, title: "散歩")
-        mockLocation.currentLocation = CLLocation(latitude: 35.68, longitude: 139.76)
-        mockPlaceSearch.findResult = NearbyPlace(
-            name: "代々木公園", category: .walk,
-            latitude: 35.67, longitude: 139.69, distance: 500
-        )
-
-        await sut.regenerate()
-
-        XCTAssertEqual(sut.suggestion.nearbyPlace?.name, "代々木公園")
-    }
-
     // MARK: - Destination-based Enrichment Tests
 
     func testEnrichUsesDestinationLocationWhenSet() async {
