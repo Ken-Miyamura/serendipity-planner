@@ -23,12 +23,12 @@ Serendipity Planner は、カレンダーの隙間時間を自動検出し、天
 | アーキテクチャ | MVVM (Model-View-ViewModel) |
 | カレンダー連携 | EventKit |
 | 天気情報 | OpenWeatherMap API |
-| 地図・スポット検索 | MapKit (MKLocalSearch) |
+| 地図・スポット検索 | MapKit (MKLocalSearch / MKLocalSearchCompleter) |
 | 位置情報 | CoreLocation |
 | 通知 | UserNotifications |
 | ウィジェット | WidgetKit |
 | データ永続化 | UserDefaults + JSONEncoder/JSONDecoder |
-| 最小対応 OS | iOS 17+ |
+| 最小対応 OS | iOS 15.0 |
 | 言語 | Japanese (ja) |
 | Bundle ID | com.serendipity.planner |
 

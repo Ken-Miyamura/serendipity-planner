@@ -6,8 +6,6 @@ struct SuggestionDetailView: View, SkyTextStyling {
     /// 実際に受け入れた提案を親へ渡す。
     /// 再生成・代替候補への遷移後は表示中の提案が遷移時と異なるため、引数で運ぶ必要がある。
     let onAccept: (Suggestion) -> Void
-    /// 再生成後の新しい提案を親へ渡す（ホーム側のリストを同じ提案で置き換えるため）。
-    let onRegenerate: (Suggestion) -> Void
 
     /// マップアプリ選択シートの対象。`sheet(item:)` で提示するため、
     /// `isPresented` + `if let` の組み合わせ（内容が空のまま提示され白紙シートになる）を避ける。
@@ -30,8 +28,7 @@ struct SuggestionDetailView: View, SkyTextStyling {
         calendarService: CalendarServiceProtocol? = nil,
         favoriteService: FavoriteServiceProtocol? = nil,
         destination: TodayDestination? = nil,
-        onAccept: @escaping (Suggestion) -> Void,
-        onRegenerate: @escaping (Suggestion) -> Void
+        onAccept: @escaping (Suggestion) -> Void
     ) {
         _viewModel = StateObject(wrappedValue: {
             let vm = SuggestionDetailViewModel(suggestion: suggestion)
@@ -54,7 +51,6 @@ struct SuggestionDetailView: View, SkyTextStyling {
         self.favoriteService = favoriteService
         self.destination = destination
         self.onAccept = onAccept
-        self.onRegenerate = onRegenerate
     }
 
     var body: some View {
@@ -195,40 +191,19 @@ struct SuggestionDetailView: View, SkyTextStyling {
     }
 
     private var actionButtons: some View {
-        VStack(spacing: 12) {
-            Button {
-                viewModel.accept()
-            } label: {
-                Text("この提案を受け入れる")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.theme.color(for: viewModel.suggestion.category))
-                    .cornerRadius(14)
-            }
-            .accessibilityLabel("この提案を受け入れる")
-            .accessibilityHint("提案をカレンダーに追加します")
-
-            Button {
-                Task {
-                    // 提案の差し替えは即時反映され、スポット取得の完了を待ってから
-                    // ホームへ渡す（詳細とホームで同じ提案・同じスポットになる）
-                    await viewModel.regenerate()
-                    onRegenerate(viewModel.suggestion)
-                }
-            } label: {
-                Text("別の提案を見る")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.theme.secondaryBackground)
-                    .cornerRadius(12)
-            }
-            .accessibilityLabel("別の提案を見る")
-            .accessibilityHint("新しい提案を生成します")
+        Button {
+            viewModel.accept()
+        } label: {
+            Text("この提案を受け入れる")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.theme.color(for: viewModel.suggestion.category))
+                .cornerRadius(14)
         }
+        .accessibilityLabel("この提案を受け入れる")
+        .accessibilityHint("提案をカレンダーに追加します")
     }
 
     private var placeSection: some View {
@@ -306,8 +281,7 @@ struct SuggestionDetailView: View, SkyTextStyling {
             calendarService: calendarService,
             favoriteService: favoriteService,
             destination: destination,
-            onAccept: onAccept,
-            onRegenerate: onRegenerate
+            onAccept: onAccept
         )
     }
 }

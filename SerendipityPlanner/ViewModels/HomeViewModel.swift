@@ -227,15 +227,6 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    /// 詳細画面で再生成された提案（スポット取得済み）で、同一スロットのリスト項目を置き換える。
-    /// 詳細側の結果をそのままミラーするだけで、こちらでは再検索しない
-    /// （詳細とホームが別のスポットを表示するズレを防ぎ、検索も1回で済む）。
-    func replaceSuggestion(with newSuggestion: Suggestion) {
-        guard let index = suggestions.firstIndex(where: { $0.freeTimeSlot == newSuggestion.freeTimeSlot })
-        else { return }
-        suggestions[index] = newSuggestion
-    }
-
     func acceptSuggestion(_ suggestion: Suggestion) {
         // 詳細画面で再生成・代替候補を受け入れた場合、リスト上の提案とは ID が異なるため
         // 同一スロットでフォールバック照合し、実際に受け入れた提案（引数）の方を保存する

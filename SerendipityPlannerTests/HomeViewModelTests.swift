@@ -172,37 +172,6 @@ final class HomeViewModelTests: XCTestCase {
         XCTAssertEqual(mockHistory.histories.first?.suggestion.title, "実際に受け入れた散歩")
     }
 
-    // MARK: - replaceSuggestion Tests
-
-    func testReplaceSuggestionSwapsSameSlot() async {
-        let slot = FreeTimeSlot.mock()
-        mockCalendar.freeTimeSlots = [slot]
-
-        await sut.loadData()
-        XCTAssertNotNil(sut.suggestions.first)
-
-        // 詳細画面で再生成された提案で同一スロットを置き換える
-        let regenerated = Suggestion.mock(category: .walk, title: "再生成された散歩", slot: slot)
-        sut.replaceSuggestion(with: regenerated)
-
-        XCTAssertEqual(sut.suggestions.count, 1)
-        XCTAssertEqual(sut.suggestions.first?.id, regenerated.id)
-        XCTAssertEqual(sut.suggestions.first?.title, "再生成された散歩")
-    }
-
-    func testReplaceSuggestionIgnoresUnknownSlot() async {
-        mockCalendar.freeTimeSlots = [FreeTimeSlot.mock(startHour: 10, endHour: 12)]
-
-        await sut.loadData()
-        let before = sut.suggestions
-
-        // リストに存在しないスロットの提案は無視される
-        let unknown = Suggestion.mock(slot: .mock(startHour: 20, endHour: 22))
-        sut.replaceSuggestion(with: unknown)
-
-        XCTAssertEqual(sut.suggestions.map(\.id), before.map(\.id))
-    }
-
     // MARK: - Notification Tests
 
     func testNotificationsScheduledOnLoad() async {

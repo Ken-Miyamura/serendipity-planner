@@ -13,7 +13,9 @@ struct DestinationSearchView: View {
 
     @StateObject private var viewModel = DestinationSearchViewModel()
     @Environment(\.dismiss) private var dismiss
-    @FocusState private var searchFocused: Bool
+    /// 候補の座標解決タスク。シートが閉じられたら破棄する（解決完了後に
+    /// 目的地が勝手に確定してしまうのを防ぐ）。
+    @State private var resolveTask: Task<Void, Never>?
 
     private let accent = Color.theme.walk
     /// design: 現在地アクションに使う珊瑚色(#F27A73)
@@ -42,6 +44,10 @@ struct DestinationSearchView: View {
                     }
                     .padding()
                 }
+
+                if viewModel.isResolving {
+                    resolvingOverlay
+                }
             }
             .navigationTitle("目的地を選ぶ")
             .navigationBarTitleDisplayMode(.inline)
@@ -60,9 +66,25 @@ struct DestinationSearchView: View {
                     .accessibilityLabel("閉じる")
                 }
             }
+            .alert(
+                "場所を取得できませんでした",
+                isPresented: Binding(
+                    get: { viewModel.resolveErrorMessage != nil },
+                    set: { if !$0 { viewModel.resolveErrorMessage = nil } }
+                )
+            ) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(viewModel.resolveErrorMessage ?? "")
+            }
             .task {
                 let location = await locationProvider()
                 await viewModel.loadRecommendedAreas(near: location)
+            }
+            .onDisappear {
+                // 解決の完了を待たずに閉じられた場合、目的地を確定させない
+                resolveTask?.cancel()
+                resolveTask = nil
             }
         }
         .navigationViewStyle(.stack)
@@ -75,13 +97,18 @@ struct DestinationSearchView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
 
-            TextField("エリア・駅・スポットを検索", text: Binding(
-                get: { viewModel.query },
-                set: { viewModel.updateQuery($0) }
-            ))
-            .focused($searchFocused)
-            .autocorrectionDisabled()
-            .submitLabel(.search)
+            // IME 変換中は検索を走らせないため、素の TextField ではなく UITextField を包んで使う
+            IMEAwareTextField(
+                placeholder: "エリア・駅・スポットを検索",
+                text: Binding(
+                    get: { viewModel.query },
+                    set: { viewModel.updateQuery($0) }
+                ),
+                onChange: { text, isComposing in
+                    viewModel.updateQuery(text, isComposing: isComposing)
+                }
+            )
+            .frame(height: 24)
 
             if !viewModel.query.isEmpty {
                 Button {
@@ -209,19 +236,25 @@ struct DestinationSearchView: View {
                         .foregroundColor(.secondary)
                 }
                 .padding(.vertical, 8)
-            } else if viewModel.results.isEmpty {
-                Text("該当する場所が見つかりませんでした")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .padding(.vertical, 8)
+            } else if viewModel.candidates.isEmpty {
+                // IME 変換中は確定を待つ。ここで「見つかりません」を出すと
+                // 日本語入力の変換中ずっと表示されてしまう。
+                if !viewModel.isComposing {
+                    Text("該当する場所が見つかりませんでした")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .padding(.vertical, 8)
+                }
             } else {
-                ForEach(viewModel.results) { destination in
+                ForEach(viewModel.candidates) { candidate in
                     Button {
-                        select(destination)
+                        resolveTask?.cancel()
+                        resolveTask = Task { await selectCandidate(candidate) }
                     } label: {
-                        areaRow(name: destination.name, detail: destination.subtitle)
+                        areaRow(name: candidate.title, detail: candidate.subtitle)
                     }
                     .buttonStyle(.plain)
+                    .disabled(viewModel.isResolving)
                 }
             }
         }
@@ -270,8 +303,33 @@ struct DestinationSearchView: View {
         .accessibilityLabel("\(name)、\(detail)")
     }
 
+    private var resolvingOverlay: some View {
+        ZStack {
+            Color.black.opacity(0.12).ignoresSafeArea()
+            VStack(spacing: 10) {
+                ProgressView()
+                Text("場所を確認しています...")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            .padding(20)
+            .background(Color.theme.cardBackground)
+            .cornerRadius(14)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("場所を確認しています")
+    }
+
     private func select(_ destination: TodayDestination) {
         onSelect(destination)
         dismiss()
+    }
+
+    /// 候補は座標を持たないため、選択時に解決してから確定する
+    private func selectCandidate(_ candidate: DestinationCandidate) async {
+        guard let destination = await viewModel.resolve(candidate) else { return }
+        // 解決を待っている間にシートが閉じられていたら確定しない
+        guard !Task.isCancelled else { return }
+        select(destination)
     }
 }

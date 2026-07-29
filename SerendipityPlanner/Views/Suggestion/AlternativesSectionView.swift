@@ -12,7 +12,6 @@ struct AlternativesSectionView: View {
     let favoriteService: FavoriteServiceProtocol?
     let destination: TodayDestination?
     let onAccept: (Suggestion) -> Void
-    let onRegenerate: (Suggestion) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -29,8 +28,7 @@ struct AlternativesSectionView: View {
                         calendarService: calendarService,
                         favoriteService: favoriteService,
                         destination: destination,
-                        onAccept: onAccept,
-                        onRegenerate: onRegenerate
+                        onAccept: onAccept
                     )
                 } label: {
                     HStack(spacing: 12) {

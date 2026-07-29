@@ -3,13 +3,18 @@ import Foundation
 import MapKit
 
 /// 目的地検索シートの検索ロジック。
-/// - 入力に応じて MKLocalSearch でエリア・駅・スポットを検索する（デバウンス付き）
+/// - 入力に応じて `MKLocalSearchCompleter` で候補を列挙する（候補は座標を持たない）
+/// - 候補が選ばれたら `MKLocalSearch` で座標を解決して `TodayDestination` にする
 /// - 現在地周辺の「おすすめエリア」を MapKit から動的に取得する
 @MainActor
 final class DestinationSearchViewModel: ObservableObject {
     @Published var query = ""
-    @Published private(set) var results: [TodayDestination] = []
+    @Published private(set) var candidates: [DestinationCandidate] = []
     @Published private(set) var isSearching = false
+    /// IME 変換中（未確定）かどうか。確定待ちの間に「見つかりません」を出さないために使う。
+    @Published private(set) var isComposing = false
+    @Published private(set) var isResolving = false
+    @Published var resolveErrorMessage: String?
     @Published private(set) var recommendedAreas: [TodayDestination] = []
     @Published private(set) var isLoadingRecommendations = false
 
@@ -28,55 +33,96 @@ final class DestinationSearchViewModel: ObservableObject {
     /// 検索バイアスの基点となる現在地（シート表示時に取得）
     private var userLocation: CLLocation?
 
-    private var searchTask: Task<Void, Never>?
+    private let completer = MKLocalSearchCompleter()
+    private var completerDelegate: SearchCompleterDelegate?
+
+    init() {
+        let delegate = SearchCompleterDelegate(
+            onUpdate: { [weak self] results in self?.handleCompleterResults(results) },
+            onFailure: { [weak self] in self?.handleCompleterFailure() }
+        )
+        self.completerDelegate = delegate
+        completer.delegate = delegate
+        // 行き先として選べるもののみ。`.query` はカテゴリ検索の提案が混ざるため含めない
+        completer.resultTypes = [.pointOfInterest, .address]
+        completer.region = japanRegion
+    }
 
     // MARK: - 検索
 
-    /// 入力変更時に呼ぶ。空なら結果をクリアし、それ以外はデバウンス後に検索する。
-    func updateQuery(_ text: String) {
+    /// 入力変更時に呼ぶ。
+    /// - Parameter isComposing: IME 変換中（未確定）なら true。確定前の部分文字列で
+    ///   誤った候補を出さないよう、変換中は候補取得をスキップする。
+    func updateQuery(_ text: String, isComposing: Bool = false) {
         query = text
-        searchTask?.cancel()
+        self.isComposing = isComposing
 
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
-            results = []
+            completer.cancel()
+            candidates = []
             isSearching = false
             return
         }
 
-        searchTask = Task { [weak self] in
-            // デバウンス（連続入力中は検索しない）
-            try? await Task.sleep(nanoseconds: 350_000_000)
-            guard !Task.isCancelled else { return }
-            await self?.performSearch(query: trimmed)
+        // 変換中は表示だけ更新し、確定してから候補を取りに行く。
+        // このとき直前の確定入力の候補を残すと、「渋谷」で検索したあとに
+        // 「出雲大社」を打ち始めた場合など、別のクエリの候補が新しい入力の下に
+        // 見えたまま選択できてしまう。進行中の取得ごと破棄する。
+        guard !isComposing else {
+            completer.cancel()
+            candidates = []
+            isSearching = false
+            return
         }
-    }
 
-    private func performSearch(query: String) async {
         isSearching = true
-        defer { isSearching = false }
-
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = query
-        request.region = searchRegion()
-
-        do {
-            let response = try await MKLocalSearch(request: request).start()
-            guard !Task.isCancelled else { return }
-            results = response.mapItems.compactMap { Self.destination(from: $0) }
-        } catch {
-            guard !Task.isCancelled else { return }
-            results = []
-        }
+        // MKLocalSearchCompleter は逐次入力向けに設計されており、内部で更新を間引く。
+        // そのため呼び出し側でデバウンスは行わない。
+        completer.queryFragment = trimmed
     }
 
-    /// 検索リージョン。現在地が取れていれば現在地を中心に広めにバイアスし、
-    /// 近場を優先しつつ全国の地名検索も可能にする。取れなければ全国フォールバック。
-    private func searchRegion() -> MKCoordinateRegion {
-        guard let userLocation else { return japanRegion }
-        return MKCoordinateRegion(
-            center: userLocation.coordinate,
-            span: MKCoordinateSpan(latitudeDelta: 16, longitudeDelta: 16)
+    private func handleCompleterResults(_ results: [MKLocalSearchCompletion]) {
+        // 結果が届くまでに入力がクリアされていたら捨てる
+        guard !query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }
+        // 直前のフラグメントに対する結果が変換開始後に届くことがある。
+        // そのまま反映すると変換中に古い候補が復活するため捨てる。
+        guard !isComposing else { return }
+        isSearching = false
+        candidates = results.map(DestinationCandidate.init(completion:))
+    }
+
+    private func handleCompleterFailure() {
+        isSearching = false
+        candidates = []
+    }
+
+    // MARK: - 座標の解決
+
+    /// 選ばれた候補の座標を解決して目的地にする。失敗時は nil を返しエラーを表示する。
+    func resolve(_ candidate: DestinationCandidate) async -> TodayDestination? {
+        isResolving = true
+        defer { isResolving = false }
+
+        let request = MKLocalSearch.Request(completion: candidate.completion)
+        guard let response = try? await MKLocalSearch(request: request).start(),
+              let item = response.mapItems.first
+        else {
+            resolveErrorMessage = "場所の情報を取得できませんでした。通信状況を確認してもう一度お試しください。"
+            return nil
+        }
+
+        let placemark = item.placemark
+        // 候補一覧で見えていた表記をそのまま引き継ぐ（選んだものと表示がズレないようにする）
+        let subtitle = candidate.subtitle.isEmpty
+            ? [placemark.administrativeArea, placemark.locality].compactMap(\.self).joined(separator: " ")
+            : candidate.subtitle
+
+        return TodayDestination(
+            name: item.name ?? candidate.title,
+            subtitle: subtitle.isEmpty ? "周辺のスポットを提案" : subtitle,
+            latitude: placemark.coordinate.latitude,
+            longitude: placemark.coordinate.longitude
         )
     }
 
@@ -86,6 +132,8 @@ final class DestinationSearchViewModel: ObservableObject {
     func loadRecommendedAreas(near location: CLLocation?) async {
         // 検索バイアスにも使うため現在地を保持する
         userLocation = location
+        completer.region = searchRegion()
+
         guard let location else {
             recommendedAreas = []
             return
@@ -124,23 +172,20 @@ final class DestinationSearchViewModel: ObservableObject {
         )
     }
 
-    // MARK: - 変換
-
-    /// 検索結果の MKMapItem を今日の目的地へ変換する
-    private static func destination(from item: MKMapItem) -> TodayDestination? {
-        guard let name = item.name else { return nil }
-        let placemark = item.placemark
-        let subtitle = [placemark.administrativeArea, placemark.locality]
-            .compactMap(\.self)
-            .joined(separator: " ")
-
-        return TodayDestination(
-            name: name,
-            subtitle: subtitle.isEmpty ? "周辺のスポットを提案" : subtitle,
-            latitude: placemark.coordinate.latitude,
-            longitude: placemark.coordinate.longitude
+    /// 候補列挙のバイアス基点。現在地があれば現在地を中心に広めにバイアスし、
+    /// 近場を優先しつつ全国の地名検索も可能にする。取れなければ全国フォールバック。
+    ///
+    /// span を狭めると遠方の固有名詞が近場の同名スポットに化けるため（例: 厳島神社が新宿区の
+    /// 厳嶋神社になる）、この幅は狭めないこと。
+    private func searchRegion() -> MKCoordinateRegion {
+        guard let userLocation else { return japanRegion }
+        return MKCoordinateRegion(
+            center: userLocation.coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 16, longitudeDelta: 16)
         )
     }
+
+    // MARK: - 変換
 
     /// おすすめエリアの MKMapItem を今日の目的地へ変換する（現在地からの距離を補足に含める）
     private static func recommendedDestination(
@@ -170,5 +215,30 @@ final class DestinationSearchViewModel: ObservableObject {
             return "現在地から約\(Int((meters / 1000).rounded()))km"
         }
         return "現在地から約\(Int(meters))m"
+    }
+}
+
+// MARK: - Completer デリゲート
+
+/// `MKLocalSearchCompleterDelegate` は NSObject を要求するため、ViewModel 本体とは分けて橋渡しする。
+private final class SearchCompleterDelegate: NSObject, MKLocalSearchCompleterDelegate {
+    private let onUpdate: @MainActor ([MKLocalSearchCompletion]) -> Void
+    private let onFailure: @MainActor () -> Void
+
+    init(
+        onUpdate: @escaping @MainActor ([MKLocalSearchCompletion]) -> Void,
+        onFailure: @escaping @MainActor () -> Void
+    ) {
+        self.onUpdate = onUpdate
+        self.onFailure = onFailure
+    }
+
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        let results = completer.results
+        Task { @MainActor in self.onUpdate(results) }
+    }
+
+    func completer(_: MKLocalSearchCompleter, didFailWithError _: Error) {
+        Task { @MainActor in self.onFailure() }
     }
 }
