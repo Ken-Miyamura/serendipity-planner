@@ -23,8 +23,12 @@ struct DestinationCandidate: Identifiable {
 
     /// 補完結果の subtitle は「〒150-0042, 東京都渋谷区, 宇田川町15-1」のように
     /// 郵便番号から始まる。行き先の目印としては不要なので落として読みやすくする。
+    ///
+    /// 〒 を必須にしているのは日本以外の住所を壊さないため。数字だけを条件にすると
+    /// 「12345678 Main St」のような先頭が長い番地の住所で番地を削ってしまう。
+    /// 郵便番号が末尾に来る国では何も削らず、そのまま表示する。
     private static func displaySubtitle(from raw: String) -> String {
-        guard let range = raw.range(of: #"^〒?\s*\d{3}-?\d{4},?\s*"#, options: .regularExpression) else {
+        guard let range = raw.range(of: #"^〒\s*\d{3}-?\d{4},?\s*"#, options: .regularExpression) else {
             return raw
         }
         return String(raw[range.upperBound...])
