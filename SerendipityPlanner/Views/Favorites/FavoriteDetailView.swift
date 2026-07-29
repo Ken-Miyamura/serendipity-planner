@@ -7,10 +7,12 @@ struct FavoriteDetailView: View, SkyTextStyling {
     let onDelete: () -> Void
 
     @State private var showDeleteConfirmation = false
-    @State private var showMapAppPicker = false
+    /// マップアプリ選択シートの対象。`sheet(item:)` で提示するため、
+    /// `isPresented` + `if let` の組み合わせ（内容が空のまま提示され白紙シートになる）を避ける。
     @State private var pendingMapTarget: PendingMapTarget?
 
-    private struct PendingMapTarget: Equatable {
+    private struct PendingMapTarget: Identifiable, Equatable {
+        let id = UUID()
         let name: String
         let latitude: Double
         let longitude: Double
@@ -54,14 +56,12 @@ struct FavoriteDetailView: View, SkyTextStyling {
         } message: {
             Text("このお気に入りを削除しますか？")
         }
-        .sheet(isPresented: $showMapAppPicker) {
-            if let target = pendingMapTarget {
-                MapAppPickerSheet(
-                    placeName: target.name,
-                    latitude: target.latitude,
-                    longitude: target.longitude
-                )
-            }
+        .sheet(item: $pendingMapTarget) { target in
+            MapAppPickerSheet(
+                placeName: target.name,
+                latitude: target.latitude,
+                longitude: target.longitude
+            )
         }
     }
 
@@ -253,7 +253,6 @@ struct FavoriteDetailView: View, SkyTextStyling {
 
     private func presentMapPicker(name: String, latitude: Double, longitude: Double) {
         pendingMapTarget = PendingMapTarget(name: name, latitude: latitude, longitude: longitude)
-        showMapAppPicker = true
     }
 }
 
