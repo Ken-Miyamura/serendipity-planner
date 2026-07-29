@@ -9,7 +9,8 @@ struct SuggestionDetailView: View, SkyTextStyling {
     /// 再生成後の新しい提案を親へ渡す（ホーム側のリストを同じ提案で置き換えるため）。
     let onRegenerate: (Suggestion) -> Void
 
-    @State private var showMapAppPicker = false
+    /// マップアプリ選択シートの対象。`sheet(item:)` で提示するため、
+    /// `isPresented` + `if let` の組み合わせ（内容が空のまま提示され白紙シートになる）を避ける。
     @State private var pendingPlace: NearbyPlace?
 
     private let weather: WeatherData?
@@ -124,14 +125,12 @@ struct SuggestionDetailView: View, SkyTextStyling {
                 onAccept(viewModel.suggestion)
             }
         }
-        .sheet(isPresented: $showMapAppPicker) {
-            if let place = pendingPlace {
-                MapAppPickerSheet(
-                    placeName: place.name,
-                    latitude: place.latitude,
-                    longitude: place.longitude
-                )
-            }
+        .sheet(item: $pendingPlace) { place in
+            MapAppPickerSheet(
+                placeName: place.name,
+                latitude: place.latitude,
+                longitude: place.longitude
+            )
         }
         .task {
             await viewModel.enrichIfNeeded()
@@ -402,6 +401,5 @@ private extension SuggestionDetailView {
 
     func presentMapPicker(for place: NearbyPlace) {
         pendingPlace = place
-        showMapAppPicker = true
     }
 }
