@@ -11,6 +11,8 @@ final class DestinationSearchViewModel: ObservableObject {
     @Published var query = ""
     @Published private(set) var candidates: [DestinationCandidate] = []
     @Published private(set) var isSearching = false
+    /// IME 変換中（未確定）かどうか。確定待ちの間に「見つかりません」を出さないために使う。
+    @Published private(set) var isComposing = false
     @Published private(set) var isResolving = false
     @Published var resolveErrorMessage: String?
     @Published private(set) var recommendedAreas: [TodayDestination] = []
@@ -53,6 +55,7 @@ final class DestinationSearchViewModel: ObservableObject {
     ///   誤った候補を出さないよう、変換中は候補取得をスキップする。
     func updateQuery(_ text: String, isComposing: Bool = false) {
         query = text
+        self.isComposing = isComposing
 
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {

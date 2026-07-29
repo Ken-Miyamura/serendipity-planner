@@ -229,10 +229,14 @@ struct DestinationSearchView: View {
                 }
                 .padding(.vertical, 8)
             } else if viewModel.candidates.isEmpty {
-                Text("該当する場所が見つかりませんでした")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .padding(.vertical, 8)
+                // IME 変換中は確定を待つ。ここで「見つかりません」を出すと
+                // 日本語入力の変換中ずっと表示されてしまう。
+                if !viewModel.isComposing {
+                    Text("該当する場所が見つかりませんでした")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .padding(.vertical, 8)
+                }
             } else {
                 ForEach(viewModel.candidates) { candidate in
                     Button {
