@@ -25,6 +25,7 @@ struct ContentView: View {
 
 struct MainTabView: View {
     @ObservedObject var locationService: LocationService
+    @EnvironmentObject var deepLinkRouter: DeepLinkRouter
     @State private var selectedTab = 0
 
     private let tabIcons = ["house.fill", "clock.arrow.circlepath", "heart.fill", "gearshape.fill"]
@@ -67,6 +68,9 @@ struct MainTabView: View {
                 Color(red: 0.97, green: 0.96, blue: 0.94)
                     .ignoresSafeArea(.container, edges: .bottom)
             )
+        }
+        .onChange(of: deepLinkRouter.selectedTab) { newTab in
+            selectedTab = newTab
         }
     }
 
