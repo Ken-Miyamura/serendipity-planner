@@ -122,10 +122,10 @@ struct SuggestionDetailView: View, SkyTextStyling {
             }
         }
         .sheet(item: $pendingPlace) { place in
+            // 目的地を設定していれば「目的地 → スポット」、なければ現在地起点の経路として開く
             MapAppPickerSheet(
-                placeName: place.name,
-                latitude: place.latitude,
-                longitude: place.longitude
+                origin: destination?.mapPoint,
+                destination: place.mapPoint
             )
         }
         .task {
