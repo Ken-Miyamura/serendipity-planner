@@ -133,6 +133,8 @@ EventKit を使用してユーザーのカレンダーからイベントを取�
 | Google マップ | `comgooglemaps://?saddr=…&daddr=…&directionsmode=walking` | Google マップアプリインストール済み |
 | ブラウザで開く | `https://www.google.com/maps/dir/?api=1&origin=…&destination=…&travelmode=walking` | 常時 |
 
+Google 系に渡す地点は **`lat,lng(名前)`** 形式です（例: `daddr=35.658581,139.745433(東京タワー)`）。
+
 出発点は画面によって決まります。
 
 | 画面 | 出発点 | 到着点 |
@@ -142,7 +144,8 @@ EventKit を使用してユーザーのカレンダーからイベントを取�
 | お気に入り詳細 | 現在地（`origin: nil`） | 保存済みスポット |
 
 - 出発点が `nil` のときは各アプリの「空欄 = 現在地」仕様に委ねる（Apple マップは `MKMapItem.forCurrentLocation()`、Google マップは `saddr` 空、ブラウザは `origin` 省略）
-- Google 系には**座標のみ**を渡す。名前をクエリに入れるとチェーン店などで別店舗に誤マッチする恐れがあるため、名前の可読性は `MKMapItem.name` を持つ Apple マップ側で担保する
+- **地点の解決は座標が担い、名前は表示用のラベルとしてのみ渡す**。名前だけを検索させるとチェーン店などで別店舗に誤マッチする恐れがあるが、`lat,lng(名前)` 形式なら座標で地点が確定するためその心配がない。Apple マップは `MKMapItem.name` で名前を表示する
+- 名前は `URLComponents` がパーセントエンコードする。クエリを区切る `&` `=` とフラグメントを開始する `#` がエンコードされるため、記号入りのスポット名でも URL が壊れない
 - ブラウザは `origin` を省略した場合のみ `travelmode=walking` が反映されず車ルートで開く（Google Maps Web 側の挙動）。目的地設定時は徒歩ルートで開く
 - `MapLauncher.availableApps()` でインストール済みアプリを判定（`canOpenURL`）
 - Google マップの有無は `Info.plist` の `LSApplicationQueriesSchemes` に `comgooglemaps` を登録することで検出可能

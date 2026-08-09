@@ -89,8 +89,8 @@ enum MapLauncher {
         components.scheme = "comgooglemaps"
         components.host = ""
         components.queryItems = [
-            URLQueryItem(name: "saddr", value: origin.map(coordinateQuery) ?? ""),
-            URLQueryItem(name: "daddr", value: coordinateQuery(destination)),
+            URLQueryItem(name: "saddr", value: origin.map(labeledCoordinateQuery) ?? ""),
+            URLQueryItem(name: "daddr", value: labeledCoordinateQuery(destination)),
             URLQueryItem(name: "directionsmode", value: "walking")
         ]
         return components.url
@@ -103,20 +103,27 @@ enum MapLauncher {
         var components = URLComponents(string: "https://www.google.com/maps/dir/")
         var items = [URLQueryItem(name: "api", value: "1")]
         if let origin {
-            items.append(URLQueryItem(name: "origin", value: coordinateQuery(origin)))
+            items.append(URLQueryItem(name: "origin", value: labeledCoordinateQuery(origin)))
         }
-        items.append(URLQueryItem(name: "destination", value: coordinateQuery(destination)))
+        items.append(URLQueryItem(name: "destination", value: labeledCoordinateQuery(destination)))
         items.append(URLQueryItem(name: "travelmode", value: "walking"))
         components?.queryItems = items
         return components?.url
     }
 
-    /// 経路指定に使う座標文字列。
-    ///
-    /// 地点名ではなく座標を渡すのは、チェーン店など同名スポットで別店舗にマッチするのを避けるため。
-    /// 名前の可読性は `MKMapItem.name` を持つ Apple マップ側で担保し、Google 系は座標を優先する。
-    /// 小数 6 桁（約 11cm）あれば徒歩経路の精度としては十分。
+    /// 経路指定に使う座標文字列。小数 6 桁（約 11cm）あれば徒歩経路の精度としては十分。
     private static func coordinateQuery(_ point: MapPoint) -> String {
         String(format: "%.6f,%.6f", point.latitude, point.longitude)
+    }
+
+    /// 座標にラベルを添えた `lat,lng(名前)` 形式。
+    ///
+    /// 地点の解決はあくまで座標が担い、名前は表示用のラベルとしてのみ渡す。
+    /// 名前だけを検索させるとチェーン店などで別店舗にマッチする恐れがあるが、
+    /// この形式なら座標で地点が確定するためその心配がない。
+    /// 実機の Google マップアプリ / Google マップ Web の双方で、
+    /// 正しい地点に着いたうえで地点名が表示されることを確認済み。
+    private static func labeledCoordinateQuery(_ point: MapPoint) -> String {
+        "\(coordinateQuery(point))(\(point.name))"
     }
 }
