@@ -21,7 +21,7 @@ struct FreeTimeSlot: Identifiable, Equatable, Codable {
 
     var dayText: String {
         // ja: 8/11(火) / en: Tue, 8/11
-        return DateFormatter.localized(template: "MdE").string(from: startDate)
+        DateFormatter.localized(template: "MdE").string(from: startDate)
     }
 
     init(id: UUID = UUID(), startDate: Date, endDate: Date) {

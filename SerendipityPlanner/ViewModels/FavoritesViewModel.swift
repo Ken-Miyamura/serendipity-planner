@@ -71,6 +71,6 @@ class FavoritesViewModel: ObservableObject {
     /// 追加日のフォーマット済み文字列
     func formattedDate(_ date: Date) -> String {
         // ja: 2026/8/11 / en-US: 8/11/2026
-        return DateFormatter.localized(template: "yMd").string(from: date)
+        DateFormatter.localized(template: "yMd").string(from: date)
     }
 }

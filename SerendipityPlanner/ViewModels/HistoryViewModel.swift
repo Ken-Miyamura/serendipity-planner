@@ -47,7 +47,7 @@ class HistoryViewModel: ObservableObject {
 
     var monthDisplayText: String {
         // ja: 2026年8月 / en: August 2026
-        return DateFormatter.localized(template: "yMMMM").string(from: currentMonth)
+        DateFormatter.localized(template: "yMMMM").string(from: currentMonth)
     }
 
     var totalCount: Int {
@@ -78,11 +78,11 @@ class HistoryViewModel: ObservableObject {
 
     func dateHeaderText(for date: Date) -> String {
         // ja: 8月11日(火) / en: Tue, Aug 11
-        return DateFormatter.localized(template: "MMMdE").string(from: date)
+        DateFormatter.localized(template: "MMMdE").string(from: date)
     }
 
     func timeText(for date: Date) -> String {
         // 12/24時間表記はロケールの慣習に従う
-        return DateFormatter.localizedTime().string(from: date)
+        DateFormatter.localizedTime().string(from: date)
     }
 }
