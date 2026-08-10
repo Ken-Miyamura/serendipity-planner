@@ -2,7 +2,7 @@ import CoreLocation
 import Foundation
 
 class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, LocationServiceProtocol {
-    @Published var currentLocationName: String = String(localized: "取得中...")
+    @Published var currentLocationName: String = .init(localized: "取得中...")
     @Published var currentLocation: CLLocation?
     @Published var locationAuthorized = false
     @Published var locationAuthorizationResolved = false

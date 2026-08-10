@@ -83,7 +83,7 @@ struct FreeTimeCardView: View {
             suggestion.freeTimeSlot.timeRangeText,
             String(localized: "\(suggestion.freeTimeSlot.durationMinutes)分"),
             suggestion.category.displayName,
-            suggestion.title,
+            suggestion.title
         ]
         if let place = suggestion.nearbyPlace {
             parts.append(place.name)
