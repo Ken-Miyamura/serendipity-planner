@@ -12,8 +12,9 @@ struct WeatherData: Codable {
         Date().timeIntervalSince(fetchedAt) > 3600 // 1 hour cache
     }
 
+    /// 気温表示。API からは常に摂氏で受け取り、表示時にロケールの単位系へ換算する。
     var temperatureText: String {
-        String(format: "%.0f°C", temperature)
+        LocalizedUnits.temperature(celsius: temperature)
     }
 
     var summary: String {

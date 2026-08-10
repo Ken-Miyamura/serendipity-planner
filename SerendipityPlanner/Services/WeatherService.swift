@@ -47,10 +47,11 @@ class WeatherService: WeatherServiceProtocol {
 
         var components = URLComponents(string: "\(Constants.Weather.baseURL)/weather")
         components?.queryItems = [
-            URLQueryItem(name: "q", value: "\(city),JP"),
+            // 国コードは付けない。",JP" 固定だと海外の都市名が解決できない
+            URLQueryItem(name: "q", value: city),
             URLQueryItem(name: "appid", value: apiKey),
             URLQueryItem(name: "units", value: Constants.Weather.units),
-            URLQueryItem(name: "lang", value: Constants.Weather.language)
+            URLQueryItem(name: "lang", value: Constants.Weather.requestLanguage)
         ]
 
         guard let url = components?.url else {
@@ -98,7 +99,7 @@ class WeatherService: WeatherServiceProtocol {
             URLQueryItem(name: "lon", value: String(longitude)),
             URLQueryItem(name: "appid", value: apiKey),
             URLQueryItem(name: "units", value: Constants.Weather.units),
-            URLQueryItem(name: "lang", value: Constants.Weather.language)
+            URLQueryItem(name: "lang", value: Constants.Weather.requestLanguage)
         ]
 
         guard let url = components?.url else {

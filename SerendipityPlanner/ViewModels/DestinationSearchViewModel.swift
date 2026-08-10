@@ -206,11 +206,10 @@ final class DestinationSearchViewModel: ObservableObject {
         )
     }
 
+    /// 現在地からの距離。単位はロケールに従う（m/km または ft/mi）。
+    /// 「現在地から約」の文言自体は #32 で String Catalog に移す。
     private static func distanceText(meters: Double) -> String {
-        if meters >= 1000 {
-            return "現在地から約\(Int((meters / 1000).rounded()))km"
-        }
-        return "現在地から約\(Int(meters))m"
+        "現在地から約\(LocalizedUnits.distance(meters: meters))"
     }
 }
 

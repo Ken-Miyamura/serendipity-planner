@@ -70,9 +70,7 @@ class FavoritesViewModel: ObservableObject {
 
     /// 追加日のフォーマット済み文字列
     func formattedDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "yyyy/M/d"
-        return formatter.string(from: date)
+        // ja: 2026/8/11 / en-US: 8/11/2026
+        return DateFormatter.localized(template: "yMd").string(from: date)
     }
 }

@@ -47,9 +47,7 @@ extension Date {
         if Calendar.current.isDateInTomorrow(self) {
             return "明日"
         }
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "M/d (E)"
-        return formatter.string(from: self)
+        // ja: 8/11(火) / en: Tue, 8/11
+        return DateFormatter.localized(template: "MdE").string(from: self)
     }
 }

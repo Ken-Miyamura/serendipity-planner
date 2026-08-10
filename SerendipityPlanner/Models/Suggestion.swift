@@ -303,10 +303,7 @@ struct NearbyPlace: Identifiable, Codable {
     }
 
     var distanceText: String {
-        if distance >= 1000 {
-            return String(format: "%.1fkm", Double(distance) / 1000.0)
-        }
-        return "\(distance)m"
+        LocalizedUnits.distance(meters: Double(distance))
     }
 
     var walkingTimeMinutes: Int {

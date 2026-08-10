@@ -249,10 +249,8 @@ struct FavoriteDetailView: View, SkyTextStyling {
     }
 
     private var formattedDate: String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "yyyy年M月d日"
-        return formatter.string(from: favorite.addedDate)
+        // ja: 2026年8月11日 / en: August 11, 2026
+        return DateFormatter.localized(template: "yMMMMd").string(from: favorite.addedDate)
     }
 
     private func presentMapPicker(name: String, latitude: Double, longitude: Double) {
