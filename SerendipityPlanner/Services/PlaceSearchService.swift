@@ -5,16 +5,22 @@ class PlaceSearchService: PlaceSearchServiceProtocol {
     private let searchRadius: CLLocationDistance = 1500 // 1.5km
 
     /// Search for nearby places matching the suggestion category
+    ///
+    /// 主たる手段は `MKPointOfInterestCategory` によるカテゴリ検索（言語非依存）。
+    /// カテゴリで表現しきれない分類だけ、端末の言語に応じたキーワード検索を併用する。
     func searchNearbyPlaces(
         for category: SuggestionCategory,
         near location: CLLocation
     ) async -> [NearbyPlace] {
-        let queries = category.searchQueries
         var allPlaces: [NearbyPlace] = []
 
-        for query in queries {
-            let places = await search(query: query, category: category, near: location)
-            allPlaces.append(contentsOf: places)
+        let poiCategories = category.pointOfInterestCategories
+        if !poiCategories.isEmpty {
+            allPlaces += await searchByCategory(poiCategories, category: category, near: location)
+        }
+
+        for query in category.supplementalQueries {
+            allPlaces += await search(query: query, category: category, near: location)
         }
 
         // Sort by distance, remove duplicates by name
@@ -37,6 +43,21 @@ class PlaceSearchService: PlaceSearchServiceProtocol {
 
     // MARK: - Private
 
+    /// POI カテゴリによる検索。テキストクエリを使わないため言語に依存しない。
+    private func searchByCategory(
+        _ poiCategories: [MKPointOfInterestCategory],
+        category: SuggestionCategory,
+        near location: CLLocation
+    ) async -> [NearbyPlace] {
+        let request = MKLocalPointsOfInterestRequest(
+            center: location.coordinate,
+            radius: searchRadius
+        )
+        request.pointOfInterestFilter = MKPointOfInterestFilter(including: poiCategories)
+        return await execute(MKLocalSearch(request: request), category: category, near: location)
+    }
+
+    /// キーワードによる検索。POI カテゴリで表現できない分類の補助にのみ使う。
     private func search(
         query: String,
         category: SuggestionCategory,
@@ -49,9 +70,15 @@ class PlaceSearchService: PlaceSearchServiceProtocol {
             latitudinalMeters: searchRadius * 2,
             longitudinalMeters: searchRadius * 2
         )
+        return await execute(MKLocalSearch(request: request), category: category, near: location)
+    }
 
+    private func execute(
+        _ search: MKLocalSearch,
+        category: SuggestionCategory,
+        near location: CLLocation
+    ) async -> [NearbyPlace] {
         do {
-            let search = MKLocalSearch(request: request)
             let response = try await search.start()
 
             return response.mapItems.compactMap { item in

@@ -202,20 +202,8 @@ enum SuggestionCategory: String, CaseIterable, Codable {
         }
     }
 
-    var searchQueries: [String] {
-        switch self {
-        case .cafe: ["カフェ", "コーヒー"]
-        case .walk: ["公園", "散歩"]
-        case .reading: ["図書館", "書店", "ブックカフェ"]
-        case .music: ["音楽カフェ", "レコードショップ", "ライブハウス"]
-        case .art: ["ギャラリー", "美術館"]
-        case .fitness: ["ジム", "フィットネス", "ヨガ"]
-        case .shopping: ["雑貨", "ブティック", "ショッピング"]
-        case .gourmet: ["レストラン", "グルメ"]
-        case .movie: ["映画館", "シネマ"]
-        case .meditation: ["お寺", "スパ", "瞑想"]
-        }
-    }
+    // スポット検索のカテゴリ定義は `SuggestionCategory+PlaceSearch.swift` を参照。
+    // 日本語キーワードでは海外で成立しないため、POI カテゴリベースに移行した。
 
     var weatherContextFormat: (outdoor: String, indoor: String, neutral: String) {
         switch self {

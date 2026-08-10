@@ -19,14 +19,10 @@ final class DestinationSearchViewModel: ObservableObject {
     @Published private(set) var isLoadingRecommendations = false
 
     /// 現在地が取れないときのフォールバック検索リージョン。
-    /// 沖縄〜北海道まで含むよう広めに設定（中心は本州あたり）。
-    private let japanRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 36.0, longitude: 137.5),
-        span: MKCoordinateSpan(latitudeDelta: 22, longitudeDelta: 22)
-    )
+    /// 端末の地域設定から代表点を引く（未知の地域では世界全体）。
+    /// 日本固定にすると、位置情報を許可していない海外ユーザーの検索基点が日本になってしまう。
+    private let fallbackRegion = MKCoordinateRegion.forCurrentLocaleRegion()
 
-    /// おすすめエリア抽出に使う「行き先になりやすい」検索クエリ
-    private let recommendationQueries = ["観光スポット", "名所", "公園"]
     /// おすすめエリアの最大表示件数
     private let maxRecommendations = 6
 
@@ -45,7 +41,7 @@ final class DestinationSearchViewModel: ObservableObject {
         completer.delegate = delegate
         // 行き先として選べるもののみ。`.query` はカテゴリ検索の提案が混ざるため含めない
         completer.resultTypes = [.pointOfInterest, .address]
-        completer.region = japanRegion
+        completer.region = fallbackRegion
     }
 
     // MARK: - 検索
@@ -142,7 +138,7 @@ final class DestinationSearchViewModel: ObservableObject {
         isLoadingRecommendations = true
         defer { isLoadingRecommendations = false }
 
-        // 近隣の街・エリアに届くよう、提案検索より広めのリージョンを使う
+        // 近隣の街・エリアに届くよう、提案検索より広いリージョンを使う
         let region = MKCoordinateRegion(
             center: location.coordinate,
             span: MKCoordinateSpan(latitudeDelta: 0.45, longitudeDelta: 0.45)
@@ -151,7 +147,7 @@ final class DestinationSearchViewModel: ObservableObject {
         var collected: [TodayDestination] = []
         var seenNames = Set<String>()
 
-        for query in recommendationQueries {
+        for query in RecommendationQueries.current {
             let request = MKLocalSearch.Request()
             request.naturalLanguageQuery = query
             request.region = region
@@ -173,12 +169,12 @@ final class DestinationSearchViewModel: ObservableObject {
     }
 
     /// 候補列挙のバイアス基点。現在地があれば現在地を中心に広めにバイアスし、
-    /// 近場を優先しつつ全国の地名検索も可能にする。取れなければ全国フォールバック。
+    /// 近場を優先しつつ広域の地名検索も可能にする。取れなければ端末の地域設定にフォールバックする。
     ///
     /// span を狭めると遠方の固有名詞が近場の同名スポットに化けるため（例: 厳島神社が新宿区の
     /// 厳嶋神社になる）、この幅は狭めないこと。
     private func searchRegion() -> MKCoordinateRegion {
-        guard let userLocation else { return japanRegion }
+        guard let userLocation else { return fallbackRegion }
         return MKCoordinateRegion(
             center: userLocation.coordinate,
             span: MKCoordinateSpan(latitudeDelta: 16, longitudeDelta: 16)
