@@ -68,7 +68,7 @@ class SuggestionDetailViewModel: ObservableObject {
 
         // カレンダーに登録
         guard let calendarService else {
-            calendarAlertMessage = "提案を受け入れました"
+            calendarAlertMessage = String(localized: "提案を受け入れました")
             return
         }
         do {
@@ -78,9 +78,9 @@ class SuggestionDetailViewModel: ObservableObject {
                 endDate: suggestion.freeTimeSlot.endDate,
                 notes: suggestion.description
             )
-            calendarAlertMessage = "カレンダーに追加しました"
+            calendarAlertMessage = String(localized: "カレンダーに追加しました")
         } catch {
-            calendarAlertMessage = "カレンダーへの追加に失敗しました"
+            calendarAlertMessage = String(localized: "カレンダーへの追加に失敗しました")
         }
     }
 

@@ -104,7 +104,7 @@ final class DestinationSearchViewModel: ObservableObject {
         guard let response = try? await MKLocalSearch(request: request).start(),
               let item = response.mapItems.first
         else {
-            resolveErrorMessage = "場所の情報を取得できませんでした。通信状況を確認してもう一度お試しください。"
+            resolveErrorMessage = String(localized: "場所の情報を取得できませんでした。通信状況を確認してもう一度お試しください。")
             return nil
         }
 
@@ -116,7 +116,7 @@ final class DestinationSearchViewModel: ObservableObject {
 
         return TodayDestination(
             name: item.name ?? candidate.title,
-            subtitle: subtitle.isEmpty ? "周辺のスポットを提案" : subtitle,
+            subtitle: subtitle.isEmpty ? String(localized: "周辺のスポットを提案") : subtitle,
             latitude: placemark.coordinate.latitude,
             longitude: placemark.coordinate.longitude
         )
@@ -209,7 +209,7 @@ final class DestinationSearchViewModel: ObservableObject {
     /// 現在地からの距離。単位はロケールに従う（m/km または ft/mi）。
     /// 「現在地から約」の文言自体は #32 で String Catalog に移す。
     private static func distanceText(meters: Double) -> String {
-        "現在地から約\(LocalizedUnits.distance(meters: meters))"
+        String(localized: "現在地から約\(LocalizedUnits.distance(meters: meters))")
     }
 }
 

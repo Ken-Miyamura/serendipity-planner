@@ -59,7 +59,7 @@ struct AcceptedCardView: View {
     }
 
     private var accessibilityDescription: String {
-        var label = "受け入れ済み、\(suggestion.title)、\(suggestion.freeTimeSlot.timeRangeText)"
+        var label = String(localized: "受け入れ済み、\(suggestion.title)、\(suggestion.freeTimeSlot.timeRangeText)")
         if let place = suggestion.nearbyPlace {
             label += "、\(place.name)"
         }

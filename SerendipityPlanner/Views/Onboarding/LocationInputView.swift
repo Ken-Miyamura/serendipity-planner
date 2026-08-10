@@ -45,8 +45,8 @@ struct LocationInputView: View {
             Spacer().frame(maxHeight: 16)
 
             PermissionDescription(
-                headline: "現在地を活用",
-                text: "あなたの現在地に合わせて\n最適なプランを提案します"
+                headline: String(localized: "現在地を活用"),
+                text: String(localized: "あなたの現在地に合わせて\n最適なプランを提案します")
             )
             .offset(y: appeared ? 0 : -20)
             .opacity(appeared ? 1 : 0)

@@ -99,7 +99,7 @@ struct DestinationSearchView: View {
 
             // IME 変換中は検索を走らせないため、素の TextField ではなく UITextField を包んで使う
             IMEAwareTextField(
-                placeholder: "エリア・駅・スポットを検索",
+                placeholder: String(localized: "エリア・駅・スポットを検索"),
                 text: Binding(
                     get: { viewModel.query },
                     set: { viewModel.updateQuery($0) }
@@ -164,7 +164,7 @@ struct DestinationSearchView: View {
 
     private var recentSection: some View {
         VStack(alignment: .leading, spacing: 10) {
-            sectionHeader("最近の検索")
+            sectionHeader(String(localized: "最近の検索"))
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(recentDestinations) { destination in
@@ -198,7 +198,7 @@ struct DestinationSearchView: View {
     private var recommendedSection: some View {
         if viewModel.isLoadingRecommendations {
             VStack(alignment: .leading, spacing: 10) {
-                sectionHeader("この近くのおすすめ")
+                sectionHeader(String(localized: "この近くのおすすめ"))
                 HStack(spacing: 8) {
                     ProgressView()
                     Text("近くの行き先を探しています...")
@@ -209,7 +209,7 @@ struct DestinationSearchView: View {
             }
         } else if !viewModel.recommendedAreas.isEmpty {
             VStack(alignment: .leading, spacing: 10) {
-                sectionHeader("この近くのおすすめ")
+                sectionHeader(String(localized: "この近くのおすすめ"))
                 VStack(spacing: 8) {
                     ForEach(viewModel.recommendedAreas) { area in
                         Button {

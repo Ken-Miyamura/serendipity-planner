@@ -76,28 +76,28 @@ struct WelcomePageView: View {
             ], spacing: 12) {
                 FeatureCard(
                     icon: "calendar",
-                    label: "空き時間を自動検出",
+                    label: String(localized: "空き時間を自動検出"),
                     iconColor: Color(red: 0.50, green: 0.65, blue: 0.90),
                     bgColor: Color(red: 0.50, green: 0.65, blue: 0.90).opacity(0.08),
                     borderColor: Color(red: 0.50, green: 0.65, blue: 0.90).opacity(0.15)
                 )
                 FeatureCard(
                     icon: "sun.max.fill",
-                    label: "天気と時間帯に応じた提案",
+                    label: String(localized: "天気と時間帯に応じた提案"),
                     iconColor: Color(red: 0.92, green: 0.78, blue: 0.35),
                     bgColor: Color(red: 0.92, green: 0.78, blue: 0.35).opacity(0.10),
                     borderColor: Color(red: 0.92, green: 0.78, blue: 0.35).opacity(0.18)
                 )
                 FeatureCard(
                     icon: "location.fill",
-                    label: "あなたの現在地に応じた提案",
+                    label: String(localized: "あなたの現在地に応じた提案"),
                     iconColor: Color(red: 0.42, green: 0.75, blue: 0.55),
                     bgColor: Color(red: 0.42, green: 0.75, blue: 0.55).opacity(0.08),
                     borderColor: Color(red: 0.42, green: 0.75, blue: 0.55).opacity(0.15)
                 )
                 FeatureCard(
                     icon: "person.fill",
-                    label: "あなた好みの体験を学習",
+                    label: String(localized: "あなた好みの体験を学習"),
                     iconColor: Color(red: 0.70, green: 0.55, blue: 0.85),
                     bgColor: Color(red: 0.70, green: 0.55, blue: 0.85).opacity(0.08),
                     borderColor: Color(red: 0.70, green: 0.55, blue: 0.85).opacity(0.15)

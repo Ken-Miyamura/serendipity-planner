@@ -1,6 +1,12 @@
 import SwiftUI
 
 struct SettingsView: View, SkyTextStyling {
+    /// 有効/無効の状態語を先に決めてから組み立てる（三項演算子は翻訳キーとして抽出できない）
+    private static func categoryToggleLabel(_ category: SuggestionCategory, isOn: Bool) -> String {
+        let state = isOn ? String(localized: "有効") : String(localized: "無効")
+        return String(localized: "\(category.displayName)、\(state)")
+    }
+
     @EnvironmentObject private var preferenceService: PreferenceService
     @EnvironmentObject private var locationService: LocationService
     @EnvironmentObject private var favoriteService: FavoriteService
@@ -140,7 +146,7 @@ struct SettingsView: View, SkyTextStyling {
                                     }
                                 }
                             }
-                            .accessibilityLabel("\(category.displayName)、\(viewModel.preferredCategories.contains(category) ? "有効" : "無効")")
+                            .accessibilityLabel(Self.categoryToggleLabel(category, isOn: viewModel.preferredCategories.contains(category)))
                             .accessibilityHint("タップで切り替え")
                         }
                     }
@@ -161,7 +167,7 @@ struct SettingsView: View, SkyTextStyling {
                                     .foregroundColor(.secondary)
                             }
                             .accessibilityElement(children: .combine)
-                            .accessibilityLabel("\(category.displayName)、\(viewModel.selectionCount(for: category))回選択")
+                            .accessibilityLabel(String(localized: "\(category.displayName)、\(viewModel.selectionCount(for: category))回選択"))
                         }
 
                         Button(role: .destructive) {

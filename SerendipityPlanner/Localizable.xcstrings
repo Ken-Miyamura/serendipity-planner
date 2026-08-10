@@ -1,0 +1,2459 @@
+{
+  "sourceLanguage": "ja",
+  "version": "1.0",
+  "strings": {
+    " 周辺から提案中": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 周辺から提案中"
+          }
+        }
+      }
+    },
+    "%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@"
+          }
+        }
+      }
+    },
+    "%@(%@)": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@(%@)"
+          }
+        }
+      }
+    },
+    "%@、%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@、%@"
+          }
+        }
+      }
+    },
+    "%@、%@、%@に追加": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@、%@、%@に追加"
+          }
+        }
+      }
+    },
+    "%@、%lld回": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@、%lld回"
+          }
+        }
+      }
+    },
+    "%@、%lld回選択": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@、%lld回選択"
+          }
+        }
+      }
+    },
+    "%@から%@ ・ %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@から%@ ・ %@"
+          }
+        }
+      }
+    },
+    "%@で%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@で%@"
+          }
+        }
+      }
+    },
+    "%@で過ごす、すきま時間": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@で過ごす、すきま時間"
+          }
+        }
+      }
+    },
+    "%@に空き時間があります。%@はいかがですか？": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@に空き時間があります。%@はいかがですか？"
+          }
+        }
+      }
+    },
+    "%@の ほかの候補": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の ほかの候補"
+          }
+        }
+      }
+    },
+    "%@をマップで開く": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@をマップで開く"
+          }
+        }
+      }
+    },
+    "%@をマップアプリで表示します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@をマップアプリで表示します"
+          }
+        }
+      }
+    },
+    "%@・%lldスポットを提案中": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@・%lldスポットを提案中"
+          }
+        }
+      }
+    },
+    "%@周辺から提案中": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@周辺から提案中"
+          }
+        }
+      }
+    },
+    "%@（%@）": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@（%@）"
+          }
+        }
+      }
+    },
+    "%lld分": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld分"
+          }
+        }
+      }
+    },
+    "%lld分前": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld分前"
+          }
+        }
+      }
+    },
+    "%lld回": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld回"
+          }
+        }
+      }
+    },
+    "%lld時間": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld時間"
+          }
+        }
+      }
+    },
+    "%lld時間%lld分": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld時間%lld分"
+          }
+        }
+      }
+    },
+    "%lld時間前": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld時間前"
+          }
+        }
+      }
+    },
+    "3つ以上選択してください": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3つ以上選択してください"
+          }
+        }
+      }
+    },
+    "Apple マップ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple マップ"
+          }
+        }
+      }
+    },
+    "GPSから周辺のスポットを提案": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GPSから周辺のスポットを提案"
+          }
+        }
+      }
+    },
+    "GPSから自動的に取得されます。天気と場所の提案に使用されます。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GPSから自動的に取得されます。天気と場所の提案に使用されます。"
+          }
+        }
+      }
+    },
+    "Google マップ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google マップ"
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Serendipity": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serendipity"
+          }
+        }
+      }
+    },
+    "iOS設定アプリを開いて権限を変更します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS設定アプリを開いて権限を変更します"
+          }
+        }
+      }
+    },
+    "、": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "、"
+          }
+        }
+      }
+    },
+    "「%@」の天気情報が見つかりません。都市名を確認してください。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「%@」の天気情報が見つかりません。都市名を確認してください。"
+          }
+        }
+      }
+    },
+    "あなたの現在地に合わせて\n最適なプランを提案します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あなたの現在地に合わせて\n最適なプランを提案します"
+          }
+        }
+      }
+    },
+    "あなたの現在地に応じた提案": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あなたの現在地に応じた提案"
+          }
+        }
+      }
+    },
+    "あなた好みの体験を学習": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あなた好みの体験を学習"
+          }
+        }
+      }
+    },
+    "いつもの何気ない空き時間を、\n偶然出会う楽しみのきっかけに。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "いつもの何気ない空き時間を、\n偶然出会う楽しみのきっかけに。"
+          }
+        }
+      }
+    },
+    "おつかれさまでした。\n明日も素敵な一日になりますように": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "おつかれさまでした。\n明日も素敵な一日になりますように"
+          }
+        }
+      }
+    },
+    "おはようございます ☀️": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "おはようございます ☀️"
+          }
+        }
+      }
+    },
+    "おはようございます。\n今日、素敵な偶然が訪れますように": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "おはようございます。\n今日、素敵な偶然が訪れますように"
+          }
+        }
+      }
+    },
+    "お気に入り": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入り"
+          }
+        }
+      }
+    },
+    "お気に入りから削除": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りから削除"
+          }
+        }
+      }
+    },
+    "お気に入りに保存したすべての提案が削除されます。この操作は取り消せません。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りに保存したすべての提案が削除されます。この操作は取り消せません。"
+          }
+        }
+      }
+    },
+    "お気に入りに保存したすべての提案を削除します。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りに保存したすべての提案を削除します。"
+          }
+        }
+      }
+    },
+    "お気に入りに追加": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りに追加"
+          }
+        }
+      }
+    },
+    "お気に入りの詳細": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りの詳細"
+          }
+        }
+      }
+    },
+    "お気に入りはまだありません": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りはまだありません"
+          }
+        }
+      }
+    },
+    "お気に入りデータを削除": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りデータを削除"
+          }
+        }
+      }
+    },
+    "このお気に入りを削除しますか？": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このお気に入りを削除しますか？"
+          }
+        }
+      }
+    },
+    "このカテゴリのお気に入りはありません": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このカテゴリのお気に入りはありません"
+          }
+        }
+      }
+    },
+    "この提案のお気に入り状態を切り替えます": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この提案のお気に入り状態を切り替えます"
+          }
+        }
+      }
+    },
+    "この提案をお気に入りから削除します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この提案をお気に入りから削除します"
+          }
+        }
+      }
+    },
+    "この提案を受け入れる": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この提案を受け入れる"
+          }
+        }
+      }
+    },
+    "この近くのおすすめ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この近くのおすすめ"
+          }
+        }
+      }
+    },
+    "すべて": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべて"
+          }
+        }
+      }
+    },
+    "すべて%@エリアから選んでいます": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべて%@エリアから選んでいます"
+          }
+        }
+      }
+    },
+    "すべての履歴データが削除されます。この操作は取り消せません。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべての履歴データが削除されます。この操作は取り消せません。"
+          }
+        }
+      }
+    },
+    "まだ履歴がありません": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "まだ履歴がありません"
+          }
+        }
+      }
+    },
+    "アプリ情報": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリ情報"
+          }
+        }
+      }
+    },
+    "アート": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アート"
+          }
+        }
+      }
+    },
+    "エラーが発生しました": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "エラーが発生しました"
+          }
+        }
+      }
+    },
+    "エリア・駅・スポットを検索": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "エリア・駅・スポットを検索"
+          }
+        }
+      }
+    },
+    "オフ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オフ"
+          }
+        }
+      }
+    },
+    "オン": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オン"
+          }
+        }
+      }
+    },
+    "カフェ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カフェ"
+          }
+        }
+      }
+    },
+    "カレンダーと連携": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーと連携"
+          }
+        }
+      }
+    },
+    "カレンダーに空きができたらお知らせします": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーに空きができたらお知らせします"
+          }
+        }
+      }
+    },
+    "カレンダーに追加しました": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーに追加しました"
+          }
+        }
+      }
+    },
+    "カレンダーの権限取得に失敗しました: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーの権限取得に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "カレンダーへのアクセスが拒否されました。設定アプリから許可してください。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーへのアクセスが拒否されました。設定アプリから許可してください。"
+          }
+        }
+      }
+    },
+    "カレンダーへのアクセスが許可されていません。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーへのアクセスが許可されていません。"
+          }
+        }
+      }
+    },
+    "カレンダーへのアクセスが許可されていません。設定から許可してください。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーへのアクセスが許可されていません。設定から許可してください。"
+          }
+        }
+      }
+    },
+    "カレンダーへの追加に失敗しました": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーへの追加に失敗しました"
+          }
+        }
+      }
+    },
+    "カレンダーイベントの取得に失敗しました。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーイベントの取得に失敗しました。"
+          }
+        }
+      }
+    },
+    "キャンセル": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "キャンセル"
+          }
+        }
+      }
+    },
+    "グルメ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "グルメ"
+          }
+        }
+      }
+    },
+    "ショッピング": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ショッピング"
+          }
+        }
+      }
+    },
+    "セレンディピティ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "セレンディピティ"
+          }
+        }
+      }
+    },
+    "タップでフィルタを切り替え": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タップでフィルタを切り替え"
+          }
+        }
+      }
+    },
+    "タップで切り替え": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タップで切り替え"
+          }
+        }
+      }
+    },
+    "タップで目的地を検索": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タップで目的地を検索"
+          }
+        }
+      }
+    },
+    "タップで選択": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タップで選択"
+          }
+        }
+      }
+    },
+    "タップで選択解除": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タップで選択解除"
+          }
+        }
+      }
+    },
+    "データの再読み込みを試みます": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "データの再読み込みを試みます"
+          }
+        }
+      }
+    },
+    "ネットワークエラー: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ネットワークエラー: %@"
+          }
+        }
+      }
+    },
+    "バージョン": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バージョン"
+          }
+        }
+      }
+    },
+    "フィットネス": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フィットネス"
+          }
+        }
+      }
+    },
+    "ブラウザで開く": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ブラウザで開く"
+          }
+        }
+      }
+    },
+    "プライバシーポリシー": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プライバシーポリシー"
+          }
+        }
+      }
+    },
+    "プランナー": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プランナー"
+          }
+        }
+      }
+    },
+    "ホーム": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ホーム"
+          }
+        }
+      }
+    },
+    "マップで開く": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マップで開く"
+          }
+        }
+      }
+    },
+    "マップアプリで開く": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マップアプリで開く"
+          }
+        }
+      }
+    },
+    "リセット": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "リセット"
+          }
+        }
+      }
+    },
+    "リラックス": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "リラックス"
+          }
+        }
+      }
+    },
+    "不明": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不明"
+          }
+        }
+      }
+    },
+    "予定を確認して空き時間を自動で検出し、\nあなたに合った体験を提案します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予定を確認して空き時間を自動で検出し、\nあなたに合った体験を提案します"
+          }
+        }
+      }
+    },
+    "今いる場所から、すきま時間に": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今いる場所から、すきま時間に"
+          }
+        }
+      }
+    },
+    "今日": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日"
+          }
+        }
+      }
+    },
+    "今日、素敵な偶然が訪れますように": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日、素敵な偶然が訪れますように"
+          }
+        }
+      }
+    },
+    "今日の予定": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日の予定"
+          }
+        }
+      }
+    },
+    "今日の残り時間に、\n小さな幸運を見つけましょう": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日の残り時間に、\n小さな幸運を見つけましょう"
+          }
+        }
+      }
+    },
+    "今日の空き時間はありません": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日の空き時間はありません"
+          }
+        }
+      }
+    },
+    "今日の空き時間を探しています...": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日の空き時間を探しています..."
+          }
+        }
+      }
+    },
+    "今日の隙間時間：%lldつ見つかりました。タップして提案を確認しましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日の隙間時間：%lldつ見つかりました。タップして提案を確認しましょう。"
+          }
+        }
+      }
+    },
+    "今日はゆっくりお過ごしください": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日はゆっくりお過ごしください"
+          }
+        }
+      }
+    },
+    "今月のまとめ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今月のまとめ"
+          }
+        }
+      }
+    },
+    "他の候補": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "他の候補"
+          }
+        }
+      }
+    },
+    "休日のアクティブ時間": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "休日のアクティブ時間"
+          }
+        }
+      }
+    },
+    "位置情報が取得できないため、天気情報は概算です": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "位置情報が取得できないため、天気情報は概算です"
+          }
+        }
+      }
+    },
+    "位置情報の取得に失敗しました: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "位置情報の取得に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "再試行": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再試行"
+          }
+        }
+      }
+    },
+    "再読み込み": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再読み込み"
+          }
+        }
+      }
+    },
+    "削除": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除"
+          }
+        }
+      }
+    },
+    "前の月": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "前の月"
+          }
+        }
+      }
+    },
+    "取得中...": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取得中..."
+          }
+        }
+      }
+    },
+    "受け入れた提案の履歴をすべて削除します。この操作は取り消せません。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "受け入れた提案の履歴をすべて削除します。この操作は取り消せません。"
+          }
+        }
+      }
+    },
+    "受け入れ済み": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "受け入れ済み"
+          }
+        }
+      }
+    },
+    "受け入れ済み、%@、%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "受け入れ済み、%@、%@"
+          }
+        }
+      }
+    },
+    "合計 %lld回": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "合計 %lld回"
+          }
+        }
+      }
+    },
+    "周辺のスポットを提案": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "周辺のスポットを提案"
+          }
+        }
+      }
+    },
+    "場所の情報を取得できませんでした。通信状況を確認してもう一度お試しください。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "場所の情報を取得できませんでした。通信状況を確認してもう一度お試しください。"
+          }
+        }
+      }
+    },
+    "場所を取得できませんでした": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "場所を取得できませんでした"
+          }
+        }
+      }
+    },
+    "場所を確認しています": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "場所を確認しています"
+          }
+        }
+      }
+    },
+    "場所を確認しています...": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "場所を確認しています..."
+          }
+        }
+      }
+    },
+    "変更": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "変更"
+          }
+        }
+      }
+    },
+    "変更ボタンで目的地を選び直せます": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "変更ボタンで目的地を選び直せます"
+          }
+        }
+      }
+    },
+    "天気APIキーが設定されていません。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気APIキーが設定されていません。"
+          }
+        }
+      }
+    },
+    "天気と時間帯に応じた提案": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気と時間帯に応じた提案"
+          }
+        }
+      }
+    },
+    "天気データの解析に失敗しました。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気データの解析に失敗しました。"
+          }
+        }
+      }
+    },
+    "天気情報の取得に失敗しました。概算の天気を表示しています": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気情報の取得に失敗しました。概算の天気を表示しています"
+          }
+        }
+      }
+    },
+    "天気情報を取得できませんでした": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気情報を取得できませんでした"
+          }
+        }
+      }
+    },
+    "好みをリセット": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "好みをリセット"
+          }
+        }
+      }
+    },
+    "学習データ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "学習データ"
+          }
+        }
+      }
+    },
+    "学習データをリセットすると、提案の重み付けが初期状態に戻ります。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "学習データをリセットすると、提案の重み付けが初期状態に戻ります。"
+          }
+        }
+      }
+    },
+    "小雨": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小雨"
+          }
+        }
+      }
+    },
+    "履歴": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "履歴"
+          }
+        }
+      }
+    },
+    "履歴がありません": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "履歴がありません"
+          }
+        }
+      }
+    },
+    "履歴データ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "履歴データ"
+          }
+        }
+      }
+    },
+    "履歴データを削除": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "履歴データを削除"
+          }
+        }
+      }
+    },
+    "平日のアクティブ時間": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "平日のアクティブ時間"
+          }
+        }
+      }
+    },
+    "後からアプリの設定画面で変更できます": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "後からアプリの設定画面で変更できます"
+          }
+        }
+      }
+    },
+    "後から設定アプリで変更できます": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "後から設定アプリで変更できます"
+          }
+        }
+      }
+    },
+    "徒歩%lld分": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "徒歩%lld分"
+          }
+        }
+      }
+    },
+    "提案の設定": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案の設定"
+          }
+        }
+      }
+    },
+    "提案の詳細": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案の詳細"
+          }
+        }
+      }
+    },
+    "提案の詳細画面でハートアイコンをタップすると、\nここにお気に入りが表示されます。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案の詳細画面でハートアイコンをタップすると、\nここにお気に入りが表示されます。"
+          }
+        }
+      }
+    },
+    "提案をカレンダーに追加します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案をカレンダーに追加します"
+          }
+        }
+      }
+    },
+    "提案を受け入れました": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案を受け入れました"
+          }
+        }
+      }
+    },
+    "提案を受け入れました。素敵な体験をお楽しみください。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案を受け入れました。素敵な体験をお楽しみください。"
+          }
+        }
+      }
+    },
+    "提案を受け入れました！": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案を受け入れました！"
+          }
+        }
+      }
+    },
+    "提案を受け入れると、\nここに履歴が表示されます。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案を受け入れると、\nここに履歴が表示されます。"
+          }
+        }
+      }
+    },
+    "提案を受け入れるとカテゴリの出現率が調整されます。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案を受け入れるとカテゴリの出現率が調整されます。"
+          }
+        }
+      }
+    },
+    "提案カテゴリ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提案カテゴリ"
+          }
+        }
+      }
+    },
+    "散歩": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "散歩"
+          }
+        }
+      }
+    },
+    "明日": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明日"
+          }
+        }
+      }
+    },
+    "映画": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "映画"
+          }
+        }
+      }
+    },
+    "晴れ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "晴れ"
+          }
+        }
+      }
+    },
+    "曇り": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "曇り"
+          }
+        }
+      }
+    },
+    "最小空き時間": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最小空き時間"
+          }
+        }
+      }
+    },
+    "最近の検索": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近の検索"
+          }
+        }
+      }
+    },
+    "有効": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有効"
+          }
+        }
+      }
+    },
+    "朝の概要通知": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朝の概要通知"
+          }
+        }
+      }
+    },
+    "朝の通知を有効にする": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朝の通知を有効にする"
+          }
+        }
+      }
+    },
+    "未選択": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未選択"
+          }
+        }
+      }
+    },
+    "検索をクリア": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "検索をクリア"
+          }
+        }
+      }
+    },
+    "検索中...": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "検索中..."
+          }
+        }
+      }
+    },
+    "次の月": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次の月"
+          }
+        }
+      }
+    },
+    "次の空き時間とおすすめのアクティビティを表示します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次の空き時間とおすすめのアクティビティを表示します"
+          }
+        }
+      }
+    },
+    "毎朝、今日の隙間時間の数をお知らせします。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "毎朝、今日の隙間時間の数をお知らせします。"
+          }
+        }
+      }
+    },
+    "無効": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無効"
+          }
+        }
+      }
+    },
+    "無効なURLです。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "無効なURLです。"
+          }
+        }
+      }
+    },
+    "現在地": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地"
+          }
+        }
+      }
+    },
+    "現在地から約%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地から約%@"
+          }
+        }
+      }
+    },
+    "現在地を使う": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地を使う"
+          }
+        }
+      }
+    },
+    "現在地を活用": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地を活用"
+          }
+        }
+      }
+    },
+    "現在地・%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地・%@"
+          }
+        }
+      }
+    },
+    "現在地周辺から提案中": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地周辺から提案中"
+          }
+        }
+      }
+    },
+    "目的地": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地"
+          }
+        }
+      }
+    },
+    "目的地、%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地、%@"
+          }
+        }
+      }
+    },
+    "目的地、%@、%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地、%@、%@"
+          }
+        }
+      }
+    },
+    "目的地を変更": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地を変更"
+          }
+        }
+      }
+    },
+    "目的地を決める": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地を決める"
+          }
+        }
+      }
+    },
+    "目的地を決める。行き先を選ぶと、その街での提案が表示されます": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地を決める。行き先を選ぶと、その街での提案が表示されます"
+          }
+        }
+      }
+    },
+    "目的地を解除して現在地ベースに戻します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地を解除して現在地ベースに戻します"
+          }
+        }
+      }
+    },
+    "目的地を選ぶ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目的地を選ぶ"
+          }
+        }
+      }
+    },
+    "空き時間が見つかりませんでした。\n忙しい日も、ちょっと深呼吸を。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空き時間が見つかりませんでした。\n忙しい日も、ちょっと深呼吸を。"
+          }
+        }
+      }
+    },
+    "空き時間なし": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空き時間なし"
+          }
+        }
+      }
+    },
+    "空き時間の再検索を行います": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空き時間の再検索を行います"
+          }
+        }
+      }
+    },
+    "空き時間の前に\n体験の提案を通知します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空き時間の前に\n体験の提案を通知します"
+          }
+        }
+      }
+    },
+    "空き時間の開始前に提案を通知します。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空き時間の開始前に提案を通知します。"
+          }
+        }
+      }
+    },
+    "空き時間を自動検出": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空き時間を自動検出"
+          }
+        }
+      }
+    },
+    "素敵な体験をお楽しみください": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "素敵な体験をお楽しみください"
+          }
+        }
+      }
+    },
+    "終了": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "終了"
+          }
+        }
+      }
+    },
+    "興味のあるジャンル": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "興味のあるジャンル"
+          }
+        }
+      }
+    },
+    "行き先を選ぶと、その街での小さな偶然をご提案します": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "行き先を選ぶと、その街での小さな偶然をご提案します"
+          }
+        }
+      }
+    },
+    "設定": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        }
+      }
+    },
+    "設定を開く": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定を開く"
+          }
+        }
+      }
+    },
+    "許可済み": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "許可済み"
+          }
+        }
+      }
+    },
+    "許可済みです": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "許可済みです"
+          }
+        }
+      }
+    },
+    "該当する場所が見つかりませんでした": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "該当する場所が見つかりませんでした"
+          }
+        }
+      }
+    },
+    "詳細": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "詳細"
+          }
+        }
+      }
+    },
+    "読書": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "読書"
+          }
+        }
+      }
+    },
+    "近くの行き先を探しています...": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "近くの行き先を探しています..."
+          }
+        }
+      }
+    },
+    "追加日: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "追加日: %@"
+          }
+        }
+      }
+    },
+    "通知": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知"
+          }
+        }
+      }
+    },
+    "通知が拒否されました。設定アプリから許可してください。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知が拒否されました。設定アプリから許可してください。"
+          }
+        }
+      }
+    },
+    "通知でお知らせ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知でお知らせ"
+          }
+        }
+      }
+    },
+    "通知の権限取得に失敗しました: %@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知の権限取得に失敗しました: %@"
+          }
+        }
+      }
+    },
+    "通知を有効にする": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知を有効にする"
+          }
+        }
+      }
+    },
+    "通知タイミング": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知タイミング"
+          }
+        }
+      }
+    },
+    "通知時刻": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知時刻"
+          }
+        }
+      }
+    },
+    "通知設定": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知設定"
+          }
+        }
+      }
+    },
+    "選択中": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選択中"
+          }
+        }
+      }
+    },
+    "閉じる": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "閉じる"
+          }
+        }
+      }
+    },
+    "開始": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始"
+          }
+        }
+      }
+    },
+    "隙間時間前に通知する": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隙間時間前に通知する"
+          }
+        }
+      }
+    },
+    "隙間時間前の通知": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隙間時間前の通知"
+          }
+        }
+      }
+    },
+    "雨": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨"
+          }
+        }
+      }
+    },
+    "雪": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雪"
+          }
+        }
+      }
+    },
+    "雷雨": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雷雨"
+          }
+        }
+      }
+    },
+    "霧": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "霧"
+          }
+        }
+      }
+    },
+    "音楽": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音楽"
+          }
+        }
+      }
+    }
+  }
+}

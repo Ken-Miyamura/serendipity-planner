@@ -6,7 +6,12 @@ class OnboardingViewModel: ObservableObject {
     @Published var calendarPermissionGranted = false
     @Published var notificationPermissionGranted = false
     @Published var selectedInterests: Set<SuggestionCategory> = Set(SuggestionCategory.allCases)
+    /// 権限エラーがどの権限のものかを表す。
+    /// 以前は文言に "カレンダー" が含まれるかで判定していたため、翻訳すると壊れた。
+    enum PermissionKind { case calendar, notification }
+
     @Published var permissionError: String?
+    @Published private(set) var permissionErrorKind: PermissionKind?
 
     let totalPages = 5
 
@@ -57,29 +62,35 @@ class OnboardingViewModel: ObservableObject {
 
     func requestCalendarPermission() async {
         permissionError = nil
+        permissionErrorKind = nil
         do {
             let granted = try await calendarService.requestAccess()
             calendarPermissionGranted = granted
             if !granted {
-                permissionError = "カレンダーへのアクセスが拒否されました。設定アプリから許可してください。"
+                permissionError = String(localized: "カレンダーへのアクセスが拒否されました。設定アプリから許可してください。")
+                permissionErrorKind = .calendar
             }
         } catch {
             calendarPermissionGranted = false
-            permissionError = "カレンダーの権限取得に失敗しました: \(error.localizedDescription)"
+            permissionError = String(localized: "カレンダーの権限取得に失敗しました: \(error.localizedDescription)")
+            permissionErrorKind = .calendar
         }
     }
 
     func requestNotificationPermission() async {
         permissionError = nil
+        permissionErrorKind = nil
         do {
             let granted = try await notificationService.requestPermission()
             notificationPermissionGranted = granted
             if !granted {
-                permissionError = "通知が拒否されました。設定アプリから許可してください。"
+                permissionError = String(localized: "通知が拒否されました。設定アプリから許可してください。")
+                permissionErrorKind = .notification
             }
         } catch {
             notificationPermissionGranted = false
-            permissionError = "通知の権限取得に失敗しました: \(error.localizedDescription)"
+            permissionError = String(localized: "通知の権限取得に失敗しました: \(error.localizedDescription)")
+            permissionErrorKind = .notification
         }
     }
 }

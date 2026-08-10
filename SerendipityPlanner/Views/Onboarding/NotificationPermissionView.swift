@@ -25,8 +25,8 @@ struct NotificationPermissionView: View {
             }
 
             PermissionDescription(
-                headline: "通知でお知らせ",
-                text: "空き時間の前に\n体験の提案を通知します"
+                headline: String(localized: "通知でお知らせ"),
+                text: String(localized: "空き時間の前に\n体験の提案を通知します")
             )
             .offset(y: appeared ? 0 : -20)
             .opacity(appeared ? 1 : 0)

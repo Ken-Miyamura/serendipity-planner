@@ -112,7 +112,7 @@ struct FavoritesView: View, SkyTextStyling {
             HStack(spacing: 8) {
                 // 「すべて」ボタン
                 filterChip(
-                    label: "すべて",
+                    label: String(localized: "すべて"),
                     isSelected: viewModel.selectedCategory == nil
                 ) {
                     viewModel.filterByCategory(nil)
@@ -162,7 +162,14 @@ struct FavoritesView: View, SkyTextStyling {
             )
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("\(label)、\(isSelected ? "選択中" : "未選択")")
+        .accessibilityLabel(Self.chipAccessibilityLabel(label: label, isSelected: isSelected))
         .accessibilityHint("タップでフィルタを切り替え")
+    }
+
+    /// 選択状態を含むアクセシビリティ文言。
+    /// 三項演算子を文字列補間に直接入れると翻訳キーとして抽出できないため、状態語を先に決める。
+    private static func chipAccessibilityLabel(label: String, isSelected: Bool) -> String {
+        let state = isSelected ? String(localized: "選択中") : String(localized: "未選択")
+        return String(localized: "\(label)、\(state)")
     }
 }

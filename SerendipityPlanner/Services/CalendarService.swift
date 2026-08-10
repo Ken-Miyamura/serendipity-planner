@@ -11,9 +11,9 @@ class CalendarService: CalendarServiceProtocol {
         var errorDescription: String? {
             switch self {
             case .accessDenied:
-                "カレンダーへのアクセスが許可されていません。設定から許可してください。"
+                String(localized: "カレンダーへのアクセスが許可されていません。設定から許可してください。")
             case .fetchFailed:
-                "カレンダーイベントの取得に失敗しました。"
+                String(localized: "カレンダーイベントの取得に失敗しました。")
             }
         }
     }

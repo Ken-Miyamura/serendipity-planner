@@ -76,10 +76,10 @@ struct MainTabView: View {
 
     private func tabAccessibilityLabel(for index: Int) -> String {
         switch index {
-        case 0: "ホーム"
-        case 1: "履歴"
-        case 2: "お気に入り"
-        case 3: "設定"
+        case 0: String(localized: "ホーム")
+        case 1: String(localized: "履歴")
+        case 2: String(localized: "お気に入り")
+        case 3: String(localized: "設定")
         default: ""
         }
     }

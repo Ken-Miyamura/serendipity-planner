@@ -14,16 +14,16 @@ enum SuggestionCategory: String, CaseIterable, Codable {
 
     var displayName: String {
         switch self {
-        case .cafe: "カフェ"
-        case .walk: "散歩"
-        case .reading: "読書"
-        case .music: "音楽"
-        case .art: "アート"
-        case .fitness: "フィットネス"
-        case .shopping: "ショッピング"
-        case .gourmet: "グルメ"
-        case .movie: "映画"
-        case .meditation: "リラックス"
+        case .cafe: String(localized: "カフェ")
+        case .walk: String(localized: "散歩")
+        case .reading: String(localized: "読書")
+        case .music: String(localized: "音楽")
+        case .art: String(localized: "アート")
+        case .fitness: String(localized: "フィットネス")
+        case .shopping: String(localized: "ショッピング")
+        case .gourmet: String(localized: "グルメ")
+        case .movie: String(localized: "映画")
+        case .meditation: String(localized: "リラックス")
         }
     }
 
@@ -311,7 +311,7 @@ struct NearbyPlace: Identifiable, Codable {
     }
 
     var walkingTimeText: String {
-        "徒歩\(walkingTimeMinutes)分"
+        String(localized: "徒歩\(walkingTimeMinutes)分")
     }
 }
 

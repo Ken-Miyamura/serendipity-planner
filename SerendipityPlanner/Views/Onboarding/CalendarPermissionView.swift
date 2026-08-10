@@ -26,13 +26,13 @@ struct CalendarPermissionView: View {
 
             Spacer().frame(maxHeight: 16)
 
-            if let error = viewModel.permissionError, error.contains("カレンダー") {
+            if let error = viewModel.permissionError, viewModel.permissionErrorKind == .calendar {
                 PermissionErrorView(error: error)
             }
 
             PermissionDescription(
-                headline: "カレンダーと連携",
-                text: "予定を確認して空き時間を自動で検出し、\nあなたに合った体験を提案します"
+                headline: String(localized: "カレンダーと連携"),
+                text: String(localized: "予定を確認して空き時間を自動で検出し、\nあなたに合った体験を提案します")
             )
             .offset(y: appeared ? 0 : -20)
             .opacity(appeared ? 1 : 0)

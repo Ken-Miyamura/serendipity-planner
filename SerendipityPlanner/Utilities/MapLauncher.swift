@@ -13,9 +13,9 @@ enum MapApp: String, Identifiable, CaseIterable {
 
     var displayName: String {
         switch self {
-        case .appleMaps: "Apple マップ"
-        case .googleMaps: "Google マップ"
-        case .browser: "ブラウザで開く"
+        case .appleMaps: String(localized: "Apple マップ")
+        case .googleMaps: String(localized: "Google マップ")
+        case .browser: String(localized: "ブラウザで開く")
         }
     }
 }

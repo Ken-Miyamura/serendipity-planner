@@ -17,15 +17,15 @@ class WeatherService: WeatherServiceProtocol {
         var errorDescription: String? {
             switch self {
             case .invalidAPIKey:
-                "天気APIキーが設定されていません。"
+                String(localized: "天気APIキーが設定されていません。")
             case let .networkError(error):
-                "ネットワークエラー: \(error.localizedDescription)"
+                String(localized: "ネットワークエラー: \(error.localizedDescription)")
             case .decodingError:
-                "天気データの解析に失敗しました。"
+                String(localized: "天気データの解析に失敗しました。")
             case .invalidURL:
-                "無効なURLです。"
+                String(localized: "無効なURLです。")
             case let .cityNotFound(city):
-                "「\(city)」の天気情報が見つかりません。都市名を確認してください。"
+                String(localized: "「\(city)」の天気情報が見つかりません。都市名を確認してください。")
             }
         }
     }

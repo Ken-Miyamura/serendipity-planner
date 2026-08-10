@@ -22,8 +22,8 @@ enum OnboardingColors {
 // MARK: - Permission Granted Badge
 
 struct PermissionGrantedBadge: View {
-    var label: String = "許可済み"
-    var accessibilityText: String = "許可済みです"
+    var label: String = String(localized: "許可済み")
+    var accessibilityText: String = String(localized: "許可済みです")
 
     var body: some View {
         HStack(spacing: 8) {
