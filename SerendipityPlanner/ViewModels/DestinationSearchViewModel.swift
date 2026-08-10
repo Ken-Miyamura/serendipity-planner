@@ -194,9 +194,14 @@ final class DestinationSearchViewModel: ObservableObject {
         let distance = userLocation.distance(
             from: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         )
-        let region = placemark.administrativeArea ?? placemark.locality ?? ""
+        // Apple のジオデータには言語ごとの欠損があり、日本語端末でも一部の記録は
+        // 英語のまま返る（例: 丸の内で皇居外苑だけ "Tokyo"）。一覧の中で1件だけ
+        // 表記が変わると異物として目立つため、端末の言語と合わないものは落とす。
+        // 距離は必ず出るので、落としても情報がゼロにはならない。
+        let region = PlacemarkTextFilter.displayable(placemark.administrativeArea)
+            ?? PlacemarkTextFilter.displayable(placemark.locality)
         let distanceText = Self.distanceText(meters: distance)
-        let subtitle = region.isEmpty ? distanceText : "\(region)・\(distanceText)"
+        let subtitle = region.map { String(localized: "\($0)・\(distanceText)") } ?? distanceText
 
         return TodayDestination(
             name: name,
