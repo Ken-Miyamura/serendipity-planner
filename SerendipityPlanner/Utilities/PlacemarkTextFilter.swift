@@ -25,7 +25,7 @@ enum PlacemarkTextFilter {
     /// 主にラテン文字で表記する言語。これ以外は固有の文字体系を持つ扱いにする。
     private static let latinScriptLanguages: Set<String> = [
         "en", "es", "fr", "de", "it", "pt", "nl", "sv", "da", "no", "fi",
-        "pl", "cs", "tr", "id", "vi", "ms", "ro", "hu", "hr", "sk", "sl",
+        "pl", "cs", "tr", "id", "vi", "ms", "ro", "hu", "hr", "sk", "sl"
     ]
 
     /// 端末の言語と表記体系が一致しているか。
