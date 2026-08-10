@@ -1,5 +1,5 @@
-@testable import SerendipityPlanner
 import MapKit
+@testable import SerendipityPlanner
 import XCTest
 
 /// 現在地が取れないときの検索リージョン（#34: 日本固定 → 端末の地域設定ベース）のテスト。

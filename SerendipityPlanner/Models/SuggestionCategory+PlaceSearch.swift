@@ -56,19 +56,19 @@ extension SuggestionCategory {
         // `.library` は図書館しか拾わないため、書店・ブックカフェを補う
         .reading: LocalizedQuerySet(byLanguage: [
             "en": ["bookstore", "book cafe"],
-            "ja": ["書店", "ブックカフェ"],
+            "ja": ["書店", "ブックカフェ"]
         ]),
         // 対応する POI カテゴリが無いため、音楽に寄せた語で拾う
         .music: LocalizedQuerySet(byLanguage: [
             "en": ["record store", "live music"],
-            "ja": ["レコードショップ", "ライブハウス"],
+            "ja": ["レコードショップ", "ライブハウス"]
         ]),
         // 該当カテゴリが無いので、この分類はキーワードだけが頼り。
         // "スパ" は「Bar Español」のような無関係な店に誤マッチしたため使わない。
         .meditation: LocalizedQuerySet(byLanguage: [
             "en": ["temple", "shrine", "meditation"],
-            "ja": ["お寺", "神社", "庭園"],
-        ]),
+            "ja": ["お寺", "神社", "庭園"]
+        ])
     ]
 }
 
@@ -83,7 +83,7 @@ extension SuggestionCategory {
 enum RecommendationQueries {
     static let table = LocalizedQuerySet(byLanguage: [
         "en": ["tourist attraction", "landmark", "park"],
-        "ja": ["観光スポット", "名所", "公園"],
+        "ja": ["観光スポット", "名所", "公園"]
     ])
 
     static var current: [String] {

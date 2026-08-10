@@ -1,5 +1,5 @@
-@testable import SerendipityPlanner
 import MapKit
+@testable import SerendipityPlanner
 import XCTest
 
 /// スポット検索のカテゴリ定義（#34: 日本語キーワード → POI カテゴリ移行）のテスト。
@@ -19,7 +19,7 @@ final class PlaceSearchCategoryTests: XCTestCase {
 
     /// 大半のカテゴリは POI カテゴリだけで賄えること（言語非依存で動く範囲を担保する）
     func testMostCategoriesAreLanguageIndependent() {
-        let keywordOnly = SuggestionCategory.allCases.filter { $0.pointOfInterestCategories.isEmpty }
+        let keywordOnly = SuggestionCategory.allCases.filter(\.pointOfInterestCategories.isEmpty)
 
         // iOS 15 の SDK には `.musicVenue` / `.spa` が無いため、music と meditation だけは
         // キーワードに頼らざるを得ない。`.nightlife` / `.theater` で近似する案は、

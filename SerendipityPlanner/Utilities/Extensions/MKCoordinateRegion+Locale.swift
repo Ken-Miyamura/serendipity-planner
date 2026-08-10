@@ -35,7 +35,7 @@ extension MKCoordinateRegion {
         "ES": region(40.2, -3.7, 11),
         "MX": region(23.6, -102.5, 22),
         "AR": region(-38.4, -63.6, 33),
-        "FR": region(46.6, 2.5, 11),
+        "FR": region(46.6, 2.5, 11)
     ]
 
     private static func region(
