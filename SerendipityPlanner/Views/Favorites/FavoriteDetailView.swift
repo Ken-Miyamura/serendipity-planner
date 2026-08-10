@@ -57,10 +57,14 @@ struct FavoriteDetailView: View, SkyTextStyling {
             Text("このお気に入りを削除しますか？")
         }
         .sheet(item: $pendingMapTarget) { target in
+            // お気に入りは過去に保存したものなので「今日の目的地」を起点にはせず、現在地起点で開く
             MapAppPickerSheet(
-                placeName: target.name,
-                latitude: target.latitude,
-                longitude: target.longitude
+                origin: nil,
+                destination: MapPoint(
+                    name: target.name,
+                    latitude: target.latitude,
+                    longitude: target.longitude
+                )
             )
         }
     }

@@ -4,9 +4,10 @@ import SwiftUI
 /// `.confirmationDialog` は文脈によって画面上部に popover 表示されてしまうことがあるため、
 /// 常に下から表示されることを保証する `sheet` として実装する。
 struct MapAppPickerSheet: View {
-    let placeName: String
-    let latitude: Double
-    let longitude: Double
+    /// 経路の出発点。nil のときは現在地が出発点になる。
+    let origin: MapPoint?
+    /// 経路の到着点（提案スポット / お気に入りスポット）。
+    let destination: MapPoint
 
     @Environment(\.dismiss) private var dismiss
 
@@ -27,7 +28,7 @@ struct MapAppPickerSheet: View {
 
             ForEach(apps) { app in
                 Button {
-                    MapLauncher.open(app, name: placeName, latitude: latitude, longitude: longitude)
+                    MapLauncher.openDirections(app, origin: origin, destination: destination)
                     dismiss()
                 } label: {
                     Text(app.displayName)

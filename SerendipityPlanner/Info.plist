@@ -17,24 +17,45 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.1</string>
+	<string>2.1.2</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.serendipity.planner</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>serendipityplanner</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>9</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>カレンダーから空き時間を検出して、体験を提案するために使用します。</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>カレンダーから空き時間を検出して、体験を提案するために使用します。</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>現在地の近くにあるカフェや公園などを提案するために使用します。</string>
+	<key>OpenWeatherMapAPIKey</key>
+	<string>$(OPENWEATHERMAP_API_KEY)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 	</dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UILaunchScreen</key>
 	<dict>
-		<key>UIImageName</key>
-		<string>AppIconImage</string>
 		<key>UIColorName</key>
 		<string>LaunchScreenBackground</string>
+		<key>UIImageName</key>
+		<string>AppIconImage</string>
 	</dict>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -47,28 +68,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCalendarsUsageDescription</key>
-	<string>カレンダーから空き時間を検出して、体験を提案するために使用します。</string>
-	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>カレンダーから空き時間を検出して、体験を提案するために使用します。</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>現在地の近くにあるカフェや公園などを提案するために使用します。</string>
-	<key>OpenWeatherMapAPIKey</key>
-	<string>$(OPENWEATHERMAP_API_KEY)</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>comgooglemaps</string>
-	</array>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>com.serendipity.planner</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>serendipityplanner</string>
-			</array>
-		</dict>
-	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
