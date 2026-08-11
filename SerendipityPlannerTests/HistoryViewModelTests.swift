@@ -94,21 +94,45 @@ final class HistoryViewModelTests: XCTestCase {
 
     // MARK: - 表示テキストテスト
 
-    func testMonthDisplayText() {
-        let text = sut.monthDisplayText
-        XCTAssertFalse(text.isEmpty)
-        // 「年」と「月」が含まれていることを確認
-        XCTAssertTrue(text.contains("年"))
-        XCTAssertTrue(text.contains("月"))
+    /// 端末のロケールに依存しないよう、期待する言語を明示して検証する。
+    /// Locale.current 任せにすると CI（en_US）と開発機（ja_JP）で結果が変わる。
+    func testMonthDisplayTextInJapanese() {
+        let vm = HistoryViewModel(historyService: mockHistoryService, locale: Locale(identifier: "ja_JP"))
+
+        let text = vm.monthDisplayText
+
+        XCTAssertTrue(text.contains("年"), text)
+        XCTAssertTrue(text.contains("月"), text)
     }
 
-    func testDateHeaderText() {
-        let date = Date()
-        let text = sut.dateHeaderText(for: date)
+    func testMonthDisplayTextInEnglish() {
+        let vm = HistoryViewModel(historyService: mockHistoryService, locale: Locale(identifier: "en_US"))
+
+        let text = vm.monthDisplayText
+
         XCTAssertFalse(text.isEmpty)
-        // 「月」と「日」が含まれていることを確認
-        XCTAssertTrue(text.contains("月"))
-        XCTAssertTrue(text.contains("日"))
+        // 英語表記に日本語の単位が混ざらないこと
+        XCTAssertFalse(text.contains("年"), text)
+        XCTAssertFalse(text.contains("月"), text)
+    }
+
+    func testDateHeaderTextInJapanese() {
+        let vm = HistoryViewModel(historyService: mockHistoryService, locale: Locale(identifier: "ja_JP"))
+
+        let text = vm.dateHeaderText(for: Date())
+
+        XCTAssertTrue(text.contains("月"), text)
+        XCTAssertTrue(text.contains("日"), text)
+    }
+
+    func testDateHeaderTextInEnglish() {
+        let vm = HistoryViewModel(historyService: mockHistoryService, locale: Locale(identifier: "en_US"))
+
+        let text = vm.dateHeaderText(for: Date())
+
+        XCTAssertFalse(text.isEmpty)
+        XCTAssertFalse(text.contains("月"), text)
+        XCTAssertFalse(text.contains("日"), text)
     }
 
     func testTimeText() {
