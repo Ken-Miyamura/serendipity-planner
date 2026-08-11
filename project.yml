@@ -54,7 +54,7 @@ targets:
       - path: SerendipityPlanner/Utilities/Extensions/Color+Theme.swift
       # 上記の Model が日付・単位の整形に使うため、ウィジェット側にも渡す
       - path: SerendipityPlanner/Utilities/Extensions/DateFormatter+Localized.swift
-      - path: SerendipityPlanner/Utilities/Extensions/MeasurementFormatter+Localized.swift
+      - path: SerendipityPlanner/Utilities/LocalizedUnits.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner.widget
