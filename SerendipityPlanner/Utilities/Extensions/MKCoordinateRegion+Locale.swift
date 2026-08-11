@@ -49,13 +49,3 @@ extension MKCoordinateRegion {
         )
     }
 }
-
-extension Locale {
-    /// 端末の地域コード（"JP" / "US" など）
-    static var currentRegionCode: String? {
-        if #available(iOS 16.0, *) {
-            return Locale.current.region?.identifier
-        }
-        return Locale.current.regionCode
-    }
-}
