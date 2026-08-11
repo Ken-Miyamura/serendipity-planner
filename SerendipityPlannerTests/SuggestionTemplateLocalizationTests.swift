@@ -37,10 +37,21 @@ final class SuggestionTemplateLocalizationTests: XCTestCase {
     }
 
     /// テンプレートが日本語で解決されること（ja 環境でのデグレ防止）
-    func testJapaneseTemplatesResolve() {
+    func testJapaneseTemplatesResolve() throws {
+        try XCTSkipUnless(Locale.currentLanguageCode == "ja", "ja 環境でのみ検証する")
+
         let titles = SuggestionTemplates.templates(for: .cafe).map(\.title)
 
         XCTAssertTrue(titles.contains("近くのカフェでひと息"), "\(titles)")
+    }
+
+    /// 英語環境では英語のテンプレートが返ること（#36 の翻訳が効いていること）
+    func testEnglishTemplatesResolve() throws {
+        try XCTSkipUnless(Locale.currentLanguageCode == "en", "en 環境でのみ検証する")
+
+        let titles = SuggestionTemplates.templates(for: .cafe).map(\.title)
+
+        XCTAssertTrue(titles.contains("A pause at a nearby café"), "\(titles)")
     }
 
     // MARK: - 天気文脈のプレースホルダ

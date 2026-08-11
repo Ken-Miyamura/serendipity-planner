@@ -10,6 +10,12 @@
             "state": "translated",
             "value": "カレンダーから空き時間を検出して、体験を提案するために使用します。"
           }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used to spot gaps in your schedule and suggest things to do."
+          }
         }
       }
     },
@@ -21,6 +27,12 @@
             "state": "translated",
             "value": "カレンダーから空き時間を検出して、体験を提案するために使用します。"
           }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used to spot gaps in your schedule and suggest things to do."
+          }
         }
       }
     },
@@ -31,6 +43,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "現在地の近くにあるカフェや公園などを提案するために使用します。"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used to suggest cafés, parks and other places near you."
           }
         }
       }
