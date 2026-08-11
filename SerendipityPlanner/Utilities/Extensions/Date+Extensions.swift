@@ -42,10 +42,10 @@ extension Date {
 
     var relativeText: String {
         if isToday {
-            return "今日"
+            return String(localized: "今日")
         }
         if Calendar.current.isDateInTomorrow(self) {
-            return "明日"
+            return String(localized: "明日")
         }
         // ja: 8/11(火) / en: Tue, 8/11
         return DateFormatter.localized(template: "MdE").string(from: self)

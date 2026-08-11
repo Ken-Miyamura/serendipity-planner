@@ -22,7 +22,7 @@ struct HomeView: View {
                 } else if let error = viewModel.errorMessage, viewModel.suggestions.isEmpty, viewModel.acceptedSuggestions.isEmpty {
                     ErrorStateView(
                         message: error,
-                        showOpenSettings: error.contains("許可")
+                        showOpenSettings: viewModel.errorRequiresSettings
                     ) {
                         Task { await viewModel.refresh() }
                     }
@@ -95,9 +95,9 @@ struct HomeView: View {
 
     private var suggestionSectionTitle: String {
         if let destination = viewModel.destination {
-            return "\(destination.name)で過ごす、すきま時間"
+            return String(localized: "\(destination.name)で過ごす、すきま時間")
         }
-        return "今いる場所から、すきま時間に"
+        return String(localized: "今いる場所から、すきま時間に")
     }
 
     /// 現在地ベース時に表示する「現在地・○○」チップ（design ①準拠）
@@ -121,13 +121,13 @@ struct HomeView: View {
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
         case 5 ..< 10:
-            return "おはようございます。\n今日、素敵な偶然が訪れますように"
+            return String(localized: "おはようございます。\n今日、素敵な偶然が訪れますように")
         case 10 ..< 17:
-            return "今日、素敵な偶然が訪れますように"
+            return String(localized: "今日、素敵な偶然が訪れますように")
         case 17 ..< 21:
-            return "今日の残り時間に、\n小さな幸運を見つけましょう"
+            return String(localized: "今日の残り時間に、\n小さな幸運を見つけましょう")
         default:
-            return "おつかれさまでした。\n明日も素敵な一日になりますように"
+            return String(localized: "おつかれさまでした。\n明日も素敵な一日になりますように")
         }
     }
 

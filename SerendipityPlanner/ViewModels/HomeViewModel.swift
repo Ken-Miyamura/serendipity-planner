@@ -11,6 +11,10 @@ class HomeViewModel: ObservableObject {
     @Published var weather: WeatherData?
     @Published var isLoading = false
     @Published var errorMessage: String?
+    /// エラーが権限起因で、「設定を開く」導線を出すべきかどうか。
+    /// 以前は errorMessage の文言に "許可" が含まれるかで判定していたが、
+    /// 翻訳した時点で成立しなくなるため状態として持つ。
+    @Published private(set) var errorRequiresSettings = false
     @Published var warningMessage: String?
 
     let calendarService: CalendarServiceProtocol
@@ -83,6 +87,7 @@ class HomeViewModel: ObservableObject {
     func loadData() async {
         isLoading = true
         errorMessage = nil
+        errorRequiresSettings = false
         warningMessage = nil
 
         // Restore persisted accepted suggestions for today
@@ -131,11 +136,11 @@ class HomeViewModel: ObservableObject {
                 )
             } else {
                 weather = WeatherService.mockWeather()
-                warningMessage = "位置情報が取得できないため、天気情報は概算です"
+                warningMessage = String(localized: "位置情報が取得できないため、天気情報は概算です")
             }
         } catch {
             weather = WeatherService.mockWeather()
-            warningMessage = "天気情報の取得に失敗しました。概算の天気を表示しています"
+            warningMessage = String(localized: "天気情報の取得に失敗しました。概算の天気を表示しています")
         }
     }
 
@@ -146,7 +151,8 @@ class HomeViewModel: ObservableObject {
             do {
                 let granted = try await calendarService.requestAccess()
                 guard granted else {
-                    errorMessage = "カレンダーへのアクセスが許可されていません。"
+                    errorMessage = String(localized: "カレンダーへのアクセスが許可されていません。")
+                    errorRequiresSettings = true
                     return
                 }
             } catch {

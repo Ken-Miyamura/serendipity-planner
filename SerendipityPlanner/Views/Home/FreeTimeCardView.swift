@@ -77,15 +77,21 @@ struct FreeTimeCardView: View {
     }
 
     private var accessibilityDescription: String {
-        var label = "\(suggestion.freeTimeSlot.timeRangeText)、" +
-            "\(suggestion.freeTimeSlot.durationMinutes)分、" +
-            "\(suggestion.category.displayName)、\(suggestion.title)"
+        // 文字列連結でセンテンスを作ると語順が変わる言語で破綻するため、
+        // 各パーツを翻訳可能な単位にしてから区切り記号で結合する。
+        var parts: [String] = [
+            suggestion.freeTimeSlot.timeRangeText,
+            String(localized: "\(suggestion.freeTimeSlot.durationMinutes)分"),
+            suggestion.category.displayName,
+            suggestion.title
+        ]
         if let place = suggestion.nearbyPlace {
-            label += "、\(place.name)、\(place.walkingTimeText)"
+            parts.append(place.name)
+            parts.append(place.walkingTimeText)
         }
         if suggestion.isAccepted {
-            label += "、受け入れ済み"
+            parts.append(String(localized: "受け入れ済み"))
         }
-        return label
+        return parts.joined(separator: String(localized: "、"))
     }
 }

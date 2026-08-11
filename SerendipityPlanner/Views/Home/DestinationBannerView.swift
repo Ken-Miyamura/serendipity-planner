@@ -161,7 +161,7 @@ struct DestinationBannerView: View {
 
     private func subtitleText(for destination: TodayDestination) -> String {
         if spotCount > 0 {
-            return "\(destination.subtitle)・\(spotCount)スポットを提案中"
+            return String(localized: "\(destination.subtitle)・\(spotCount)スポットを提案中")
         }
         return destination.subtitle
     }

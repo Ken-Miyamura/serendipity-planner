@@ -20,13 +20,13 @@ struct NotificationPermissionView: View {
 
             Spacer().frame(maxHeight: 16)
 
-            if let error = viewModel.permissionError, error.contains("通知") {
+            if let error = viewModel.permissionError, viewModel.permissionErrorKind == .notification {
                 PermissionErrorView(error: error)
             }
 
             PermissionDescription(
-                headline: "通知でお知らせ",
-                text: "空き時間の前に\n体験の提案を通知します"
+                headline: String(localized: "通知でお知らせ"),
+                text: String(localized: "空き時間の前に\n体験の提案を通知します")
             )
             .offset(y: appeared ? 0 : -20)
             .opacity(appeared ? 1 : 0)

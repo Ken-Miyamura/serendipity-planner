@@ -2,7 +2,7 @@ import CoreLocation
 import Foundation
 
 class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, LocationServiceProtocol {
-    @Published var currentLocationName: String = "取得中..."
+    @Published var currentLocationName: String = .init(localized: "取得中...")
     @Published var currentLocation: CLLocation?
     @Published var locationAuthorized = false
     @Published var locationAuthorizationResolved = false
@@ -72,7 +72,7 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
         locationContinuation?.resume(returning: nil)
         locationContinuation = nil
         DispatchQueue.main.async {
-            self.locationError = "位置情報の取得に失敗しました: \(error.localizedDescription)"
+            self.locationError = String(localized: "位置情報の取得に失敗しました: \(error.localizedDescription)")
         }
     }
 

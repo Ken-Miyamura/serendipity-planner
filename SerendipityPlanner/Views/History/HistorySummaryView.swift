@@ -62,7 +62,7 @@ struct HistorySummaryView: View {
                         .foregroundColor(.primary)
                 }
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel("\(item.category.displayName)、\(item.count)回")
+                .accessibilityLabel(String(localized: "\(item.category.displayName)、\(item.count)回"))
             }
         }
     }

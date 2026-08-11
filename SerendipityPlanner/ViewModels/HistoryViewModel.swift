@@ -8,9 +8,12 @@ class HistoryViewModel: ObservableObject {
     @Published var groupedHistories: [(date: Date, items: [SuggestionHistory])] = []
 
     private var historyService: HistoryServiceProtocol
+    /// 日付表示に使うロケール。テストから固定するための注入口で、既定は端末設定。
+    private let locale: Locale
 
-    init(historyService: HistoryServiceProtocol = HistoryService()) {
+    init(historyService: HistoryServiceProtocol = HistoryService(), locale: Locale = .current) {
         self.historyService = historyService
+        self.locale = locale
     }
 
     // MARK: - データ読み込み
@@ -47,7 +50,7 @@ class HistoryViewModel: ObservableObject {
 
     var monthDisplayText: String {
         // ja: 2026年8月 / en: August 2026
-        DateFormatter.localized(template: "yMMMM").string(from: currentMonth)
+        DateFormatter.localized(template: "yMMMM", locale: locale).string(from: currentMonth)
     }
 
     var totalCount: Int {
@@ -78,11 +81,11 @@ class HistoryViewModel: ObservableObject {
 
     func dateHeaderText(for date: Date) -> String {
         // ja: 8月11日(火) / en: Tue, Aug 11
-        DateFormatter.localized(template: "MMMdE").string(from: date)
+        DateFormatter.localized(template: "MMMdE", locale: locale).string(from: date)
     }
 
     func timeText(for date: Date) -> String {
         // 12/24時間表記はロケールの慣習に従う
-        DateFormatter.localizedTime().string(from: date)
+        DateFormatter.localizedTime(locale: locale).string(from: date)
     }
 }

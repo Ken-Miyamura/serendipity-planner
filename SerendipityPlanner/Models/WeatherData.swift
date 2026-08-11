@@ -34,14 +34,14 @@ enum WeatherCondition: String, Codable {
 
     var displayName: String {
         switch self {
-        case .clear: "晴れ"
-        case .clouds: "曇り"
-        case .rain: "雨"
-        case .drizzle: "小雨"
-        case .thunderstorm: "雷雨"
-        case .snow: "雪"
-        case .mist: "霧"
-        case .unknown: "不明"
+        case .clear: String(localized: "晴れ")
+        case .clouds: String(localized: "曇り")
+        case .rain: String(localized: "雨")
+        case .drizzle: String(localized: "小雨")
+        case .thunderstorm: String(localized: "雷雨")
+        case .snow: String(localized: "雪")
+        case .mist: String(localized: "霧")
+        case .unknown: String(localized: "不明")
         }
     }
 

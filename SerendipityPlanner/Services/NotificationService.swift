@@ -19,7 +19,7 @@ class NotificationService: NotificationServiceProtocol {
     ) {
         let content = UNMutableNotificationContent()
         content.title = "セレンディピティ"
-        content.body = "\(suggestion.freeTimeSlot.timeRangeText)に空き時間があります。\(suggestion.title)はいかがですか？"
+        content.body = String(localized: "\(suggestion.freeTimeSlot.timeRangeText)に空き時間があります。\(suggestion.title)はいかがですか？")
         content.sound = .default
         content.categoryIdentifier = Constants.Notification.categoryIdentifier
         addIconAttachment(to: content)
@@ -49,8 +49,8 @@ class NotificationService: NotificationServiceProtocol {
         guard freeSlotCount > 0 else { return }
 
         let content = UNMutableNotificationContent()
-        content.title = "おはようございます ☀️"
-        content.body = "今日の隙間時間：\(freeSlotCount)つ見つかりました。タップして提案を確認しましょう。"
+        content.title = String(localized: "おはようございます ☀️")
+        content.body = String(localized: "今日の隙間時間：\(freeSlotCount)つ見つかりました。タップして提案を確認しましょう。")
         content.sound = .default
         content.categoryIdentifier = Constants.Notification.morningNotificationIdentifier
         addIconAttachment(to: content)

@@ -146,9 +146,9 @@ class SettingsViewModel: ObservableObject {
 
     func leadTimeDisplayText(_ minutes: Int) -> String {
         if minutes >= 60 {
-            return "\(minutes / 60)時間前"
+            return String(localized: "\(minutes / 60)時間前")
         }
-        return "\(minutes)分前"
+        return String(localized: "\(minutes)分前")
     }
 
     func freeTimeDisplayText(_ minutes: Int) -> String {
@@ -156,10 +156,10 @@ class SettingsViewModel: ObservableObject {
             let hours = minutes / 60
             let remaining = minutes % 60
             if remaining > 0 {
-                return "\(hours)時間\(remaining)分"
+                return String(localized: "\(hours)時間\(remaining)分")
             }
-            return "\(hours)時間"
+            return String(localized: "\(hours)時間")
         }
-        return "\(minutes)分"
+        return String(localized: "\(minutes)分")
     }
 }

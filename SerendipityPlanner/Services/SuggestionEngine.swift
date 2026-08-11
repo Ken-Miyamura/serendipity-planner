@@ -256,11 +256,11 @@ class SuggestionEngine: SuggestionEngineProtocol {
 
     private func weatherContextText(weather: WeatherData?, category: SuggestionCategory) -> String {
         guard let weather else {
-            return "天気情報を取得できませんでした"
+            return String(localized: "天気情報を取得できませんでした")
         }
 
         let format = category.weatherContextFormat
-        let weatherSummary = "\(weather.condition.displayName)で\(weather.temperatureText)"
+        let weatherSummary = String(localized: "\(weather.condition.displayName)で\(weather.temperatureText)")
 
         if weather.condition.isOutdoorFriendly {
             return String(format: format.outdoor, weatherSummary)
