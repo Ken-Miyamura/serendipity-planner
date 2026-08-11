@@ -109,6 +109,54 @@ final class MapLauncherTests: XCTestCase {
 
     // MARK: - Apple マップ
 
+    // MARK: - #40: ブラウザ経路の出発点
+
+    /// 目的地が無くても現在地を出発点として明示すること。
+    /// origin を省略すると Google マップ Web が自前で測位しに行き、
+    /// そのとき travelmode=walking が無視されて車ルートで開いてしまう。
+    func testBrowserURLFallsBackToCurrentLocationAsOrigin() throws {
+        let currentLocation = MapPoint(name: nil, latitude: 35.681236, longitude: 139.767125)
+
+        let url = try XCTUnwrap(MapLauncher.browserURL(origin: currentLocation, destination: spot))
+        let query = try XCTUnwrap(url.query)
+
+        XCTAssertTrue(query.contains("origin="), query)
+        XCTAssertTrue(query.contains("35.681236,139.767125"), query)
+        XCTAssertTrue(query.contains("travelmode=walking"), query)
+    }
+
+    /// 現在地には名前を付けないこと。
+    /// "現在地" のような固定ラベルを載せると、ユーザーのマップアプリが別言語のときに
+    /// そこだけ日本語が現れて不自然になる。
+    func testUnnamedPointProducesCoordinatesOnly() throws {
+        let unnamed = MapPoint(name: nil, latitude: 35.681236, longitude: 139.767125)
+
+        let url = try XCTUnwrap(MapLauncher.browserURL(origin: unnamed, destination: spot))
+        let decoded = url.absoluteString.removingPercentEncoding ?? url.absoluteString
+
+        // 座標の直後に "(" が続かない = ラベルが付いていない
+        XCTAssertFalse(decoded.contains("35.681236,139.767125("), decoded)
+    }
+
+    /// 空文字の名前もラベルとして出さないこと
+    func testEmptyNameProducesCoordinatesOnly() throws {
+        let empty = MapPoint(name: "", latitude: 35.681236, longitude: 139.767125)
+
+        let url = try XCTUnwrap(MapLauncher.browserURL(origin: empty, destination: spot))
+        let decoded = url.absoluteString.removingPercentEncoding ?? url.absoluteString
+
+        XCTAssertFalse(decoded.contains("35.681236,139.767125()"), decoded)
+    }
+
+    /// 出発点も現在地も無い場合は従来どおり origin を省略すること
+    func testBrowserURLStillOmitsOriginWhenNothingAvailable() throws {
+        let url = try XCTUnwrap(MapLauncher.browserURL(origin: nil, destination: spot))
+        let query = try XCTUnwrap(url.query)
+
+        XCTAssertFalse(query.contains("origin="), query)
+        XCTAssertTrue(query.contains("travelmode=walking"), query)
+    }
+
     func testMapItemCarriesNameAndCoordinate() {
         let item = MapLauncher.mapItem(for: spot)
 

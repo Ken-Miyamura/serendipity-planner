@@ -22,7 +22,11 @@ enum MapApp: String, Identifiable, CaseIterable {
 
 /// マップ経路の地点（出発点 / 到着点）。
 struct MapPoint: Equatable {
-    let name: String
+    /// 表示用のラベル。現在地のように「名前を持たない地点」では nil。
+    ///
+    /// 現在地に "現在地" のような固定ラベルを付けると、ユーザーのマップアプリが
+    /// 別言語のときにそこだけ日本語が現れて不自然になる。座標のみで渡す。
+    let name: String?
     let latitude: Double
     let longitude: Double
 }
@@ -53,8 +57,24 @@ enum MapLauncher {
     }
 
     /// 出発点と到着点を指定した徒歩経路としてマップアプリを開く。
-    /// `origin` が nil のときは各アプリの「出発点未指定 = 現在地」仕様に委ねる。
-    static func openDirections(_ app: MapApp, origin: MapPoint?, destination: MapPoint) {
+    ///
+    /// - Parameters:
+    ///   - origin: 経路の出発点。nil のときは「現在地から」の意味になる。
+    ///   - currentLocation: 解決済みの現在地の座標。**ブラウザ経路でのみ使う。**
+    ///
+    /// Apple マップと Google マップアプリは出発点を省略しても徒歩で開くため、
+    /// `origin` が nil のままそれぞれの「未指定 = 現在地」仕様に委ねる。座標を
+    /// 明示すると現在地としてではなく単なる地点として扱われ、追従もしなくなる。
+    ///
+    /// 一方ブラウザ（Google マップ Web）は `origin` を省略すると自前で測位しに行き、
+    /// **そのとき `travelmode=walking` が無視されて車ルートで開く**。こちらだけは
+    /// 現在地の座標を明示する必要がある。
+    static func openDirections(
+        _ app: MapApp,
+        origin: MapPoint?,
+        destination: MapPoint,
+        currentLocation: MapPoint? = nil
+    ) {
         switch app {
         case .appleMaps:
             let originItem = origin.map(mapItem(for:)) ?? MKMapItem.forCurrentLocation()
@@ -66,7 +86,9 @@ enum MapLauncher {
             guard let url = googleMapsURL(origin: origin, destination: destination) else { return }
             UIApplication.shared.open(url)
         case .browser:
-            guard let url = browserURL(origin: origin, destination: destination) else { return }
+            // 出発点が無い場合だけ現在地で補う。それも取れなければ従来どおり省略する。
+            let browserOrigin = origin ?? currentLocation
+            guard let url = browserURL(origin: browserOrigin, destination: destination) else { return }
             UIApplication.shared.open(url)
         }
     }
@@ -116,7 +138,7 @@ enum MapLauncher {
         String(format: "%.6f,%.6f", point.latitude, point.longitude)
     }
 
-    /// 座標にラベルを添えた `lat,lng(名前)` 形式。
+    /// 座標にラベルを添えた `lat,lng(名前)` 形式。名前が無ければ座標のみ。
     ///
     /// 地点の解決はあくまで座標が担い、名前は表示用のラベルとしてのみ渡す。
     /// 名前だけを検索させるとチェーン店などで別店舗にマッチする恐れがあるが、
@@ -124,6 +146,7 @@ enum MapLauncher {
     /// 実機の Google マップアプリ / Google マップ Web の双方で、
     /// 正しい地点に着いたうえで地点名が表示されることを確認済み。
     private static func labeledCoordinateQuery(_ point: MapPoint) -> String {
-        "\(coordinateQuery(point))(\(point.name))"
+        guard let name = point.name, !name.isEmpty else { return coordinateQuery(point) }
+        return "\(coordinateQuery(point))(\(name))"
     }
 }

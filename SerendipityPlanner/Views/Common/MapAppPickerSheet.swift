@@ -8,6 +8,8 @@ struct MapAppPickerSheet: View {
     let origin: MapPoint?
     /// 経路の到着点（提案スポット / お気に入りスポット）。
     let destination: MapPoint
+    /// 解決済みの現在地。ブラウザ経路で出発点を明示するために使う（#40）。
+    var currentLocation: MapPoint?
 
     @Environment(\.dismiss) private var dismiss
 
@@ -28,7 +30,12 @@ struct MapAppPickerSheet: View {
 
             ForEach(apps) { app in
                 Button {
-                    MapLauncher.openDirections(app, origin: origin, destination: destination)
+                    MapLauncher.openDirections(
+                        app,
+                        origin: origin,
+                        destination: destination,
+                        currentLocation: currentLocation
+                    )
                     dismiss()
                 } label: {
                     Text(app.displayName)

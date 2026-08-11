@@ -8,6 +8,9 @@ class SuggestionDetailViewModel: ObservableObject {
     @Published var isAccepted = false
     @Published var isFavorite = false
     @Published var calendarAlertMessage: String?
+    /// 解決済みの現在地。ブラウザ経路で出発点を明示するために使う（#40）。
+    /// 目的地が設定されている場合や現在地が取れない場合は nil のまま。
+    @Published private(set) var currentLocationPoint: MapPoint?
 
     private let suggestionEngine: SuggestionEngineProtocol
     private let placeSearchService: PlaceSearchServiceProtocol
@@ -112,7 +115,24 @@ class SuggestionDetailViewModel: ObservableObject {
     }
 
     func enrichIfNeeded() async {
+        // スポット補完とは独立して走らせる。enrichWithPlace() は nearbyPlace が
+        // 既にあると早期 return するため、そこに相乗りさせるとホーム画面で
+        // スポットが埋まっている通常の経路で現在地が解決されない。
+        await resolveCurrentLocationIfNeeded()
         await enrichWithPlace()
+    }
+
+    /// ブラウザ経路の出発点に使う現在地を解決する（#40）。
+    /// 目的地が設定されているときは目的地が出発点になるので不要。
+    private func resolveCurrentLocationIfNeeded() async {
+        guard destination == nil, currentLocationPoint == nil else { return }
+        guard let location = await locationService?.requestCurrentLocation() else { return }
+        // 名前は付けない（現在地は固有名を持たないため）
+        currentLocationPoint = MapPoint(
+            name: nil,
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
     }
 
     private func enrichWithPlace() async {
