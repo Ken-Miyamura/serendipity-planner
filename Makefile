@@ -4,7 +4,7 @@ SIMULATOR = iPhone 17 Pro
 BUNDLE_ID = com.serendipity.planner
 BUILT_PRODUCTS_DIR = $(shell xcodebuild -scheme $(SCHEME) -destination '$(DESTINATION)' -showBuildSettings 2>/dev/null | grep -m1 'BUILT_PRODUCTS_DIR' | awk '{print $$3}')
 
-.PHONY: setup format lint build run clean clean-build
+.PHONY: setup generate format lint build run clean clean-build
 
 # Git hooks と開発ツールをセットアップ
 setup:
@@ -12,7 +12,13 @@ setup:
 	@echo "Git hooks を設定しました (.githooks/)"
 	@command -v swiftformat > /dev/null || echo "swiftformat が未インストールです: brew install swiftformat"
 	@command -v swiftlint > /dev/null || echo "swiftlint が未インストールです: brew install swiftlint"
+	@command -v xcodegen > /dev/null || echo "xcodegen が未インストールです: brew install xcodegen"
+	$(MAKE) generate
 	@echo "セットアップ完了"
+
+# project.yml から .xcodeproj を生成する（.xcodeproj は git 管理外）
+generate:
+	xcodegen generate
 
 # SwiftFormat で自動整形
 format:
@@ -24,11 +30,11 @@ lint:
 	swiftlint lint --strict
 
 # ビルドのみ（シミュレーター起動なし）
-build:
+build: generate
 	xcodebuild -scheme $(SCHEME) -destination '$(DESTINATION)' build
 
 # ビルド＆シミュレーター起動
-run:
+run: generate
 	xcodebuild -scheme $(SCHEME) -destination '$(DESTINATION)' build
 	-xcrun simctl boot "$(SIMULATOR)" 2>/dev/null || true
 	open -a Simulator
@@ -42,7 +48,7 @@ clean:
 	rm -rf ~/Library/Developer/Xcode/DerivedData/$(SCHEME)-*
 
 # クリーンビルド＆シミュレーター起動
-clean-build: clean
+clean-build: clean generate
 	xcodebuild -scheme $(SCHEME) -destination '$(DESTINATION)' build
 	-xcrun simctl boot "$(SIMULATOR)" 2>/dev/null || true
 	open -a Simulator

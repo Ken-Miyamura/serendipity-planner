@@ -9,6 +9,9 @@ xcuserdata/
 *.perspectivev3
 *.pbxproj.backup
 
+# XcodeGen の生成物（project.yml が正。`make generate` で再生成する）
+SerendipityPlanner.xcodeproj/
+
 # Swift Package Manager
 .swiftpm/
 Packages/

@@ -17,6 +17,7 @@ opt_in_rules:
 
 excluded:
   - .build
+  - build          # xcodebuild のローカル出力（生成コードが lint に引っかかる）
   - DerivedData
   - Config
 
