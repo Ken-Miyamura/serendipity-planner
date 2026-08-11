@@ -20,7 +20,7 @@ struct NotificationPermissionView: View {
 
             Spacer().frame(maxHeight: 16)
 
-            if let error = viewModel.permissionError, error.contains("通知") {
+            if let error = viewModel.permissionError, viewModel.permissionErrorKind == .notification {
                 PermissionErrorView(error: error)
             }
 
