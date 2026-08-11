@@ -19,8 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # xcconfig は秘匿情報のため git 管理外。CI では example から両方を用意する。
+      # project.yml が Debug/Release 両方を参照するので、片方だけだと
+      # xcodegen が "Invalid config file" で落ちる。
       - name: Setup xcconfig for CI
-        run: cp Config/Debug.xcconfig.example Config/Debug.xcconfig
+        run: |
+          cp Config/Debug.xcconfig.example Config/Debug.xcconfig
+          cp Config/Release.xcconfig.example Config/Release.xcconfig
 
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
