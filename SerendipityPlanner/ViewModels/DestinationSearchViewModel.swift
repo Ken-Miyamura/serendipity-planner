@@ -144,7 +144,7 @@ final class DestinationSearchViewModel: ObservableObject {
             span: MKCoordinateSpan(latitudeDelta: 0.45, longitudeDelta: 0.45)
         )
 
-        var collected: [TodayDestination] = []
+        var collected: [RecommendationCandidate] = []
         var seenNames = Set<String>()
 
         for query in RecommendationQueries.current {
@@ -154,18 +154,19 @@ final class DestinationSearchViewModel: ObservableObject {
             guard let response = try? await MKLocalSearch(request: request).start() else { continue }
 
             for item in response.mapItems {
-                guard let destination = Self.recommendedDestination(from: item, userLocation: location),
-                      seenNames.insert(destination.name).inserted else { continue }
-                collected.append(destination)
+                guard let candidate = RecommendationCandidate(item: item, userLocation: location),
+                      seenNames.insert(candidate.name).inserted else { continue }
+                collected.append(candidate)
             }
         }
 
         // 現在地から近い順に並べ、上限件数で打ち切る
-        recommendedAreas = Array(
-            collected
-                .sorted { location.distance(from: $0.location) < location.distance(from: $1.location) }
-                .prefix(maxRecommendations)
-        )
+        let shown = collected.sorted { $0.distance < $1.distance }.prefix(maxRecommendations)
+
+        // 表示する行の中での多数派の表記体系を基準にする。
+        // 端末の言語を基準にすると、ja データがほぼ無い海外で地域名が全滅してしまう。
+        let dominant = PlacemarkTextFilter.dominantScript(in: shown.compactMap(\.regionText))
+        recommendedAreas = shown.map { $0.destination(dominantScript: dominant) }
     }
 
     /// 候補列挙のバイアス基点。現在地があれば現在地を中心に広めにバイアスし、
@@ -183,37 +184,46 @@ final class DestinationSearchViewModel: ObservableObject {
 
     // MARK: - 変換
 
-    /// おすすめエリアの MKMapItem を今日の目的地へ変換する（現在地からの距離を補足に含める）
-    private static func recommendedDestination(
-        from item: MKMapItem,
-        userLocation: CLLocation
-    ) -> TodayDestination? {
-        guard let name = item.name else { return nil }
-        let placemark = item.placemark
-        let coordinate = placemark.coordinate
-        let distance = userLocation.distance(
-            from: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        )
-        // Apple のジオデータには言語ごとの欠損があり、日本語端末でも一部の記録は
-        // 英語のまま返る（例: 丸の内で皇居外苑だけ "Tokyo"）。一覧の中で1件だけ
-        // 表記が変わると異物として目立つため、端末の言語と合わないものは落とす。
-        // 距離は必ず出るので、落としても情報がゼロにはならない。
-        let region = PlacemarkTextFilter.displayable(placemark.administrativeArea)
-            ?? PlacemarkTextFilter.displayable(placemark.locality)
-        let distanceText = Self.distanceText(meters: distance)
-        let subtitle = region.map { String(localized: "\($0)・\(distanceText)") } ?? distanceText
+    /// おすすめエリアの中間表現。
+    ///
+    /// 地域名を出すかどうかは**一覧全体を見ないと決められない**ため、subtitle の組み立てを
+    /// 後回しにして素材だけ持つ。1件ずつ確定させると多数派が判定できない。
+    private struct RecommendationCandidate {
+        let name: String
+        /// 地名テキスト（未取得なら nil）。表示するかは後で決める。
+        let regionText: String?
+        let coordinate: CLLocationCoordinate2D
+        let distance: CLLocationDistance
 
-        return TodayDestination(
-            name: name,
-            subtitle: subtitle,
-            latitude: coordinate.latitude,
-            longitude: coordinate.longitude
-        )
+        init?(item: MKMapItem, userLocation: CLLocation) {
+            guard let name = item.name else { return nil }
+            let placemark = item.placemark
+            self.name = name
+            self.coordinate = placemark.coordinate
+            self.distance = userLocation.distance(
+                from: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            )
+            self.regionText = placemark.administrativeArea ?? placemark.locality
+        }
+
+        /// 多数派の表記体系を渡して目的地に変換する。
+        /// 多数派から外れた地域名は落として距離のみにする（距離は必ず出るので情報はゼロにならない）。
+        func destination(dominantScript: PlacemarkTextFilter.Script?) -> TodayDestination {
+            let distanceText = DestinationSearchViewModel.distanceText(meters: distance)
+            let region = regionText.flatMap {
+                PlacemarkTextFilter.isDisplayable($0, dominant: dominantScript) ? $0 : nil
+            }
+            return TodayDestination(
+                name: name,
+                subtitle: region.map { String(localized: "\($0)・\(distanceText)") } ?? distanceText,
+                latitude: coordinate.latitude,
+                longitude: coordinate.longitude
+            )
+        }
     }
 
-    /// 現在地からの距離。単位はロケールに従う（m/km または ft/mi）。
-    /// 「現在地から約」の文言自体は #32 で String Catalog に移す。
-    private static func distanceText(meters: Double) -> String {
+    /// 純粋な整形処理なので nonisolated（候補の変換から呼ぶため）
+    fileprivate nonisolated static func distanceText(meters: Double) -> String {
         String(localized: "現在地から約\(LocalizedUnits.distance(meters: meters))")
     }
 }

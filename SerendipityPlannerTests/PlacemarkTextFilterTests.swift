@@ -2,73 +2,98 @@
 import XCTest
 
 /// #29: Apple のジオデータ欠損で subtitle の表記が混ざる問題のフォールバック。
+///
+/// 判定は「端末の言語」ではなく「その一覧の多数派」を基準にする。
+/// 端末言語で絶対判定すると、ja データがほぼ無い海外で地域名が全滅する。
 final class PlacemarkTextFilterTests: XCTestCase {
-    // MARK: - 日本語端末
+    // MARK: - 表記体系の判定
 
-    /// 日本語端末では日本語の地名をそのまま出すこと
-    func testJapaneseDeviceKeepsJapaneseText() {
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("東京都", languageCode: "ja"))
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("東京都 港区", languageCode: "ja"))
-        XCTAssertEqual(PlacemarkTextFilter.displayable("島根県", languageCode: "ja"), "島根県")
+    func testScriptDetection() {
+        XCTAssertEqual(PlacemarkTextFilter.script(of: "東京都"), .nonLatin)
+        XCTAssertEqual(PlacemarkTextFilter.script(of: "서울특별시"), .nonLatin)
+        XCTAssertEqual(PlacemarkTextFilter.script(of: "Tokyo"), .latin)
+        XCTAssertEqual(PlacemarkTextFilter.script(of: "Île-de-France"), .latin)
+        XCTAssertEqual(PlacemarkTextFilter.script(of: "Málaga"), .latin)
     }
 
-    /// 日本語端末に英語データが返ってきたら落とすこと（#29 の報告事象）
-    func testJapaneseDeviceDropsEnglishText() {
-        XCTAssertFalse(PlacemarkTextFilter.matchesDeviceLanguage("Tokyo", languageCode: "ja"))
-        XCTAssertFalse(PlacemarkTextFilter.matchesDeviceLanguage("Tokyo Chiyoda-Ku", languageCode: "ja"))
-        XCTAssertFalse(PlacemarkTextFilter.matchesDeviceLanguage("Kyoto Kita-Ku, Kyoto", languageCode: "ja"))
-        XCTAssertNil(PlacemarkTextFilter.displayable("Tokyo", languageCode: "ja"))
+    /// 混在表記は非ラテン扱いにすること（「東京都 港区 1丁目」等）
+    func testMixedTextIsNonLatin() {
+        XCTAssertEqual(PlacemarkTextFilter.script(of: "東京都 Minato"), .nonLatin)
     }
 
-    // MARK: - 英語端末（ここが「ASCII なら落とす」案との違い）
-
-    /// 英語端末では英語の地名を残すこと。
-    /// ロケール非依存に「英字を落とす」ルールにすると、ここが全滅する。
-    func testEnglishDeviceKeepsEnglishText() {
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("Tokyo", languageCode: "en"))
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("Tokyo Chiyoda-Ku", languageCode: "en"))
-        XCTAssertEqual(PlacemarkTextFilter.displayable("Kyoto Kita-Ku, Kyoto", languageCode: "en"), "Kyoto Kita-Ku, Kyoto")
+    /// 数字・記号だけは判定材料が無いので nil
+    func testNonLetterTextHasNoScript() {
+        XCTAssertNil(PlacemarkTextFilter.script(of: "1-2-3"))
+        XCTAssertNil(PlacemarkTextFilter.script(of: ""))
     }
 
-    /// 英語端末に日本語データが返ってきたら落とすこと（混在は逆向きにも起きる）
-    func testEnglishDeviceDropsJapaneseText() {
-        XCTAssertFalse(PlacemarkTextFilter.matchesDeviceLanguage("東京都 台東区", languageCode: "en"))
-        XCTAssertNil(PlacemarkTextFilter.displayable("島根県 出雲市", languageCode: "en"))
+    // MARK: - 多数派の判定
+
+    /// 国内: 日本語が多数派なので日本語が基準になる
+    func testDominantScriptInJapan() {
+        let texts = ["東京都", "東京都", "東京都", "東京都", "東京都", "Tokyo"]
+
+        XCTAssertEqual(PlacemarkTextFilter.dominantScript(in: texts), .nonLatin)
     }
 
-    // MARK: - その他の配信対象言語
+    /// 海外: ラテン文字が多数派なのでラテン文字が基準になる
+    func testDominantScriptAbroad() {
+        let texts = ["Île-de-France", "Île-de-France", "Paris", "Paris"]
 
-    /// スペイン語・フランス語はラテン文字なので英語表記を許容すること
-    func testLatinScriptLanguagesAcceptLatinText() {
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("Tokyo", languageCode: "es"))
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("Tokyo", languageCode: "fr"))
-        XCTAssertFalse(PlacemarkTextFilter.matchesDeviceLanguage("東京都", languageCode: "fr"))
+        XCTAssertEqual(PlacemarkTextFilter.dominantScript(in: texts), .latin)
     }
 
-    /// アクセント付き文字をラテン文字として扱うこと（Málaga などを落とさない）
-    func testAccentedLatinIsTreatedAsLatin() {
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("Málaga", languageCode: "es"))
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("Île-de-France", languageCode: "fr"))
-        XCTAssertFalse(PlacemarkTextFilter.matchesDeviceLanguage("Île-de-France", languageCode: "ja"))
+    /// 同数のときは基準を決めない（落とす根拠が無い）
+    func testTieHasNoDominantScript() {
+        XCTAssertNil(PlacemarkTextFilter.dominantScript(in: ["東京都", "Tokyo"]))
     }
 
-    /// 韓国語はラテン文字以外を期待すること
-    func testKoreanExpectsNonLatin() {
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("서울특별시", languageCode: "ko"))
-        XCTAssertFalse(PlacemarkTextFilter.matchesDeviceLanguage("Seoul", languageCode: "ko"))
+    /// 判定材料が無いときも基準を決めない
+    func testNoDominantScriptWhenNoLetters() {
+        XCTAssertNil(PlacemarkTextFilter.dominantScript(in: []))
+        XCTAssertNil(PlacemarkTextFilter.dominantScript(in: ["123", "456"]))
     }
 
-    // MARK: - 判定材料が無いケース
+    // MARK: - 表示可否
 
-    /// 数字・記号だけのテキストは判定できないので落とさないこと
-    func testNonLetterTextIsKept() {
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("1-2-3", languageCode: "ja"))
-        XCTAssertTrue(PlacemarkTextFilter.matchesDeviceLanguage("100", languageCode: "en"))
+    /// 国内: 多数派の日本語は残り、浮いた英語だけ落ちる（#29 の報告事象）
+    func testDropsOutlierInJapaneseList() {
+        let dominant = PlacemarkTextFilter.dominantScript(in: ["東京都", "東京都", "Tokyo"])
+
+        XCTAssertTrue(PlacemarkTextFilter.isDisplayable("東京都", dominant: dominant))
+        XCTAssertFalse(PlacemarkTextFilter.isDisplayable("Tokyo", dominant: dominant))
     }
 
-    /// 空・nil は表示対象にしないこと
-    func testEmptyIsNotDisplayable() {
-        XCTAssertNil(PlacemarkTextFilter.displayable(nil, languageCode: "ja"))
-        XCTAssertNil(PlacemarkTextFilter.displayable("", languageCode: "ja"))
+    /// 海外: 全件ラテン文字なら何も落とさない。
+    /// ここが端末言語での絶対判定との決定的な違いで、絶対判定だとパリで全滅していた。
+    func testKeepsEverythingAbroad() {
+        let texts = ["Île-de-France", "Paris", "Île-de-France", "Paris", "Paris", "Île-de-France"]
+        let dominant = PlacemarkTextFilter.dominantScript(in: texts)
+
+        for text in texts {
+            XCTAssertTrue(
+                PlacemarkTextFilter.isDisplayable(text, dominant: dominant),
+                "海外で地域名が落ちている: \(text)"
+            )
+        }
+    }
+
+    /// 海外で1件だけ日本語データがある場合は、そちらが浮くので落ちる
+    func testDropsJapaneseOutlierAbroad() {
+        let dominant = PlacemarkTextFilter.dominantScript(in: ["Paris", "Paris", "パリ"])
+
+        XCTAssertTrue(PlacemarkTextFilter.isDisplayable("Paris", dominant: dominant))
+        XCTAssertFalse(PlacemarkTextFilter.isDisplayable("パリ", dominant: dominant))
+    }
+
+    /// 基準が決まらないときは落とさない（情報を減らすだけになるため）
+    func testKeepsAllWhenNoDominant() {
+        XCTAssertTrue(PlacemarkTextFilter.isDisplayable("東京都", dominant: nil))
+        XCTAssertTrue(PlacemarkTextFilter.isDisplayable("Tokyo", dominant: nil))
+    }
+
+    /// 判定材料が無いテキストは基準があっても落とさない
+    func testKeepsNonLetterText() {
+        XCTAssertTrue(PlacemarkTextFilter.isDisplayable("1-2-3", dominant: .nonLatin))
     }
 }

@@ -2,62 +2,70 @@ import Foundation
 
 /// Apple のジオデータに含まれる地名テキストを表示してよいか判定する。
 ///
-/// ## 背景
+/// ## 何を解こうとしているか
 ///
-/// MapKit は端末の言語設定に従って地名を返すが、**すべての記録に全言語のデータが
-/// 揃っているわけではない**。日本語端末でも一部の記録は英語のまま返る。
+/// MapKit は端末の言語設定に従って地名を返す。これ自体は正しい挙動で、日本語設定のまま
+/// パリへ行けばラテン文字の地名が返るのが期待どおり（Apple マップと同じ）。
+///
+/// 問題は **Apple 側のデータ欠損**のほう。日本国内では ja データが揃っているのに一部の記録
+/// だけ欠けていて、同じ一覧の中で1件だけ表記が変わる。
 ///
 /// ```
-/// 東京タワー → 東京都 港区        ← ja データあり
-/// 皇居外苑   → Tokyo Chiyoda-Ku   ← ja データが無く英語で返る
+/// 和田倉噴水公園 / 東京都・現在地から約612 m
+/// 将門塚        / 東京都・現在地から約783 m
+/// 皇居外苑      / Tokyo・現在地から約854 m   ← ここだけ浮く
 /// ```
 ///
-/// 一覧の中で1件だけ表記体系が変わると異物として目立つため、端末の言語と表記が
-/// 一致しないものは表示から落とす。距離表示は必ず出るので、落としても情報が
-/// ゼロになることはない。
+/// ## 端末の言語ではなく「一覧の多数派」で判定する
 ///
-/// ## 「ASCII が含まれていたら落とす」ではない
+/// 「端末の言語と表記体系が合わないものを落とす」という**絶対判定にしてはいけない**。
+/// パリでは ja データがほぼ存在しないため全件がラテン文字になり、絶対判定だと地域名が
+/// 全滅する（実測で6件すべてが距離のみになった）。海外でラテン文字が出るのは正常なので、
+/// これは過剰な除去。
 ///
-/// ロケール非依存に「英字が含まれていたら落とす」ルールにすると、英語端末で
-/// 正しく英語が返っているケースまで全部消えてしまう。データ欠損は**どの言語でも**
-/// 起きるため、判定は必ず端末の言語を基準に行う。
+/// そこで**その一覧の多数派の表記体系**を基準にし、そこから外れた行だけ落とす。
+///
+/// - 東京: 多数派が日本語 → "Tokyo" の1件だけ落ちる
+/// - パリ: 多数派がラテン文字 → 全件そのまま残る
+///
+/// 「英字が含まれていたら落とす」というロケール非依存のルールも同じ理由で不可。
 enum PlacemarkTextFilter {
-    /// 主にラテン文字で表記する言語。これ以外は固有の文字体系を持つ扱いにする。
-    private static let latinScriptLanguages: Set<String> = [
-        "en", "es", "fr", "de", "it", "pt", "nl", "sv", "da", "no", "fi",
-        "pl", "cs", "tr", "id", "vi", "ms", "ro", "hu", "hr", "sk", "sl"
-    ]
-
-    /// 端末の言語と表記体系が一致しているか。
-    ///
-    /// - ラテン文字の言語（en / es / fr など）: 非ラテン文字が混ざっていたら不一致
-    /// - 固有文字体系の言語（ja / ko など）: ラテン文字だけで構成されていたら不一致
-    ///
-    /// 数字・記号・空白は判定に使わない（「1丁目」「Chiyoda-Ku」のような
-    /// 混在表記を誤判定しないため）。
-    static func matchesDeviceLanguage(
-        _ text: String,
-        languageCode: String = Locale.currentLanguageCode
-    ) -> Bool {
-        let letters = text.unicodeScalars.filter { CharacterSet.letters.contains($0) }
-        // 判定材料が無い（数字と記号だけ等）ものは落とさない
-        guard !letters.isEmpty else { return true }
-
-        let hasNonLatin = letters.contains { !isLatin($0) }
-
-        if latinScriptLanguages.contains(languageCode) {
-            return !hasNonLatin
-        }
-        return hasNonLatin
+    /// 地名テキストの表記体系
+    enum Script {
+        /// ラテン文字（英語・スペイン語・フランス語など）
+        case latin
+        /// ラテン文字以外（日本語・韓国語など）
+        case nonLatin
     }
 
-    /// 表示してよければそのまま返し、表記が一致しなければ nil を返す
-    static func displayable(
-        _ text: String?,
-        languageCode: String = Locale.currentLanguageCode
-    ) -> String? {
-        guard let text, !text.isEmpty else { return nil }
-        return matchesDeviceLanguage(text, languageCode: languageCode) ? text : nil
+    /// テキストの表記体系。判定材料（文字）が無ければ nil。
+    ///
+    /// 数字・記号・空白は判定に使わない。「1丁目」「Chiyoda-Ku」のような混在表記を
+    /// 誤判定しないため、**文字が1つでも非ラテンなら非ラテン**として扱う。
+    static func script(of text: String) -> Script? {
+        let letters = text.unicodeScalars.filter { CharacterSet.letters.contains($0) }
+        guard !letters.isEmpty else { return nil }
+        return letters.contains { !isLatin($0) } ? .nonLatin : .latin
+    }
+
+    /// 一覧の中で多数派の表記体系。判定できない場合や同数の場合は nil を返す。
+    ///
+    /// nil のときは何も落とさない。基準が決まらない状態で落とすと、情報を減らすだけになるため。
+    static func dominantScript(in texts: [String]) -> Script? {
+        let scripts = texts.compactMap(script(of:))
+        guard !scripts.isEmpty else { return nil }
+
+        let latin = scripts.filter { $0 == .latin }.count
+        let nonLatin = scripts.count - latin
+        if latin == nonLatin { return nil }
+        return latin > nonLatin ? .latin : .nonLatin
+    }
+
+    /// 多数派に沿っていれば表示してよい。
+    /// 基準が無い（`dominant` が nil）場合や判定材料が無い場合は落とさない。
+    static func isDisplayable(_ text: String, dominant: Script?) -> Bool {
+        guard let dominant, let script = script(of: text) else { return true }
+        return script == dominant
     }
 
     private static func isLatin(_ scalar: Unicode.Scalar) -> Bool {
