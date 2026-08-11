@@ -68,11 +68,10 @@ class FavoritesViewModel: ObservableObject {
         favorites.isEmpty
     }
 
-    /// 追加日のフォーマット済み文字列
-    func formattedDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ja_JP")
-        formatter.dateFormat = "yyyy/M/d"
-        return formatter.string(from: date)
+    /// 追加日のフォーマット済み文字列。
+    /// ja: 2026/8/11 / en-US: 8/11/2026
+    /// - Parameter locale: テストからロケールを差し替えるための入口。既定は端末設定。
+    func formattedDate(_ date: Date, locale: Locale = .current) -> String {
+        DateFormatter.localized(template: "yMd", locale: locale).string(from: date)
     }
 }

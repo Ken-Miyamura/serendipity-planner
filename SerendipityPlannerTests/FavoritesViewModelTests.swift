@@ -123,9 +123,10 @@ final class FavoritesViewModelTests: XCTestCase {
         components.day = 15
         let date = try XCTUnwrap(calendar.date(from: components))
 
-        let formatted = sut.formattedDate(date)
-
-        XCTAssertEqual(formatted, "2025/3/15")
+        // 端末のロケールに依存しないよう、期待する言語を明示して検証する。
+        // ここを Locale.current 任せにすると CI（en_US）と開発機（ja_JP）で結果が変わる。
+        XCTAssertEqual(sut.formattedDate(date, locale: Locale(identifier: "ja_JP")), "2025/3/15")
+        XCTAssertEqual(sut.formattedDate(date, locale: Locale(identifier: "en_US")), "3/15/2025")
     }
 
     // MARK: - configure テスト

@@ -21,8 +21,30 @@ enum Constants {
     enum Weather {
         static let cacheExpirationSeconds: TimeInterval = 3600
         static let baseURL = "https://api.openweathermap.org/data/2.5"
+        /// API へのリクエストは常に摂氏で行う。表示単位の切り替えは
+        /// `LocalizedUnits` が担う（キャッシュをまたいで単位が混ざらないようにするため）。
         static let units = "metric"
-        static let language = "ja"
+
+        /// OpenWeatherMap が対応していない言語では英語にフォールバックする。
+        /// 対応コード: https://openweathermap.org/current#multi
+        static let supportedLanguages: Set<String> = [
+            "af", "al", "ar", "az", "bg", "ca", "cz", "da", "de", "el", "en", "eu", "fa", "fi",
+            "fr", "gl", "he", "hi", "hr", "hu", "id", "it", "ja", "kr", "la", "lt", "mk", "no",
+            "nl", "pl", "pt", "pt_br", "ro", "ru", "sv", "sk", "sl", "sp", "sr", "th", "tr",
+            "ua", "vi", "zh_cn", "zh_tw", "zu"
+        ]
+
+        /// 端末の言語に対応する API リクエスト用の言語コード。
+        static var requestLanguage: String {
+            requestLanguage(for: Locale.currentLanguageCode)
+        }
+
+        /// OpenWeatherMap は韓国語を "kr"、スペイン語を "sp" という独自コードで扱う。
+        /// 未対応の言語は英語にフォールバックする（日本語のまま返すと英語圏に日本語が出る）。
+        static func requestLanguage(for languageCode: String) -> String {
+            let mapped = ["ko": "kr", "es": "sp"][languageCode] ?? languageCode
+            return supportedLanguages.contains(mapped) ? mapped : "en"
+        }
     }
 
     enum Notification {
