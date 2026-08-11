@@ -79,6 +79,215 @@
         }
       }
     },
+    "%@。お出かけ日和、ショッピングを楽しんで。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。お出かけ日和、ショッピングを楽しんで。"
+          }
+        }
+      }
+    },
+    "%@。お散歩日和です！": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。お散歩日和です！"
+          }
+        }
+      }
+    },
+    "%@。アートに触れてみませんか。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。アートに触れてみませんか。"
+          }
+        }
+      }
+    },
+    "%@。アートに触れてインスピレーションを。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。アートに触れてインスピレーションを。"
+          }
+        }
+      }
+    },
+    "%@。カフェでほっとひと息つきましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。カフェでほっとひと息つきましょう。"
+          }
+        }
+      }
+    },
+    "%@。グルメを楽しみましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。グルメを楽しみましょう。"
+          }
+        }
+      }
+    },
+    "%@。ショッピングで気分転換を。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。ショッピングで気分転換を。"
+          }
+        }
+      }
+    },
+    "%@。テラス席も気持ちよさそうです。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。テラス席も気持ちよさそうです。"
+          }
+        }
+      }
+    },
+    "%@。リラックスタイムを楽しんで。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。リラックスタイムを楽しんで。"
+          }
+        }
+      }
+    },
+    "%@。体を動かすのに気持ちいい天気です！": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。体を動かすのに気持ちいい天気です！"
+          }
+        }
+      }
+    },
+    "%@。映画を観てリフレッシュ。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。映画を観てリフレッシュ。"
+          }
+        }
+      }
+    },
+    "%@。映画館で素敵な作品に出会いましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。映画館で素敵な作品に出会いましょう。"
+          }
+        }
+      }
+    },
+    "%@。気分転換に歩いてみましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。気分転換に歩いてみましょう。"
+          }
+        }
+      }
+    },
+    "%@。美味しいものを食べに出かけましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。美味しいものを食べに出かけましょう。"
+          }
+        }
+      }
+    },
+    "%@。自然の中でリラックスしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。自然の中でリラックスしましょう。"
+          }
+        }
+      }
+    },
+    "%@。読書にぴったりの天気です。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。読書にぴったりの天気です。"
+          }
+        }
+      }
+    },
+    "%@。運動でリフレッシュしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。運動でリフレッシュしましょう。"
+          }
+        }
+      }
+    },
+    "%@。音楽で気分を上げましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。音楽で気分を上げましょう。"
+          }
+        }
+      }
+    },
+    "%@。音楽を楽しむのにいい日ですね。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@。音楽を楽しむのにいい日ですね。"
+          }
+        }
+      }
+    },
     "%@から%@ ・ %@": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -97,6 +306,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@で%@"
+          }
+        }
+      }
+    },
+    "%@ですが、少しの時間なら大丈夫。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ですが、少しの時間なら大丈夫。"
           }
         }
       }
@@ -134,6 +354,94 @@
         }
       }
     },
+    "%@の日こそ、映画館でゆっくり過ごしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日こそ、映画館でゆっくり過ごしましょう。"
+          }
+        }
+      }
+    },
+    "%@の日こそ、美術館でゆっくり過ごしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日こそ、美術館でゆっくり過ごしましょう。"
+          }
+        }
+      }
+    },
+    "%@の日は、あったかいお店で美味しいものを。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日は、あったかいお店で美味しいものを。"
+          }
+        }
+      }
+    },
+    "%@の日は、室内で体を動かしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日は、室内で体を動かしましょう。"
+          }
+        }
+      }
+    },
+    "%@の日は、屋内でショッピングを楽しみましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日は、屋内でショッピングを楽しみましょう。"
+          }
+        }
+      }
+    },
+    "%@の日は、温かいカフェでゆっくりしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日は、温かいカフェでゆっくりしましょう。"
+          }
+        }
+      }
+    },
+    "%@の日は、静かな場所で心を落ち着けましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日は、静かな場所で心を落ち着けましょう。"
+          }
+        }
+      }
+    },
+    "%@の日は、音楽に浸って過ごしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@の日は、音楽に浸って過ごしましょう。"
+          }
+        }
+      }
+    },
     "%@をマップで開く": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -152,6 +460,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@をマップアプリで表示します"
+          }
+        }
+      }
+    },
+    "%@・%@": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@・%@"
           }
         }
       }
@@ -398,6 +717,17 @@
         }
       }
     },
+    "いつもと違うお店でランチタイム。美味しいご飯で午後も頑張れます。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "いつもと違うお店でランチタイム。美味しいご飯で午後も頑張れます。"
+          }
+        }
+      }
+    },
     "いつもの何気ない空き時間を、\n偶然出会う楽しみのきっかけに。": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -438,6 +768,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "おはようございます。\n今日、素敵な偶然が訪れますように"
+          }
+        }
+      }
+    },
+    "お寺で静かなひととき": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お寺で静かなひととき"
+          }
+        }
+      }
+    },
+    "お寺や神社で心を静めましょう。日常から離れて、穏やかな時間を。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お寺や神社で心を静めましょう。日常から離れて、穏やかな時間を。"
           }
         }
       }
@@ -497,6 +849,17 @@
         }
       }
     },
+    "お気に入りのカフェで集中作業。環境を変えると新しいアイデアが浮かぶかもしれません。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りのカフェで集中作業。環境を変えると新しいアイデアが浮かぶかもしれません。"
+          }
+        }
+      }
+    },
     "お気に入りの詳細": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -504,6 +867,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "お気に入りの詳細"
+          }
+        }
+      }
+    },
+    "お気に入りの音楽を聴きながら、カフェでゆったり過ごしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "お気に入りの音楽を聴きながら、カフェでゆったり過ごしましょう。"
           }
         }
       }
@@ -526,6 +900,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "お気に入りデータを削除"
+          }
+        }
+      }
+    },
+    "こだわりのセレクトショップで、新しいお気に入りを見つけましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "こだわりのセレクトショップで、新しいお気に入りを見つけましょう。"
           }
         }
       }
@@ -662,6 +1047,28 @@
         }
       }
     },
+    "アートスポット散策": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アートスポット散策"
+          }
+        }
+      }
+    },
+    "ウィンドウショッピング": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ウィンドウショッピング"
+          }
+        }
+      }
+    },
     "エラーが発生しました": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -713,6 +1120,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "カフェ"
+          }
+        }
+      }
+    },
+    "カフェでスイーツタイム": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カフェでスイーツタイム"
+          }
+        }
+      }
+    },
+    "カフェで作業タイム": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カフェで作業タイム"
+          }
+        }
+      }
+    },
+    "カメラやスマホを片手に街歩き。何気ない日常の中に、素敵な瞬間を見つけましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カメラやスマホを片手に街歩き。何気ない日常の中に、素敵な瞬間を見つけましょう。"
           }
         }
       }
@@ -827,6 +1267,17 @@
         }
       }
     },
+    "ギャラリーを巡る": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ギャラリーを巡る"
+          }
+        }
+      }
+    },
     "グルメ": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -845,6 +1296,61 @@
           "stringUnit": {
             "state": "translated",
             "value": "ショッピング"
+          }
+        }
+      }
+    },
+    "ジムでトレーニング": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ジムでトレーニング"
+          }
+        }
+      }
+    },
+    "ジョギングでリフレッシュ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ジョギングでリフレッシュ"
+          }
+        }
+      }
+    },
+    "スパでリラックス": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スパでリラックス"
+          }
+        }
+      }
+    },
+    "スパや銭湯で体をほぐしましょう。心身ともにリフレッシュできます。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スパや銭湯で体をほぐしましょう。心身ともにリフレッシュできます。"
+          }
+        }
+      }
+    },
+    "セレクトショップ探索": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "セレクトショップ探索"
           }
         }
       }
@@ -959,6 +1465,17 @@
         }
       }
     },
+    "フォトウォーク": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フォトウォーク"
+          }
+        }
+      }
+    },
     "ブラウザで開く": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -1025,6 +1542,72 @@
         }
       }
     },
+    "ミニシアターで名作を": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ミニシアターで名作を"
+          }
+        }
+      }
+    },
+    "ミニシアターで隠れた名作に出会いましょう。新しい映画体験が待っています。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ミニシアターで隠れた名作に出会いましょう。新しい映画体験が待っています。"
+          }
+        }
+      }
+    },
+    "ヨガでリラックス": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヨガでリラックス"
+          }
+        }
+      }
+    },
+    "ヨガで心身のバランスを整えましょう。呼吸に集中して、心を落ち着けて。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ヨガで心身のバランスを整えましょう。呼吸に集中して、心を落ち着けて。"
+          }
+        }
+      }
+    },
+    "ライブを楽しむ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ライブを楽しむ"
+          }
+        }
+      }
+    },
+    "ランチで気分転換": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ランチで気分転換"
+          }
+        }
+      }
+    },
     "リセット": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -1043,6 +1626,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "リラックス"
+          }
+        }
+      }
+    },
+    "レコードショップで新しい音楽を発掘。思わぬ名盤に出会えるかも。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "レコードショップで新しい音楽を発掘。思わぬ名盤に出会えるかも。"
+          }
+        }
+      }
+    },
+    "レコードショップ巡り": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "レコードショップ巡り"
           }
         }
       }
@@ -1223,6 +1828,17 @@
         }
       }
     },
+    "公園でリフレッシュ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公園でリフレッシュ"
+          }
+        }
+      }
+    },
     "再試行": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -1311,6 +1927,17 @@
         }
       }
     },
+    "可愛い雑貨を探しにお出かけ。お気に入りのアイテムが見つかるかも。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "可愛い雑貨を探しにお出かけ。お気に入りのアイテムが見つかるかも。"
+          }
+        }
+      }
+    },
     "合計 %lld回": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -1329,6 +1956,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "周辺のスポットを提案"
+          }
+        }
+      }
+    },
+    "図書館でゆっくり": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "図書館でゆっくり"
+          }
+        }
+      }
+    },
+    "図書館で静かな読書タイム。新しいジャンルの本との出会いを楽しんで。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "図書館で静かな読書タイム。新しいジャンルの本との出会いを楽しんで。"
           }
         }
       }
@@ -1707,6 +2356,17 @@
         }
       }
     },
+    "新しいお店を開拓": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新しいお店を開拓"
+          }
+        }
+      }
+    },
     "明日": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -1725,6 +2385,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "映画"
+          }
+        }
+      }
+    },
+    "映画館で最新作を": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "映画館で最新作を"
           }
         }
       }
@@ -1868,6 +2539,61 @@
           "stringUnit": {
             "state": "translated",
             "value": "毎朝、今日の隙間時間の数をお知らせします。"
+          }
+        }
+      }
+    },
+    "気になっていたお店に行ってみましょう。新しい味との出会いが待っています。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "気になっていたお店に行ってみましょう。新しい味との出会いが待っています。"
+          }
+        }
+      }
+    },
+    "気になっていた記事や雑誌を読む時間に。新しい知識やインスピレーションを得ましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "気になっていた記事や雑誌を読む時間に。新しい知識やインスピレーションを得ましょう。"
+          }
+        }
+      }
+    },
+    "気ままにショッピングを楽しみましょう。トレンドチェックにもぴったり。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "気ままにショッピングを楽しみましょう。トレンドチェックにもぴったり。"
+          }
+        }
+      }
+    },
+    "気分転換に外を歩きましょう。いつもと違う道を通ると、新しい発見があるかもしれません。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "気分転換に外を歩きましょう。いつもと違う道を通ると、新しい発見があるかもしれません。"
+          }
+        }
+      }
+    },
+    "温かい飲み物を片手に、ゆったりとした時間を過ごしましょう。新しいカフェを開拓するのも良いですね。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温かい飲み物を片手に、ゆったりとした時間を過ごしましょう。新しいカフェを開拓するのも良いですね。"
           }
         }
       }
@@ -2048,6 +2774,28 @@
         }
       }
     },
+    "瞑想タイム": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "瞑想タイム"
+          }
+        }
+      }
+    },
+    "積読本を消化するチャンス！静かな場所で本の世界に没頭しましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "積読本を消化するチャンス！静かな場所で本の世界に没頭しましょう。"
+          }
+        }
+      }
+    },
     "空き時間が見つかりませんでした。\n忙しい日も、ちょっと深呼吸を。": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -2136,6 +2884,28 @@
         }
       }
     },
+    "美術館でじっくりアートに浸りましょう。心が豊かになる時間です。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美術館でじっくりアートに浸りましょう。心が豊かになる時間です。"
+          }
+        }
+      }
+    },
+    "美術館でアート体験": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "美術館でアート体験"
+          }
+        }
+      }
+    },
     "興味のあるジャンル": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -2154,6 +2924,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "行き先を選ぶと、その街での小さな偶然をご提案します"
+          }
+        }
+      }
+    },
+    "街を歩きながら、美味しいものを食べ歩き。小さな幸せを見つけましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "街を歩きながら、美味しいものを食べ歩き。小さな幸せを見つけましょう。"
+          }
+        }
+      }
+    },
+    "街中のパブリックアートやストリートアートを探してみませんか。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "街中のパブリックアートやストリートアートを探してみませんか。"
           }
         }
       }
@@ -2202,6 +2994,17 @@
         }
       }
     },
+    "話題の映画を観に行きましょう。大画面と音響で、没入感のある体験を。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "話題の映画を観に行きましょう。大画面と音響で、没入感のある体験を。"
+          }
+        }
+      }
+    },
     "該当する場所が見つかりませんでした": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -2235,6 +3038,83 @@
         }
       }
     },
+    "読書タイム": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "読書タイム"
+          }
+        }
+      }
+    },
+    "軽いジョギングで体と心をリフレッシュ。気持ちのいい汗を流しましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "軽いジョギングで体と心をリフレッシュ。気持ちのいい汗を流しましょう。"
+          }
+        }
+      }
+    },
+    "近くのカフェでひと息": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "近くのカフェでひと息"
+          }
+        }
+      }
+    },
+    "近くのギャラリーでアート鑑賞。新しい視点やインスピレーションが見つかるかも。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "近くのギャラリーでアート鑑賞。新しい視点やインスピレーションが見つかるかも。"
+          }
+        }
+      }
+    },
+    "近くのジムで体を動かしましょう。運動後の爽快感は格別です。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "近くのジムで体を動かしましょう。運動後の爽快感は格別です。"
+          }
+        }
+      }
+    },
+    "近くのライブハウスやイベントで、生の音楽を体感しましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "近くのライブハウスやイベントで、生の音楽を体感しましょう。"
+          }
+        }
+      }
+    },
+    "近くの公園まで散歩して、自然の中でリフレッシュ。深呼吸で心もスッキリ。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "近くの公園まで散歩して、自然の中でリフレッシュ。深呼吸で心もスッキリ。"
+          }
+        }
+      }
+    },
     "近くの行き先を探しています...": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -2242,6 +3122,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "近くの行き先を探しています..."
+          }
+        }
+      }
+    },
+    "近所をお散歩": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "近所をお散歩"
           }
         }
       }
@@ -2400,6 +3291,28 @@
         }
       }
     },
+    "雑誌・記事を読む": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雑誌・記事を読む"
+          }
+        }
+      }
+    },
+    "雑貨屋さん巡り": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雑貨屋さん巡り"
+          }
+        }
+      }
+    },
     "雨": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -2444,6 +3357,17 @@
         }
       }
     },
+    "静かな場所で瞑想の時間を。呼吸に集中して、心をクリアにしましょう。": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静かな場所で瞑想の時間を。呼吸に集中して、心をクリアにしましょう。"
+          }
+        }
+      }
+    },
     "音楽": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -2451,6 +3375,39 @@
           "stringUnit": {
             "state": "translated",
             "value": "音楽"
+          }
+        }
+      }
+    },
+    "音楽カフェでリラックス": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音楽カフェでリラックス"
+          }
+        }
+      }
+    },
+    "頑張った自分へのご褒美に、美味しいスイーツとコーヒーはいかがですか？": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "頑張った自分へのご褒美に、美味しいスイーツとコーヒーはいかがですか？"
+          }
+        }
+      }
+    },
+    "食べ歩きを楽しむ": {
+      "extractionState": "extracted_with_value",
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "食べ歩きを楽しむ"
           }
         }
       }
