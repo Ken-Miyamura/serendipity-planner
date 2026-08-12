@@ -125,7 +125,8 @@ struct SuggestionDetailView: View, SkyTextStyling {
             // 目的地を設定していれば「目的地 → スポット」、なければ現在地起点の経路として開く
             MapAppPickerSheet(
                 origin: destination?.mapPoint,
-                destination: place.mapPoint
+                destination: place.mapPoint,
+                currentLocation: viewModel.currentLocationPoint
             )
         }
         .task {

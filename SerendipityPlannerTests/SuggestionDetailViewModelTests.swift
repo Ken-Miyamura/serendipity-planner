@@ -39,6 +39,72 @@ final class SuggestionDetailViewModelTests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: - #40: ブラウザ経路の出発点に使う現在地
+
+    /// スポットが既に埋まっていても現在地が解決されること。
+    ///
+    /// enrichWithPlace() は nearbyPlace があると早期 return するため、そこに
+    /// 相乗りさせるとホーム画面でスポットが埋まっている通常の経路で現在地が
+    /// 解決されず、ブラウザ経路の修正が効かなくなる。
+    func testCurrentLocationResolvedEvenWhenPlaceAlreadyExists() async {
+        var suggestion = Suggestion.mock(category: .cafe, title: "カフェ")
+        suggestion.nearbyPlace = NearbyPlace(
+            name: "既存スポット", category: .cafe,
+            latitude: 35.0, longitude: 139.0, distance: 100
+        )
+        let location = MockLocationService()
+        location.currentLocation = CLLocation(latitude: 35.681236, longitude: 139.767125)
+        let vm = SuggestionDetailViewModel(
+            suggestion: suggestion,
+            suggestionEngine: mockEngine,
+            placeSearchService: mockPlaceSearch
+        )
+        vm.configure(weather: .mock(), preference: .default, locationService: location)
+
+        await vm.enrichIfNeeded()
+
+        let point = try? XCTUnwrap(vm.currentLocationPoint)
+        XCTAssertEqual(point?.latitude ?? 0, 35.681236, accuracy: 0.000001)
+        XCTAssertEqual(point?.longitude ?? 0, 139.767125, accuracy: 0.000001)
+        // 現在地は固有名を持たないのでラベルを付けない
+        XCTAssertNil(point?.name ?? nil)
+    }
+
+    /// 目的地が設定されているときは現在地を解決しないこと（目的地が出発点になるため）
+    func testCurrentLocationNotResolvedWhenDestinationIsSet() async {
+        let location = MockLocationService()
+        location.currentLocation = CLLocation(latitude: 35.681236, longitude: 139.767125)
+        let vm = SuggestionDetailViewModel(
+            suggestion: Suggestion.mock(category: .cafe, title: "カフェ"),
+            suggestionEngine: mockEngine,
+            placeSearchService: mockPlaceSearch
+        )
+        vm.configure(
+            weather: .mock(), preference: .default,
+            locationService: location, destination: .mock()
+        )
+
+        await vm.enrichIfNeeded()
+
+        XCTAssertNil(vm.currentLocationPoint)
+    }
+
+    /// 現在地が取れないときは nil のままで、従来どおり origin 省略にフォールバックすること
+    func testCurrentLocationStaysNilWhenUnavailable() async {
+        let location = MockLocationService()
+        location.currentLocation = nil
+        let vm = SuggestionDetailViewModel(
+            suggestion: Suggestion.mock(category: .cafe, title: "カフェ"),
+            suggestionEngine: mockEngine,
+            placeSearchService: mockPlaceSearch
+        )
+        vm.configure(weather: .mock(), preference: .default, locationService: location)
+
+        await vm.enrichIfNeeded()
+
+        XCTAssertNil(vm.currentLocationPoint)
+    }
+
     // MARK: - Accept Tests
 
     func testAcceptRecordsSelection() {
