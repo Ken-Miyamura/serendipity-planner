@@ -102,23 +102,65 @@ final class PlaceSearchCategoryTests: XCTestCase {
         )
     }
 
-    /// 未対応言語では英語にフォールバックすること（日本語クエリが飛ばないこと）
-    func testRecommendationQueriesFallBackToEnglish() {
-        for code in ["ko", "es", "fr"] {
+    /// 対応言語はそれぞれ固有のクエリを持つこと（#45 で ko/es/fr を追加）
+    func testRecommendationQueriesExistForEveryTargetLanguage() {
+        for code in ["ja", "ko", "es", "fr"] {
             let queries = RecommendationQueries.table.queries(for: code)
-            XCTAssertEqual(queries, ["tourist attraction", "landmark", "park"], "\(code) が英語に落ちていない")
+            XCTAssertFalse(queries.isEmpty, "\(code) のクエリが無い")
+            XCTAssertNotEqual(queries, RecommendationQueries.table.queries(for: "en"), "\(code) が英語のまま")
         }
     }
 
-    /// 日本語エントリが失われていないこと（移行によるデグレ防止）
+    /// 未対応言語は英語にフォールバックすること（日本語クエリが飛ばないこと）
+    func testRecommendationQueriesFallBackToEnglishForUnsupported() {
+        XCTAssertEqual(RecommendationQueries.table.queries(for: "zz"), ["tourist attraction", "landmark", "park"])
+    }
+
+    /// 旅行先での取りこぼしを減らすため、端末言語に英語を併用すること。
+    /// ko 端末のままパリへ行くと "레코드샵" が現地の店名に当たらず0件になるため。
+    func testQueriesIncludeEnglishAlongsideDeviceLanguage() {
+        let resolved = RecommendationQueries.queries(for: "ko")
+
+        XCTAssertTrue(resolved.contains("랜드마크"), "\(resolved)")
+        XCTAssertTrue(resolved.contains("landmark"), "英語が併用されていない: \(resolved)")
+        // 端末言語が先（現地語を優先して探す）
+        XCTAssertLessThan(
+            resolved.firstIndex(of: "랜드마크") ?? .max,
+            resolved.firstIndex(of: "landmark") ?? .max
+        )
+    }
+
+    /// 英語端末では英語だけが重複なく返ること
+    func testEnglishDeviceGetsNoDuplicates() {
+        let resolved = RecommendationQueries.queries(for: "en")
+
+        XCTAssertEqual(resolved, ["tourist attraction", "landmark", "park"])
+    }
+
+    /// 日本語エントリが失われていないこと（移行によるデグレ防止）。
+    /// 英語を併用するようになったので「含むこと」で検証する。
     func testJapaneseQueriesPreserved() {
-        XCTAssertEqual(
-            Set(SuggestionCategory.meditation.supplementalQueryValues(for: "ja")),
-            Set(["お寺", "神社", "庭園"])
-        )
-        XCTAssertEqual(
-            Set(SuggestionCategory.reading.supplementalQueryValues(for: "ja")),
-            Set(["書店", "ブックカフェ"])
-        )
+        let meditation = SuggestionCategory.meditation.supplementalQueryValues(for: "ja")
+        for word in ["お寺", "神社", "庭園"] {
+            XCTAssertTrue(meditation.contains(word), "\(word) が失われている: \(meditation)")
+        }
+
+        let reading = SuggestionCategory.reading.supplementalQueryValues(for: "ja")
+        for word in ["書店", "ブックカフェ"] {
+            XCTAssertTrue(reading.contains(word), "\(word) が失われている: \(reading)")
+        }
+    }
+
+    /// 配信対象4言語すべてに固有のキーワードがあること（#45）。
+    /// 英語しか無いと、その言語圏で現地の POI 名に当たらない。
+    func testEveryTargetLanguageHasOwnKeywords() {
+        for category in [SuggestionCategory.reading, .music, .meditation] {
+            let english = SuggestionCategory.supplementalQueryTable[category]?.queries(for: "en") ?? []
+            for code in ["ja", "ko", "es", "fr"] {
+                let own = SuggestionCategory.supplementalQueryTable[category]?.queries(for: code) ?? []
+                XCTAssertFalse(own.isEmpty, "\(category.rawValue) の \(code) が空")
+                XCTAssertNotEqual(own, english, "\(category.rawValue) の \(code) が英語のまま")
+            }
+        }
     }
 }

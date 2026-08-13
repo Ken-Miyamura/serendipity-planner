@@ -37,9 +37,10 @@ extension SuggestionCategory {
         supplementalQueryValues(for: Locale.currentLanguageCode)
     }
 
-    /// 指定した言語コードでの補助キーワード（テストから言語を差し替えるための入口）
+    /// 指定した言語コードでの補助キーワード（テストから言語を差し替えるための入口）。
+    /// 端末言語のキーワードに英語を併用する。理由は `queriesWithEnglishFallback` を参照。
     func supplementalQueryValues(for languageCode: String) -> [String] {
-        Self.supplementalQueryTable[self]?.queries(for: languageCode) ?? []
+        Self.supplementalQueryTable[self]?.queriesWithEnglishFallback(for: languageCode) ?? []
     }
 
     /// カテゴリ検索とキーワード検索のどちらも手段が無いカテゴリは存在してはいけない。
@@ -53,21 +54,38 @@ extension SuggestionCategory {
     ///
     /// ko / es / fr は #36（翻訳投入）で追加する。それまでは英語版が使われる。
     static let supplementalQueryTable: [SuggestionCategory: LocalizedQuerySet] = [
-        // `.library` は図書館しか拾わないため、書店・ブックカフェを補う
+        // `.library` は図書館しか拾わないため、書店・ブックカフェを補う。
+        // es の "librería" / fr の "librairie" は図書館ではなく書店を指す。
         .reading: LocalizedQuerySet(byLanguage: [
             "en": ["bookstore", "book cafe"],
-            "ja": ["書店", "ブックカフェ"]
+            "ja": ["書店", "ブックカフェ"],
+            "ko": ["서점", "북카페"],
+            "es": ["librería", "café librería"],
+            "fr": ["librairie", "café littéraire"]
         ]),
         // 対応する POI カテゴリが無いため、音楽に寄せた語で拾う
         .music: LocalizedQuerySet(byLanguage: [
             "en": ["record store", "live music"],
-            "ja": ["レコードショップ", "ライブハウス"]
+            "ja": ["レコードショップ", "ライブハウス"],
+            // ソウル実測: 라이브클럽 は0件、클럽 は6件だが夜のクラブ/バーが混ざるため使わない
+            "ko": ["레코드샵", "공연장", "라이브카페"],
+            "es": ["tienda de discos", "sala de conciertos"],
+            "fr": ["disquaire", "salle de concert"]
         ]),
         // 該当カテゴリが無いので、この分類はキーワードだけが頼り。
+        //
+        // **直訳しないこと。** 「静かに心を落ち着けられる場所」がその土地で何かを
+        // 考えて選ぶ。日本の寺社にあたるものは欧州では教会や修道院の中庭、
+        // 韓国では仏教寺院（사찰）になる。
+        //
         // "スパ" は「Bar Español」のような無関係な店に誤マッチしたため使わない。
         .meditation: LocalizedQuerySet(byLanguage: [
             "en": ["temple", "shrine", "meditation"],
-            "ja": ["お寺", "神社", "庭園"]
+            "ja": ["お寺", "神社", "庭園"],
+            // ソウル実測: 사찰(1) より 절(2)。고궁（古宮）は静かに過ごせる場所として妥当
+            "ko": ["절", "정원", "고궁"],
+            "es": ["jardín", "iglesia"],
+            "fr": ["jardin", "église"]
         ])
     ]
 }
