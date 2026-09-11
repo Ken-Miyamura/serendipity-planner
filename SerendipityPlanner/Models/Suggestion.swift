@@ -205,67 +205,72 @@ enum SuggestionCategory: String, CaseIterable, Codable {
     // スポット検索のカテゴリ定義は `SuggestionCategory+PlaceSearch.swift` を参照。
     // 日本語キーワードでは海外で成立しないため、POI カテゴリベースに移行した。
 
+    /// 天気の文脈を差し込む提案文。`%@` に天気語が入る。
+    ///
+    /// String Catalog 経由なので、ロケールごとに**語順ごと差し替えられる**。
+    /// 英語なら "It's sunny — the terrace looks lovely." のように天気語を
+    /// 文中や文末に置いてよい。日本語の並びに引きずられないこと。
     var weatherContextFormat: (outdoor: String, indoor: String, neutral: String) {
         switch self {
         case .cafe:
             (
-                outdoor: "%@。テラス席も気持ちよさそうです。",
-                indoor: "%@の日は、温かいカフェでゆっくりしましょう。",
-                neutral: "%@。カフェでほっとひと息つきましょう。"
+                outdoor: String(localized: "%@。テラス席も気持ちよさそうです。"),
+                indoor: String(localized: "%@の日は、温かいカフェでゆっくりしましょう。"),
+                neutral: String(localized: "%@。カフェでほっとひと息つきましょう。")
             )
         case .walk:
             (
-                outdoor: "%@。お散歩日和です！",
-                indoor: "%@ですが、少しの時間なら大丈夫。",
-                neutral: "%@。気分転換に歩いてみましょう。"
+                outdoor: String(localized: "%@。お散歩日和です！"),
+                indoor: String(localized: "%@ですが、少しの時間なら大丈夫。"),
+                neutral: String(localized: "%@。気分転換に歩いてみましょう。")
             )
         case .reading:
             (
-                outdoor: "%@。読書にぴったりの天気です。",
-                indoor: "%@。読書にぴったりの天気です。",
-                neutral: "%@。読書にぴったりの天気です。"
+                outdoor: String(localized: "%@。読書にぴったりの天気です。"),
+                indoor: String(localized: "%@。読書にぴったりの天気です。"),
+                neutral: String(localized: "%@。読書にぴったりの天気です。")
             )
         case .music:
             (
-                outdoor: "%@。音楽を楽しむのにいい日ですね。",
-                indoor: "%@の日は、音楽に浸って過ごしましょう。",
-                neutral: "%@。音楽で気分を上げましょう。"
+                outdoor: String(localized: "%@。音楽を楽しむのにいい日ですね。"),
+                indoor: String(localized: "%@の日は、音楽に浸って過ごしましょう。"),
+                neutral: String(localized: "%@。音楽で気分を上げましょう。")
             )
         case .art:
             (
-                outdoor: "%@。アートに触れてインスピレーションを。",
-                indoor: "%@の日こそ、美術館でゆっくり過ごしましょう。",
-                neutral: "%@。アートに触れてみませんか。"
+                outdoor: String(localized: "%@。アートに触れてインスピレーションを。"),
+                indoor: String(localized: "%@の日こそ、美術館でゆっくり過ごしましょう。"),
+                neutral: String(localized: "%@。アートに触れてみませんか。")
             )
         case .fitness:
             (
-                outdoor: "%@。体を動かすのに気持ちいい天気です！",
-                indoor: "%@の日は、室内で体を動かしましょう。",
-                neutral: "%@。運動でリフレッシュしましょう。"
+                outdoor: String(localized: "%@。体を動かすのに気持ちいい天気です！"),
+                indoor: String(localized: "%@の日は、室内で体を動かしましょう。"),
+                neutral: String(localized: "%@。運動でリフレッシュしましょう。")
             )
         case .shopping:
             (
-                outdoor: "%@。お出かけ日和、ショッピングを楽しんで。",
-                indoor: "%@の日は、屋内でショッピングを楽しみましょう。",
-                neutral: "%@。ショッピングで気分転換を。"
+                outdoor: String(localized: "%@。お出かけ日和、ショッピングを楽しんで。"),
+                indoor: String(localized: "%@の日は、屋内でショッピングを楽しみましょう。"),
+                neutral: String(localized: "%@。ショッピングで気分転換を。")
             )
         case .gourmet:
             (
-                outdoor: "%@。美味しいものを食べに出かけましょう。",
-                indoor: "%@の日は、あったかいお店で美味しいものを。",
-                neutral: "%@。グルメを楽しみましょう。"
+                outdoor: String(localized: "%@。美味しいものを食べに出かけましょう。"),
+                indoor: String(localized: "%@の日は、あったかいお店で美味しいものを。"),
+                neutral: String(localized: "%@。グルメを楽しみましょう。")
             )
         case .movie:
             (
-                outdoor: "%@。映画館で素敵な作品に出会いましょう。",
-                indoor: "%@の日こそ、映画館でゆっくり過ごしましょう。",
-                neutral: "%@。映画を観てリフレッシュ。"
+                outdoor: String(localized: "%@。映画館で素敵な作品に出会いましょう。"),
+                indoor: String(localized: "%@の日こそ、映画館でゆっくり過ごしましょう。"),
+                neutral: String(localized: "%@。映画を観てリフレッシュ。")
             )
         case .meditation:
             (
-                outdoor: "%@。自然の中でリラックスしましょう。",
-                indoor: "%@の日は、静かな場所で心を落ち着けましょう。",
-                neutral: "%@。リラックスタイムを楽しんで。"
+                outdoor: String(localized: "%@。自然の中でリラックスしましょう。"),
+                indoor: String(localized: "%@の日は、静かな場所で心を落ち着けましょう。"),
+                neutral: String(localized: "%@。リラックスタイムを楽しんで。")
             )
         }
     }
