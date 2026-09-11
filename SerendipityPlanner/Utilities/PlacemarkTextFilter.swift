@@ -57,7 +57,9 @@ enum PlacemarkTextFilter {
 
         let latin = scripts.filter { $0 == .latin }.count
         let nonLatin = scripts.count - latin
-        if latin == nonLatin { return nil }
+        if latin == nonLatin {
+            return nil
+        }
         return latin > nonLatin ? .latin : .nonLatin
     }
 

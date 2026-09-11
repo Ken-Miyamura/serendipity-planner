@@ -1,4 +1,7 @@
 SCHEME = SerendipityPlanner
+# CI が固定しているツールのバージョン（.github/workflows/ci.yml と揃えること）
+SWIFTFORMAT_VERSION = 0.63.0
+SWIFTLINT_VERSION = 0.63.2
 DESTINATION = platform=iOS Simulator,name=iPhone 17 Pro
 SIMULATOR = iPhone 17 Pro
 BUNDLE_ID = com.serendipity.planner
@@ -12,6 +15,14 @@ setup:
 	@echo "Git hooks を設定しました (.githooks/)"
 	@command -v swiftformat > /dev/null || echo "swiftformat が未インストールです: brew install swiftformat"
 	@command -v swiftlint > /dev/null || echo "swiftlint が未インストールです: brew install swiftlint"
+	@# CI はバージョンを固定している（.github/workflows/ci.yml の env）。
+	@# ローカルが大きくずれると「ローカルは通るが CI で落ちる」が起きる。
+	@command -v swiftformat > /dev/null && \
+		[ "$$(swiftformat --version)" = "$(SWIFTFORMAT_VERSION)" ] || \
+		echo "  注意: swiftformat が CI ($(SWIFTFORMAT_VERSION)) と異なります: $$(swiftformat --version 2>/dev/null)"
+	@command -v swiftlint > /dev/null && \
+		[ "$$(swiftlint --version)" = "$(SWIFTLINT_VERSION)" ] || \
+		echo "  注意: swiftlint が CI ($(SWIFTLINT_VERSION)) と異なります: $$(swiftlint --version 2>/dev/null)"
 	@command -v xcodegen > /dev/null || echo "xcodegen が未インストールです: brew install xcodegen"
 	$(MAKE) generate
 	@echo "セットアップ完了"

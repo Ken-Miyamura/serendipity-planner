@@ -70,7 +70,11 @@ struct DestinationSearchView: View {
                 "場所を取得できませんでした",
                 isPresented: Binding(
                     get: { viewModel.resolveErrorMessage != nil },
-                    set: { if !$0 { viewModel.resolveErrorMessage = nil } }
+                    set: {
+                        if !$0 {
+                            viewModel.resolveErrorMessage = nil
+                        }
+                    }
                 )
             ) {
                 Button("OK", role: .cancel) {}

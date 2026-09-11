@@ -65,9 +65,13 @@ struct HomeView: View {
 
     private var useLightText: Bool {
         let period = TimePeriod.current()
-        if period.prefersLightText { return true }
+        if period.prefersLightText {
+            return true
+        }
         if period == .goldenHour,
-           viewModel.weather?.condition == .thunderstorm { return true }
+           viewModel.weather?.condition == .thunderstorm {
+            return true
+        }
         return false
     }
 

@@ -19,14 +19,18 @@ class MockCalendarService: CalendarServiceProtocol {
 
     func requestAccess() async throws -> Bool {
         requestAccessCallCount += 1
-        if let error = requestAccessError { throw error }
+        if let error = requestAccessError {
+            throw error
+        }
         return requestAccessResult
     }
 
     func addEvent(title: String, startDate: Date, endDate: Date, notes: String?) throws {
         addEventCallCount += 1
         addEventTitles.append(title)
-        if let error = addEventError { throw error }
+        if let error = addEventError {
+            throw error
+        }
     }
 
     func fetchFreeTimeSlots(
@@ -36,7 +40,9 @@ class MockCalendarService: CalendarServiceProtocol {
         activeHours: ActiveHoursPreference
     ) async throws -> [FreeTimeSlot] {
         fetchFreeSlotsCallCount += 1
-        if let error = fetchFreeSlotsError { throw error }
+        if let error = fetchFreeSlotsError {
+            throw error
+        }
         return freeTimeSlots
     }
 
@@ -46,7 +52,9 @@ class MockCalendarService: CalendarServiceProtocol {
         activeHours: ActiveHoursPreference
     ) async throws -> [FreeTimeSlot] {
         fetchFreeSlotsCallCount += 1
-        if let error = fetchFreeSlotsError { throw error }
+        if let error = fetchFreeSlotsError {
+            throw error
+        }
         return freeTimeSlots
     }
 }
@@ -60,7 +68,9 @@ class MockWeatherService: WeatherServiceProtocol {
 
     func fetchWeather(for city: String) async throws -> WeatherData {
         fetchWeatherCallCount += 1
-        if let error = weatherError { throw error }
+        if let error = weatherError {
+            throw error
+        }
         return weatherResult ?? WeatherData(
             temperature: 20.0, condition: .clear, description: "晴れ",
             humidity: 50, windSpeed: 3.0, fetchedAt: Date()
@@ -69,7 +79,9 @@ class MockWeatherService: WeatherServiceProtocol {
 
     func fetchWeather(latitude: Double, longitude: Double) async throws -> WeatherData {
         fetchWeatherCallCount += 1
-        if let error = weatherError { throw error }
+        if let error = weatherError {
+            throw error
+        }
         return weatherResult ?? WeatherData(
             temperature: 20.0, condition: .clear, description: "晴れ",
             humidity: 50, windSpeed: 3.0, fetchedAt: Date()
@@ -113,7 +125,9 @@ class MockNotificationService: NotificationServiceProtocol {
 
     func requestPermission() async throws -> Bool {
         requestPermissionCallCount += 1
-        if let error = requestPermissionError { throw error }
+        if let error = requestPermissionError {
+            throw error
+        }
         return requestPermissionResult
     }
 
