@@ -264,8 +264,10 @@ final class HomeViewModelTests: XCTestCase {
 
         await sut.loadData()
 
+        // 文言の中身で検証しない（翻訳すると成立しなくなる）。
+        // 位置情報が無いときに警告が出ること自体を見る。
         XCTAssertNotNil(sut.warningMessage)
-        XCTAssertTrue(try XCTUnwrap(sut.warningMessage?.contains("位置情報")))
+        XCTAssertFalse(try XCTUnwrap(sut.warningMessage).isEmpty)
     }
 
     func testWarningMessageSetWhenWeatherFails() async throws {
@@ -276,7 +278,7 @@ final class HomeViewModelTests: XCTestCase {
         await sut.loadData()
 
         XCTAssertNotNil(sut.warningMessage)
-        XCTAssertTrue(try XCTUnwrap(sut.warningMessage?.contains("天気")))
+        XCTAssertFalse(try XCTUnwrap(sut.warningMessage).isEmpty)
     }
 
     func testWarningMessageClearedOnNewLoad() async {

@@ -113,7 +113,11 @@ struct SuggestionDetailView: View, SkyTextStyling {
             viewModel.calendarAlertMessage ?? "",
             isPresented: Binding(
                 get: { viewModel.calendarAlertMessage != nil },
-                set: { if !$0 { viewModel.calendarAlertMessage = nil } }
+                set: {
+                    if !$0 {
+                        viewModel.calendarAlertMessage = nil
+                    }
+                }
             )
         ) {
             Button("OK", role: .cancel) {

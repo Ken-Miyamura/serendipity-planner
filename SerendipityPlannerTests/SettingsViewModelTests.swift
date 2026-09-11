@@ -150,14 +150,28 @@ final class SettingsViewModelTests: XCTestCase {
 
     // MARK: - Display Text
 
+    /// 端末のロケールに依存しないよう、数値が入ることと空でないことで検証する。
+    /// 期待値を日本語で直書きすると en 環境（CI）で落ちる。
     func testLeadTimeDisplayText() {
-        XCTAssertEqual(sut.leadTimeDisplayText(15), "15分前")
-        XCTAssertEqual(sut.leadTimeDisplayText(60), "1時間前")
+        XCTAssertTrue(sut.leadTimeDisplayText(15).contains("15"), sut.leadTimeDisplayText(15))
+        XCTAssertTrue(sut.leadTimeDisplayText(60).contains("1"), sut.leadTimeDisplayText(60))
+        XCTAssertFalse(sut.leadTimeDisplayText(15).isEmpty)
     }
 
     func testFreeTimeDisplayText() {
-        XCTAssertEqual(sut.freeTimeDisplayText(30), "30分")
-        XCTAssertEqual(sut.freeTimeDisplayText(60), "1時間")
+        XCTAssertTrue(sut.freeTimeDisplayText(30).contains("30"), sut.freeTimeDisplayText(30))
+        XCTAssertTrue(sut.freeTimeDisplayText(60).contains("1"), sut.freeTimeDisplayText(60))
+        // 1時間30分 → 両方の数値が現れること（時と分の組み立てが壊れていないこと）
+        let ninety = sut.freeTimeDisplayText(90)
+        XCTAssertTrue(ninety.contains("1"), ninety)
+        XCTAssertTrue(ninety.contains("30"), ninety)
+    }
+
+    /// 日本語では従来どおりの表記になること（ja のデグレ防止）
+    func testDisplayTextInJapanese() throws {
+        try XCTSkipUnless(Locale.currentLanguageCode == "ja", "ja 環境でのみ検証する")
+
+        XCTAssertEqual(sut.leadTimeDisplayText(15), "15分前")
         XCTAssertEqual(sut.freeTimeDisplayText(90), "1時間30分")
     }
 

@@ -164,13 +164,14 @@ final class OnboardingViewModelTests: XCTestCase {
 
     // MARK: - Permission Error Tests (Error Handling)
 
-    func testCalendarPermissionDeniedSetsError() async throws {
+    func testCalendarPermissionDeniedSetsError() async {
         mockCalendar.requestAccessResult = false
 
         await sut.requestCalendarPermission()
 
+        // どの権限のエラーかは文言ではなく型で判定する（#32 で導入）
         XCTAssertNotNil(sut.permissionError)
-        XCTAssertTrue(try XCTUnwrap(sut.permissionError?.contains("カレンダー")))
+        XCTAssertEqual(sut.permissionErrorKind, .calendar)
     }
 
     func testCalendarPermissionErrorSetsError() async {
@@ -181,13 +182,13 @@ final class OnboardingViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.permissionError)
     }
 
-    func testNotificationPermissionDeniedSetsError() async throws {
+    func testNotificationPermissionDeniedSetsError() async {
         mockNotification.requestPermissionResult = false
 
         await sut.requestNotificationPermission()
 
         XCTAssertNotNil(sut.permissionError)
-        XCTAssertTrue(try XCTUnwrap(sut.permissionError?.contains("通知")))
+        XCTAssertEqual(sut.permissionErrorKind, .notification)
     }
 
     func testPermissionErrorClearedOnRetry() async {

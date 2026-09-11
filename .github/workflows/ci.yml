@@ -16,6 +16,11 @@ jobs:
     runs-on: macos-14
     timeout-minutes: 20
 
+    env:
+      # ローカル開発環境と揃えること（Makefile の setup が案内するバージョン）
+      SWIFTFORMAT_VERSION: "0.63.0"
+      SWIFTLINT_VERSION: "0.63.2"
+
     steps:
       - uses: actions/checkout@v4
 
@@ -30,14 +35,30 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
 
+      # ツールはバージョンを固定する。brew install は常に最新を取るため、
+      # コードを変えていないのに新ルールが増えて突然 CI が落ちる
+      # （実際に SwiftFormat 0.63.0 の wrapIfStatementBodies で落ちた）。
+      # 上げるときはローカルも揃えて、意図的に上げること。
       - name: Install SwiftFormat
-        run: brew install swiftformat
+        run: |
+          curl -sL -o /tmp/swiftformat.zip \
+            https://github.com/nicklockwood/SwiftFormat/releases/download/${SWIFTFORMAT_VERSION}/swiftformat.zip
+          unzip -qo /tmp/swiftformat.zip -d /tmp/swiftformat
+          chmod +x /tmp/swiftformat/swiftformat
+          sudo mv /tmp/swiftformat/swiftformat /usr/local/bin/swiftformat
+          swiftformat --version
 
       - name: Check format
         run: swiftformat --lint .
 
       - name: Install SwiftLint
-        run: brew install swiftlint
+        run: |
+          curl -sL -o /tmp/swiftlint.zip \
+            https://github.com/realm/SwiftLint/releases/download/${SWIFTLINT_VERSION}/portable_swiftlint.zip
+          unzip -qo /tmp/swiftlint.zip -d /tmp/swiftlint
+          chmod +x /tmp/swiftlint/swiftlint
+          sudo mv /tmp/swiftlint/swiftlint /usr/local/bin/swiftlint
+          swiftlint --version
 
       - name: Lint
         run: swiftlint lint --strict
