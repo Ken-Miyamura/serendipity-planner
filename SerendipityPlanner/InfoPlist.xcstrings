@@ -16,6 +16,12 @@
             "state": "translated",
             "value": "Used to spot gaps in your schedule and suggest things to do."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일정에서 빈 시간을 찾아 할 만한 것을 추천하는 데 사용해요."
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
             "state": "translated",
             "value": "Used to spot gaps in your schedule and suggest things to do."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일정에서 빈 시간을 찾아 할 만한 것을 추천하는 데 사용해요."
+          }
         }
       }
     },
@@ -49,6 +61,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Used to suggest cafés, parks and other places near you."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "근처의 카페나 공원 같은 곳을 추천하는 데 사용해요."
           }
         }
       }

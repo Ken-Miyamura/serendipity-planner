@@ -16,6 +16,12 @@
             "state": "translated",
             "value": " nearby"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 주변에서"
+          }
         }
       }
     },
@@ -29,6 +35,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@"
+          }
+        },
+        "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "%@"
@@ -50,6 +62,12 @@
             "state": "translated",
             "value": "%@ (%@)"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (%@)"
+          }
         }
       }
     },
@@ -63,6 +81,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@"
+          }
+        },
+        "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "%@, %@"
@@ -84,6 +108,12 @@
             "state": "translated",
             "value": "%@, %@, add to %@"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@, %@에 추가"
+          }
         }
       }
     },
@@ -100,6 +130,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@, %lld times"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %lld회"
           }
         }
       }
@@ -118,6 +154,12 @@
             "state": "translated",
             "value": "%@, chosen %lld times"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %lld회 선택"
+          }
         }
       }
     },
@@ -134,6 +176,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@ — a good day to be out and browse."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 나들이하기 좋은 날, 구경하며 걸어 봐요."
           }
         }
       }
@@ -152,6 +200,12 @@
             "state": "translated",
             "value": "It's %@ — good weather for a walk."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 산책하기 좋은 날이에요."
+          }
         }
       }
     },
@@ -168,6 +222,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@. Why not see some art?"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 예술을 만나 보는 건 어때요?"
           }
         }
       }
@@ -186,6 +246,12 @@
             "state": "translated",
             "value": "It's %@ — art might spark something."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 예술에서 영감을 얻어 봐요."
+          }
         }
       }
     },
@@ -202,6 +268,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@. A café could be a nice pause."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 카페에서 잠시 쉬어 가요."
           }
         }
       }
@@ -220,6 +292,12 @@
             "state": "translated",
             "value": "It's %@. A good meal sounds right."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 맛있는 한 끼 어때요."
+          }
         }
       }
     },
@@ -236,6 +314,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@. A browse could be a nice change."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 구경하며 기분 전환해요."
           }
         }
       }
@@ -254,6 +338,12 @@
             "state": "translated",
             "value": "It's %@ — a terrace seat sounds nice."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 테라스 자리도 좋을 것 같아요."
+          }
         }
       }
     },
@@ -270,6 +360,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@. Time to slow down a little."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 느긋한 시간을 보내 봐요."
           }
         }
       }
@@ -288,6 +384,12 @@
             "state": "translated",
             "value": "It's %@ — great weather to get moving."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 몸을 움직이기 좋은 날씨예요."
+          }
         }
       }
     },
@@ -304,6 +406,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@. A film could be a good reset."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 영화 한 편으로 리프레시."
           }
         }
       }
@@ -322,6 +430,12 @@
             "state": "translated",
             "value": "It's %@ — a film could be worth catching."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 극장에서 좋은 작품을 만나 봐요."
+          }
         }
       }
     },
@@ -338,6 +452,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@. A short walk might clear your head."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 기분 전환 삼아 걸어 볼까요."
           }
         }
       }
@@ -356,6 +476,12 @@
             "state": "translated",
             "value": "It's %@ — a good day to go find something tasty."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 맛있는 걸 먹으러 나가 볼까요."
+          }
         }
       }
     },
@@ -372,6 +498,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@ — a good day to unwind outdoors."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 자연 속에서 편히 쉬어 가요."
           }
         }
       }
@@ -390,6 +522,12 @@
             "state": "translated",
             "value": "It's %@ — good weather for reading."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 책 읽기 좋은 날씨예요."
+          }
         }
       }
     },
@@ -406,6 +544,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@. A workout could refresh you."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 운동으로 개운하게 풀어 봐요."
           }
         }
       }
@@ -424,6 +568,12 @@
             "state": "translated",
             "value": "It's %@. Music could lift the mood."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 음악으로 기분을 올려 봐요."
+          }
         }
       }
     },
@@ -440,6 +590,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's %@ — a good day for music."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. 음악 듣기 좋은 날이에요."
           }
         }
       }
@@ -458,6 +614,12 @@
             "state": "translated",
             "value": "%@ from %@ · %@"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@에서 %@ · %@"
+          }
         }
       }
     },
@@ -471,6 +633,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@"
+          }
+        },
+        "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "%@, %@"
@@ -492,6 +660,12 @@
             "state": "translated",
             "value": "It's %@, but a short one should be fine."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@지만 잠깐이면 괜찮아요."
+          }
         }
       }
     },
@@ -508,6 +682,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Spare time in %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@에서 보내는 틈새 시간"
           }
         }
       }
@@ -526,6 +706,12 @@
             "state": "translated",
             "value": "You have free time at %@. How about %@?"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@에 여유 시간이 있어요. %@ 어때요?"
+          }
         }
       }
     },
@@ -542,6 +728,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "More %@ ideas"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 다른 추천"
           }
         }
       }
@@ -560,6 +752,12 @@
             "state": "translated",
             "value": "%@ outside — all the more reason for a cinema."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날일수록 극장에서 느긋하게."
+          }
         }
       }
     },
@@ -576,6 +774,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ outside — all the more reason for a museum."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날일수록 미술관에서 느긋하게."
           }
         }
       }
@@ -594,6 +798,12 @@
             "state": "translated",
             "value": "%@ outside, so somewhere warm and tasty."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날엔 따뜻한 가게에서 맛있는 걸로."
+          }
         }
       }
     },
@@ -610,6 +820,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ outside, so indoor movement it is."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날엔 실내에서 몸을 움직여요."
           }
         }
       }
@@ -628,6 +844,12 @@
             "state": "translated",
             "value": "%@ outside, so indoor shopping sounds good."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날엔 실내에서 쇼핑을 즐겨요."
+          }
         }
       }
     },
@@ -644,6 +866,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ outside, so a warm café sounds good."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날엔 따뜻한 카페에서 느긋하게."
           }
         }
       }
@@ -662,6 +890,12 @@
             "state": "translated",
             "value": "%@ outside, so somewhere quiet sounds good."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날엔 조용한 곳에서 마음을 가라앉혀요."
+          }
         }
       }
     },
@@ -678,6 +912,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@ outside, so a day to sink into music."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 날엔 음악에 푹 빠져 보아요."
           }
         }
       }
@@ -696,6 +936,12 @@
             "state": "translated",
             "value": "Open %@ in Maps"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지도에서 %@ 열기"
+          }
         }
       }
     },
@@ -713,6 +959,12 @@
             "state": "translated",
             "value": "Shows %@ in your maps app"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지도 앱에서 %@를 보여줘요"
+          }
         }
       }
     },
@@ -726,6 +978,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        },
+        "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "%@ · %@"
@@ -747,6 +1005,12 @@
             "state": "translated",
             "value": "%@ · suggesting %lld spots"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld곳 추천 중"
+          }
         }
       }
     },
@@ -764,6 +1028,12 @@
             "state": "translated",
             "value": "Suggestions around %@"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 주변에서 추천 중"
+          }
         }
       }
     },
@@ -777,6 +1047,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (%@)"
+          }
+        },
+        "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "%@ (%@)"
@@ -798,6 +1074,12 @@
             "state": "translated",
             "value": "%lld min"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld분"
+          }
         }
       }
     },
@@ -814,6 +1096,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld min before"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld분 전"
           }
         }
       }
@@ -832,6 +1120,12 @@
             "state": "translated",
             "value": "%lld times"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld회"
+          }
         }
       }
     },
@@ -848,6 +1142,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld hr"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld시간"
           }
         }
       }
@@ -866,6 +1166,12 @@
             "state": "translated",
             "value": "%lld hr %lld min"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld시간 %lld분"
+          }
         }
       }
     },
@@ -882,6 +1188,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld hr before"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld시간 전"
           }
         }
       }
@@ -900,6 +1212,12 @@
             "state": "translated",
             "value": "Pick at least three"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "세 개 이상 골라 주세요"
+          }
         }
       }
     },
@@ -916,6 +1234,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Apple Maps"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple 지도"
           }
         }
       }
@@ -934,6 +1258,12 @@
             "state": "translated",
             "value": "Finds places near you using GPS"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GPS로 주변 장소를 찾아요"
+          }
         }
       }
     },
@@ -950,6 +1280,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Picked up from GPS. Used for weather and nearby suggestions."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GPS로 가져와요. 날씨와 주변 추천에 써요."
           }
         }
       }
@@ -968,6 +1304,12 @@
             "state": "translated",
             "value": "Google Maps"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google 지도"
+          }
         }
       }
     },
@@ -985,6 +1327,12 @@
             "state": "translated",
             "value": "OK"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인"
+          }
         }
       }
     },
@@ -998,6 +1346,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serendipity"
+          }
+        },
+        "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "Serendipity"
@@ -1019,6 +1373,12 @@
             "state": "translated",
             "value": "Opens iOS Settings to change permissions"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 설정에서 권한을 바꿔요"
+          }
         }
       }
     },
@@ -1032,6 +1392,12 @@
           }
         },
         "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ", "
+          }
+        },
+        "ko": {
           "stringUnit": {
             "state": "translated",
             "value": ", "
@@ -1053,6 +1419,12 @@
             "state": "translated",
             "value": "No weather found for “%@”. Check the city name."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "‘%@’의 날씨를 찾을 수 없어요. 도시 이름을 확인해 주세요."
+          }
         }
       }
     },
@@ -1069,6 +1441,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ideas that suit\nwherever you happen to be."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금 있는 곳에 맞는\n추천을 찾아 드려요."
           }
         }
       }
@@ -1087,6 +1465,12 @@
             "state": "translated",
             "value": "Based on where you are"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금 있는 곳에 맞춰서"
+          }
         }
       }
     },
@@ -1103,6 +1487,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Learns what you like"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "취향을 익혀 가요"
           }
         }
       }
@@ -1121,6 +1511,12 @@
             "state": "translated",
             "value": "Lunch away from the usual spot. The afternoon tends to go better for it."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "늘 가던 곳 말고 다른 데서 점심을. 오후가 좀 더 수월해져요."
+          }
         }
       }
     },
@@ -1137,6 +1533,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Turn the odd empty half hour\ninto something worth remembering."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "그냥 비어 있던 삼십 분을\n기억에 남는 시간으로."
           }
         }
       }
@@ -1155,6 +1557,12 @@
             "state": "translated",
             "value": "That's the day done.\nHere's to a good one tomorrow"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘 하루 수고했어요.\n내일도 좋은 하루이기를"
+          }
         }
       }
     },
@@ -1171,6 +1579,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Good morning ☀️"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋은 아침이에요 ☀️"
           }
         }
       }
@@ -1189,6 +1603,12 @@
             "state": "translated",
             "value": "Good morning.\nHere's to a happy accident today"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋은 아침이에요.\n오늘 좋은 우연이 있기를"
+          }
         }
       }
     },
@@ -1205,6 +1625,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "A quiet corner"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "조용한 자리 하나"
           }
         }
       }
@@ -1223,6 +1649,12 @@
             "state": "translated",
             "value": "Somewhere still, away from the day. A garden or a quiet courtyard will do."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "하루에서 한 발 떨어진 곳으로. 절이나 고궁 정원이면 충분해요."
+          }
         }
       }
     },
@@ -1239,6 +1671,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favorites"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐겨찾기"
           }
         }
       }
@@ -1257,6 +1695,12 @@
             "state": "translated",
             "value": "Remove from favorites"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐겨찾기에서 삭제"
+          }
         }
       }
     },
@@ -1273,6 +1717,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "All saved suggestions will be deleted. This can't be undone."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저장한 추천이 모두 삭제돼요. 되돌릴 수 없어요."
           }
         }
       }
@@ -1291,6 +1741,12 @@
             "state": "translated",
             "value": "Deletes every suggestion you've saved."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "저장한 추천을 모두 지워요."
+          }
         }
       }
     },
@@ -1307,6 +1763,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Add to favorites"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐겨찾기에 추가"
           }
         }
       }
@@ -1325,6 +1787,12 @@
             "state": "translated",
             "value": "Settle in somewhere you like and focus. A change of setting can shake an idea loose."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋아하는 카페에서 집중해 봐요. 자리를 옮기면 생각이 트이기도 하니까요."
+          }
         }
       }
     },
@@ -1341,6 +1809,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favorite"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐겨찾기 상세"
           }
         }
       }
@@ -1359,6 +1833,12 @@
             "state": "translated",
             "value": "Put something you love on and let a café hour go by."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좋아하는 음악을 틀어 두고 카페에서 한 시간쯤 흘려보내요."
+          }
         }
       }
     },
@@ -1375,6 +1855,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No favorites yet"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아직 즐겨찾기가 없어요"
           }
         }
       }
@@ -1393,6 +1879,12 @@
             "state": "translated",
             "value": "Delete favorites"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐겨찾기 삭제"
+          }
         }
       }
     },
@@ -1409,6 +1901,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Small shops with a point of view. Something you'll keep might be in there."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "취향이 분명한 작은 가게들. 오래 쓸 물건이 있을지도 몰라요."
           }
         }
       }
@@ -1427,6 +1925,12 @@
             "state": "translated",
             "value": "Remove this favorite?"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 즐겨찾기를 삭제할까요?"
+          }
         }
       }
     },
@@ -1443,6 +1947,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No favorites in this category"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 분류에는 즐겨찾기가 없어요"
           }
         }
       }
@@ -1461,6 +1971,12 @@
             "state": "translated",
             "value": "Adds or removes this from your favorites"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐겨찾기에 넣거나 빼요"
+          }
         }
       }
     },
@@ -1477,6 +1993,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Removes this from your favorites"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐겨찾기에서 빼요"
           }
         }
       }
@@ -1495,6 +2017,12 @@
             "state": "translated",
             "value": "Take this one"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이걸로 정하기"
+          }
         }
       }
     },
@@ -1511,6 +2039,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nearby ideas"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 근처 추천"
           }
         }
       }
@@ -1529,6 +2063,12 @@
             "state": "translated",
             "value": "All"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "전체"
+          }
         }
       }
     },
@@ -1545,6 +2085,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "All picked from around %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "모두 %@ 주변에서 골랐어요"
           }
         }
       }
@@ -1563,6 +2109,12 @@
             "state": "translated",
             "value": "All history will be deleted. This can't be undone."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "모든 기록이 삭제돼요. 되돌릴 수 없어요."
+          }
         }
       }
     },
@@ -1579,6 +2131,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nothing here yet"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아직 아무것도 없어요"
           }
         }
       }
@@ -1597,6 +2155,12 @@
             "state": "translated",
             "value": "About"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앱 정보"
+          }
         }
       }
     },
@@ -1613,6 +2177,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Art"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "예술"
           }
         }
       }
@@ -1631,6 +2201,12 @@
             "state": "translated",
             "value": "Street art walk"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "거리 예술 산책"
+          }
         }
       }
     },
@@ -1647,6 +2223,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Window shopping"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아이쇼핑"
           }
         }
       }
@@ -1665,6 +2247,12 @@
             "state": "translated",
             "value": "Something went wrong"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "문제가 생겼어요"
+          }
         }
       }
     },
@@ -1681,6 +2269,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Search areas, stations, places"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지역, 역, 장소 검색"
           }
         }
       }
@@ -1699,6 +2293,12 @@
             "state": "translated",
             "value": "Off"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "끄기"
+          }
         }
       }
     },
@@ -1715,6 +2315,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "On"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "켜기"
           }
         }
       }
@@ -1733,6 +2339,12 @@
             "state": "translated",
             "value": "Café"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "카페"
+          }
         }
       }
     },
@@ -1749,6 +2361,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Coffee and something sweet"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "커피와 달콤한 한 조각"
           }
         }
       }
@@ -1767,6 +2385,12 @@
             "state": "translated",
             "value": "Work from a café"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "카페에서 작업하기"
+          }
         }
       }
     },
@@ -1783,6 +2407,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wander with your camera out. The ordinary street has more in it than you'd think."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "카메라를 들고 거리를 걸어 봐요. 평범한 골목에도 담고 싶은 순간이 있어요."
           }
         }
       }
@@ -1801,6 +2431,12 @@
             "state": "translated",
             "value": "Connect your calendar"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더 연결하기"
+          }
         }
       }
     },
@@ -1817,6 +2453,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lets you know when a gap opens up"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일정에 틈이 생기면 알려 드려요"
           }
         }
       }
@@ -1835,6 +2477,12 @@
             "state": "translated",
             "value": "Added to calendar"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더에 추가했어요"
+          }
         }
       }
     },
@@ -1851,6 +2499,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Couldn't request calendar access: %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더 권한을 요청하지 못했어요: %@"
           }
         }
       }
@@ -1869,6 +2523,12 @@
             "state": "translated",
             "value": "Calendar access was denied. You can turn it on in Settings."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더 접근이 거부되었어요. 설정에서 켜 주세요."
+          }
         }
       }
     },
@@ -1885,6 +2545,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Calendar access isn't allowed."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더 접근이 허용되지 않았어요."
           }
         }
       }
@@ -1903,6 +2569,12 @@
             "state": "translated",
             "value": "Calendar access isn't allowed. You can turn it on in Settings."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더 접근이 허용되지 않았어요. 설정에서 켜 주세요."
+          }
         }
       }
     },
@@ -1919,6 +2591,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Couldn't add to calendar"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더에 추가하지 못했어요"
           }
         }
       }
@@ -1937,6 +2615,12 @@
             "state": "translated",
             "value": "Couldn't load your calendar events."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더 일정을 불러오지 못했어요."
+          }
         }
       }
     },
@@ -1953,6 +2637,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cancel"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "취소"
           }
         }
       }
@@ -1971,6 +2661,12 @@
             "state": "translated",
             "value": "Gallery hop"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "갤러리 돌아보기"
+          }
         }
       }
     },
@@ -1987,6 +2683,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Food"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "맛집"
           }
         }
       }
@@ -2005,6 +2707,12 @@
             "state": "translated",
             "value": "Shopping"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "쇼핑"
+          }
         }
       }
     },
@@ -2021,6 +2729,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "A session at the gym"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "헬스장에서 한 세트"
           }
         }
       }
@@ -2039,6 +2753,12 @@
             "state": "translated",
             "value": "An easy run"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가볍게 달리기"
+          }
         }
       }
     },
@@ -2055,6 +2775,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Unwind properly"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "제대로 쉬어 가기"
           }
         }
       }
@@ -2073,6 +2799,12 @@
             "state": "translated",
             "value": "Let the tension out somewhere warm. Body first, the rest follows."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "따뜻한 곳에서 뭉친 걸 풀어요. 몸이 먼저, 나머지는 따라와요."
+          }
         }
       }
     },
@@ -2089,6 +2821,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Poke around a select shop"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "편집숍 둘러보기"
           }
         }
       }
@@ -2107,6 +2845,12 @@
             "state": "translated",
             "value": "Serendipity"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "세렌디피티"
+          }
         }
       }
     },
@@ -2123,6 +2867,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tap to change the filter"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "눌러서 필터 바꾸기"
           }
         }
       }
@@ -2141,6 +2891,12 @@
             "state": "translated",
             "value": "Tap to toggle"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "눌러서 전환"
+          }
         }
       }
     },
@@ -2157,6 +2913,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tap to search for a destination"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "눌러서 목적지 검색"
           }
         }
       }
@@ -2175,6 +2937,12 @@
             "state": "translated",
             "value": "Tap to select"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "눌러서 선택"
+          }
         }
       }
     },
@@ -2191,6 +2959,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tap to deselect"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "눌러서 선택 해제"
           }
         }
       }
@@ -2209,6 +2983,12 @@
             "state": "translated",
             "value": "Tries loading the data again"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "데이터를 다시 불러와요"
+          }
         }
       }
     },
@@ -2225,6 +3005,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Network error: %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "네트워크 오류: %@"
           }
         }
       }
@@ -2243,6 +3029,12 @@
             "state": "translated",
             "value": "Version"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "버전"
+          }
         }
       }
     },
@@ -2259,6 +3051,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fitness"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "운동"
           }
         }
       }
@@ -2277,6 +3075,12 @@
             "state": "translated",
             "value": "Photo walk"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진 산책"
+          }
         }
       }
     },
@@ -2293,6 +3097,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Open in browser"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "브라우저에서 열기"
           }
         }
       }
@@ -2311,6 +3121,12 @@
             "state": "translated",
             "value": "Privacy Policy"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "개인정보 처리방침"
+          }
         }
       }
     },
@@ -2327,6 +3143,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Planner"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "플래너"
           }
         }
       }
@@ -2345,6 +3167,12 @@
             "state": "translated",
             "value": "Home"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "홈"
+          }
         }
       }
     },
@@ -2361,6 +3189,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Open in Maps"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지도에서 열기"
           }
         }
       }
@@ -2379,6 +3213,12 @@
             "state": "translated",
             "value": "Open in a maps app"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지도 앱에서 열기"
+          }
         }
       }
     },
@@ -2395,6 +3235,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "An independent cinema"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "독립영화관에서"
           }
         }
       }
@@ -2413,6 +3259,12 @@
             "state": "translated",
             "value": "Small screens keep the good ones alive. Something unexpected is usually showing."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "작은 극장이 좋은 영화를 오래 걸어 둬요. 예상 밖의 작품을 만나기도 해요."
+          }
         }
       }
     },
@@ -2429,6 +3281,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yoga to loosen up"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "요가로 몸 풀기"
           }
         }
       }
@@ -2447,6 +3305,12 @@
             "state": "translated",
             "value": "Find your balance again. Stay with the breathing and let the rest settle."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "균형을 다시 잡아 봐요. 호흡에 집중하면 나머지는 가라앉아요."
+          }
         }
       }
     },
@@ -2463,6 +3327,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Catch some live music"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "라이브 보러 가기"
           }
         }
       }
@@ -2481,6 +3351,12 @@
             "state": "translated",
             "value": "Lunch somewhere else"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다른 데서 점심"
+          }
         }
       }
     },
@@ -2497,6 +3373,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Reset"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "초기화"
           }
         }
       }
@@ -2515,6 +3397,12 @@
             "state": "translated",
             "value": "Unwind"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴식"
+          }
         }
       }
     },
@@ -2531,6 +3419,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dig through the crates. The record you didn't know you wanted is in there somewhere."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "레코드를 한 장씩 넘기다 보면, 몰랐던 명반을 만나기도 해요."
           }
         }
       }
@@ -2549,6 +3443,12 @@
             "state": "translated",
             "value": "Record shop crawl"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "레코드숍 둘러보기"
+          }
         }
       }
     },
@@ -2565,6 +3465,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Unknown"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알 수 없음"
           }
         }
       }
@@ -2583,6 +3489,12 @@
             "state": "translated",
             "value": "We read your schedule to spot the gaps,\nthen suggest something that fits."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일정을 보고 틈을 찾아서\n거기에 맞는 걸 추천해요."
+          }
         }
       }
     },
@@ -2599,6 +3511,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Near you, in the gaps"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금 이곳에서, 틈새 시간에"
           }
         }
       }
@@ -2617,6 +3535,12 @@
             "state": "translated",
             "value": "Today"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘"
+          }
         }
       }
     },
@@ -2633,6 +3557,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Here's to a happy accident today"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘 좋은 우연이 있기를"
           }
         }
       }
@@ -2651,6 +3581,12 @@
             "state": "translated",
             "value": "Today's schedule"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘 일정"
+          }
         }
       }
     },
@@ -2667,6 +3603,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "There's still time today\nfor a bit of luck"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "남은 오늘 안에\n작은 행운 하나 찾아봐요"
           }
         }
       }
@@ -2685,6 +3627,12 @@
             "state": "translated",
             "value": "No free time today"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘은 여유 시간이 없어요"
+          }
         }
       }
     },
@@ -2701,6 +3649,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Looking for gaps in your day…"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘의 틈을 찾는 중…"
           }
         }
       }
@@ -2719,6 +3673,12 @@
             "state": "translated",
             "value": "You have %lld pockets of free time today. Tap to see what's on offer."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘 틈새 시간이 %lld개 있어요. 눌러서 추천을 확인해 보세요."
+          }
         }
       }
     },
@@ -2735,6 +3695,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Take it easy today"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘은 쉬엄쉬엄 보내요"
           }
         }
       }
@@ -2753,6 +3719,12 @@
             "state": "translated",
             "value": "This month"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이번 달 요약"
+          }
         }
       }
     },
@@ -2769,6 +3741,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Other ideas"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다른 추천"
           }
         }
       }
@@ -2787,6 +3765,12 @@
             "state": "translated",
             "value": "Weekend active hours"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "주말 활동 시간"
+          }
         }
       }
     },
@@ -2803,6 +3787,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Without your location, the weather is approximate"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위치를 알 수 없어 날씨는 대략치예요"
           }
         }
       }
@@ -2821,6 +3811,12 @@
             "state": "translated",
             "value": "Couldn't get your location: %@"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위치를 가져오지 못했어요: %@"
+          }
         }
       }
     },
@@ -2837,6 +3833,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Reset in a park"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "공원에서 숨 고르기"
           }
         }
       }
@@ -2855,6 +3857,12 @@
             "state": "translated",
             "value": "Try again"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다시 시도"
+          }
         }
       }
     },
@@ -2871,6 +3879,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Reload"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다시 불러오기"
           }
         }
       }
@@ -2889,6 +3903,12 @@
             "state": "translated",
             "value": "Delete"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제"
+          }
         }
       }
     },
@@ -2905,6 +3925,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Previous month"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지난달"
           }
         }
       }
@@ -2923,6 +3949,12 @@
             "state": "translated",
             "value": "Locating…"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "확인 중…"
+          }
         }
       }
     },
@@ -2939,6 +3971,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Deletes every suggestion you've taken. This can't be undone."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "수락한 추천 기록을 모두 지워요. 되돌릴 수 없어요."
           }
         }
       }
@@ -2957,6 +3995,12 @@
             "state": "translated",
             "value": "Taken"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "수락함"
+          }
         }
       }
     },
@@ -2973,6 +4017,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Accepted, %@, %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "수락함, %@, %@"
           }
         }
       }
@@ -2991,6 +4041,12 @@
             "state": "translated",
             "value": "Go looking for small nice things. One of them might come home with you."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "작고 예쁜 것들을 보러 나가요. 하나쯤 따라올지도 몰라요."
+          }
         }
       }
     },
@@ -3007,6 +4063,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld total"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "총 %lld회"
           }
         }
       }
@@ -3025,6 +4087,12 @@
             "state": "translated",
             "value": "Suggests places nearby"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "주변 장소를 추천해요"
+          }
         }
       }
     },
@@ -3041,6 +4109,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Slow hours at the library"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "도서관에서 느긋하게"
           }
         }
       }
@@ -3059,6 +4133,12 @@
             "state": "translated",
             "value": "Quiet time with a book. A shelf you'd normally walk past might surprise you."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "조용한 곳에서 책과 보내는 시간. 평소 안 보던 서가도 한번 들러 봐요."
+          }
         }
       }
     },
@@ -3075,6 +4155,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Couldn't load that place. Check your connection and try again."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "장소 정보를 불러오지 못했어요. 연결을 확인하고 다시 시도해 주세요."
           }
         }
       }
@@ -3093,6 +4179,12 @@
             "state": "translated",
             "value": "Couldn't get your location"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위치를 가져오지 못했어요"
+          }
         }
       }
     },
@@ -3109,6 +4201,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Checking your location"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위치를 확인하고 있어요"
           }
         }
       }
@@ -3127,6 +4225,12 @@
             "state": "translated",
             "value": "Checking your location…"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위치를 확인하고 있어요…"
+          }
         }
       }
     },
@@ -3143,6 +4247,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Change"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "바꾸기"
           }
         }
       }
@@ -3161,6 +4271,12 @@
             "state": "translated",
             "value": "Use Change to pick a different destination"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "바꾸기를 눌러 목적지를 다시 고를 수 있어요"
+          }
         }
       }
     },
@@ -3177,6 +4293,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No weather API key is set."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨 API 키가 설정되지 않았어요."
           }
         }
       }
@@ -3195,6 +4317,12 @@
             "state": "translated",
             "value": "Matched to weather and time of day"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨와 시간에 맞춘 추천"
+          }
         }
       }
     },
@@ -3211,6 +4339,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Couldn't read the weather data."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨 데이터를 읽지 못했어요."
           }
         }
       }
@@ -3229,6 +4363,12 @@
             "state": "translated",
             "value": "Couldn't load the weather, showing an estimate"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨를 불러오지 못해 대략치를 보여줘요"
+          }
         }
       }
     },
@@ -3245,6 +4385,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Couldn't load the weather"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨를 불러오지 못했어요"
           }
         }
       }
@@ -3263,6 +4409,12 @@
             "state": "translated",
             "value": "Reset preferences"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "취향 초기화"
+          }
         }
       }
     },
@@ -3279,6 +4431,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Learning"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "학습"
           }
         }
       }
@@ -3297,6 +4455,12 @@
             "state": "translated",
             "value": "Resetting clears what the app has learned about your preferences."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "초기화하면 앱이 익힌 취향이 지워져요."
+          }
         }
       }
     },
@@ -3313,6 +4477,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Drizzle"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이슬비"
           }
         }
       }
@@ -3331,6 +4501,12 @@
             "state": "translated",
             "value": "History"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기록"
+          }
         }
       }
     },
@@ -3347,6 +4523,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No history yet"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기록이 없어요"
           }
         }
       }
@@ -3365,6 +4547,12 @@
             "state": "translated",
             "value": "History"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기록"
+          }
         }
       }
     },
@@ -3381,6 +4569,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Delete history"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기록 삭제"
           }
         }
       }
@@ -3399,6 +4593,12 @@
             "state": "translated",
             "value": "Weekday active hours"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "평일 활동 시간"
+          }
         }
       }
     },
@@ -3415,6 +4615,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "You can change this later in Settings"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나중에 설정에서 바꿀 수 있어요"
           }
         }
       }
@@ -3433,6 +4639,12 @@
             "state": "translated",
             "value": "You can change this later in Settings"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나중에 설정에서 바꿀 수 있어요"
+          }
         }
       }
     },
@@ -3449,6 +4661,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld min walk"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "도보 %lld분"
           }
         }
       }
@@ -3467,6 +4685,12 @@
             "state": "translated",
             "value": "Suggestions"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추천 설정"
+          }
         }
       }
     },
@@ -3483,6 +4707,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Suggestion"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추천 상세"
           }
         }
       }
@@ -3501,6 +4731,12 @@
             "state": "translated",
             "value": "Tap the heart on a suggestion\nand it'll show up here."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추천에서 하트를 누르면\n여기에 모여요."
+          }
         }
       }
     },
@@ -3517,6 +4753,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Adds it to your calendar"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더에 추가해요"
           }
         }
       }
@@ -3535,6 +4777,12 @@
             "state": "translated",
             "value": "Added to your day"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일정에 추가했어요"
+          }
         }
       }
     },
@@ -3551,6 +4799,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "It's in your calendar. Enjoy it."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "캘린더에 담았어요. 즐거운 시간 보내요."
           }
         }
       }
@@ -3569,6 +4823,12 @@
             "state": "translated",
             "value": "Added to your day"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "일정에 추가했어요"
+          }
         }
       }
     },
@@ -3585,6 +4845,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Once you take a suggestion,\nit'll appear here."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추천을 수락하면\n여기에 남아요."
           }
         }
       }
@@ -3603,6 +4869,12 @@
             "state": "translated",
             "value": "Taking a suggestion nudges how often that category shows up."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추천을 수락하면 그 분류가 더 자주 나와요."
+          }
         }
       }
     },
@@ -3619,6 +4891,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Categories"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "분류"
           }
         }
       }
@@ -3637,6 +4915,12 @@
             "state": "translated",
             "value": "Walk"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "산책"
+          }
         }
       }
     },
@@ -3653,6 +4937,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Try somewhere new"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새로운 가게 가 보기"
           }
         }
       }
@@ -3671,6 +4961,12 @@
             "state": "translated",
             "value": "Tomorrow"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내일"
+          }
         }
       }
     },
@@ -3687,6 +4983,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Film"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "영화"
           }
         }
       }
@@ -3705,6 +5007,12 @@
             "state": "translated",
             "value": "Something new at the cinema"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "극장에서 새 영화"
+          }
         }
       }
     },
@@ -3721,6 +5029,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Clear"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "맑음"
           }
         }
       }
@@ -3739,6 +5053,12 @@
             "state": "translated",
             "value": "Cloudy"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "흐림"
+          }
         }
       }
     },
@@ -3755,6 +5075,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Minimum free time"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "최소 여유 시간"
           }
         }
       }
@@ -3773,6 +5099,12 @@
             "state": "translated",
             "value": "Recent searches"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "최근 검색"
+          }
         }
       }
     },
@@ -3789,6 +5121,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "on"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "켜짐"
           }
         }
       }
@@ -3807,6 +5145,12 @@
             "state": "translated",
             "value": "Morning summary"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아침 요약"
+          }
         }
       }
     },
@@ -3823,6 +5167,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Turn on the morning summary"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아침 요약 켜기"
           }
         }
       }
@@ -3841,6 +5191,12 @@
             "state": "translated",
             "value": "not selected"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "선택 안 됨"
+          }
         }
       }
     },
@@ -3857,6 +5213,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Clear search"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "검색 지우기"
           }
         }
       }
@@ -3875,6 +5237,12 @@
             "state": "translated",
             "value": "Searching…"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "검색 중…"
+          }
         }
       }
     },
@@ -3891,6 +5259,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Next month"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다음 달"
           }
         }
       }
@@ -3909,6 +5283,12 @@
             "state": "translated",
             "value": "Shows your next free slot and an idea for it"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다음 여유 시간과 추천을 보여줘요"
+          }
         }
       }
     },
@@ -3925,6 +5305,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Each morning, a note on how much free time you have."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아침마다 오늘 여유 시간이 얼마나 있는지 알려 드려요."
           }
         }
       }
@@ -3943,6 +5329,12 @@
             "state": "translated",
             "value": "That place you keep walking past. Today's as good a day as any."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지나치기만 했던 그 가게. 오늘이 가 볼 만한 날이에요."
+          }
         }
       }
     },
@@ -3959,6 +5351,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Time for the article you've been meaning to read. Something new might stick."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "미뤄 둔 글을 읽을 시간. 새로 남는 것이 있을지도 몰라요."
           }
         }
       }
@@ -3977,6 +5375,12 @@
             "state": "translated",
             "value": "Browse with nothing in particular in mind. Good for seeing what's around."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "딱히 살 것 없이 둘러봐요. 요즘 뭐가 있는지 보기에도 좋아요."
+          }
         }
       }
     },
@@ -3993,6 +5397,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Step outside for a bit. Take a street you don't usually take and see what turns up."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "잠깐 밖을 걸어 봐요. 늘 가던 길 말고 다른 골목으로 들어서면 뜻밖의 것이 보이기도 해요."
           }
         }
       }
@@ -4011,6 +5421,12 @@
             "state": "translated",
             "value": "Take it slow with something warm in hand. Trying a café you've never been to is half the fun."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "따뜻한 음료 한 잔과 함께 느긋한 시간을. 안 가 본 카페를 찾아보는 것도 좋아요."
+          }
         }
       }
     },
@@ -4027,6 +5443,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "off"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "꺼짐"
           }
         }
       }
@@ -4045,6 +5467,12 @@
             "state": "translated",
             "value": "That URL isn't valid."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "올바르지 않은 URL이에요."
+          }
         }
       }
     },
@@ -4061,6 +5489,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Your location"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치"
           }
         }
       }
@@ -4079,6 +5513,12 @@
             "state": "translated",
             "value": "About %@ from you"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치에서 약 %@"
+          }
         }
       }
     },
@@ -4095,6 +5535,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Use my location"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치 사용"
           }
         }
       }
@@ -4113,6 +5559,12 @@
             "state": "translated",
             "value": "Use your location"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치 사용하기"
+          }
         }
       }
     },
@@ -4129,6 +5581,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "You're in %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치 · %@"
           }
         }
       }
@@ -4147,6 +5605,12 @@
             "state": "translated",
             "value": "Suggesting near you"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치 주변에서 추천 중"
+          }
         }
       }
     },
@@ -4163,6 +5627,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Destination"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지"
           }
         }
       }
@@ -4181,6 +5651,12 @@
             "state": "translated",
             "value": "Destination, %@"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지, %@"
+          }
         }
       }
     },
@@ -4197,6 +5673,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Destination, %@, %@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지, %@, %@"
           }
         }
       }
@@ -4215,6 +5697,12 @@
             "state": "translated",
             "value": "Change destination"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지 바꾸기"
+          }
         }
       }
     },
@@ -4231,6 +5719,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pick a destination"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지 정하기"
           }
         }
       }
@@ -4249,6 +5743,12 @@
             "state": "translated",
             "value": "Pick a destination. Choose where you're headed and you'll get ideas for that area"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지 정하기. 갈 곳을 고르면 그 동네의 추천이 나와요"
+          }
         }
       }
     },
@@ -4265,6 +5765,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Clears the destination and goes back to where you are"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지를 지우고 현재 위치 기준으로 돌아가요"
           }
         }
       }
@@ -4283,6 +5789,12 @@
             "state": "translated",
             "value": "Choose a destination"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목적지 고르기"
+          }
         }
       }
     },
@@ -4299,6 +5811,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sit for a while"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "잠시 앉아 있기"
           }
         }
       }
@@ -4317,6 +5835,12 @@
             "state": "translated",
             "value": "A chance at that unread pile. Find somewhere quiet and disappear into it."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "쌓아 둔 책을 펼칠 기회예요. 조용한 곳에서 푹 빠져 봐요."
+          }
         }
       }
     },
@@ -4333,6 +5857,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No gaps in today's schedule.\nEven so — take a breath somewhere."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘은 빈 시간이 없네요.\n그래도 한 번쯤 크게 숨 쉬어요."
           }
         }
       }
@@ -4351,6 +5881,12 @@
             "state": "translated",
             "value": "No free time"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여유 시간 없음"
+          }
         }
       }
     },
@@ -4367,6 +5903,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Searches for free time again"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여유 시간을 다시 찾아요"
           }
         }
       }
@@ -4385,6 +5927,12 @@
             "state": "translated",
             "value": "A suggestion arrives\njust before your free time."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여유 시간이 시작되기 전에\n추천이 도착해요."
+          }
         }
       }
     },
@@ -4401,6 +5949,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sends a suggestion just before your free time starts."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여유 시간이 시작되기 전에 추천을 보내요."
           }
         }
       }
@@ -4419,6 +5973,12 @@
             "state": "translated",
             "value": "Finds your free time"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여유 시간을 찾아줘요"
+          }
         }
       }
     },
@@ -4435,6 +5995,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Enjoy it"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "즐거운 시간 보내요"
           }
         }
       }
@@ -4453,6 +6019,12 @@
             "state": "translated",
             "value": "End"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "종료"
+          }
         }
       }
     },
@@ -4469,6 +6041,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Give a few rooms your full attention. It's a good way to spend an hour."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "몇 개의 방만 천천히 봐도 좋아요. 시간을 잘 쓴 기분이 들어요."
           }
         }
       }
@@ -4487,6 +6065,12 @@
             "state": "translated",
             "value": "An hour at a museum"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "미술관에서 한 시간"
+          }
         }
       }
     },
@@ -4503,6 +6087,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "What you're into"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "관심 있는 것"
           }
         }
       }
@@ -4521,6 +6111,12 @@
             "state": "translated",
             "value": "Choose where you're headed and we'll find small surprises there"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "갈 곳을 고르면 그 동네의 작은 우연을 찾아 드려요"
+          }
         }
       }
     },
@@ -4537,6 +6133,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Work through a few small places on foot. Little finds, one bite at a time."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "걸으면서 작은 가게 몇 곳을 들러 봐요. 한 입씩 남는 즐거움이 있어요."
           }
         }
       }
@@ -4555,6 +6157,12 @@
             "state": "translated",
             "value": "Why not go looking for the public art and murals hiding around town?"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "거리 곳곳에 숨은 공공미술과 벽화를 찾아보는 건 어때요?"
+          }
         }
       }
     },
@@ -4571,6 +6179,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Settings"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "설정"
           }
         }
       }
@@ -4589,6 +6203,12 @@
             "state": "translated",
             "value": "Open Settings"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "설정 열기"
+          }
         }
       }
     },
@@ -4605,6 +6225,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Allowed"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "허용됨"
           }
         }
       }
@@ -4623,6 +6249,12 @@
             "state": "translated",
             "value": "Permission granted"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "권한이 허용되었어요"
+          }
         }
       }
     },
@@ -4639,6 +6271,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "See the film everyone's talking about, the way it was meant to be seen and heard."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "말 많은 그 영화, 큰 화면과 소리로 제대로 봐요."
           }
         }
       }
@@ -4657,6 +6295,12 @@
             "state": "translated",
             "value": "No matching places"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "해당하는 장소가 없어요"
+          }
         }
       }
     },
@@ -4673,6 +6317,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Details"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "상세"
           }
         }
       }
@@ -4691,6 +6341,12 @@
             "state": "translated",
             "value": "Reading"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "독서"
+          }
         }
       }
     },
@@ -4707,6 +6363,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Reading time"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "책 읽는 시간"
           }
         }
       }
@@ -4725,6 +6387,12 @@
             "state": "translated",
             "value": "An easy jog clears the head as much as the legs. Work up a decent sweat."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가볍게 달리면 다리보다 머리가 먼저 개운해져요. 기분 좋게 땀 흘려 봐요."
+          }
         }
       }
     },
@@ -4741,6 +6409,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "A pause at a nearby café"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가까운 카페에서 한숨 돌리기"
           }
         }
       }
@@ -4759,6 +6433,12 @@
             "state": "translated",
             "value": "Drop into a gallery nearby. A different way of seeing might follow you out."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가까운 갤러리에 들러 봐요. 다른 시선 하나를 얻어 나올지도 몰라요."
+          }
         }
       }
     },
@@ -4775,6 +6455,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Get moving at a gym nearby. Nothing quite matches how you feel afterwards."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가까운 헬스장에서 몸을 움직여요. 끝나고 나면 그 개운함이 남아요."
           }
         }
       }
@@ -4793,6 +6479,12 @@
             "state": "translated",
             "value": "Find a small venue nearby and hear something played in the room."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가까운 공연장에서 직접 연주되는 소리를 들어 봐요."
+          }
         }
       }
     },
@@ -4809,6 +6501,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Walk to a park nearby and let the green do its work. A few deep breaths go a long way."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가까운 공원까지 걸어가 초록 사이에서 쉬어 가요. 깊게 숨 쉬면 머리도 맑아져요."
           }
         }
       }
@@ -4827,6 +6525,12 @@
             "state": "translated",
             "value": "Looking for places nearby…"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "가까운 곳을 찾는 중…"
+          }
         }
       }
     },
@@ -4843,6 +6547,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "A wander round the block"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "동네 한 바퀴"
           }
         }
       }
@@ -4861,6 +6571,12 @@
             "state": "translated",
             "value": "Added %@"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추가한 날: %@"
+          }
         }
       }
     },
@@ -4877,6 +6593,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notifications"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림"
           }
         }
       }
@@ -4895,6 +6617,12 @@
             "state": "translated",
             "value": "Notifications were denied. You can turn them on in Settings."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림이 거부되었어요. 설정에서 켜 주세요."
+          }
         }
       }
     },
@@ -4911,6 +6639,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Get a nudge"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림으로 알려 드려요"
           }
         }
       }
@@ -4929,6 +6663,12 @@
             "state": "translated",
             "value": "Couldn't request notification access: %@"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림 권한을 요청하지 못했어요: %@"
+          }
         }
       }
     },
@@ -4945,6 +6685,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Turn on notifications"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림 켜기"
           }
         }
       }
@@ -4963,6 +6709,12 @@
             "state": "translated",
             "value": "When to notify"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림 시점"
+          }
         }
       }
     },
@@ -4979,6 +6731,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Time"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시각"
           }
         }
       }
@@ -4997,6 +6755,12 @@
             "state": "translated",
             "value": "Notifications"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림 설정"
+          }
         }
       }
     },
@@ -5013,6 +6777,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "selected"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "선택됨"
           }
         }
       }
@@ -5031,6 +6801,12 @@
             "state": "translated",
             "value": "Close"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "닫기"
+          }
         }
       }
     },
@@ -5047,6 +6823,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Start"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시작"
           }
         }
       }
@@ -5065,6 +6847,12 @@
             "state": "translated",
             "value": "Notify before free time"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여유 시간 전에 알림"
+          }
         }
       }
     },
@@ -5081,6 +6869,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Before free time"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "여유 시간 전 알림"
           }
         }
       }
@@ -5099,6 +6893,12 @@
             "state": "translated",
             "value": "Magazines and long reads"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "잡지와 긴 글 읽기"
+          }
         }
       }
     },
@@ -5115,6 +6915,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Homeware and odds and ends"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "소품숍 구경하기"
           }
         }
       }
@@ -5133,6 +6939,12 @@
             "state": "translated",
             "value": "Rain"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "비"
+          }
         }
       }
     },
@@ -5149,6 +6961,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Snow"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "눈"
           }
         }
       }
@@ -5167,6 +6985,12 @@
             "state": "translated",
             "value": "Thunderstorm"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "뇌우"
+          }
         }
       }
     },
@@ -5183,6 +7007,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fog"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "안개"
           }
         }
       }
@@ -5201,6 +7031,12 @@
             "state": "translated",
             "value": "Find somewhere quiet and just breathe. Ten minutes is enough to clear things."
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "조용한 곳에서 그냥 숨만 쉬어 봐요. 십 분이면 충분해요."
+          }
         }
       }
     },
@@ -5217,6 +7053,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Music"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "음악"
           }
         }
       }
@@ -5235,6 +7077,12 @@
             "state": "translated",
             "value": "A café with good music"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "음악 좋은 카페에서"
+          }
         }
       }
     },
@@ -5252,6 +7100,12 @@
             "state": "translated",
             "value": "You've earned it. Why not a good coffee and something sweet?"
           }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘 애쓴 나에게. 맛있는 디저트와 커피 어때요?"
+          }
         }
       }
     },
@@ -5268,6 +7122,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Taste your way around"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "맛집 이어서 걷기"
           }
         }
       }
