@@ -47,18 +47,54 @@ final class StringCatalogTests: XCTestCase {
         XCTAssertEqual(englishBundle.localizedString(forKey: "お気に入り", value: nil, table: nil), "Favorites")
     }
 
-    /// 英語訳に日本語が残っていないこと（訳し忘れの検出）。
+    /// 韓国語が解決されること（#36）
+    func testKoreanTranslationsResolve() throws {
+        let path = try XCTUnwrap(Bundle.main.path(forResource: "ko", ofType: "lproj"))
+        let ko = try XCTUnwrap(Bundle(path: path))
+
+        XCTAssertEqual(ko.localizedString(forKey: "今日", value: nil, table: nil), "오늘")
+        XCTAssertEqual(ko.localizedString(forKey: "設定", value: nil, table: nil), "설정")
+        XCTAssertEqual(ko.localizedString(forKey: "お気に入り", value: nil, table: nil), "즐겨찾기")
+    }
+
+    /// 訳に日本語が残っていないこと（訳し忘れの検出）。
     /// 固有名詞（Serendipity など）は原文と同じでよいので、日本語文字の有無で見る。
-    func testNoJapaneseLeftInEnglish() throws {
-        let url = try XCTUnwrap(Bundle.main.url(forResource: "Localizable", withExtension: "strings", subdirectory: "en.lproj"))
-        let dict = try XCTUnwrap(NSDictionary(contentsOf: url) as? [String: String])
-
+    func testNoJapaneseLeftInTranslations() throws {
+        // 固有名詞（Serendipity など）は原文と同じでよいので、日本語文字の有無で見る
         let japanese = try NSRegularExpression(pattern: "[\\p{Hiragana}\\p{Katakana}\\p{Han}]")
-        let leftovers = dict.filter { _, value in
-            japanese.firstMatch(in: value, range: NSRange(value.startIndex..., in: value)) != nil
-        }
 
-        XCTAssertTrue(leftovers.isEmpty, "英語訳に日本語が残っている: \(leftovers.keys.sorted())")
+        for lang in translatedLanguages {
+            let url = try XCTUnwrap(
+                Bundle.main.url(forResource: "Localizable", withExtension: "strings", subdirectory: "\(lang).lproj"),
+                "\(lang).lproj が無い"
+            )
+            let dict = try XCTUnwrap(NSDictionary(contentsOf: url) as? [String: String])
+
+            let leftovers = dict.filter { _, value in
+                japanese.firstMatch(in: value, range: NSRange(value.startIndex..., in: value)) != nil
+            }
+            XCTAssertTrue(leftovers.isEmpty, "\(lang) の訳に日本語が残っている: \(leftovers.keys.sorted())")
+        }
+    }
+
+    /// 翻訳済みの言語すべてで、キーの取りこぼしが無いこと
+    func testNoMissingKeysInTranslations() throws {
+        let jaPath = try XCTUnwrap(Bundle.main.path(forResource: "ja", ofType: "lproj"))
+        let jaURL = try XCTUnwrap(URL(string: "file://" + jaPath + "/Localizable.strings"))
+        let jaKeys = try Set(XCTUnwrap(NSDictionary(contentsOf: jaURL) as? [String: String]).keys)
+
+        for lang in translatedLanguages {
+            let url = try XCTUnwrap(
+                Bundle.main.url(forResource: "Localizable", withExtension: "strings", subdirectory: "\(lang).lproj")
+            )
+            let keys = try Set(XCTUnwrap(NSDictionary(contentsOf: url) as? [String: String]).keys)
+            XCTAssertTrue(jaKeys.subtracting(keys).isEmpty, "\(lang) に未訳キー: \(jaKeys.subtracting(keys).sorted())")
+        }
+    }
+
+    /// 翻訳を投入済みの言語。新しい言語を入れたらここに足す。
+    private var translatedLanguages: [String] {
+        ["en", "ko"]
     }
 
     // MARK: - 翻訳後に壊れるロジックの防止
