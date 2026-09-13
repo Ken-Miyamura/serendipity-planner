@@ -48,6 +48,16 @@ final class StringCatalogTests: XCTestCase {
     }
 
     /// 韓国語が解決されること（#36）
+    /// スペイン語が解決されること（#36）
+    func testSpanishTranslationsResolve() throws {
+        let path = try XCTUnwrap(Bundle.main.path(forResource: "es", ofType: "lproj"))
+        let es = try XCTUnwrap(Bundle(path: path))
+
+        XCTAssertEqual(es.localizedString(forKey: "今日", value: nil, table: nil), "Hoy")
+        XCTAssertEqual(es.localizedString(forKey: "設定", value: nil, table: nil), "Ajustes")
+        XCTAssertEqual(es.localizedString(forKey: "お気に入り", value: nil, table: nil), "Favoritos")
+    }
+
     func testKoreanTranslationsResolve() throws {
         let path = try XCTUnwrap(Bundle.main.path(forResource: "ko", ofType: "lproj"))
         let ko = try XCTUnwrap(Bundle(path: path))
@@ -94,7 +104,7 @@ final class StringCatalogTests: XCTestCase {
 
     /// 翻訳を投入済みの言語。新しい言語を入れたらここに足す。
     private var translatedLanguages: [String] {
-        ["en", "ko"]
+        ["en", "ko", "es"]
     }
 
     // MARK: - 翻訳後に壊れるロジックの防止

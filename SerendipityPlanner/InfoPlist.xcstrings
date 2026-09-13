@@ -22,6 +22,12 @@
             "state": "translated",
             "value": "일정에서 빈 시간을 찾아 할 만한 것을 추천하는 데 사용해요."
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se usa para detectar huecos en tu agenda y sugerirte cosas que hacer."
+          }
         }
       }
     },
@@ -45,6 +51,12 @@
             "state": "translated",
             "value": "일정에서 빈 시간을 찾아 할 만한 것을 추천하는 데 사용해요."
           }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se usa para detectar huecos en tu agenda y sugerirte cosas que hacer."
+          }
         }
       }
     },
@@ -67,6 +79,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "근처의 카페나 공원 같은 곳을 추천하는 데 사용해요."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se usa para sugerirte cafeterías, parques y otros sitios cerca de ti."
           }
         }
       }
