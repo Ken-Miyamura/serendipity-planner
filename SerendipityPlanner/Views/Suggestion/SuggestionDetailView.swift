@@ -338,9 +338,12 @@ private extension SuggestionDetailView {
         .accessibilityLabel(destination.map { "\($0.name)周辺から提案中" } ?? "現在地周辺から提案中")
     }
 
-    /// 距離表記の基点ラベル（目的地名 or 現在地）
+    /// 距離表記の基点ラベル（目的地名 or 現在地）。
+    ///
+    /// String を返すため SwiftUI の自動ローカライズが効かない。
+    /// String(localized:) で明示的に引く必要がある。
     var placeReferenceName: String {
-        destination?.name ?? "現在地"
+        destination?.name ?? String(localized: "現在地")
     }
 
     func mapPreview(for place: NearbyPlace) -> some View {

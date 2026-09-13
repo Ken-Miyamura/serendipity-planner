@@ -18,7 +18,7 @@ class NotificationService: NotificationServiceProtocol {
         leadTimeMinutes: Int = Constants.Notification.defaultLeadTimeMinutes
     ) {
         let content = UNMutableNotificationContent()
-        content.title = "セレンディピティ"
+        content.title = String(localized: "セレンディピティ")
         content.body = String(localized: "\(suggestion.freeTimeSlot.timeRangeText)に空き時間があります。\(suggestion.title)はいかがですか？")
         content.sound = .default
         content.categoryIdentifier = Constants.Notification.categoryIdentifier
