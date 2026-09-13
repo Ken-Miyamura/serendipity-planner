@@ -154,7 +154,7 @@ class WeatherService: WeatherServiceProtocol {
         WeatherData(
             temperature: 18.5,
             condition: .clear,
-            description: "晴れ",
+            description: String(localized: "晴れ"),
             humidity: 45,
             windSpeed: 3.2,
             fetchedAt: Date()

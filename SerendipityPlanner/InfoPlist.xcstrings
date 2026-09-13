@@ -28,6 +28,12 @@
             "state": "translated",
             "value": "Se usa para detectar huecos en tu agenda y sugerirte cosas que hacer."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sert à repérer les creux dans ton agenda et à te proposer des idées."
+          }
         }
       }
     },
@@ -57,6 +63,12 @@
             "state": "translated",
             "value": "Se usa para detectar huecos en tu agenda y sugerirte cosas que hacer."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sert à repérer les creux dans ton agenda et à te proposer des idées."
+          }
         }
       }
     },
@@ -85,6 +97,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se usa para sugerirte cafeterías, parques y otros sitios cerca de ti."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sert à te proposer des cafés, des parcs et d'autres lieux près de toi."
           }
         }
       }

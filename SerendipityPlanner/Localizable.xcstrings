@@ -28,6 +28,12 @@
             "state": "translated",
             "value": " cerca"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " à proximité"
+          }
         }
       }
     },
@@ -53,6 +59,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "%@"
@@ -86,6 +98,12 @@
             "state": "translated",
             "value": "%@ (%@)"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (%@)"
+          }
         }
       }
     },
@@ -111,6 +129,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "%@, %@"
@@ -144,6 +168,12 @@
             "state": "translated",
             "value": "%@, %@, añadir a %@"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@, ajouter à %@"
+          }
         }
       }
     },
@@ -172,6 +202,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@, %lld veces"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %lld fois"
           }
         }
       }
@@ -202,6 +238,12 @@
             "state": "translated",
             "value": "%@, elegido %lld veces"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, choisi %lld fois"
+          }
         }
       }
     },
@@ -230,6 +272,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Buen día para salir a mirar tiendas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Bonne journée pour sortir flâner."
           }
         }
       }
@@ -260,6 +308,12 @@
             "state": "translated",
             "value": "%@. Buen día para caminar."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Le temps idéal pour marcher."
+          }
         }
       }
     },
@@ -288,6 +342,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. ¿Y si ves algo de arte?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Et si tu allais voir de l'art ?"
           }
         }
       }
@@ -318,6 +378,12 @@
             "state": "translated",
             "value": "%@. El arte puede encender algo."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. L'art peut déclencher quelque chose."
+          }
         }
       }
     },
@@ -346,6 +412,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Un café puede venir bien."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Un café, le temps de souffler."
           }
         }
       }
@@ -376,6 +448,12 @@
             "state": "translated",
             "value": "%@. Una buena comida apetece."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Un bon repas, ça tombe bien."
+          }
         }
       }
     },
@@ -404,6 +482,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Dar una vuelta por las tiendas despeja."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Une virée boutiques, ça change les idées."
           }
         }
       }
@@ -434,6 +518,12 @@
             "state": "translated",
             "value": "%@. La terraza tiene buena pinta."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. La terrasse a l'air agréable."
+          }
         }
       }
     },
@@ -462,6 +552,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Toca bajar el ritmo un poco."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Le moment de lever le pied."
           }
         }
       }
@@ -492,6 +588,12 @@
             "state": "translated",
             "value": "%@. Buen tiempo para moverse."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Le temps idéal pour bouger."
+          }
         }
       }
     },
@@ -520,6 +622,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Una peli despeja."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Un film, ça remet les compteurs à zéro."
           }
         }
       }
@@ -550,6 +658,12 @@
             "state": "translated",
             "value": "%@. Una peli puede merecer la pena."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Un film pourrait valoir le détour."
+          }
         }
       }
     },
@@ -578,6 +692,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Un paseo despeja la cabeza."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Une marche, ça éclaircit les idées."
           }
         }
       }
@@ -608,6 +728,12 @@
             "state": "translated",
             "value": "%@. Buen día para salir a comer algo rico."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Bonne journée pour aller manger quelque chose de bon."
+          }
         }
       }
     },
@@ -636,6 +762,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Buen día para respirar al aire libre."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Bonne journée pour souffler dehors."
           }
         }
       }
@@ -666,6 +798,12 @@
             "state": "translated",
             "value": "%@. Buen tiempo para leer."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Le temps parfait pour lire."
+          }
         }
       }
     },
@@ -694,6 +832,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Algo de ejercicio sienta bien."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Un peu de sport, ça remet d'aplomb."
           }
         }
       }
@@ -724,6 +868,12 @@
             "state": "translated",
             "value": "%@. La música levanta el ánimo."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. La musique remonte le moral."
+          }
         }
       }
     },
@@ -752,6 +902,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%@. Buen día para la música."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@. Une bonne journée pour la musique."
           }
         }
       }
@@ -782,6 +938,12 @@
             "state": "translated",
             "value": "%@ desde %@ · %@"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ depuis %@ · %@"
+          }
         }
       }
     },
@@ -807,6 +969,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, %@"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "%@, %@"
@@ -840,6 +1008,12 @@
             "state": "translated",
             "value": "%@, pero un rato corto se lleva bien."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, mais un petit tour reste faisable."
+          }
         }
       }
     },
@@ -868,6 +1042,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Un rato libre en %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un moment libre à %@"
           }
         }
       }
@@ -898,6 +1078,12 @@
             "state": "translated",
             "value": "Tienes un hueco a las %@. ¿Y si %@?"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu as un creux à %@. Et si tu %@ ?"
+          }
         }
       }
     },
@@ -926,6 +1112,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Más ideas de %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autres idées de %@"
           }
         }
       }
@@ -956,6 +1148,12 @@
             "state": "translated",
             "value": "Con %@, más razón para ir al cine."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, raison de plus pour aller au cinéma."
+          }
         }
       }
     },
@@ -984,6 +1182,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Con %@, más razón para un museo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, raison de plus pour un musée."
           }
         }
       }
@@ -1014,6 +1218,12 @@
             "state": "translated",
             "value": "Con %@, un sitio calentito y buena comida."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, un endroit chaleureux et de quoi bien manger."
+          }
         }
       }
     },
@@ -1042,6 +1252,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Con %@, mejor moverse bajo techo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, autant bouger à l'intérieur."
           }
         }
       }
@@ -1072,6 +1288,12 @@
             "state": "translated",
             "value": "Con %@, mejor mirar tiendas bajo techo."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, autant flâner à l'abri."
+          }
         }
       }
     },
@@ -1100,6 +1322,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Con %@, apetece un café calentito."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, un café au chaud ferait du bien."
           }
         }
       }
@@ -1130,6 +1358,12 @@
             "state": "translated",
             "value": "Con %@, mejor un sitio tranquilo."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, un endroit calme ferait du bien."
+          }
         }
       }
     },
@@ -1158,6 +1392,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Con %@, un día para perderse en la música."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avec ce %@, une journée à se plonger dans la musique."
           }
         }
       }
@@ -1188,6 +1428,12 @@
             "state": "translated",
             "value": "Abrir %@ en Mapas"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir %@ dans Plans"
+          }
         }
       }
     },
@@ -1217,6 +1463,12 @@
             "state": "translated",
             "value": "Muestra %@ en tu app de mapas"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Affiche %@ dans ton app de cartes"
+          }
         }
       }
     },
@@ -1242,6 +1494,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %@"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "%@ · %@"
@@ -1275,6 +1533,12 @@
             "state": "translated",
             "value": "%@ · %lld sitios sugeridos"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld lieux proposés"
+          }
         }
       }
     },
@@ -1304,6 +1568,12 @@
             "state": "translated",
             "value": "Ideas cerca de %@"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idées autour de %@"
+          }
         }
       }
     },
@@ -1329,6 +1599,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ (%@)"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "%@ (%@)"
@@ -1362,6 +1638,12 @@
             "state": "translated",
             "value": "%lld min"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min"
+          }
         }
       }
     },
@@ -1390,6 +1672,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld min antes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min avant"
           }
         }
       }
@@ -1420,6 +1708,12 @@
             "state": "translated",
             "value": "%lld veces"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld fois"
+          }
         }
       }
     },
@@ -1445,6 +1739,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld h"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "%lld h"
@@ -1478,6 +1778,12 @@
             "state": "translated",
             "value": "%lld h %lld min"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld h %lld min"
+          }
         }
       }
     },
@@ -1506,6 +1812,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld h antes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld h avant"
           }
         }
       }
@@ -1536,6 +1848,12 @@
             "state": "translated",
             "value": "Elige al menos tres"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisis-en au moins trois"
+          }
         }
       }
     },
@@ -1564,6 +1882,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Apple Maps"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plans"
           }
         }
       }
@@ -1594,6 +1918,12 @@
             "state": "translated",
             "value": "Busca sitios cerca con el GPS"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cherche des lieux près de toi avec le GPS"
+          }
         }
       }
     },
@@ -1623,6 +1953,12 @@
             "state": "translated",
             "value": "Se obtiene del GPS. Se usa para el tiempo y las sugerencias cercanas."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Récupérée via le GPS. Sert à la météo et aux suggestions à proximité."
+          }
         }
       }
     },
@@ -1648,6 +1984,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Maps"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "Google Maps"
@@ -1681,6 +2023,12 @@
             "state": "translated",
             "value": "OK"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
         }
       }
     },
@@ -1706,6 +2054,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serendipity"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "Serendipity"
@@ -1739,6 +2093,12 @@
             "state": "translated",
             "value": "Abre Ajustes de iOS para cambiar permisos"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvre les Réglages iOS pour changer les autorisations"
+          }
         }
       }
     },
@@ -1764,6 +2124,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ", "
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": ", "
@@ -1797,6 +2163,12 @@
             "state": "translated",
             "value": "No hay datos del tiempo para «%@». Revisa el nombre de la ciudad."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucune météo trouvée pour « %@ ». Vérifie le nom de la ville."
+          }
         }
       }
     },
@@ -1825,6 +2197,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ideas que encajan\ncon donde estés."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Des idées adaptées\nà l'endroit où tu te trouves."
           }
         }
       }
@@ -1855,6 +2233,12 @@
             "state": "translated",
             "value": "Según dónde estés"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selon l'endroit où tu es"
+          }
         }
       }
     },
@@ -1883,6 +2267,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aprende lo que te gusta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apprend ce que tu aimes"
           }
         }
       }
@@ -1913,6 +2303,12 @@
             "state": "translated",
             "value": "Come fuera del sitio de siempre. La tarde suele ir mejor."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Déjeune ailleurs que d'habitude. L'après-midi passe souvent mieux."
+          }
         }
       }
     },
@@ -1941,6 +2337,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Convierte esa media hora vacía\nen algo que merezca recordarse."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transforme cette demi-heure vide\nen quelque chose dont on se souvient."
           }
         }
       }
@@ -1971,6 +2373,12 @@
             "state": "translated",
             "value": "Día terminado.\nQue mañana sea uno bueno"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La journée est finie.\nQue demain soit aussi une belle journée"
+          }
         }
       }
     },
@@ -1999,6 +2407,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buenos días ☀️"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonjour ☀️"
           }
         }
       }
@@ -2029,6 +2443,12 @@
             "state": "translated",
             "value": "Buenos días.\nQue hoy te pase algo bueno por casualidad"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonjour.\nQu'un beau hasard croise ta route aujourd'hui"
+          }
         }
       }
     },
@@ -2057,6 +2477,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Un rincón tranquilo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un coin tranquille"
           }
         }
       }
@@ -2087,6 +2513,12 @@
             "state": "translated",
             "value": "Un sitio en calma, lejos del día. Un jardín o el claustro de una iglesia sirven."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un endroit calme, à l'écart de la journée. Un jardin ou le cloître d'une église suffit."
+          }
         }
       }
     },
@@ -2115,6 +2547,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favoritos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favoris"
           }
         }
       }
@@ -2145,6 +2583,12 @@
             "state": "translated",
             "value": "Quitar de favoritos"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retirer des favoris"
+          }
         }
       }
     },
@@ -2173,6 +2617,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se eliminarán todas las sugerencias guardadas. No se puede deshacer."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toutes les suggestions enregistrées seront supprimées. Action irréversible."
           }
         }
       }
@@ -2203,6 +2653,12 @@
             "state": "translated",
             "value": "Elimina todas las sugerencias guardadas."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprime toutes les suggestions enregistrées."
+          }
         }
       }
     },
@@ -2231,6 +2687,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Añadir a favoritos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouter aux favoris"
           }
         }
       }
@@ -2261,6 +2723,12 @@
             "state": "translated",
             "value": "Instálate en uno que te guste y concéntrate. Cambiar de sitio suele soltar alguna idea."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installe-toi dans un endroit que tu aimes. Changer de cadre fait souvent surgir une idée."
+          }
         }
       }
     },
@@ -2289,6 +2757,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Favorito"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favori"
           }
         }
       }
@@ -2319,6 +2793,12 @@
             "state": "translated",
             "value": "Pon algo que te guste y deja pasar una hora de café."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mets ce que tu aimes et laisse filer une heure au café."
+          }
         }
       }
     },
@@ -2347,6 +2827,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aún no tienes favoritos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas encore de favoris"
           }
         }
       }
@@ -2377,6 +2863,12 @@
             "state": "translated",
             "value": "Eliminar favoritos"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer les favoris"
+          }
         }
       }
     },
@@ -2405,6 +2897,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tiendas con criterio propio. Igual encuentras algo que te dure."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Des boutiques avec un vrai parti pris. Tu pourrais y trouver quelque chose qui dure."
           }
         }
       }
@@ -2435,6 +2933,12 @@
             "state": "translated",
             "value": "¿Quitar este favorito?"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retirer ce favori ?"
+          }
         }
       }
     },
@@ -2463,6 +2967,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No hay favoritos en esta categoría"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucun favori dans cette catégorie"
           }
         }
       }
@@ -2493,6 +3003,12 @@
             "state": "translated",
             "value": "Añade o quita esto de tus favoritos"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajoute ou retire ceci de tes favoris"
+          }
         }
       }
     },
@@ -2521,6 +3037,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lo quita de tus favoritos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le retire de tes favoris"
           }
         }
       }
@@ -2551,6 +3073,12 @@
             "state": "translated",
             "value": "Me quedo con esta"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je prends celle-ci"
+          }
         }
       }
     },
@@ -2579,6 +3107,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ideas por aquí cerca"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idées dans le coin"
           }
         }
       }
@@ -2609,6 +3143,12 @@
             "state": "translated",
             "value": "Todo"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout"
+          }
         }
       }
     },
@@ -2637,6 +3177,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Todo elegido cerca de %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout choisi autour de %@"
           }
         }
       }
@@ -2667,6 +3213,12 @@
             "state": "translated",
             "value": "Se eliminará todo el historial. No se puede deshacer."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout l'historique sera supprimé. Action irréversible."
+          }
         }
       }
     },
@@ -2695,6 +3247,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aquí no hay nada todavía"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rien ici pour l'instant"
           }
         }
       }
@@ -2725,6 +3283,12 @@
             "state": "translated",
             "value": "Acerca de"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À propos"
+          }
         }
       }
     },
@@ -2753,6 +3317,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Arte"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Art"
           }
         }
       }
@@ -2783,6 +3353,12 @@
             "state": "translated",
             "value": "Paseo de arte urbano"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balade street art"
+          }
         }
       }
     },
@@ -2811,6 +3387,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mirar escaparates"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lèche-vitrines"
           }
         }
       }
@@ -2841,6 +3423,12 @@
             "state": "translated",
             "value": "Algo ha salido mal"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelque chose s'est mal passé"
+          }
         }
       }
     },
@@ -2869,6 +3457,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Busca zonas, estaciones, lugares"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cherche un quartier, une gare, un lieu"
           }
         }
       }
@@ -2899,6 +3493,12 @@
             "state": "translated",
             "value": "No"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Non"
+          }
         }
       }
     },
@@ -2928,6 +3528,12 @@
             "state": "translated",
             "value": "Sí"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oui"
+          }
         }
       }
     },
@@ -2953,6 +3559,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Café"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "Café"
@@ -2986,6 +3598,12 @@
             "state": "translated",
             "value": "Café y algo dulce"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un café et quelque chose de sucré"
+          }
         }
       }
     },
@@ -3014,6 +3632,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Trabajar desde un café"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Travailler depuis un café"
           }
         }
       }
@@ -3044,6 +3668,12 @@
             "state": "translated",
             "value": "Sal con la cámara a mano. La calle de siempre tiene más de lo que parece."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sors avec ton appareil. La rue de tous les jours a plus à offrir qu'on ne croit."
+          }
         }
       }
     },
@@ -3072,6 +3702,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Conecta tu calendario"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connecte ton calendrier"
           }
         }
       }
@@ -3102,6 +3738,12 @@
             "state": "translated",
             "value": "Te avisa cuando se abre un hueco"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Te prévient quand un créneau se libère"
+          }
         }
       }
     },
@@ -3130,6 +3772,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Añadido al calendario"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouté au calendrier"
           }
         }
       }
@@ -3160,6 +3808,12 @@
             "state": "translated",
             "value": "No se pudo pedir acceso al calendario: %@"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de demander l'accès au calendrier : %@"
+          }
         }
       }
     },
@@ -3188,6 +3842,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se denegó el acceso al calendario. Puedes activarlo en Ajustes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'accès au calendrier a été refusé. Tu peux l'activer dans les Réglages."
           }
         }
       }
@@ -3218,6 +3878,12 @@
             "state": "translated",
             "value": "No hay acceso al calendario."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'accès au calendrier n'est pas autorisé."
+          }
         }
       }
     },
@@ -3246,6 +3912,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No hay acceso al calendario. Puedes activarlo en Ajustes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'accès au calendrier n'est pas autorisé. Tu peux l'activer dans les Réglages."
           }
         }
       }
@@ -3276,6 +3948,12 @@
             "state": "translated",
             "value": "No se pudo añadir al calendario"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible d'ajouter au calendrier"
+          }
         }
       }
     },
@@ -3304,6 +3982,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No se pudieron cargar los eventos del calendario."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de charger les événements du calendrier."
           }
         }
       }
@@ -3334,6 +4018,12 @@
             "state": "translated",
             "value": "Cancelar"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annuler"
+          }
         }
       }
     },
@@ -3362,6 +4052,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recorrer galerías"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Passer de galerie en galerie"
           }
         }
       }
@@ -3392,6 +4088,12 @@
             "state": "translated",
             "value": "Comer"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manger"
+          }
         }
       }
     },
@@ -3420,6 +4122,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Compras"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boutiques"
           }
         }
       }
@@ -3450,6 +4158,12 @@
             "state": "translated",
             "value": "Una sesión en el gimnasio"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une séance à la salle"
+          }
         }
       }
     },
@@ -3478,6 +4192,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Salir a correr suave"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une course tranquille"
           }
         }
       }
@@ -3508,6 +4228,12 @@
             "state": "translated",
             "value": "Desconectar de verdad"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Décrocher pour de bon"
+          }
         }
       }
     },
@@ -3536,6 +4262,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Suelta la tensión en algún sitio cálido. Primero el cuerpo, lo demás va detrás."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relâche les tensions au chaud. Le corps d'abord, le reste suit."
           }
         }
       }
@@ -3566,6 +4298,12 @@
             "state": "translated",
             "value": "Curiosear en tiendas pequeñas"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fouiner dans les concept stores"
+          }
         }
       }
     },
@@ -3591,6 +4329,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serendipity"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "Serendipity"
@@ -3624,6 +4368,12 @@
             "state": "translated",
             "value": "Toca para cambiar el filtro"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touche pour changer de filtre"
+          }
         }
       }
     },
@@ -3652,6 +4402,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Toca para cambiar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touche pour changer"
           }
         }
       }
@@ -3682,6 +4438,12 @@
             "state": "translated",
             "value": "Toca para buscar un destino"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touche pour chercher une destination"
+          }
         }
       }
     },
@@ -3710,6 +4472,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Toca para seleccionar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touche pour sélectionner"
           }
         }
       }
@@ -3740,6 +4508,12 @@
             "state": "translated",
             "value": "Toca para deseleccionar"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touche pour désélectionner"
+          }
         }
       }
     },
@@ -3768,6 +4542,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Intenta cargar los datos otra vez"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tente de recharger les données"
           }
         }
       }
@@ -3798,6 +4578,12 @@
             "state": "translated",
             "value": "Error de red: %@"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erreur réseau : %@"
+          }
         }
       }
     },
@@ -3826,6 +4612,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Versión"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
           }
         }
       }
@@ -3856,6 +4648,12 @@
             "state": "translated",
             "value": "Ejercicio"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sport"
+          }
         }
       }
     },
@@ -3884,6 +4682,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Paseo con cámara"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balade photo"
           }
         }
       }
@@ -3914,6 +4718,12 @@
             "state": "translated",
             "value": "Abrir en el navegador"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir dans le navigateur"
+          }
         }
       }
     },
@@ -3943,6 +4753,12 @@
             "state": "translated",
             "value": "Política de privacidad"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Politique de confidentialité"
+          }
         }
       }
     },
@@ -3968,6 +4784,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Planner"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "Planner"
@@ -4001,6 +4823,12 @@
             "state": "translated",
             "value": "Inicio"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accueil"
+          }
         }
       }
     },
@@ -4029,6 +4857,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Abrir en Mapas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir dans Plans"
           }
         }
       }
@@ -4059,6 +4893,12 @@
             "state": "translated",
             "value": "Abrir en una app de mapas"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir dans une app de cartes"
+          }
         }
       }
     },
@@ -4087,6 +4927,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Un cine independiente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un cinéma indépendant"
           }
         }
       }
@@ -4117,6 +4963,12 @@
             "state": "translated",
             "value": "Las salas pequeñas mantienen vivas las buenas. Casi siempre hay algo inesperado."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les petites salles gardent les bons films à l'affiche. Il y a presque toujours une surprise."
+          }
         }
       }
     },
@@ -4145,6 +4997,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yoga para soltar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du yoga pour se dénouer"
           }
         }
       }
@@ -4175,6 +5033,12 @@
             "state": "translated",
             "value": "Recupera el equilibrio. Sigue la respiración y deja que lo demás se asiente."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retrouve ton équilibre. Reste sur la respiration et laisse le reste se poser."
+          }
         }
       }
     },
@@ -4203,6 +5067,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Música en directo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aller écouter un concert"
           }
         }
       }
@@ -4233,6 +5103,12 @@
             "state": "translated",
             "value": "Comer en otro sitio"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Déjeuner ailleurs"
+          }
         }
       }
     },
@@ -4261,6 +5137,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Restablecer"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réinitialiser"
           }
         }
       }
@@ -4291,6 +5173,12 @@
             "state": "translated",
             "value": "Calma"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calme"
+          }
         }
       }
     },
@@ -4319,6 +5207,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Rebusca entre los cajones. El disco que no sabías que querías anda por ahí."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fouille dans les bacs. Le disque que tu ne savais pas vouloir est quelque part là-dedans."
           }
         }
       }
@@ -4349,6 +5243,12 @@
             "state": "translated",
             "value": "Vuelta por tiendas de discos"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tour des disquaires"
+          }
         }
       }
     },
@@ -4377,6 +5277,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Desconocido"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inconnu"
           }
         }
       }
@@ -4407,6 +5313,12 @@
             "state": "translated",
             "value": "Leemos tu agenda para ver los huecos\ny sugerir algo que encaje."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On lit ton agenda pour repérer les creux,\npuis on propose quelque chose qui colle."
+          }
         }
       }
     },
@@ -4435,6 +5347,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cerca de ti, en los huecos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Près de toi, dans les creux"
           }
         }
       }
@@ -4465,6 +5383,12 @@
             "state": "translated",
             "value": "Hoy"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aujourd'hui"
+          }
         }
       }
     },
@@ -4493,6 +5417,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Que hoy te pase algo bueno por casualidad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qu'un beau hasard croise ta route aujourd'hui"
           }
         }
       }
@@ -4523,6 +5453,12 @@
             "state": "translated",
             "value": "Agenda de hoy"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Programme du jour"
+          }
         }
       }
     },
@@ -4551,6 +5487,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aún queda día\npara un golpe de suerte"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Il reste du temps aujourd'hui\npour un peu de chance"
           }
         }
       }
@@ -4581,6 +5523,12 @@
             "state": "translated",
             "value": "Hoy no tienes ratos libres"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas de temps libre aujourd'hui"
+          }
         }
       }
     },
@@ -4609,6 +5557,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buscando huecos en tu día…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recherche des creux dans ta journée…"
           }
         }
       }
@@ -4639,6 +5593,12 @@
             "state": "translated",
             "value": "Hoy tienes %lld ratos libres. Toca para ver las ideas."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu as %lld moments libres aujourd'hui. Touche pour voir les idées."
+          }
         }
       }
     },
@@ -4667,6 +5627,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tómatelo con calma hoy"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prends ton temps aujourd'hui"
           }
         }
       }
@@ -4697,6 +5663,12 @@
             "state": "translated",
             "value": "Este mes"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce mois-ci"
+          }
         }
       }
     },
@@ -4725,6 +5697,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Otras ideas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autres idées"
           }
         }
       }
@@ -4755,6 +5733,12 @@
             "state": "translated",
             "value": "Horario de fin de semana"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horaires le week-end"
+          }
         }
       }
     },
@@ -4783,6 +5767,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sin tu ubicación, el tiempo es aproximado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sans ta position, la météo est approximative"
           }
         }
       }
@@ -4813,6 +5803,12 @@
             "state": "translated",
             "value": "No se pudo obtener tu ubicación: %@"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible d'obtenir ta position : %@"
+          }
         }
       }
     },
@@ -4841,6 +5837,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Respirar en un parque"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Souffler dans un parc"
           }
         }
       }
@@ -4871,6 +5873,12 @@
             "state": "translated",
             "value": "Reintentar"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réessayer"
+          }
         }
       }
     },
@@ -4899,6 +5907,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Recargar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recharger"
           }
         }
       }
@@ -4929,6 +5943,12 @@
             "state": "translated",
             "value": "Eliminar"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer"
+          }
         }
       }
     },
@@ -4957,6 +5977,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mes anterior"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mois précédent"
           }
         }
       }
@@ -4987,6 +6013,12 @@
             "state": "translated",
             "value": "Localizando…"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Localisation…"
+          }
         }
       }
     },
@@ -5015,6 +6047,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Elimina todas las sugerencias que has aceptado. No se puede deshacer."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprime toutes les suggestions que tu as acceptées. Action irréversible."
           }
         }
       }
@@ -5045,6 +6083,12 @@
             "state": "translated",
             "value": "Aceptada"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acceptée"
+          }
         }
       }
     },
@@ -5073,6 +6117,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aceptado, %@, %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accepté, %@, %@"
           }
         }
       }
@@ -5103,6 +6153,12 @@
             "state": "translated",
             "value": "Sal a ver cosas pequeñas y bonitas. Alguna puede acabar viniéndose contigo."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pars voir de jolies petites choses. L'une d'elles finira peut-être par te suivre."
+          }
         }
       }
     },
@@ -5131,6 +6187,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld en total"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld au total"
           }
         }
       }
@@ -5161,6 +6223,12 @@
             "state": "translated",
             "value": "Sugiere sitios cercanos"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Propose des lieux à proximité"
+          }
         }
       }
     },
@@ -5189,6 +6257,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Horas tranquilas en la biblioteca"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Des heures tranquilles à la bibliothèque"
           }
         }
       }
@@ -5219,6 +6293,12 @@
             "state": "translated",
             "value": "Un rato de calma con un libro. Esa estantería por la que sueles pasar de largo puede sorprenderte."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un moment calme avec un livre. Ce rayon devant lequel tu passes toujours pourrait te surprendre."
+          }
         }
       }
     },
@@ -5247,6 +6327,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No se pudo cargar ese lugar. Revisa la conexión e inténtalo otra vez."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de charger ce lieu. Vérifie ta connexion et réessaie."
           }
         }
       }
@@ -5277,6 +6363,12 @@
             "state": "translated",
             "value": "No se pudo obtener tu ubicación"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible d'obtenir ta position"
+          }
         }
       }
     },
@@ -5305,6 +6397,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Comprobando tu ubicación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vérification de ta position"
           }
         }
       }
@@ -5335,6 +6433,12 @@
             "state": "translated",
             "value": "Comprobando tu ubicación…"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vérification de ta position…"
+          }
         }
       }
     },
@@ -5363,6 +6467,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cambiar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changer"
           }
         }
       }
@@ -5393,6 +6503,12 @@
             "state": "translated",
             "value": "Usa Cambiar para elegir otro destino"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utilise Changer pour choisir une autre destination"
+          }
         }
       }
     },
@@ -5421,6 +6537,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No hay clave de API del tiempo configurada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucune clé d'API météo n'est configurée."
           }
         }
       }
@@ -5451,6 +6573,12 @@
             "state": "translated",
             "value": "Según el tiempo y la hora"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selon la météo et l'heure"
+          }
         }
       }
     },
@@ -5479,6 +6607,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No se pudieron leer los datos del tiempo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de lire les données météo."
           }
         }
       }
@@ -5509,6 +6643,12 @@
             "state": "translated",
             "value": "No se pudo cargar el tiempo, se muestra una estimación"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Météo indisponible, une estimation est affichée"
+          }
         }
       }
     },
@@ -5537,6 +6677,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No se pudo cargar el tiempo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de charger la météo"
           }
         }
       }
@@ -5567,6 +6713,12 @@
             "state": "translated",
             "value": "Restablecer preferencias"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réinitialiser les préférences"
+          }
         }
       }
     },
@@ -5595,6 +6747,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Aprendizaje"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apprentissage"
           }
         }
       }
@@ -5625,6 +6783,12 @@
             "state": "translated",
             "value": "Al restablecer se borra lo que la app ha aprendido de ti."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La réinitialisation efface ce que l'app a appris de tes goûts."
+          }
         }
       }
     },
@@ -5653,6 +6817,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Llovizna"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bruine"
           }
         }
       }
@@ -5683,6 +6853,12 @@
             "state": "translated",
             "value": "Historial"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historique"
+          }
         }
       }
     },
@@ -5711,6 +6887,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sin historial"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas d'historique"
           }
         }
       }
@@ -5741,6 +6923,12 @@
             "state": "translated",
             "value": "Historial"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historique"
+          }
         }
       }
     },
@@ -5769,6 +6957,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eliminar historial"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer l'historique"
           }
         }
       }
@@ -5799,6 +6993,12 @@
             "state": "translated",
             "value": "Horario entre semana"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horaires en semaine"
+          }
         }
       }
     },
@@ -5827,6 +7027,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Puedes cambiarlo luego en Ajustes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu pourras changer ça plus tard dans les Réglages"
           }
         }
       }
@@ -5857,6 +7063,12 @@
             "state": "translated",
             "value": "Puedes cambiarlo luego en Ajustes"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu pourras changer ça plus tard dans les Réglages"
+          }
         }
       }
     },
@@ -5885,6 +7097,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld min a pie"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min à pied"
           }
         }
       }
@@ -5915,6 +7133,12 @@
             "state": "translated",
             "value": "Sugerencias"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggestions"
+          }
         }
       }
     },
@@ -5943,6 +7167,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sugerencia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggestion"
           }
         }
       }
@@ -5973,6 +7203,12 @@
             "state": "translated",
             "value": "Toca el corazón en una sugerencia\ny aparecerá aquí."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touche le cœur sur une suggestion\net elle apparaîtra ici."
+          }
         }
       }
     },
@@ -6001,6 +7237,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "La añade a tu calendario"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'ajoute à ton calendrier"
           }
         }
       }
@@ -6031,6 +7273,12 @@
             "state": "translated",
             "value": "Añadido a tu día"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouté à ta journée"
+          }
         }
       }
     },
@@ -6059,6 +7307,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ya está en tu calendario. Que lo disfrutes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "C'est dans ton calendrier. Profite bien."
           }
         }
       }
@@ -6089,6 +7343,12 @@
             "state": "translated",
             "value": "Añadido a tu día"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouté à ta journée"
+          }
         }
       }
     },
@@ -6117,6 +7377,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cuando aceptes una sugerencia,\naparecerá aquí."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une fois une suggestion acceptée,\nelle apparaîtra ici."
           }
         }
       }
@@ -6147,6 +7413,12 @@
             "state": "translated",
             "value": "Aceptar una sugerencia hace que esa categoría salga más."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Accepter une suggestion fait revenir cette catégorie plus souvent."
+          }
         }
       }
     },
@@ -6175,6 +7447,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Categorías"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Catégories"
           }
         }
       }
@@ -6205,6 +7483,12 @@
             "state": "translated",
             "value": "Paseo"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Balade"
+          }
         }
       }
     },
@@ -6233,6 +7517,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Probar un sitio nuevo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tester une nouvelle adresse"
           }
         }
       }
@@ -6263,6 +7553,12 @@
             "state": "translated",
             "value": "Mañana"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demain"
+          }
         }
       }
     },
@@ -6291,6 +7587,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cine"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cinéma"
           }
         }
       }
@@ -6321,6 +7623,12 @@
             "state": "translated",
             "value": "Algo nuevo en el cine"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une nouveauté au cinéma"
+          }
         }
       }
     },
@@ -6349,6 +7657,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Despejado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ciel dégagé"
           }
         }
       }
@@ -6379,6 +7693,12 @@
             "state": "translated",
             "value": "Nublado"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nuageux"
+          }
         }
       }
     },
@@ -6407,6 +7727,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hueco mínimo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creux minimum"
           }
         }
       }
@@ -6437,6 +7763,12 @@
             "state": "translated",
             "value": "Búsquedas recientes"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recherches récentes"
+          }
         }
       }
     },
@@ -6465,6 +7797,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "activado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "activé"
           }
         }
       }
@@ -6495,6 +7833,12 @@
             "state": "translated",
             "value": "Resumen de la mañana"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Résumé du matin"
+          }
         }
       }
     },
@@ -6523,6 +7867,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Activar el resumen de la mañana"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activer le résumé du matin"
           }
         }
       }
@@ -6553,6 +7903,12 @@
             "state": "translated",
             "value": "sin seleccionar"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "non sélectionné"
+          }
         }
       }
     },
@@ -6581,6 +7937,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Borrar búsqueda"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Effacer la recherche"
           }
         }
       }
@@ -6611,6 +7973,12 @@
             "state": "translated",
             "value": "Buscando…"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recherche…"
+          }
         }
       }
     },
@@ -6639,6 +8007,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mes siguiente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mois suivant"
           }
         }
       }
@@ -6669,6 +8043,12 @@
             "state": "translated",
             "value": "Muestra tu próximo hueco y una idea para él"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Affiche ton prochain creux et une idée pour l'occuper"
+          }
         }
       }
     },
@@ -6697,6 +8077,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cada mañana, cuánto rato libre tienes hoy."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chaque matin, un mot sur le temps libre que tu as."
           }
         }
       }
@@ -6727,6 +8113,12 @@
             "state": "translated",
             "value": "Ese sitio por el que pasas siempre. Hoy es tan buen día como otro."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cette adresse devant laquelle tu passes toujours. Aujourd'hui vaut bien un autre jour."
+          }
         }
       }
     },
@@ -6755,6 +8147,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "El artículo que llevas tiempo posponiendo. Igual se te queda algo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'article que tu repousses depuis un moment. Il en restera peut-être quelque chose."
           }
         }
       }
@@ -6785,6 +8183,12 @@
             "state": "translated",
             "value": "Date una vuelta sin nada concreto en mente. Va bien para ver qué hay."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flâne sans rien chercher de précis. Pratique pour voir ce qui se fait."
+          }
         }
       }
     },
@@ -6813,6 +8217,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sal a caminar un rato. Coge una calle por la que no sueles pasar y mira qué aparece."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sors marcher un peu. Prends une rue que tu ne prends jamais, tu verras ce qui apparaît."
           }
         }
       }
@@ -6843,6 +8253,12 @@
             "state": "translated",
             "value": "Con algo caliente en la mano y sin prisa. Probar un café nuevo es parte de la gracia."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelque chose de chaud à la main, sans se presser. Tester un café inconnu fait partie du plaisir."
+          }
         }
       }
     },
@@ -6871,6 +8287,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "desactivado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "désactivé"
           }
         }
       }
@@ -6901,6 +8323,12 @@
             "state": "translated",
             "value": "Esa URL no es válida."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cette URL n'est pas valide."
+          }
         }
       }
     },
@@ -6929,6 +8357,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tu ubicación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ta position"
           }
         }
       }
@@ -6959,6 +8393,12 @@
             "state": "translated",
             "value": "A unos %@ de ti"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "À environ %@ de toi"
+          }
         }
       }
     },
@@ -6987,6 +8427,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Usar mi ubicación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utiliser ma position"
           }
         }
       }
@@ -7017,6 +8463,12 @@
             "state": "translated",
             "value": "Usa tu ubicación"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utilise ta position"
+          }
         }
       }
     },
@@ -7045,6 +8497,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Estás en %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu es à %@"
           }
         }
       }
@@ -7075,6 +8533,12 @@
             "state": "translated",
             "value": "Sugerencias cerca de ti"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggestions près de toi"
+          }
         }
       }
     },
@@ -7103,6 +8567,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Destino"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination"
           }
         }
       }
@@ -7133,6 +8603,12 @@
             "state": "translated",
             "value": "Destino, %@"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination, %@"
+          }
         }
       }
     },
@@ -7161,6 +8637,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Destino, %@, %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination, %@, %@"
           }
         }
       }
@@ -7191,6 +8673,12 @@
             "state": "translated",
             "value": "Cambiar destino"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changer de destination"
+          }
         }
       }
     },
@@ -7219,6 +8707,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Elegir un destino"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisir une destination"
           }
         }
       }
@@ -7249,6 +8743,12 @@
             "state": "translated",
             "value": "Elegir un destino. Dinos a dónde vas y te damos ideas de esa zona"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisir une destination. Dis-nous où tu vas et tu auras des idées pour ce coin"
+          }
         }
       }
     },
@@ -7277,6 +8777,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Quita el destino y vuelve a tu ubicación"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retire la destination et revient à ta position"
           }
         }
       }
@@ -7307,6 +8813,12 @@
             "state": "translated",
             "value": "Elegir destino"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisir une destination"
+          }
         }
       }
     },
@@ -7335,6 +8847,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sentarse un rato"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S'asseoir un moment"
           }
         }
       }
@@ -7365,6 +8883,12 @@
             "state": "translated",
             "value": "Buena ocasión para esa pila pendiente. Busca un sitio tranquilo y piérdete un rato."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'occasion d'entamer la pile qui attend. Trouve un coin calme et laisse-toi prendre."
+          }
         }
       }
     },
@@ -7393,6 +8917,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hoy no hay huecos en tu agenda.\nAun así, respira hondo un momento."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas de creux dans ton programme.\nPense quand même à respirer un coup."
           }
         }
       }
@@ -7423,6 +8953,12 @@
             "state": "translated",
             "value": "Sin ratos libres"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucun temps libre"
+          }
         }
       }
     },
@@ -7451,6 +8987,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vuelve a buscar ratos libres"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Relance la recherche de temps libre"
           }
         }
       }
@@ -7481,6 +9023,12 @@
             "state": "translated",
             "value": "Una sugerencia llega\njusto antes de tu rato libre."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une suggestion arrive\njuste avant ton temps libre."
+          }
         }
       }
     },
@@ -7509,6 +9057,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Envía una sugerencia justo antes de que empiece tu rato libre."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Envoie une suggestion juste avant le début de ton temps libre."
           }
         }
       }
@@ -7539,6 +9093,12 @@
             "state": "translated",
             "value": "Encuentra tus ratos libres"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repère tes moments libres"
+          }
         }
       }
     },
@@ -7568,6 +9128,12 @@
             "state": "translated",
             "value": "Que lo disfrutes"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Profite bien"
+          }
         }
       }
     },
@@ -7593,6 +9159,12 @@
           }
         },
         "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fin"
+          }
+        },
+        "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "Fin"
@@ -7626,6 +9198,12 @@
             "state": "translated",
             "value": "Dedica toda tu atención a unas pocas salas. Es una buena forma de pasar una hora."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Consacre toute ton attention à quelques salles. C'est une bonne façon de passer une heure."
+          }
         }
       }
     },
@@ -7654,6 +9232,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Una hora en un museo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une heure au musée"
           }
         }
       }
@@ -7684,6 +9268,12 @@
             "state": "translated",
             "value": "Lo que te interesa"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce qui t'intéresse"
+          }
         }
       }
     },
@@ -7712,6 +9302,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dinos a dónde vas y buscamos pequeñas sorpresas allí"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dis-nous où tu vas et on cherche de petites surprises là-bas"
           }
         }
       }
@@ -7742,6 +9338,12 @@
             "state": "translated",
             "value": "Recorre un par de sitios pequeños a pie. Hallazgos chicos, bocado a bocado."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enchaîne quelques petites adresses à pied. De petites trouvailles, bouchée après bouchée."
+          }
         }
       }
     },
@@ -7770,6 +9372,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "¿Y si sales a buscar los murales y el arte público escondido por la ciudad?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Et si tu partais chercher les fresques et l'art public cachés dans la ville ?"
           }
         }
       }
@@ -7800,6 +9408,12 @@
             "state": "translated",
             "value": "Ajustes"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réglages"
+          }
         }
       }
     },
@@ -7828,6 +9442,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Abrir Ajustes"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir les Réglages"
           }
         }
       }
@@ -7858,6 +9478,12 @@
             "state": "translated",
             "value": "Permitido"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisé"
+          }
         }
       }
     },
@@ -7886,6 +9512,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Permiso concedido"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisation accordée"
           }
         }
       }
@@ -7916,6 +9548,12 @@
             "state": "translated",
             "value": "Ve la peli de la que todos hablan como se tenía que ver y oír."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Va voir le film dont tout le monde parle, comme il devait être vu et entendu."
+          }
         }
       }
     },
@@ -7944,6 +9582,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No hay lugares que coincidan"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucun lieu ne correspond"
           }
         }
       }
@@ -7974,6 +9618,12 @@
             "state": "translated",
             "value": "Detalles"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Détails"
+          }
         }
       }
     },
@@ -8002,6 +9652,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lectura"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lecture"
           }
         }
       }
@@ -8032,6 +9688,12 @@
             "state": "translated",
             "value": "Rato de lectura"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un temps de lecture"
+          }
         }
       }
     },
@@ -8060,6 +9722,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Correr suave despeja la cabeza tanto como las piernas. Suda a gusto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Courir doucement éclaircit la tête autant que les jambes. Transpire un bon coup."
           }
         }
       }
@@ -8090,6 +9758,12 @@
             "state": "translated",
             "value": "Una pausa en un café cercano"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Une pause dans un café du coin"
+          }
         }
       }
     },
@@ -8118,6 +9792,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Entra en una galería cercana. A veces sales con otra forma de mirar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entre dans une galerie du coin. Parfois on en ressort avec un autre regard."
           }
         }
       }
@@ -8148,6 +9828,12 @@
             "state": "translated",
             "value": "Muévete en un gimnasio cercano. Lo de después no se parece a nada."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bouge dans une salle près de chez toi. Rien ne remplace ce qu'on ressent après."
+          }
         }
       }
     },
@@ -8176,6 +9862,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Busca una sala pequeña por la zona y escucha algo tocado en directo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trouve une petite salle dans le coin et écoute quelque chose joué sur place."
           }
         }
       }
@@ -8206,6 +9898,12 @@
             "state": "translated",
             "value": "Camina hasta un parque cercano y deja que el verde haga lo suyo. Un par de respiraciones hondas ayudan."
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marche jusqu'à un parc voisin et laisse le vert faire son effet. Deux respirations profondes suffisent."
+          }
         }
       }
     },
@@ -8234,6 +9932,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Buscando sitios cerca…"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recherche de lieux à proximité…"
           }
         }
       }
@@ -8264,6 +9968,12 @@
             "state": "translated",
             "value": "Una vuelta por el barrio"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un tour dans le quartier"
+          }
         }
       }
     },
@@ -8292,6 +10002,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Añadido el %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajouté le %@"
           }
         }
       }
@@ -8322,6 +10038,12 @@
             "state": "translated",
             "value": "Notificaciones"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
+          }
         }
       }
     },
@@ -8350,6 +10072,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se denegaron las notificaciones. Puedes activarlas en Ajustes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les notifications ont été refusées. Tu peux les activer dans les Réglages."
           }
         }
       }
@@ -8380,6 +10108,12 @@
             "state": "translated",
             "value": "Un aviso a tiempo"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un petit rappel"
+          }
         }
       }
     },
@@ -8408,6 +10142,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "No se pudo pedir permiso de notificaciones: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de demander l'autorisation de notification : %@"
           }
         }
       }
@@ -8438,6 +10178,12 @@
             "state": "translated",
             "value": "Activar notificaciones"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activer les notifications"
+          }
         }
       }
     },
@@ -8466,6 +10212,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cuándo avisar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand prévenir"
           }
         }
       }
@@ -8496,6 +10248,12 @@
             "state": "translated",
             "value": "Hora"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heure"
+          }
         }
       }
     },
@@ -8524,6 +10282,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Notificaciones"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notifications"
           }
         }
       }
@@ -8554,6 +10318,12 @@
             "state": "translated",
             "value": "seleccionado"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sélectionné"
+          }
         }
       }
     },
@@ -8582,6 +10352,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cerrar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fermer"
           }
         }
       }
@@ -8612,6 +10388,12 @@
             "state": "translated",
             "value": "Inicio"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Début"
+          }
         }
       }
     },
@@ -8640,6 +10422,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Avisar antes del hueco"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévenir avant le creux"
           }
         }
       }
@@ -8670,6 +10458,12 @@
             "state": "translated",
             "value": "Antes del hueco"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avant le creux"
+          }
         }
       }
     },
@@ -8698,6 +10492,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Revistas y lecturas largas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magazines et longues lectures"
           }
         }
       }
@@ -8728,6 +10528,12 @@
             "state": "translated",
             "value": "Tiendas de detalles"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Boutiques de petits objets"
+          }
         }
       }
     },
@@ -8756,6 +10562,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluie"
           }
         }
       }
@@ -8786,6 +10598,12 @@
             "state": "translated",
             "value": "Nieve"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neige"
+          }
         }
       }
     },
@@ -8814,6 +10632,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Tormenta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orage"
           }
         }
       }
@@ -8844,6 +10668,12 @@
             "state": "translated",
             "value": "Niebla"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brouillard"
+          }
         }
       }
     },
@@ -8872,6 +10702,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Busca un sitio tranquilo y respira. Diez minutos bastan para aclarar las cosas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trouve un endroit calme et respire, simplement. Dix minutes suffisent à y voir clair."
           }
         }
       }
@@ -8902,6 +10738,12 @@
             "state": "translated",
             "value": "Música"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musique"
+          }
         }
       }
     },
@@ -8930,6 +10772,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Un café con buena música"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un café avec de la bonne musique"
           }
         }
       }
@@ -8960,6 +10808,12 @@
             "state": "translated",
             "value": "Te lo has ganado. ¿Un buen café y algo dulce?"
           }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu l'as bien mérité. Et si c'était un bon café avec une pâtisserie ?"
+          }
         }
       }
     },
@@ -8988,6 +10842,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ir probando por el camino"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goûter de place en place"
           }
         }
       }

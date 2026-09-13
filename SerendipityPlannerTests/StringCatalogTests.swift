@@ -58,6 +58,16 @@ final class StringCatalogTests: XCTestCase {
         XCTAssertEqual(es.localizedString(forKey: "お気に入り", value: nil, table: nil), "Favoritos")
     }
 
+    /// フランス語が解決されること（#36）
+    func testFrenchTranslationsResolve() throws {
+        let path = try XCTUnwrap(Bundle.main.path(forResource: "fr", ofType: "lproj"))
+        let fr = try XCTUnwrap(Bundle(path: path))
+
+        XCTAssertEqual(fr.localizedString(forKey: "今日", value: nil, table: nil), "Aujourd'hui")
+        XCTAssertEqual(fr.localizedString(forKey: "設定", value: nil, table: nil), "Réglages")
+        XCTAssertEqual(fr.localizedString(forKey: "お気に入り", value: nil, table: nil), "Favoris")
+    }
+
     func testKoreanTranslationsResolve() throws {
         let path = try XCTUnwrap(Bundle.main.path(forResource: "ko", ofType: "lproj"))
         let ko = try XCTUnwrap(Bundle(path: path))
@@ -102,9 +112,87 @@ final class StringCatalogTests: XCTestCase {
         }
     }
 
+    // MARK: - ローカライズ漏れの検出
+
+    /// 素の `String` に日本語リテラルが直書きされていないこと。
+    ///
+    /// SwiftUI の `Text` / `Button` / `.accessibilityLabel` などは `LocalizedStringKey` を
+    /// 取るため自動でローカライズされるが、**`String` 型に入る場合は効かない**。
+    ///
+    /// ```swift
+    /// var name: String { destination?.name ?? "現在地" }   // ← 翻訳されない
+    /// content.title = "セレンディピティ"                    // ← 翻訳されない
+    /// ```
+    ///
+    /// 実際にこれで「地図の距離表記だけ日本語のまま」という不具合が出た。
+    /// カタログにキーが存在していても、参照側が素の String なら意味がないため、
+    /// **ソースを直接走査する**。
+    func testNoRawJapaneseStringLiterals() throws {
+        let offenders = try rawJapaneseStringLiterals()
+
+        XCTAssertTrue(
+            offenders.isEmpty,
+            "String 型に日本語が直書きされている（String(localized:) で包む）:\n" + offenders.joined(separator: "\n")
+        )
+    }
+
+    /// ソースを走査して、素の String に日本語が直書きされている行を返す
+    private func rawJapaneseStringLiterals() throws -> [String] {
+        let sourceRoot = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        var offenders: [String] = []
+
+        for target in ["SerendipityPlanner", "SerendipityWidget"] {
+            let dir = sourceRoot.appendingPathComponent(target)
+            guard let walker = FileManager.default.enumerator(at: dir, includingPropertiesForKeys: nil) else { continue }
+            for case let url as URL in walker where url.pathExtension == "swift" {
+                guard !Self.excludedFiles.contains(url.lastPathComponent),
+                      let text = try? String(contentsOf: url, encoding: .utf8) else { continue }
+                offenders += try offendingLines(in: text, fileName: url.lastPathComponent)
+            }
+        }
+        return offenders
+    }
+
+    private func offendingLines(in text: String, fileName: String) throws -> [String] {
+        let japanese = try NSRegularExpression(pattern: "[\\p{Hiragana}\\p{Katakana}\\p{Han}]")
+        let regexes = try Self.rawStringPatterns.map { try NSRegularExpression(pattern: $0) }
+        var found: [String] = []
+
+        for (index, line) in text.components(separatedBy: .newlines).enumerated() {
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+            guard !trimmed.hasPrefix("//"),
+                  !trimmed.contains("String(localized:"),
+                  // SwiftUI の修飾子チェーンは LocalizedStringKey を取るので自動で翻訳される
+                  !trimmed.hasPrefix(".") else { continue }
+
+            let range = NSRange(line.startIndex..., in: line)
+            guard japanese.firstMatch(in: line, range: range) != nil,
+                  regexes.contains(where: { $0.firstMatch(in: line, range: range) != nil }) else { continue }
+
+            found.append("\(fileName):\(index + 1)  \(trimmed)")
+        }
+        return found
+    }
+
+    /// 提案文と検索キーワードはそれぞれ別管理なので対象外
+    private static let excludedFiles: Set<String> = [
+        "SuggestionTemplates.swift",
+        "SuggestionCategory+PlaceSearch.swift",
+        "RecommendationQueries.swift"
+    ]
+
+    /// String 型に入りうる代入・返却の形
+    private static let rawStringPatterns = [
+        #"content\.title\s*=\s*""#,
+        #"\?\?\s*""#,
+        #"return\s+""#
+    ]
+
     /// 翻訳を投入済みの言語。新しい言語を入れたらここに足す。
     private var translatedLanguages: [String] {
-        ["en", "ko", "es"]
+        ["en", "ko", "es", "fr"]
     }
 
     // MARK: - 翻訳後に壊れるロジックの防止
