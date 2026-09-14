@@ -207,6 +207,7 @@ struct SettingsView: View, SkyTextStyling {
                     Section(header: Text("アプリ情報").foregroundColor(sectionHeaderColor)) {
                         HStack {
                             Text("バージョン")
+                                .uiTestID(AccessibilityID.settingsVersionRow)
                             Spacer()
                             Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "-")
                                 .foregroundColor(.secondary)
@@ -256,6 +257,7 @@ struct SettingsView: View, SkyTextStyling {
                 }
             }
         }
+        .uiTestID(AccessibilityID.screenSettings)
         .navigationViewStyle(.stack)
     }
 }

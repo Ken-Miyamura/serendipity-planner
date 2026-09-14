@@ -76,6 +76,20 @@ targets:
         com.apple.security.application-groups:
           - group.com.serendipity.planner
 
+  SerendipityPlannerUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: SerendipityPlannerUITests
+      # identifier の定義はアプリ本体と共有する。
+      # 文字列を2箇所に散らすと、片方だけ直したときに気づけない。
+      - path: SerendipityPlanner/Utilities/AccessibilityID.swift
+    dependencies:
+      - target: SerendipityPlanner
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner.uitests
+
   SerendipityPlannerTests:
     type: bundle.unit-test
     platform: iOS
@@ -98,6 +112,7 @@ schemes:
       config: Debug
       targets:
         - SerendipityPlannerTests
+        - SerendipityPlannerUITests
     profile:
       config: Release
     analyze:

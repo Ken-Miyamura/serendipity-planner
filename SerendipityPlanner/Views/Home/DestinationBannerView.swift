@@ -71,6 +71,7 @@ struct DestinationBannerView: View {
         .buttonStyle(.plain)
         .accessibilityLabel("目的地を決める。行き先を選ぶと、その街での提案が表示されます")
         .accessibilityHint("タップで目的地を検索")
+        .uiTestID(AccessibilityID.destinationCard)
     }
 
     // MARK: - 設定済み（フル）
@@ -157,6 +158,7 @@ struct DestinationBannerView: View {
         }
         .buttonStyle(.plain)
         .accessibilityLabel("目的地を変更")
+        .uiTestID(AccessibilityID.destinationChangeButton)
     }
 
     private func subtitleText(for destination: TodayDestination) -> String {

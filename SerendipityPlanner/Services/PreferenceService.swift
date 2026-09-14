@@ -23,6 +23,24 @@ class PreferenceService: ObservableObject, PreferenceServiceProtocol {
         } else {
             self.preference = .default
         }
+
+        applyUITestOverridesIfNeeded()
+    }
+
+    /// UI テストから起動状態を指定できるようにする。
+    ///
+    /// オンボーディングを毎回5ステップ踏むとテストが遅く、壊れやすくもなる。
+    /// アプリ本体に持ち込む分岐はここだけに閉じ、保存もしない（起動ごとに揮発する）。
+    private func applyUITestOverridesIfNeeded() {
+        let arguments = ProcessInfo.processInfo.arguments
+        guard arguments.contains("-uiTestSkipOnboarding") else { return }
+
+        settings.hasCompletedOnboarding = true
+        // 提案が出ない時間帯に撮影すると空状態しか見られないため、終日を活動時間にする
+        preference.activeHours = ActiveHoursPreference(
+            weekday: ActiveHoursConfig(startHour: 0, endHour: 23),
+            weekend: ActiveHoursConfig(startHour: 0, endHour: 23)
+        )
     }
 
     func saveSettings() {

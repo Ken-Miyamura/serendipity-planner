@@ -64,6 +64,7 @@ struct DestinationSearchView: View {
                             .clipShape(Circle())
                     }
                     .accessibilityLabel("閉じる")
+                    .uiTestID(AccessibilityID.destinationCloseButton)
                 }
             }
             .alert(
@@ -113,6 +114,7 @@ struct DestinationSearchView: View {
                 }
             )
             .frame(height: 24)
+            .uiTestID(AccessibilityID.destinationSearchField)
 
             if !viewModel.query.isEmpty {
                 Button {
@@ -160,6 +162,7 @@ struct DestinationSearchView: View {
             .background(Color.theme.cardBackground)
             .cornerRadius(12)
         }
+        .uiTestID(AccessibilityID.destinationUseCurrentLocation)
         .buttonStyle(.plain)
         .accessibilityHint("目的地を解除して現在地ベースに戻します")
     }
@@ -215,13 +218,14 @@ struct DestinationSearchView: View {
             VStack(alignment: .leading, spacing: 10) {
                 sectionHeader(String(localized: "この近くのおすすめ"))
                 VStack(spacing: 8) {
-                    ForEach(viewModel.recommendedAreas) { area in
+                    ForEach(Array(viewModel.recommendedAreas.enumerated()), id: \.element.id) { index, area in
                         Button {
                             select(area)
                         } label: {
                             areaRow(name: area.name, detail: area.subtitle)
                         }
                         .buttonStyle(.plain)
+                        .uiTestID(AccessibilityID.destinationRecommendation(index))
                     }
                 }
             }
@@ -250,7 +254,7 @@ struct DestinationSearchView: View {
                         .padding(.vertical, 8)
                 }
             } else {
-                ForEach(viewModel.candidates) { candidate in
+                ForEach(Array(viewModel.candidates.enumerated()), id: \.element.id) { index, candidate in
                     Button {
                         resolveTask?.cancel()
                         resolveTask = Task { await selectCandidate(candidate) }
@@ -258,6 +262,7 @@ struct DestinationSearchView: View {
                         areaRow(name: candidate.title, detail: candidate.subtitle)
                     }
                     .buttonStyle(.plain)
+                    .uiTestID(AccessibilityID.destinationCandidate(index))
                     .disabled(viewModel.isResolving)
                 }
             }
