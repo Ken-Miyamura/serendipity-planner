@@ -27,14 +27,19 @@ struct OnboardingContainerView: View {
                 TabView(selection: $viewModel.currentPage) {
                     WelcomePageView()
                         .tag(0)
+                        .uiTestID(AccessibilityID.onboardingPage(0))
                     InterestSelectionView(viewModel: viewModel)
                         .tag(1)
+                        .uiTestID(AccessibilityID.onboardingPage(1))
                     CalendarPermissionView(viewModel: viewModel)
                         .tag(2)
+                        .uiTestID(AccessibilityID.onboardingPage(2))
                     NotificationPermissionView(viewModel: viewModel)
                         .tag(3)
+                        .uiTestID(AccessibilityID.onboardingPage(3))
                     LocationInputView(viewModel: viewModel)
                         .tag(4)
+                        .uiTestID(AccessibilityID.onboardingPage(4))
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .animation(.easeInOut, value: viewModel.currentPage)
@@ -56,9 +61,7 @@ struct OnboardingContainerView: View {
                     // Button (right)
                     Button {
                         if viewModel.isLastPage {
-                            // Location permission page (last)
-                            waitingForLocationPermission = true
-                            locationService.requestPermission()
+                            finishFromLocationPage()
                         } else if viewModel.currentPage == 2 {
                             // Calendar permission page
                             Task {
@@ -94,6 +97,7 @@ struct OnboardingContainerView: View {
                                 .foregroundColor(.white)
                         }
                     }
+                    .uiTestID(AccessibilityID.onboardingNextButton)
                     .disabled(!isWelcomePage && !isPermissionPage && !viewModel.canProceed)
                 }
                 .padding(.horizontal, 28)
@@ -101,10 +105,9 @@ struct OnboardingContainerView: View {
             }
         }
         .onChange(of: locationService.locationAuthorizationResolved) { resolved in
+            // ダイアログに答えた結果がここに来る
             if resolved, waitingForLocationPermission {
-                waitingForLocationPermission = false
-                viewModel.saveInterests(to: preferenceService)
-                onComplete()
+                completeOnboarding()
             }
         }
         .onChange(of: viewModel.currentPage) { newValue in
@@ -118,5 +121,32 @@ struct OnboardingContainerView: View {
                 }
             }
         }
+    }
+
+    // MARK: - 完了処理
+
+    /// 最終ページ（位置情報）のボタンを押したときの処理。
+    ///
+    /// `requestPermission()` は権限が `.notDetermined` のときしかダイアログを出さない。
+    /// 既に許可/拒否が決まっている場合はダイアログも出ずデリゲートも呼ばれないため、
+    /// `locationAuthorizationResolved` の変化を待つだけだと**永久に進めなくなる**。
+    ///
+    /// これはアプリを削除して入れ直したときに起きる。アプリのデータ（オンボーディング
+    /// 完了フラグ）は消えるが、iOS 側が権限の記録を保持していることがあるため。
+    /// スキップ導線が無いので、踏むとアプリを消す以外に脱出できない。
+    private func finishFromLocationPage() {
+        guard !locationService.locationAuthorizationResolved else {
+            // 既に決着済み。ダイアログは出ないのでそのまま完了する
+            completeOnboarding()
+            return
+        }
+        waitingForLocationPermission = true
+        locationService.requestPermission()
+    }
+
+    private func completeOnboarding() {
+        waitingForLocationPermission = false
+        viewModel.saveInterests(to: preferenceService)
+        onComplete()
     }
 }
