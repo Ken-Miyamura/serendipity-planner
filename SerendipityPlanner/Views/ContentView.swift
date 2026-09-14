@@ -62,6 +62,7 @@ struct MainTabView: View {
                     }
                     .buttonStyle(.plain)
                     .accessibilityLabel(tabAccessibilityLabel(for: index))
+                    .uiTestID(AccessibilityID.tab(index))
                 }
             }
             .background(

@@ -84,11 +84,13 @@ struct HomeView: View {
                     .foregroundColor(useLightText ? .white : .primary)
                     .shadow(color: useLightText ? .black.opacity(0.3) : .clear, radius: 2, y: 1)
                     .lineSpacing(4)
+                    .uiTestID(AccessibilityID.homeGreeting)
 
                 Spacer()
 
                 if let weather = viewModel.weather {
                     WeatherBadgeView(weather: weather)
+                        .uiTestID(AccessibilityID.homeWeatherBadge)
                 }
             }
         }
@@ -119,6 +121,7 @@ struct HomeView: View {
         .padding(.vertical, 4)
         .background(Color.theme.walk.opacity(0.13))
         .cornerRadius(9)
+        .uiTestID(AccessibilityID.homeLocationChip)
     }
 
     private var greetingText: String {
@@ -155,8 +158,10 @@ struct HomeView: View {
             .buttonStyle(.plain)
             .foregroundColor(useLightText ? .white.opacity(0.8) : Color.theme.walk)
             .accessibilityHint("空き時間の再検索を行います")
+            .uiTestID(AccessibilityID.homeReloadButton)
         }
         .padding()
+        .uiTestID(AccessibilityID.homeEmptyState)
     }
 
     // MARK: - Suggestion List
@@ -188,6 +193,7 @@ struct HomeView: View {
                             .fontWeight(.medium)
                             .foregroundColor(useLightText ? .white.opacity(0.8) : .secondary)
                             .lineLimit(1)
+                            .uiTestID(AccessibilityID.homeSectionTitle)
                         Spacer()
                         if viewModel.destination == nil {
                             currentLocationChip
@@ -212,6 +218,7 @@ struct HomeView: View {
                         FreeTimeCardView(suggestion: suggestion)
                     }
                     .buttonStyle(.plain)
+                    .uiTestID(AccessibilityID.suggestionCard(index))
                     .staggeredAppear(index: index)
                 }
             }

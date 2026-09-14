@@ -50,6 +50,7 @@ struct FavoritesView: View, SkyTextStyling {
                 .foregroundColor(useLightText ? .white.opacity(0.5) : Color(red: 0.82, green: 0.52, blue: 0.62).opacity(0.5))
 
             Text("お気に入りはまだありません")
+                .uiTestID(AccessibilityID.favoritesEmptyState)
                 .font(.headline)
                 .foregroundColor(useLightText ? .white : .primary)
 

@@ -85,6 +85,7 @@ struct HistoryView: View, SkyTextStyling {
                 .foregroundColor(useLightText ? .white.opacity(0.8) : Color.theme.walk.opacity(0.8))
 
             Text("履歴がありません")
+                .uiTestID(AccessibilityID.historyEmptyState)
                 .font(.headline)
                 .foregroundColor(useLightText ? .white : .primary)
 

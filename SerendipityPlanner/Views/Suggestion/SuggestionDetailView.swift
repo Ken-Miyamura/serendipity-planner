@@ -106,6 +106,7 @@ struct SuggestionDetailView: View, SkyTextStyling {
                     }
                     .accessibilityLabel(viewModel.isFavorite ? "お気に入りから削除" : "お気に入りに追加")
                     .accessibilityHint("この提案のお気に入り状態を切り替えます")
+                    .uiTestID(AccessibilityID.detailFavoriteButton)
                 }
             }
         }
@@ -172,6 +173,7 @@ struct SuggestionDetailView: View, SkyTextStyling {
                 .font(.headline)
 
             Text(viewModel.suggestion.description)
+                .uiTestID(AccessibilityID.detailDescription)
                 .font(.body)
                 .foregroundColor(.secondary)
         }
@@ -209,6 +211,7 @@ struct SuggestionDetailView: View, SkyTextStyling {
         }
         .accessibilityLabel("この提案を受け入れる")
         .accessibilityHint("提案をカレンダーに追加します")
+        .uiTestID(AccessibilityID.detailAcceptButton)
     }
 
     private var placeSection: some View {
@@ -238,6 +241,7 @@ struct SuggestionDetailView: View, SkyTextStyling {
                     }
                     .accessibilityLabel("マップで開く")
                     .accessibilityHint("\(place.name)をマップアプリで表示します")
+                    .uiTestID(AccessibilityID.detailMapButton)
                 }
             }
         }

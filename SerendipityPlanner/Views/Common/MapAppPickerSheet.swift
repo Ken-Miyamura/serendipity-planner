@@ -28,7 +28,7 @@ struct MapAppPickerSheet: View {
                 .font(.headline)
                 .padding(.bottom, 4)
 
-            ForEach(apps) { app in
+            ForEach(Array(apps.enumerated()), id: \.element.id) { index, app in
                 Button {
                     MapLauncher.openDirections(
                         app,
@@ -48,6 +48,7 @@ struct MapAppPickerSheet: View {
                         .cornerRadius(12)
                 }
                 .accessibilityLabel(app.displayName)
+                .uiTestID(AccessibilityID.mapPickerApp(index))
             }
 
             Button {
