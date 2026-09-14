@@ -94,6 +94,13 @@ enum AccessibilityID {
     static let screenDetail = "screen.detail"
     static let screenDestinationSearch = "screen.destinationSearch"
 
+    // MARK: - オンボーディング
+
+    static let onboardingNextButton = "onboarding.nextButton"
+    static func onboardingPage(_ index: Int) -> String {
+        "onboarding.page.\(index)"
+    }
+
     // MARK: - 設定
 
     static let settingsCategorySection = "settings.categorySection"
