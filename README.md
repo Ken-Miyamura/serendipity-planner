@@ -20,3 +20,22 @@ https://raw.githubusercontent.com/Ken-Miyamura/serendipity-planner/assets/pr-scr
 | `seoul_ko_ui.png` | 韓国語端末 × ソウル（PR #50） |
 | `madrid_es_ui.png` | スペイン語端末 × マドリード（PR #51） |
 | `paris_fr_ui.png` | フランス語端末 × パリ（PR #52） |
+
+## i37/
+
+#37（多言語でのレイアウト検証）で XCUITest が自動で撮ったもの。
+7画面 × 5言語 = 35枚。
+
+| 接頭辞 | 画面 |
+|---|---|
+| `01_home` | ホーム（提案あり） |
+| `02_detail` | 提案詳細 |
+| `03_mapPicker` | マップアプリ選択シート |
+| `04_history` | 履歴 |
+| `04_favorites` | お気に入り |
+| `04_settings` | 設定 |
+| `05_destinationSearch` | 目的地検索シート |
+
+言語は `ja_JP` / `en_US` / `ko_KR` / `es_ES` / `fr_FR`。
+カレンダー・天気・位置情報を固定データにしているため、どの言語でも同じ内容が出る。
+違いがあればそれは言語による差であり、レイアウトの比較として成立する。
