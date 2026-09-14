@@ -27,6 +27,8 @@
 
         /// 東京駅。スポット検索が確実に結果を返す場所を選ぶ。
         static let location = CLLocation(latitude: 35.6812, longitude: 139.7671)
+        /// 現在地の表示名。言語で変わらない固定値にしておくことで、
+        /// 5言語のスクリーンショットを同じ条件で比べられる。
         static let locationName = "Marunouchi"
 
         /// 起動引数に応じて本物かスタブかを返す。

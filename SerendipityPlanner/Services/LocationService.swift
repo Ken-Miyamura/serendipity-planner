@@ -15,6 +15,20 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
     init(preferenceService: PreferenceService) {
         self.preferenceService = preferenceService
         super.init()
+
+        #if DEBUG
+            // UI テストでは権限ダイアログも位置の揺らぎも入れたくない。
+            // 型を差し替えると ContentView から HomeView まで波及するため、
+            // ここで固定値に短絡させる。
+            if UITestStubs.isEnabled {
+                self.currentLocation = UITestStubs.location
+                self.currentLocationName = UITestStubs.locationName
+                self.locationAuthorized = true
+                self.locationAuthorizationResolved = true
+                return
+            }
+        #endif
+
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         updateAuthorizationStatus()
@@ -25,6 +39,9 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
     }
 
     func requestCurrentLocation() async -> CLLocation? {
+        #if DEBUG
+            if UITestStubs.isEnabled { return UITestStubs.location }
+        #endif
         guard locationAuthorized else { return nil }
 
         // Return cached location if recent (within 5 minutes)

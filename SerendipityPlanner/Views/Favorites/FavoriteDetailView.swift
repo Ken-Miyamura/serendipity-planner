@@ -46,6 +46,7 @@ struct FavoriteDetailView: View, SkyTextStyling {
             .padding()
         }
         .background(SkyGradientView(weatherCondition: nil).ignoresSafeArea())
+        .uiTestID(AccessibilityID.screenFavoriteDetail)
         .navigationTitle("お気に入りの詳細")
         .navigationBarTitleDisplayMode(.inline)
         .alert("お気に入りから削除", isPresented: $showDeleteConfirmation) {

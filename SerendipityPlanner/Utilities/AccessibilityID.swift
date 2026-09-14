@@ -101,6 +101,14 @@ enum AccessibilityID {
         "onboarding.page.\(index)"
     }
 
+    // MARK: - 通知設定
+
+    static let screenNotificationSettings = "screen.notificationSettings"
+
+    // MARK: - お気に入り詳細
+
+    static let screenFavoriteDetail = "screen.favoriteDetail"
+
     // MARK: - 設定
 
     static let settingsCategorySection = "settings.categorySection"
