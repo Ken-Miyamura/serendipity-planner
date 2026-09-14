@@ -92,7 +92,9 @@ enum LayoutInspector {
     /// 失敗メッセージ用の表示名。identifier が無ければラベルで代用する。
     private static func describe(_ element: XCUIElement) -> String {
         let id = element.identifier
-        if !id.isEmpty { return id }
+        if !id.isEmpty {
+            return id
+        }
         let label = element.label
         return label.isEmpty ? "(無名の要素)" : "\"\(label.prefix(30))\""
     }

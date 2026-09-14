@@ -99,7 +99,6 @@ struct OnboardingContainerView: View {
                     }
                     .uiTestID(AccessibilityID.onboardingNextButton)
                     .disabled(!isWelcomePage && !isPermissionPage && !viewModel.canProceed)
-                    .uiTestID(AccessibilityID.onboardingNextButton)
                 }
                 .padding(.horizontal, 28)
                 .padding(.bottom, 36)

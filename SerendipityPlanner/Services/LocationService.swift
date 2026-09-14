@@ -40,7 +40,9 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
 
     func requestCurrentLocation() async -> CLLocation? {
         #if DEBUG
-            if UITestStubs.isEnabled { return UITestStubs.location }
+            if UITestStubs.isEnabled {
+                return UITestStubs.location
+            }
         #endif
         guard locationAuthorized else { return nil }
 
