@@ -42,8 +42,11 @@ final class LayoutVerificationTests: XCTestCase {
                     assertNoLayoutIssues(app, context: "\(locale.slug) 提案詳細")
 
                     // --- マップアプリ選択シート ---
+                    // マップボタンは周辺スポットがある時だけ出る。素通りを許すと、
+                    // スポットが取れなかった言語でシートを一度も開かないまま
+                    // テストが緑になる。スタブで必ず出る前提なので、無ければ失敗させる。
                     let mapButton = app.buttons[AccessibilityID.detailMapButton]
-                    if mapButton.exists {
+                    if mapButton.waitForExistence(timeout: 10) {
                         mapButton.tap()
                         if app.buttons[AccessibilityID.mapPickerApp(0)].waitForExistence(timeout: 10) {
                             attachScreenshot(app, name: "03_mapPicker_\(locale.slug)")
@@ -51,6 +54,8 @@ final class LayoutVerificationTests: XCTestCase {
                         } else {
                             XCTFail("\(locale.slug): マップ選択シートの中身が出なかった")
                         }
+                    } else {
+                        XCTFail("\(locale.slug): 周辺スポットが出ずマップボタンを確認できなかった")
                     }
                 } else {
                     XCTFail("\(locale.slug): 提案詳細に遷移できなかった")

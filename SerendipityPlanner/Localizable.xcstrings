@@ -924,7 +924,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ from %@ · %@"
+            "value": "%2$@ from %1$@ · %3$@"
           }
         },
         "ko": {
@@ -936,13 +936,13 @@
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ desde %@ · %@"
+            "value": "%2$@ desde %1$@ · %3$@"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ depuis %@ · %@"
+            "value": "%2$@ depuis %1$@ · %3$@"
           }
         }
       }

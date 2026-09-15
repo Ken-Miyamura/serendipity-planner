@@ -51,7 +51,7 @@ class HomeViewModel: ObservableObject {
         weatherService: WeatherServiceProtocol = HomeViewModel.defaultWeatherService(),
         suggestionEngine: SuggestionEngineProtocol = SuggestionEngine(),
         notificationService: NotificationServiceProtocol = NotificationService(),
-        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService(),
+        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService.resolved(),
         historyService: HistoryServiceProtocol = HistoryService()
     ) {
         self.calendarService = calendarService

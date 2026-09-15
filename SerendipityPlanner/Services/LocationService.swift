@@ -35,6 +35,14 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate, Lo
     }
 
     func requestPermission() {
+        #if DEBUG
+            // init で権限解決済みに短絡しているのと対にする。
+            // ここを通すと、まっさらなシミュレーターで HomeView.task から
+            // 権限ダイアログが出て、カードやタブのタップを覆ってしまう。
+            if UITestStubs.isEnabled {
+                return
+            }
+        #endif
         locationManager.requestWhenInUseAuthorization()
     }
 
