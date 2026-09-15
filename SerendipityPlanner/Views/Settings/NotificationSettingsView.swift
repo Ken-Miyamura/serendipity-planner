@@ -63,6 +63,7 @@ struct NotificationSettingsView: View {
             }
             .hideFormBackground()
             .navigationTitle("通知設定")
+            .uiTestID(AccessibilityID.screenNotificationSettings)
             .navigationBarTitleDisplayMode(.inline)
         }
     }

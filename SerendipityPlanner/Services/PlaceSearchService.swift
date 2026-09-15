@@ -105,3 +105,18 @@ class PlaceSearchService: PlaceSearchServiceProtocol {
         }
     }
 }
+
+extension PlaceSearchService {
+    /// UI テスト時はスタブ、それ以外は本物を返す。
+    ///
+    /// 呼び出し側（ViewModel の既定引数）にテスト用の分岐を書かずに済ませる。
+    /// `UITestStubs` は `#if DEBUG` の中にしか無いので、ここで包んでおかないと
+    /// リリースビルドが通らない。
+    static func resolved() -> PlaceSearchServiceProtocol {
+        #if DEBUG
+            return UITestStubs.Services.placeSearch()
+        #else
+            return PlaceSearchService()
+        #endif
+    }
+}

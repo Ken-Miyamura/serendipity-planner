@@ -27,7 +27,27 @@
 
         /// 東京駅。スポット検索が確実に結果を返す場所を選ぶ。
         static let location = CLLocation(latitude: 35.6812, longitude: 139.7671)
+        /// 現在地の表示名。言語で変わらない固定値にしておくことで、
+        /// 5言語のスクリーンショットを同じ条件で比べられる。
         static let locationName = "Marunouchi"
+
+        /// 提案に紐づく周辺スポット。
+        ///
+        /// これが nil だと詳細画面のマップボタンごと消え、マップアプリ選択シートの
+        /// レイアウト検証が**黙って素通りする**。`PlaceSearchService` は検索失敗を
+        /// 空配列に変換するため、通信が無い CI では実際にそうなる。
+        ///
+        /// 距離は固定値にするが、表示の整形（m / ft）は本物の `LocalizedUnits` を
+        /// 通るので、単位のロケール差はこのスタブでも検証できる。
+        static func place(for category: SuggestionCategory) -> NearbyPlace {
+            NearbyPlace(
+                name: "Marunouchi Park",
+                category: category,
+                latitude: 35.6840,
+                longitude: 139.7640,
+                distance: 320
+            )
+        }
 
         /// 起動引数に応じて本物かスタブかを返す。
         ///
@@ -40,6 +60,10 @@
 
             static func weather() -> WeatherServiceProtocol {
                 isEnabled ? StubWeatherService() : WeatherService()
+            }
+
+            static func placeSearch() -> PlaceSearchServiceProtocol {
+                isEnabled ? StubPlaceSearchService() : PlaceSearchService()
             }
         }
     }
@@ -107,6 +131,23 @@
 
         func fetchWeather(latitude _: Double, longitude _: Double) async throws -> WeatherData {
             fixed
+        }
+    }
+
+    /// 固定のスポットを返す。MapKit も通信も使わない。
+    final class StubPlaceSearchService: PlaceSearchServiceProtocol {
+        func searchNearbyPlaces(
+            for category: SuggestionCategory,
+            near _: CLLocation
+        ) async -> [NearbyPlace] {
+            [UITestStubs.place(for: category)]
+        }
+
+        func findNearbyPlace(
+            for category: SuggestionCategory,
+            near _: CLLocation
+        ) async -> NearbyPlace? {
+            UITestStubs.place(for: category)
         }
     }
 #endif

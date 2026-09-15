@@ -27,7 +27,7 @@ class SuggestionDetailViewModel: ObservableObject {
     init(
         suggestion: Suggestion,
         suggestionEngine: SuggestionEngineProtocol = SuggestionEngine(),
-        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService()
+        placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService.resolved()
     ) {
         self.suggestion = suggestion
         self.suggestionEngine = suggestionEngine

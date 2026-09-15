@@ -25,6 +25,7 @@ struct HistoryView: View, SkyTextStyling {
                 viewModel.loadData()
             }
         }
+        .uiTestID(AccessibilityID.screenHistory)
         .navigationViewStyle(.stack)
     }
 
