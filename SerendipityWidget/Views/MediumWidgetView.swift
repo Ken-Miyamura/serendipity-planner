@@ -42,10 +42,15 @@ struct MediumWidgetView: View {
                             radius: 2, y: 1
                         )
 
+                    // 日本語で収まる長さでも、スペイン語・フランス語では
+                    // 1行に入りきらず語の途中で切れる
+                    // （例: "Horas tranquilas en la bibliot…"）。
+                    // 2行まで許し、それでも溢れる場合だけ縮める。
                     Text(suggestion.title)
                         .font(.subheadline)
                         .foregroundColor(secondaryTextColor)
-                        .lineLimit(1)
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.85)
 
                     Spacer().frame(height: 2)
 
@@ -55,12 +60,14 @@ struct MediumWidgetView: View {
                             .font(.caption)
                             .foregroundColor(secondaryTextColor)
 
-                        // 場所
+                        // 場所。固有名詞なので切り詰めても意味は伝わるが、
+                        // 時間の表示を押し出さないよう縮小を許す
                         if let place = suggestion.nearbyPlace {
                             Label(place.name, systemImage: "mappin")
                                 .font(.caption)
                                 .foregroundColor(secondaryTextColor)
                                 .lineLimit(1)
+                                .minimumScaleFactor(0.85)
                         }
                     }
 

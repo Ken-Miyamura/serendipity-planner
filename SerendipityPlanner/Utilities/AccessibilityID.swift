@@ -33,6 +33,7 @@ enum AccessibilityID {
     static let homeLocationChip = "home.locationChip"
     static let homeEmptyState = "home.emptyState"
     static let homeReloadButton = "home.reloadButton"
+    static let homeLoading = "home.loading"
     /// 提案カード。順番で指せるよう index を取る
     static func suggestionCard(_ index: Int) -> String {
         "home.suggestionCard.\(index)"
@@ -93,6 +94,12 @@ enum AccessibilityID {
     static let screenSettings = "screen.settings"
     static let screenDetail = "screen.detail"
     static let screenDestinationSearch = "screen.destinationSearch"
+    static let screenErrorState = "screen.errorState"
+    /// ウィジェットのレンダリング確認用。UI テスト起動時のみ現れる（DEBUG 限定）
+    static let screenWidgetGallery = "screen.widgetGallery"
+    static func widgetPreview(_ family: String) -> String {
+        "widget.preview.\(family)"
+    }
 
     // MARK: - オンボーディング
 

@@ -161,3 +161,15 @@ class WeatherService: WeatherServiceProtocol {
         )
     }
 }
+
+extension WeatherService {
+    /// UI テスト時はスタブ、それ以外は本物を返す。
+    /// 理由は `PlaceSearchService.resolved()` と同じ。
+    static func resolved() -> WeatherServiceProtocol {
+        #if DEBUG
+            return UITestStubs.Services.weather()
+        #else
+            return WeatherService()
+        #endif
+    }
+}

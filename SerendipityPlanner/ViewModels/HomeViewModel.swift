@@ -17,24 +17,6 @@ class HomeViewModel: ObservableObject {
     @Published private(set) var errorRequiresSettings = false
     @Published var warningMessage: String?
 
-    /// UI テスト時はスタブを使う。リリースビルドでは常に本物。
-    /// 呼び出し側にテスト用の分岐を書かずに済ませるため、既定引数をここで解決する。
-    nonisolated static func defaultCalendarService() -> CalendarServiceProtocol {
-        #if DEBUG
-            return UITestStubs.Services.calendar()
-        #else
-            return CalendarService()
-        #endif
-    }
-
-    nonisolated static func defaultWeatherService() -> WeatherServiceProtocol {
-        #if DEBUG
-            return UITestStubs.Services.weather()
-        #else
-            return WeatherService()
-        #endif
-    }
-
     let calendarService: CalendarServiceProtocol
     private let weatherService: WeatherServiceProtocol
     private let suggestionEngine: SuggestionEngineProtocol
@@ -47,10 +29,10 @@ class HomeViewModel: ObservableObject {
     private let historyService: HistoryServiceProtocol
 
     init(
-        calendarService: CalendarServiceProtocol = HomeViewModel.defaultCalendarService(),
-        weatherService: WeatherServiceProtocol = HomeViewModel.defaultWeatherService(),
+        calendarService: CalendarServiceProtocol = CalendarService.resolved(),
+        weatherService: WeatherServiceProtocol = WeatherService.resolved(),
         suggestionEngine: SuggestionEngineProtocol = SuggestionEngine(),
-        notificationService: NotificationServiceProtocol = NotificationService(),
+        notificationService: NotificationServiceProtocol = NotificationService.resolved(),
         placeSearchService: PlaceSearchServiceProtocol = PlaceSearchService.resolved(),
         historyService: HistoryServiceProtocol = HistoryService()
     ) {

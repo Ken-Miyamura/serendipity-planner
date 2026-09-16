@@ -100,6 +100,7 @@ struct FavoritesView: View, SkyTextStyling {
                         }
                         .buttonStyle(.plain)
                         .staggeredAppear(index: index)
+                        .uiTestID(AccessibilityID.favoriteRow(index))
                     }
                 }
             }

@@ -19,6 +19,7 @@ struct HomeView: View {
                         .tint(useLightText ? .white : nil)
                         .foregroundColor(useLightText ? .white : .primary)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .uiTestID(AccessibilityID.homeLoading)
                 } else if let error = viewModel.errorMessage, viewModel.suggestions.isEmpty, viewModel.acceptedSuggestions.isEmpty {
                     ErrorStateView(
                         message: error,

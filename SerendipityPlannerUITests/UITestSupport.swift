@@ -40,6 +40,7 @@ enum UITestSupport {
         _ locale: Locale,
         skipOnboarding: Bool = true,
         stubData: Bool = true,
+        scenario: UITestScenario? = nil,
         arguments: [String] = []
     ) -> XCUIApplication {
         let app = XCUIApplication()
@@ -49,9 +50,16 @@ enum UITestSupport {
         ]
         if skipOnboarding {
             app.launchArguments.append(LaunchArgument.skipOnboarding)
+        } else {
+            // 完了フラグは保存されるため、明示的に戻さないと2回目以降は
+            // オンボーディングが始まらない
+            app.launchArguments.append(LaunchArgument.forceOnboarding)
         }
         if stubData {
             app.launchArguments.append(LaunchArgument.stubData)
+        }
+        if let scenario {
+            app.launchArguments += [UITestScenario.launchArgument, scenario.rawValue]
         }
         app.launchArguments += arguments
         app.launch()
@@ -63,6 +71,8 @@ enum UITestSupport {
     enum LaunchArgument {
         /// オンボーディングを完了済みとして起動する
         static let skipOnboarding = "-uiTestSkipOnboarding"
+        /// オンボーディングを未完了に戻して起動する
+        static let forceOnboarding = "-uiTestForceOnboarding"
         /// カレンダー・天気を固定データにする（権限とネットワークに依存しない）
         static let stubData = "-uiTestStubData"
     }
@@ -78,6 +88,16 @@ extension XCTestCase {
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
+    }
+
+    /// identifier で要素を引く。**種別を決め打ちしない。**
+    ///
+    /// SwiftUI は同じ `.accessibilityIdentifier` でも、中身によって
+    /// other / staticText / button のどれとして公開するかが変わる。
+    /// `app.otherElements[id]` で書くと、公開種別が変わった瞬間に
+    /// 「要素が無い」となりテストだけが赤くなる（実際に空状態とエラー状態で踏んだ）。
+    func element(_ app: XCUIApplication, _ identifier: String) -> XCUIElement {
+        app.descendants(matching: .any).matching(identifier: identifier).firstMatch
     }
 
     /// 要素が現れるまで待つ。現れなければテストを失敗させる。

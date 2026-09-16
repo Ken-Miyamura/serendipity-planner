@@ -37,5 +37,6 @@ struct ErrorStateView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .uiTestID(AccessibilityID.screenErrorState)
     }
 }

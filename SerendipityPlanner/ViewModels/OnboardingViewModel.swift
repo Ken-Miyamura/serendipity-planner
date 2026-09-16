@@ -19,8 +19,8 @@ class OnboardingViewModel: ObservableObject {
     private let notificationService: NotificationServiceProtocol
 
     init(
-        calendarService: CalendarServiceProtocol = CalendarService(),
-        notificationService: NotificationServiceProtocol = NotificationService()
+        calendarService: CalendarServiceProtocol = CalendarService.resolved(),
+        notificationService: NotificationServiceProtocol = NotificationService.resolved()
     ) {
         self.calendarService = calendarService
         self.notificationService = notificationService

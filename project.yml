@@ -25,6 +25,10 @@ targets:
         excludes:
           - "**/.DS_Store"
       - path: SerendipityWidget/SharedDataManager.swift
+      # ウィジェットのレイアウトをアプリ側の UI テストから確認するため、
+      # エントリ型とビューを本体にも渡す（配信するのはウィジェット拡張のまま）
+      - path: SerendipityWidget/SerendipityTimelineProvider.swift
+      - path: SerendipityWidget/Views
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner
@@ -84,6 +88,8 @@ targets:
       # identifier の定義はアプリ本体と共有する。
       # 文字列を2箇所に散らすと、片方だけ直したときに気づけない。
       - path: SerendipityPlanner/Utilities/AccessibilityID.swift
+      # シナリオ名も同じ理由で共有する
+      - path: SerendipityPlanner/Utilities/UITestScenario.swift
     dependencies:
       - target: SerendipityPlanner
     settings:

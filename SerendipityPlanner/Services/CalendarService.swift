@@ -193,3 +193,15 @@ class CalendarService: CalendarServiceProtocol {
         return freeSlots
     }
 }
+
+extension CalendarService {
+    /// UI テスト時はスタブ、それ以外は本物を返す。
+    /// 理由は `PlaceSearchService.resolved()` と同じ。
+    static func resolved() -> CalendarServiceProtocol {
+        #if DEBUG
+            return UITestStubs.Services.calendar()
+        #else
+            return CalendarService()
+        #endif
+    }
+}

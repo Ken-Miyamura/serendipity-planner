@@ -17,9 +17,10 @@ class NotificationService: NotificationServiceProtocol {
         for suggestion: Suggestion,
         leadTimeMinutes: Int = Constants.Notification.defaultLeadTimeMinutes
     ) {
+        let text = NotificationContent.suggestion(suggestion)
         let content = UNMutableNotificationContent()
-        content.title = String(localized: "セレンディピティ")
-        content.body = String(localized: "\(suggestion.freeTimeSlot.timeRangeText)に空き時間があります。\(suggestion.title)はいかがですか？")
+        content.title = text.title
+        content.body = text.body
         content.sound = .default
         content.categoryIdentifier = Constants.Notification.categoryIdentifier
         addIconAttachment(to: content)
@@ -48,9 +49,10 @@ class NotificationService: NotificationServiceProtocol {
 
         guard freeSlotCount > 0 else { return }
 
+        let text = NotificationContent.morning(freeSlotCount: freeSlotCount)
         let content = UNMutableNotificationContent()
-        content.title = String(localized: "おはようございます ☀️")
-        content.body = String(localized: "今日の隙間時間：\(freeSlotCount)つ見つかりました。タップして提案を確認しましょう。")
+        content.title = text.title
+        content.body = text.body
         content.sound = .default
         content.categoryIdentifier = Constants.Notification.morningNotificationIdentifier
         addIconAttachment(to: content)
@@ -106,5 +108,17 @@ class NotificationService: NotificationServiceProtocol {
         ) {
             content.attachments = [attachment]
         }
+    }
+}
+
+extension NotificationService {
+    /// UI テスト時はスタブ、それ以外は本物を返す。
+    /// 理由は `PlaceSearchService.resolved()` と同じ。
+    static func resolved() -> NotificationServiceProtocol {
+        #if DEBUG
+            return UITestStubs.Services.notification()
+        #else
+            return NotificationService()
+        #endif
     }
 }

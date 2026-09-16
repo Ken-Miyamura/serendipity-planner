@@ -33,6 +33,15 @@ class PreferenceService: ObservableObject, PreferenceServiceProtocol {
     /// アプリ本体に持ち込む分岐はここだけに閉じ、保存もしない（起動ごとに揮発する）。
     private func applyUITestOverridesIfNeeded() {
         let arguments = ProcessInfo.processInfo.arguments
+
+        // オンボーディング自体を検証したいとき用。
+        // 一度でも通すと完了フラグが保存されるため、これが無いと
+        // 2回目以降の実行では**オンボーディングが始まらない**。
+        if arguments.contains("-uiTestForceOnboarding") {
+            settings.hasCompletedOnboarding = false
+            return
+        }
+
         guard arguments.contains("-uiTestSkipOnboarding") else { return }
 
         settings.hasCompletedOnboarding = true
