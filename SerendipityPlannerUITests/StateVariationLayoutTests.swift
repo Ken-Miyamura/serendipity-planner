@@ -38,24 +38,38 @@ final class StateVariationLayoutTests: XCTestCase {
         }
     }
 
-    /// 権限拒否のときだけ「設定を開く」が出ること。
+    /// 「設定を開く」が権限拒否のときだけ出ること。
     ///
-    /// 取得失敗との違いがここ。ボタンが2つ縦に並ぶぶん文字が長い言語で崩れやすいので、
-    /// 出ていること自体を明示的に押さえる。
-    func testDeniedStateOffersSettingsShortcut() {
+    /// 取得失敗との違いがここ。ボタンが2つ縦に並ぶぶん文字が長い言語で崩れやすい。
+    ///
+    /// **出ることと出ないことを対で見る。** 出ることだけを見ても、常に出る実装に
+    /// なっていたら気づけない。以前はヒット可能なボタンの総数で判定していたが、
+    /// タブバーだけで4つあるため条件が常に満たされ、何も検出できていなかった。
+    func testSettingsShortcutAppearsOnlyWhenPermissionDenied() {
         for locale in UITestSupport.Locale.all {
-            let app = UITestSupport.launch(locale, scenario: .denied)
-            guard element(app, AccessibilityID.screenErrorState).waitForExistence(timeout: 30) else {
-                XCTFail("\(locale.slug): エラー状態が出なかった")
-                app.terminate()
-                continue
+            // 権限拒否 → 出る
+            let denied = UITestSupport.launch(locale, scenario: .denied)
+            if element(denied, AccessibilityID.screenErrorState).waitForExistence(timeout: 30) {
+                XCTAssertTrue(
+                    element(denied, AccessibilityID.errorOpenSettingsButton).waitForExistence(timeout: 5),
+                    "\(locale.slug): 権限拒否なのに「設定を開く」が出ていない"
+                )
+            } else {
+                XCTFail("\(locale.slug): 権限拒否のエラー状態が出なかった")
             }
-            // ラベルは言語ごとに変わるため、ボタンの数で見る（再試行 + 設定を開く）
-            XCTAssertGreaterThanOrEqual(
-                app.buttons.allElementsBoundByIndex.filter(\.isHittable).count, 2,
-                "\(locale.slug): 権限拒否なのに「設定を開く」が見当たらない"
-            )
-            app.terminate()
+            denied.terminate()
+
+            // 取得失敗 → 出ない（設定を開いても直らないため）
+            let failed = UITestSupport.launch(locale, scenario: .error)
+            if element(failed, AccessibilityID.screenErrorState).waitForExistence(timeout: 30) {
+                XCTAssertFalse(
+                    element(failed, AccessibilityID.errorOpenSettingsButton).exists,
+                    "\(locale.slug): 取得失敗なのに「設定を開く」が出ている"
+                )
+            } else {
+                XCTFail("\(locale.slug): 取得失敗のエラー状態が出なかった")
+            }
+            failed.terminate()
         }
     }
 
@@ -71,18 +85,23 @@ final class StateVariationLayoutTests: XCTestCase {
             waitForElement(app.buttons[AccessibilityID.tabHome], timeout: 30)
 
             // --- 履歴（データあり） ---
+            //
+            // 画面ルートは空状態でも存在し、しかも行の読み込み前から出ている。
+            // ルートだけ待つと、投入が効いていなくても空の画面を撮って緑になる。
+            // 行そのものを待つ。
             app.buttons[AccessibilityID.tabHistory].tap()
-            if element(app, AccessibilityID.screenHistory).waitForExistence(timeout: 15) {
+            if element(app, AccessibilityID.historyRow(0)).waitForExistence(timeout: 15) {
                 attachScreenshot(app, name: "11_history-filled_\(locale.slug)")
                 assertNoLayoutIssues(app, context: "\(locale.slug) 履歴(データあり)")
             } else {
-                XCTFail("\(locale.slug): 履歴に遷移できなかった")
+                XCTFail("\(locale.slug): 履歴に行が出なかった（投入データが効いていない）")
             }
 
             // --- お気に入り（データあり） ---
             app.buttons[AccessibilityID.tabFavorites].tap()
-            guard element(app, AccessibilityID.screenFavorites).waitForExistence(timeout: 15) else {
-                XCTFail("\(locale.slug): お気に入りに遷移できなかった")
+            let row = app.buttons[AccessibilityID.favoriteRow(0)]
+            guard row.waitForExistence(timeout: 15) else {
+                XCTFail("\(locale.slug): お気に入りに行が出なかった（投入データが効いていない）")
                 app.terminate()
                 continue
             }
@@ -90,17 +109,12 @@ final class StateVariationLayoutTests: XCTestCase {
             assertNoLayoutIssues(app, context: "\(locale.slug) お気に入り(データあり)")
 
             // --- お気に入り詳細 ---
-            let row = app.buttons[AccessibilityID.favoriteRow(0)]
-            if row.waitForExistence(timeout: 10) {
-                row.tap()
-                if element(app, AccessibilityID.screenFavoriteDetail).waitForExistence(timeout: 15) {
-                    attachScreenshot(app, name: "13_favoriteDetail_\(locale.slug)")
-                    assertNoLayoutIssues(app, context: "\(locale.slug) お気に入り詳細")
-                } else {
-                    XCTFail("\(locale.slug): お気に入り詳細に遷移できなかった")
-                }
+            row.tap()
+            if element(app, AccessibilityID.screenFavoriteDetail).waitForExistence(timeout: 15) {
+                attachScreenshot(app, name: "13_favoriteDetail_\(locale.slug)")
+                assertNoLayoutIssues(app, context: "\(locale.slug) お気に入り詳細")
             } else {
-                XCTFail("\(locale.slug): お気に入りの行が出なかった（投入データが効いていない）")
+                XCTFail("\(locale.slug): お気に入り詳細に遷移できなかった")
             }
 
             app.terminate()

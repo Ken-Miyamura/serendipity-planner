@@ -11,8 +11,13 @@ struct ErrorStateView: View {
                 .font(.system(size: 48))
                 .foregroundColor(.orange)
 
+            // 画面の目印はコンテナではなく**実体のある子**に付ける。
+            // VStack のような小さなコンテナに付けると、SwiftUI が中の要素すべてに
+            // 同じ identifier を配って回り、子に付けた identifier が消える
+            // （再試行ボタンも「設定を開く」も screen.errorState になっていた）。
             Text("エラーが発生しました")
                 .font(.headline)
+                .uiTestID(AccessibilityID.screenErrorState)
 
             Text(message)
                 .font(.subheadline)
@@ -34,9 +39,9 @@ struct ErrorStateView: View {
                 }
                 .buttonStyle(.bordered)
                 .accessibilityHint("iOS設定アプリを開いて権限を変更します")
+                .uiTestID(AccessibilityID.errorOpenSettingsButton)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .uiTestID(AccessibilityID.screenErrorState)
     }
 }
