@@ -26,6 +26,7 @@ struct FavoritesView: View, SkyTextStyling {
                 viewModel.configure(with: favoriteService)
             }
         }
+        .uiTestID(AccessibilityID.screenFavorites)
         .navigationViewStyle(.stack)
     }
 
