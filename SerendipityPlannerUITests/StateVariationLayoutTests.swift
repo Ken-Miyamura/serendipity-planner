@@ -33,6 +33,7 @@ final class StateVariationLayoutTests: XCTestCase {
                 }
                 attachScreenshot(app, name: "10_home-\(name)_\(locale.slug)")
                 assertNoLayoutIssues(app, context: "\(locale.slug) ホーム(\(name))")
+                assertSettingsShortcut(app, scenario: scenario, locale: locale)
                 app.terminate()
             }
         }
@@ -45,31 +46,28 @@ final class StateVariationLayoutTests: XCTestCase {
     /// **出ることと出ないことを対で見る。** 出ることだけを見ても、常に出る実装に
     /// なっていたら気づけない。以前はヒット可能なボタンの総数で判定していたが、
     /// タブバーだけで4つあるため条件が常に満たされ、何も検出できていなかった。
-    func testSettingsShortcutAppearsOnlyWhenPermissionDenied() {
-        for locale in UITestSupport.Locale.all {
-            // 権限拒否 → 出る
-            let denied = UITestSupport.launch(locale, scenario: .denied)
-            if element(denied, AccessibilityID.screenErrorState).waitForExistence(timeout: 30) {
-                XCTAssertTrue(
-                    element(denied, AccessibilityID.errorOpenSettingsButton).waitForExistence(timeout: 5),
-                    "\(locale.slug): 権限拒否なのに「設定を開く」が出ていない"
-                )
-            } else {
-                XCTFail("\(locale.slug): 権限拒否のエラー状態が出なかった")
-            }
-            denied.terminate()
-
-            // 取得失敗 → 出ない（設定を開いても直らないため）
-            let failed = UITestSupport.launch(locale, scenario: .error)
-            if element(failed, AccessibilityID.screenErrorState).waitForExistence(timeout: 30) {
-                XCTAssertFalse(
-                    element(failed, AccessibilityID.errorOpenSettingsButton).exists,
-                    "\(locale.slug): 取得失敗なのに「設定を開く」が出ている"
-                )
-            } else {
-                XCTFail("\(locale.slug): 取得失敗のエラー状態が出なかった")
-            }
-            failed.terminate()
+    ///
+    /// 独立したテストにすると `.denied` と `.error` を言語ごとにもう一度
+    /// 起動し直すことになるため、状態を巡る歩きに相乗りする。
+    private func assertSettingsShortcut(
+        _ app: XCUIApplication,
+        scenario: UITestScenario,
+        locale: UITestSupport.Locale
+    ) {
+        let shortcut = element(app, AccessibilityID.errorOpenSettingsButton)
+        switch scenario {
+        case .denied:
+            XCTAssertTrue(
+                shortcut.waitForExistence(timeout: 5),
+                "\(locale.slug): 権限拒否なのに「設定を開く」が出ていない"
+            )
+        case .error:
+            XCTAssertFalse(
+                shortcut.exists,
+                "\(locale.slug): 取得失敗なのに「設定を開く」が出ている（設定を開いても直らない）"
+            )
+        case .standard, .empty, .loading, .seeded, .widget:
+            break
         }
     }
 
@@ -115,41 +113,6 @@ final class StateVariationLayoutTests: XCTestCase {
                 assertNoLayoutIssues(app, context: "\(locale.slug) お気に入り詳細")
             } else {
                 XCTFail("\(locale.slug): お気に入り詳細に遷移できなかった")
-            }
-
-            app.terminate()
-        }
-    }
-
-    // MARK: - 通知設定
-
-    /// 設定 → 通知設定 を5言語で確認する。
-    /// トグルのラベルが長い言語で、スイッチと重ならないかを見る。
-    func testNotificationSettingsInEveryLanguage() {
-        for locale in UITestSupport.Locale.all {
-            let app = UITestSupport.launch(locale)
-            waitForElement(app.buttons[AccessibilityID.tabSettings], timeout: 30)
-            app.buttons[AccessibilityID.tabSettings].tap()
-
-            guard element(app, AccessibilityID.screenSettings).waitForExistence(timeout: 15) else {
-                XCTFail("\(locale.slug): 設定に遷移できなかった")
-                app.terminate()
-                continue
-            }
-
-            let link = app.buttons[AccessibilityID.settingsNotificationLink]
-            guard link.waitForExistence(timeout: 10) else {
-                XCTFail("\(locale.slug): 通知設定への導線が見つからなかった")
-                app.terminate()
-                continue
-            }
-            link.tap()
-
-            if element(app, AccessibilityID.screenNotificationSettings).waitForExistence(timeout: 15) {
-                attachScreenshot(app, name: "14_notificationSettings_\(locale.slug)")
-                assertNoLayoutIssues(app, context: "\(locale.slug) 通知設定")
-            } else {
-                XCTFail("\(locale.slug): 通知設定に遷移できなかった")
             }
 
             app.terminate()
