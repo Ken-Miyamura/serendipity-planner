@@ -15,16 +15,23 @@ enum UITestSupport {
     struct Locale {
         let language: String
         let region: String
+        /// この言語で目的地カードに出ているはずの文言。
+        ///
+        /// ユニットテストは `.strings` を読むだけなので「カタログには入っているが
+        /// 画面に出ていない」を検出できない。画面を歩くついでにここで確かめる。
+        /// ja は原文そのもので、翻訳の確認にならないため nil。
+        let translatedSample: String?
+
         /// スクリーンショットのファイル名などに使う短い識別子
         var slug: String {
             "\(language)_\(region)"
         }
 
-        static let japanese = Locale(language: "ja", region: "JP")
-        static let english = Locale(language: "en", region: "US")
-        static let korean = Locale(language: "ko", region: "KR")
-        static let spanish = Locale(language: "es", region: "ES")
-        static let french = Locale(language: "fr", region: "FR")
+        static let japanese = Locale(language: "ja", region: "JP", translatedSample: nil)
+        static let english = Locale(language: "en", region: "US", translatedSample: "Pick a destination")
+        static let korean = Locale(language: "ko", region: "KR", translatedSample: "목적지 정하기")
+        static let spanish = Locale(language: "es", region: "ES", translatedSample: "Elegir un destino")
+        static let french = Locale(language: "fr", region: "FR", translatedSample: "Choisir une destination")
 
         static let all: [Locale] = [.japanese, .english, .korean, .spanish, .french]
     }
