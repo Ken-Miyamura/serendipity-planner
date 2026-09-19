@@ -128,12 +128,20 @@ jobs:
       - name: Generate project
         run: xcodegen generate
 
+      # テストクラス単位でシミュレーターを複製して並行実行する。
+      # クラスは互いに独立しており、権限のリセットも複製先に閉じる。
+      #
+      # ワーカーは2。ランナーのメモリに対してシミュレーターは重く、
+      # 増やすと奪い合って逆に遅くなる。律速は最も重いクラス
+      # （LayoutVerificationTests）なので、3以上にしても短くならない。
       - name: UI Test
         run: |
           xcodebuild test \
             -scheme SerendipityPlanner \
             -destination "platform=iOS Simulator,name=${SIMULATOR}" \
             -only-testing:SerendipityPlannerUITests \
+            -parallel-testing-enabled YES \
+            -maximum-parallel-testing-workers 2 \
             -resultBundlePath UITestResults \
             CODE_SIGNING_ALLOWED=NO
 
