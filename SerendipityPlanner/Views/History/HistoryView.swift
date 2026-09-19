@@ -129,11 +129,24 @@ struct HistoryView: View, SkyTextStyling {
                                 timeText: viewModel.timeText(for: history.acceptedDate)
                             )
                             .staggeredAppear(index: groupIndex * 3 + itemIndex)
+                            .uiTestID(
+                                AccessibilityID.historyRow(
+                                    flatRowIndex(groupIndex: groupIndex, itemIndex: itemIndex)
+                                )
+                            )
                         }
                     }
                 }
             }
             .padding()
         }
+    }
+
+    /// 行を日付グループをまたいだ通し番号にする。
+    /// グループ内の index だけだと、日をまたいだ行同士で重複する。
+    private func flatRowIndex(groupIndex: Int, itemIndex: Int) -> Int {
+        viewModel.groupedHistories
+            .prefix(groupIndex)
+            .reduce(itemIndex) { $0 + $1.items.count }
     }
 }

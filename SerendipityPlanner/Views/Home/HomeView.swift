@@ -19,6 +19,7 @@ struct HomeView: View {
                         .tint(useLightText ? .white : nil)
                         .foregroundColor(useLightText ? .white : .primary)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .uiTestID(AccessibilityID.homeLoading)
                 } else if let error = viewModel.errorMessage, viewModel.suggestions.isEmpty, viewModel.acceptedSuggestions.isEmpty {
                     ErrorStateView(
                         message: error,
@@ -145,8 +146,11 @@ struct HomeView: View {
             Image(systemName: "leaf.fill")
                 .font(.system(size: 60))
                 .foregroundColor(useLightText ? .white.opacity(0.8) : Color.theme.walk)
+            // コンテナに付けると中の要素すべてに配られ、再読み込みボタンの
+            // identifier が消える。実体のある子に付ける（ErrorStateView と同じ）。
             Text("今日はゆっくりお過ごしください")
                 .font(.headline)
+                .uiTestID(AccessibilityID.homeEmptyState)
                 .foregroundColor(useLightText ? .white : .primary)
             Text("空き時間が見つかりませんでした。\n忙しい日も、ちょっと深呼吸を。")
                 .font(.subheadline)
@@ -161,7 +165,6 @@ struct HomeView: View {
             .uiTestID(AccessibilityID.homeReloadButton)
         }
         .padding()
-        .uiTestID(AccessibilityID.homeEmptyState)
     }
 
     // MARK: - Suggestion List

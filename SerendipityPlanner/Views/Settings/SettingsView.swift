@@ -67,6 +67,7 @@ struct SettingsView: View, SkyTextStyling {
                                     .foregroundColor(.secondary)
                             }
                         }
+                        .uiTestID(AccessibilityID.settingsNotificationLink)
                     }
 
                     // Preferences

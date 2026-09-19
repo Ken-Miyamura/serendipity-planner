@@ -10,16 +10,20 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # ローカル開発環境と揃えること（Makefile の setup が案内するバージョン）
+  SWIFTFORMAT_VERSION: "0.63.0"
+  SWIFTLINT_VERSION: "0.63.2"
+  # レイアウト検証は画面幅がいちばん狭い端末で回す。
+  # 広い端末で通っても、狭い端末で溢れるのが多言語対応の典型的な壊れ方。
+  SIMULATOR: "iPhone SE (3rd generation)"
+
 jobs:
+  # 整形・静的解析・ユニットテスト。数分で終わるので早く赤が出る。
   build-and-test:
     name: Build & Test
     runs-on: macos-14
     timeout-minutes: 20
-
-    env:
-      # ローカル開発環境と揃えること（Makefile の setup が案内するバージョン）
-      SWIFTFORMAT_VERSION: "0.63.0"
-      SWIFTLINT_VERSION: "0.63.2"
 
     steps:
       - uses: actions/checkout@v4
@@ -79,7 +83,7 @@ jobs:
         run: |
           xcodebuild build \
             -scheme SerendipityPlanner \
-            -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+            -destination "platform=iOS Simulator,name=${SIMULATOR}" \
             -skipPackagePluginValidation \
             CODE_SIGNING_ALLOWED=NO
 
@@ -87,20 +91,9 @@ jobs:
         run: |
           xcodebuild test \
             -scheme SerendipityPlanner \
-            -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
+            -destination "platform=iOS Simulator,name=${SIMULATOR}" \
             -only-testing:SerendipityPlannerTests \
             -resultBundlePath TestResults \
-            CODE_SIGNING_ALLOWED=NO
-
-      # UI テストは実機起動を伴うぶん遅い（3件で約70秒）。
-      # ユニットテストと分けておき、落ちたときにどちらが原因か切り分けられるようにする。
-      - name: UI Test
-        run: |
-          xcodebuild test \
-            -scheme SerendipityPlanner \
-            -destination 'platform=iOS Simulator,name=iPhone SE (3rd generation)' \
-            -only-testing:SerendipityPlannerUITests \
-            -resultBundlePath UITestResults \
             CODE_SIGNING_ALLOWED=NO
 
       - name: Upload test results
@@ -108,6 +101,47 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: TestResults
-          path: |
-            TestResults.xcresult
-            UITestResults.xcresult
+          path: TestResults.xcresult
+
+  # UI テストは 5言語 × 全画面 × 状態バリエーションを実機起動で回すため長い
+  # （ローカルで約15分）。ユニットテストと同じジョブに置くと、
+  # 整形ミスの指摘が15分後になる。別ジョブにして並行で回す。
+  ui-test:
+    name: UI Test
+    runs-on: macos-14
+    timeout-minutes: 45
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup xcconfig for CI
+        run: |
+          cp Config/Debug.xcconfig.example Config/Debug.xcconfig
+          cp Config/Release.xcconfig.example Config/Release.xcconfig
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate project
+        run: xcodegen generate
+
+      - name: UI Test
+        run: |
+          xcodebuild test \
+            -scheme SerendipityPlanner \
+            -destination "platform=iOS Simulator,name=${SIMULATOR}" \
+            -only-testing:SerendipityPlannerUITests \
+            -resultBundlePath UITestResults \
+            CODE_SIGNING_ALLOWED=NO
+
+      # 失敗時だけでなく常に上げる。5言語ぶんのスクリーンショットが入っており、
+      # 切り詰めのような**機械では判定できない崩れ**を人が見るための材料になる。
+      - name: Upload UI test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: UITestResults
+          path: UITestResults.xcresult

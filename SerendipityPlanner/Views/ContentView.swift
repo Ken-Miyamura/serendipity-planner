@@ -8,18 +8,31 @@ struct ContentView: View {
     var body: some View {
         let locationService = LocationService(preferenceService: preferenceService)
         Group {
-            if preferenceService.settings.hasCompletedOnboarding {
-                MainTabView(locationService: locationService)
-            } else {
-                OnboardingContainerView {
-                    preferenceService.completeOnboarding()
+            #if DEBUG
+                if UITestStubs.isEnabled, UITestStubs.scenario == .widget {
+                    WidgetGalleryView()
+                } else {
+                    main(locationService: locationService)
                 }
-            }
+            #else
+                main(locationService: locationService)
+            #endif
         }
         .environmentObject(preferenceService)
         .environmentObject(locationService)
         .environmentObject(favoriteService)
         .environmentObject(destinationService)
+    }
+
+    @ViewBuilder
+    private func main(locationService: LocationService) -> some View {
+        if preferenceService.settings.hasCompletedOnboarding {
+            MainTabView(locationService: locationService)
+        } else {
+            OnboardingContainerView {
+                preferenceService.completeOnboarding()
+            }
+        }
     }
 }
 

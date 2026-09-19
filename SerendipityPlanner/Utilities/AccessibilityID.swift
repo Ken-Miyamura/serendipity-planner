@@ -13,6 +13,23 @@ import SwiftUI
 ///
 /// 文字列を本体とテストの2箇所に散らすと、片方だけ直したときに気づけない。
 /// ここを唯一の定義とし、テストターゲットからも参照する。
+///
+/// ## 付ける場所に注意（踏んだ罠）
+///
+/// **コンテナに付けると、中の要素すべてに同じ identifier が配られる。**
+/// 子に付けた identifier はそれに上書きされて消える。
+///
+/// ```swift
+/// VStack {
+///     Button("再試行") { }
+///     Button("設定を開く") { }.uiTestID(.errorOpenSettingsButton)  // 消える
+/// }
+/// .uiTestID(.screenErrorState)   // 両方のボタンが screen.errorState になる
+/// ```
+///
+/// 画面の目印は**実体のある子**（見出しの Text など）に付けること。
+/// ScrollView や Form のような大きなコンテナでは起きないため、
+/// 一部の画面だけ静かに壊れるのがたちが悪い。
 enum AccessibilityID {
     // MARK: - タブ
 
@@ -33,6 +50,7 @@ enum AccessibilityID {
     static let homeLocationChip = "home.locationChip"
     static let homeEmptyState = "home.emptyState"
     static let homeReloadButton = "home.reloadButton"
+    static let homeLoading = "home.loading"
     /// 提案カード。順番で指せるよう index を取る
     static func suggestionCard(_ index: Int) -> String {
         "home.suggestionCard.\(index)"
@@ -76,6 +94,11 @@ enum AccessibilityID {
 
     static let historyMonthLabel = "history.monthLabel"
     static let historyEmptyState = "history.emptyState"
+    /// 履歴の行。グループ（日付）をまたいだ通し番号で指す
+    static func historyRow(_ index: Int) -> String {
+        "history.row.\(index)"
+    }
+
     static let favoritesEmptyState = "favorites.emptyState"
     static func favoriteRow(_ index: Int) -> String {
         "favorites.row.\(index)"
@@ -93,6 +116,14 @@ enum AccessibilityID {
     static let screenSettings = "screen.settings"
     static let screenDetail = "screen.detail"
     static let screenDestinationSearch = "screen.destinationSearch"
+    static let screenErrorState = "screen.errorState"
+    /// エラー状態のうち、権限起因のときだけ出る「設定を開く」
+    static let errorOpenSettingsButton = "error.openSettingsButton"
+    /// ウィジェットのレンダリング確認用。UI テスト起動時のみ現れる（DEBUG 限定）
+    static let screenWidgetGallery = "screen.widgetGallery"
+    static func widgetPreview(_ family: String) -> String {
+        "widget.preview.\(family)"
+    }
 
     // MARK: - オンボーディング
 

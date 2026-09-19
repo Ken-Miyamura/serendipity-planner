@@ -7,6 +7,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         UNUserNotificationCenter.current().delegate = self
+        #if DEBUG
+            // サービスは init で UserDefaults を読むため、ContentView がそれらを
+            // 作るより前に書いておく必要がある。
+            UITestStubs.seedStorageIfNeeded()
+        #endif
         return true
     }
 
