@@ -128,6 +128,12 @@ jobs:
       - name: Generate project
         run: xcodegen generate
 
+      # 並列実行（-parallel-testing-enabled）は試したが**遅くなったので使わない**。
+      # ランナー上でシミュレーターを2つ動かすと奪い合いが激しく、
+      # 各テストが2〜3倍に伸びて並行の利得を食い潰す。実測は #58 を参照。
+      #
+      #   起動削減のみ      12m47s  pass
+      #   + 並列ワーカー2   18m32s  fail（競合でタイムアウト）
       - name: UI Test
         run: |
           xcodebuild test \

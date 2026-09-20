@@ -5,6 +5,9 @@ options:
     iOS: "15.0"
   xcodeVersion: "15.0"
   generateEmptyDirectories: true
+  # 別ターゲットと同じディレクトリのファイルを共有すると、group の二重所属で
+  # xcodebuild が "malformed project" を警告する。中間 group を作らせて解消する。
+  createIntermediateGroups: true
 
 configFiles:
   Debug: Config/Debug.xcconfig
@@ -27,8 +30,11 @@ targets:
       - path: SerendipityWidget/SharedDataManager.swift
       # ウィジェットのレイアウトをアプリ側の UI テストから確認するため、
       # エントリ型とビューを本体にも渡す（配信するのはウィジェット拡張のまま）
+      # ディレクトリごと渡すと、ウィジェット拡張側の group と二重所属になり
+      # xcodebuild が "malformed project" を警告する。ファイル単位で渡す。
       - path: SerendipityWidget/SerendipityTimelineProvider.swift
-      - path: SerendipityWidget/Views
+      - path: SerendipityWidget/Views/SmallWidgetView.swift
+      - path: SerendipityWidget/Views/MediumWidgetView.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.serendipity.planner
