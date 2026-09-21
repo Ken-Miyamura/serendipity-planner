@@ -64,10 +64,27 @@
         /// 保存先は本物と同じ `UserDefaults`。サービスは init で読むため、
         /// ContentView がサービスを作る前（`AppDelegate`）に呼ぶ必要がある。
         static func seedStorageIfNeeded() {
-            guard isEnabled, scenario == .seeded else { return }
+            guard isEnabled else { return }
+            applyStorage(for: scenario, to: .standard)
+        }
 
+        /// シナリオに応じて保存データを整える。
+        ///
+        /// 起動引数と `UserDefaults.standard` に触らず検証できるよう、
+        /// 両方を引数で受ける（`seedStorageIfNeeded` はこれに委譲するだけ）。
+        static func applyStorage(for scenario: UITestScenario, to defaults: UserDefaults) {
             let encoder = JSONEncoder()
-            let defaults = UserDefaults.standard
+
+            // 投入したデータは本物と同じ UserDefaults に入るため、**次の起動にも残る**。
+            // seeded 以外で立ち上げたときに消しておかないと、前回の残りが写り込む。
+            //
+            // 今まで表に出なかったのは、テストクラスの実行順が
+            // たまたま「空状態を見る側が先」だったから。順番が変われば、
+            // 空状態のはずの画面にデータが出たまま緑になる。
+            guard scenario == .seeded else {
+                keysClearedBetweenScenarios.forEach(defaults.removeObject(forKey:))
+                return
+            }
 
             if let data = try? encoder.encode(favorites) {
                 defaults.set(data, forKey: Constants.Storage.favoriteSuggestionsKey)
@@ -76,6 +93,21 @@
                 defaults.set(data, forKey: Constants.Storage.suggestionHistoryKey)
             }
         }
+
+        /// seeded シナリオが書き込むキー
+        static let seededKeys = [
+            Constants.Storage.favoriteSuggestionsKey,
+            Constants.Storage.suggestionHistoryKey
+        ]
+
+        /// シナリオを抜けるときに消すキー。
+        ///
+        /// 目的地は seeded が書かないが、テストの途中でアプリ自身が書くことがあり、
+        /// それも次の起動に持ち越される。書き手に関係なく「データが無い前提の
+        /// シナリオでは残っていてはいけないもの」をここに並べる。
+        static let keysClearedBetweenScenarios = seededKeys + [
+            Constants.Storage.todayDestinationKey
+        ]
 
         /// 投入するお気に入り。カテゴリを散らして色とアイコンの違いも見えるようにする。
         private static var favorites: [FavoriteSuggestion] {
